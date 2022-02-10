@@ -1,25 +1,12 @@
+import Level from "./level.js";
+
 var config = {
-    type: Phaser.CANVAS,
-    width: 320,
-    height: 200,
-    scene: {
-        preload: preload,
-        create: create,
-        update: update
-    }
+  type: Phaser.CANVAS,
+  width: 920,
+  height: 500,
+  scene: [Level],
 };
 
-var game = new Phaser.Game(config);
+new Phaser.Game(config);
 
-function preload ()
-{
-    console.log("Hola wenas, preload");
-}
 
-function create ()
-{
-}
-
-function update ()
-{
-}
