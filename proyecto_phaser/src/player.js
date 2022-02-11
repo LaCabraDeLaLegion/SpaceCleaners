@@ -4,11 +4,14 @@ export default class Player extends Phaser.GameObjects.Sprite {
     super(scene, x, y, "player");
     this.cursors = this.scene.input.keyboard.createCursorKeys();
     this.scene.add.existing(this);
+    this.shootTime = 0;
   }
 
   preUpdate(t, dt) {
 
     super.preUpdate(t, dt);
+
+    this.shootTime--;
 
     if (this.cursors.left.isDown) {
       this.x -= 5;
@@ -26,8 +29,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.y += 5;
     }
 
-    if(this.cursors.space.isDown) {
+    if(this.cursors.space.isDown && this.shootTime <= 0) {
       this.scene.addLaser();
+      this.shootTime = 15;
     }
   }
 
