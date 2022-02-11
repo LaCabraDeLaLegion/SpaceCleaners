@@ -8,10 +8,12 @@ export default class Level extends Phaser.Scene {
   preload(){
     this.load.setPath("assets/sprites/");
     this.load.image("player", "ship.png");
+    this.load.image("laser", "laser.png");
   }
 
   create() {
     console.log("start");
+    this.input.setDefaultCursor('url(assets/sprites/cursor.cur), pointer');
     this.player = new Player(this, 500, 500);
   }
 }
