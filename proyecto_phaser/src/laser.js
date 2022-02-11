@@ -4,7 +4,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.scene.add.existing(this);
   }
 
-  update(t, dt) {
-    this.y--;
+  preUpdate(t, dt) {
+    this.y -= 10;
   }
 }
