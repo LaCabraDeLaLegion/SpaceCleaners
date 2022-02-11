@@ -20,6 +20,31 @@ export default class Level extends Phaser.Scene {
     // this.laser.enableBody = true;
     // this.laser.physicsBodyType = Phaser.Physics.ARCADE;
     // this.laser.createMultiple(50,'laser');
+    this.virus = this.add.group();
+    this.virus.enableBody = true;
+    this.virus.physicsBodyType = Phaser.Physics.ARCADE; 
+
+    for (var y = 0; y < 4; y++)
+    {
+        for (var x = 0; x < 10; x++)
+        {
+            var monster = this.virus.create(x * 48 + 100, y * 50 + 40, 'V1');
+            monster.setOrigin(0.5, 0.5);
+            let tween = this.tweens.add({
+              targets: monster, 
+              ease: "Linear", 
+              duration: 2000, 
+              x: "+=200", 
+              paused: false, 
+              delay: 0, 
+              yoyo: true, 
+              repeat: 100
+            });
+        }
+    }
+
+    this.virus.x = 100;
+    this.virus.y = 50;
   }
 
   addLaser(){
