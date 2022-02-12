@@ -1,6 +1,8 @@
 import Player from "./player.js";
 import Laser from "./laser.js";
 
+var virus;
+
 export default class Level extends Phaser.Scene {
   constructor() {
     super({ key: "level" });
@@ -20,35 +22,42 @@ export default class Level extends Phaser.Scene {
     // this.laser.enableBody = true;
     // this.laser.physicsBodyType = Phaser.Physics.ARCADE;
     // this.laser.createMultiple(50,'laser');
-    this.virus = this.add.group();
-    this.virus.enableBody = true;
-    this.virus.physicsBodyType = Phaser.Physics.ARCADE; 
+    
+    virus = this.add.group();
+    virus.enableBody = true;
+    virus.physicsBodyType = Phaser.Physics.ARCADE; 
 
     for (var y = 0; y < 4; y++)
     {
-        for (var x = 0; x < 10; x++)
+        for (var x = 0; x < 8; x++)
         {
-            var monster = this.virus.create(x * 48 + 100, y * 50 + 40, 'V1');
+            var monster = virus.create(x * 40 + 100, y * 50 + 40, 'V1');
             monster.setOrigin(0.5, 0.5);
-            let tween = this.tweens.add({
-              targets: monster, 
-              ease: "Linear", 
-              duration: 2000, 
-              x: "+=200", 
-              paused: false, 
-              delay: 0, 
-              yoyo: true, 
-              repeat: 100
-            });
         }
     }
 
-    this.virus.x = 100;
-    this.virus.y = 50;
+    virus.x = 100;
+    virus.y = 50;
+    let tween = this.tweens.add({
+      targets: virus.getChildren(), 
+      ease: "Linear", 
+      duration: 2000, 
+      x: "+=200", 
+      paused: false, 
+      delay: 0, 
+      loop: true,
+      yoyo: true,
+      repeat: -1,
+      onLoop: listener()
+    });
   }
 
   addLaser(){
     this.laser = new Laser(this, this.player.x, this.player.y - 150);
   }
 
+}
+
+function listener(){
+  virus.y += 10;
 }
