@@ -1,12 +1,20 @@
 import Level from "./level.js";
+import Menu from "./menu.js";
 
 var config = {
   type: Phaser.CANVAS,
   width: 920,
   height: 500,
-  scene: [Level],
+  scene: [Menu, Level],
+  render: {pixelArt: true},
+  physics: {
+    default: "arcade",
+    arcade: {
+      debug: true
+    }
+  }
 };
 
-new Phaser.Game(config);
+let game = new Phaser.Game(config);
 
 
