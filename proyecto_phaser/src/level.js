@@ -1,7 +1,10 @@
 import Player from "./player.js";
 import Laser from "./laser.js";
+import Enemy from "./enemy.js";
 
 var virus;
+var alive_monsters = 0;
+var lasers;
 
 export default class Level extends Phaser.Scene {
   constructor() {
@@ -12,6 +15,8 @@ export default class Level extends Phaser.Scene {
     this.load.setPath("assets/sprites/");
     this.load.image("player", "ship.png");
     this.load.image("laser", "laser.png");
+    this.load.image("V1", "V1.png");
+    this.load.image("H1", "H1.png");
   }
 
   create() {
@@ -23,41 +28,56 @@ export default class Level extends Phaser.Scene {
     // this.laser.physicsBodyType = Phaser.Physics.ARCADE;
     // this.laser.createMultiple(50,'laser');
     
+
     virus = this.add.group();
-    virus.enableBody = true;
-    virus.physicsBodyType = Phaser.Physics.ARCADE; 
+    this.createEnemies();
 
-    for (var y = 0; y < 4; y++)
-    {
-        for (var x = 0; x < 8; x++)
-        {
-            var monster = virus.create(x * 40 + 100, y * 50 + 40, 'V1');
-            monster.setOrigin(0.5, 0.5);
-        }
-    }
-
-    virus.x = 100;
-    virus.y = 50;
-    let tween = this.tweens.add({
-      targets: virus.getChildren(), 
-      ease: "Linear", 
-      duration: 2000, 
-      x: "+=200", 
-      paused: false, 
-      delay: 0, 
-      loop: true,
-      yoyo: true,
-      repeat: -1,
-      onLoop: listener()
-    });
   }
 
   addLaser(){
     this.laser = new Laser(this, this.player.x, this.player.y - 150);
+    lasers.add(this.add.sprite(this.laser));
   }
 
-}
+  createEnemies(){
+    this.createMonsters();
+    this.createHumans();
+  }
 
-function listener(){
-  virus.y += 10;
+  createMonsters(){
+
+    for (let x = 100; x < 200; x = x + 40){
+        for (let y = 50; y < 150; y = y + 50){
+          let monster = new Enemy(this, x, y, "V1", "monster", 1)
+          virus.add(this.add.sprite(monster));
+          alive_monsters = alive_monsters + 1;
+          this.tweens.timeline({
+            targets: monster,
+            ease: "Linear",
+            duration: 2000,
+            tweens: monster.getMovements()
+          });
+        }
+    }
+  }
+
+  createHumans(){
+
+    let human = new Enemy(this, 200, 150, "H1", "human", 1)
+    virus.add(this.add.sprite(human));
+    alive_monsters = alive_monsters + 1;
+    this.tweens.timeline({
+      targets: human,
+      ease: "Linear",
+      duration: 2000,
+      tweens: human.getMovements()
+    });
+
+    for (let x = 200; x < 200; x = x + 40){
+      for (let y = 50; y < 150; y = y + 50){
+        
+      }
+    }
+
+  }
 }
