@@ -5,6 +5,7 @@ var config = {
   type: Phaser.CANVAS,
   width: 920,
   height: 500,
+  parent: "container",
   scene: [Menu, Level],
   render: {pixelArt: true},
   physics: {

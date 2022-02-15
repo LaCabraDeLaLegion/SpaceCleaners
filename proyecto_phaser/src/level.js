@@ -4,7 +4,6 @@ import Enemy from "./enemy.js";
 
 var virus;
 var alive_monsters = 0;
-var lasers;
 
 export default class Level extends Phaser.Scene {
   constructor() {
@@ -36,7 +35,6 @@ export default class Level extends Phaser.Scene {
 
   addLaser(){
     this.laser = new Laser(this, this.player.x, this.player.y - 150);
-    lasers.add(this.add.sprite(this.laser));
   }
 
   createEnemies(){
