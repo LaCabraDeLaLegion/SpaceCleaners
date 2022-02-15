@@ -64,9 +64,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
         super.preUpdate(t, dt);
 
-        this.shootTime--;
-
-
     }
 
     getMovements(){
