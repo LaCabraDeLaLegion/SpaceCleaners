@@ -2,8 +2,6 @@ import Player from "./player.js";
 import Laser from "./laser.js";
 import Enemy from "./enemy.js";
 
-var virus;
-var alive_monsters = 0;
 
 export default class Level extends Phaser.Scene {
   constructor() {
@@ -29,7 +27,7 @@ export default class Level extends Phaser.Scene {
     // this.laser.createMultiple(50,'laser');
     
 
-    virus = this.add.group();
+    this.virus = this.add.group();
     this.createEnemies();
 
   }
@@ -49,8 +47,8 @@ export default class Level extends Phaser.Scene {
     for (let x = 100; x < 200; x = x + 40){
         for (let y = 50; y < 150; y = y + 50){
           let monster = new Enemy(this, x, y, "V1", "monster", 1)
-          virus.add(this.add.sprite(monster));
-          alive_monsters = alive_monsters + 1;
+          this.virus.add(this.add.sprite(monster));
+          this.alive_monsters = this.alive_monsters + 1;
           this.tweens.timeline({
             targets: monster,
             ease: "Linear",
@@ -64,8 +62,8 @@ export default class Level extends Phaser.Scene {
   createHumans(){
 
     let human = new Enemy(this, 200, 150, "H1", "human", 1)
-    virus.add(this.add.sprite(human));
-    alive_monsters = alive_monsters + 1;
+    this.virus.add(this.add.sprite(human));
+    this.alive_monsters = this.alive_monsters + 1;
     this.tweens.timeline({
       targets: human,
       ease: "Linear",
