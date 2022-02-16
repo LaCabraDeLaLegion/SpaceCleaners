@@ -4,6 +4,7 @@ import Enemy from "./enemy.js";
 
 
 export default class Level extends Phaser.Scene {
+
   constructor() {
     super({ key: "level" });
   }
@@ -20,7 +21,7 @@ export default class Level extends Phaser.Scene {
     console.log("start");
     this.input.setDefaultCursor("url(assets/sprites/cursor.cur), pointer");
     this.player = new Player(this, 500, 500);
-    this.player.setScale(0.25);
+    this.player.setScale(2);
     // this.laser = this.add.group();
     // this.laser.enableBody = true;
     // this.laser.physicsBodyType = Phaser.Physics.ARCADE;
@@ -29,9 +30,8 @@ export default class Level extends Phaser.Scene {
 
     this.virus = this.add.group();
     this.createEnemies();
-
   }
-
+  
   addLaser(){
     this.laser = new Laser(this, this.player.x, this.player.y - 150);
     this.laser.setScale(0.25);
@@ -47,6 +47,7 @@ export default class Level extends Phaser.Scene {
     for (let x = 100; x < 200; x = x + 40){
         for (let y = 50; y < 150; y = y + 50){
           let monster = new Enemy(this, x, y, "V1", "monster", 1)
+          monster.setScale(3);
           this.virus.add(this.add.sprite(monster));
           this.alive_monsters = this.alive_monsters + 1;
           this.tweens.timeline({
