@@ -22,6 +22,7 @@ export default class Level extends Phaser.Scene {
     console.log("start");
     this.input.setDefaultCursor("url(assets/sprites/cursor.cur), pointer");
     this.player = new Player(this, 500, 500);
+    this.player.setScale(0.25);
     // this.laser = this.add.group();
     // this.laser.enableBody = true;
     // this.laser.physicsBodyType = Phaser.Physics.ARCADE;
@@ -35,6 +36,7 @@ export default class Level extends Phaser.Scene {
 
   addLaser(){
     this.laser = new Laser(this, this.player.x, this.player.y - 150);
+    this.laser.setScale(0.25);
   }
 
   createEnemies(){
