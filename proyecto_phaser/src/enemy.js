@@ -42,13 +42,15 @@ let tweens_humans = [
 
 export default class Enemy extends Phaser.GameObjects.Sprite {
   
-    constructor(scene, x, y, name, type_of_enemy, level_of_enemy) {
+    constructor(scene, x, y, name, type_of_enemy, level_of_enemy, enemyGroup) {
         super(scene, x, y, name);
         this.scene.add.existing(this);
-        type = type_of_enemy;
+        this.scene.physics.add.existing(this);
+        enemyGroup.add(this);
+        this.type = type_of_enemy;
         level = level_of_enemy;
         if (level === 1){
-            lives = 1;
+            this.lives = 1;
         }
 
         if (type === "monster"){
@@ -64,10 +66,16 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
         super.preUpdate(t, dt);
 
+        if (this.lives <= 0) this.destroy();
+
     }
 
     getMovements(){
         return movements;
+    }
+
+    damage() {
+        this.lives--;
     }
 
 }

@@ -22,7 +22,9 @@ export default class Level extends Phaser.Scene {
     this.input.setDefaultCursor("url(assets/sprites/cursor.cur), pointer");
     this.player = new Player(this, 500, 500);
     this.player.setScale(2);
-    // this.laser = this.add.group();
+    this.lasers = this.physics.add.group();
+    this.enemies = this.physics.add.group();
+    this.physics.add.collider(this.enemies, this.lasers, this.onHit);
     // this.laser.enableBody = true;
     // this.laser.physicsBodyType = Phaser.Physics.ARCADE;
     // this.laser.createMultiple(50,'laser');
@@ -33,8 +35,19 @@ export default class Level extends Phaser.Scene {
   }
   
   addLaser(){
-    this.laser = new Laser(this, this.player.x, this.player.y - 150);
+    this.laser = new Laser(this, this.player.x, this.player.y - 150, this.lasers);
     this.laser.setScale(0.25);
+  }
+
+  onHit(enemy, laser) {
+    laser.destroy();
+    if (enemy.type === "monster") enemy.damage();
+    else {
+      enemy.setTexture("V1");
+      enemy.setScale(3);
+      enemy.body.setSize(12, 12, false);
+      enemy.type = "monster";
+    }
   }
 
   createEnemies(){
@@ -46,7 +59,7 @@ export default class Level extends Phaser.Scene {
 
     for (let x = 100; x < 200; x = x + 40){
         for (let y = 50; y < 150; y = y + 50){
-          let monster = new Enemy(this, x, y, "V1", "monster", 1)
+          let monster = new Enemy(this, x, y, "V1", "monster", 1, this.enemies)
           monster.setScale(3);
           this.virus.add(this.add.sprite(monster));
           this.alive_monsters = this.alive_monsters + 1;
@@ -62,7 +75,7 @@ export default class Level extends Phaser.Scene {
 
   createHumans(){
 
-    let human = new Enemy(this, 200, 150, "H1", "human", 1)
+    let human = new Enemy(this, 200, 150, "H1", "human", 1, this.enemies)
     this.virus.add(this.add.sprite(human));
     this.alive_monsters = this.alive_monsters + 1;
     this.tweens.timeline({
