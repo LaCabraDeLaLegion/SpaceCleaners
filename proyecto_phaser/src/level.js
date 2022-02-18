@@ -15,6 +15,7 @@ export default class Level extends Phaser.Scene {
     this.load.image("laser", "/sprites/laser.png");
     this.load.image("V1", "/sprites/V1.png");
     this.load.image("H1", "/sprites/H1.png");
+    this.load.image("level_victory", "/sprites/level_victory.png");
 
     //Audio
     this.load.audio("blaster", "/sounds/blaster.mp3");
@@ -25,6 +26,7 @@ export default class Level extends Phaser.Scene {
   create() {
     this.input.setDefaultCursor("url(assets/sprites/cursor.cur), pointer");
 
+    this.alive_monsters = 0;
     this.levelSong = this.sound.add("level", {
       mute: false,
       volume: 2,
@@ -39,6 +41,17 @@ export default class Level extends Phaser.Scene {
     this.initEnemies();
 
     this.levelSong.play();
+  }
+
+  update(){
+
+    if (this.alive_monsters <= 0){
+      let victory = this.add.image(450, 250, "level_victory").setDepth(1);
+      victory.setInteractive();
+      victory.on("pointerup", () => {
+        this.scene.start("map", "win")
+      });
+    }
   }
 
   initPlayer() {
@@ -97,11 +110,12 @@ export default class Level extends Phaser.Scene {
     if (enemy.type === "monster") {
       this.impactSound.play();
       enemy.damage();
+      console.log("monstruos vivos: " + this.alive_monsters);
+      if (enemy.lives == 0){
+        this.alive_monsters--;
+      }
     } else {
-      enemy.setTexture("V1");
-      enemy.setScale(3);
-      enemy.body.setSize(12, 12, false);
-      enemy.type = "monster";
+      enemy.mutate();
     }
   }
 
@@ -113,7 +127,7 @@ export default class Level extends Phaser.Scene {
   createMonsters() {
     for (let x = 100; x < 200; x = x + 40) {
       for (let y = 50; y < 150; y = y + 50) {
-        let monster = new Enemy(this, x, y, "V1", "monster", 1, this.enemies);
+        let monster = new Enemy(this, x, y, "monster", 1, this.enemies);
         monster.setScale(3);
         this.virus.add(this.add.sprite(monster));
         this.alive_monsters = this.alive_monsters + 1;
@@ -128,7 +142,7 @@ export default class Level extends Phaser.Scene {
   }
 
   createHumans() {
-    let human = new Enemy(this, 200, 150, "H1", "human", 1, this.enemies);
+    let human = new Enemy(this, 200, 150, "human", 1, this.enemies);
     this.virus.add(this.add.sprite(human));
     this.alive_monsters = this.alive_monsters + 1;
     this.tweens.timeline({
@@ -141,5 +155,7 @@ export default class Level extends Phaser.Scene {
     for (let x = 200; x < 200; x = x + 40) {
       for (let y = 50; y < 150; y = y + 50) {}
     }
+
+    console.log("Bichos vivos iniciales: " + this.alive_monsters);
   }
 }

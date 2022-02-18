@@ -1,3 +1,6 @@
+let images_monsters = ["V1", "V2", "V3", "V4"];
+let images_humans = ["H1", "H2", "H3", "H4"];
+
 let type = "monster"; // Monster para virus mutados y human para humanos infectados
 let level = 1; //Nivel del enemigo
 let lives = 1; //Numero de vidas
@@ -42,8 +45,18 @@ let tweens_humans = [
 
 export default class Enemy extends Phaser.GameObjects.Sprite {
   
-    constructor(scene, x, y, name, type_of_enemy, level_of_enemy, enemyGroup) {
+    constructor(scene, x, y, type_of_enemy, level_of_enemy, enemyGroup) {
+        
+        let name = "";
+        if (type_of_enemy == "monster"){
+            name = images_monsters[level_of_enemy - 1];
+        }
+        else {
+            name = images_humans[level_of_enemy - 1];
+        }
+        
         super(scene, x, y, name);
+        
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         enemyGroup.add(this);
@@ -78,4 +91,13 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.lives--;
     }
 
+    
+    mutate(){
+        this.level++;
+        this.setTexture("V1");
+        this.setScale(3);
+        this.body.setSize(12, 12, false);
+        this.type = "monster";
+        console.log("mutate");
+    }
 }
