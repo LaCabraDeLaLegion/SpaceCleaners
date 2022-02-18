@@ -1,6 +1,8 @@
 import Player from "./player.js";
 import Laser from "./laser.js";
 import Enemy from "./enemy.js";
+import Boss from "./boss.js";
+import Slash from "./slash.js";
 
 export default class Level extends Phaser.Scene {
   constructor() {
@@ -15,6 +17,10 @@ export default class Level extends Phaser.Scene {
     this.load.image("laser", "/sprites/laser.png");
     this.load.image("V1", "/sprites/V1.png");
     this.load.image("H1", "/sprites/H1.png");
+    this.load.image("boss", "/sprites/boss1.png");
+    this.load.image("boss_damage", "/sprites/boss1_damage.png");
+    this.load.image("slash1", "/sprites/slash1.png");
+    this.load.image("slash2", "/sprites/slash2.png");
     this.load.image("level_victory", "/sprites/level_victory.png");
 
     //Audio
@@ -27,9 +33,20 @@ export default class Level extends Phaser.Scene {
     this.input.setDefaultCursor("url(assets/sprites/cursor.cur), pointer");
 
     this.alive_monsters = 0;
+    this.bossInScene = false;
     this.levelSong = this.sound.add("level", {
       mute: false,
       volume: 2,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0,
+    });
+
+    this.impactSound = this.sound.add("explosion", {
+      mute: false,
+      volume: 0.2,
       rate: 1,
       detune: 0,
       seek: 0,
@@ -43,14 +60,45 @@ export default class Level extends Phaser.Scene {
     this.levelSong.play();
   }
 
-  update(){
-
-    if (this.alive_monsters <= 0){
+  update() {
+    if (this.alive_monsters <= 0 && !this.bossInScene) {
+      this.startBossBattle();
+    } else if (this.bossInScene && this.boss.life <= 0) {
       let victory = this.add.image(450, 250, "level_victory").setDepth(1);
       victory.setInteractive();
       victory.on("pointerup", () => {
-        this.scene.start("map", "win")
+        this.scene.start("map", "win");
+        this.levelSong.stop();
       });
+    }
+  }
+
+  startBossBattle() {
+    this.boss = new Boss(this, 420, -50);
+    this.physics.add.collider(
+      this.boss,
+      this.lasers,
+      this.onHitBoss,
+      null,
+      this
+    );
+    this.boss.setScale(0.25);
+    this.bossInScene = true;
+  }
+
+  bossAttack(type, n) {
+    for (let i = 0; i < n; i++) {
+      this.slash = new Slash(
+        this,
+        this.boss.x + 50 * i,
+        this.boss.y + 80,
+        type,
+        {
+          x: this.player.x,
+          y: 500,
+        }
+      );
+      this.slash.setScale(0.1);
     }
   }
 
@@ -79,15 +127,6 @@ export default class Level extends Phaser.Scene {
       null,
       this
     );
-    this.impactSound = this.sound.add("explosion", {
-      mute: false,
-      volume: 0.2,
-      rate: 1,
-      detune: 0,
-      seek: 0,
-      loop: false,
-      delay: 0,
-    });
 
     this.virus = this.add.group();
     this.createEnemies();
@@ -111,12 +150,23 @@ export default class Level extends Phaser.Scene {
       this.impactSound.play();
       enemy.damage();
       console.log("monstruos vivos: " + this.alive_monsters);
-      if (enemy.lives == 0){
+      if (enemy.lives == 0) {
         this.alive_monsters--;
       }
     } else {
       enemy.mutate();
     }
+  }
+
+  onHitBoss(boss, laser) {
+    laser.destroy();
+    this.impactSound.play();
+    this.boss.setTexture("boss_damage");
+    this.time.delayedCall(100, () => {
+      this.boss.setTexture("boss");
+    });
+
+    this.boss.recieveDamage(1);
   }
 
   createEnemies() {

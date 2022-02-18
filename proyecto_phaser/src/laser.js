@@ -1,4 +1,4 @@
-export default class Player extends Phaser.GameObjects.Sprite {
+export default class Laser extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, laserGroup) {
     super(scene, x, y, "laser");
     this.scene.add.existing(this);

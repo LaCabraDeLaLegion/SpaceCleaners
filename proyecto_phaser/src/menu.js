@@ -4,7 +4,7 @@ export default class Menu extends Phaser.Scene {
   }
 
   preload() {
-    this.load.setPath("assets/sprites/Menu/");
+    this.load.setPath("assets/sprites/menu/");
     this.load.image("background", "background.png");
     this.load.image("play", "play.png");
 
@@ -28,7 +28,7 @@ export default class Menu extends Phaser.Scene {
 
     this.introSong = this.sound.add("intro", {
       mute: false,
-      volume: 2,
+      volume: 1.5,
       rate: 0.65,
       detune: 0,
       seek: 0,
