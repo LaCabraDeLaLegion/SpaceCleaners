@@ -19,20 +19,45 @@ export default class Level extends Phaser.Scene {
     //Audio
     this.load.audio("blaster", "/sounds/blaster.mp3");
     this.load.audio("explosion", "/sounds/explosion.mp3");
+    this.load.audio("level", "/sounds/level1_song.mp3");
   }
 
   create() {
     this.input.setDefaultCursor("url(assets/sprites/cursor.cur), pointer");
 
-    //Player
+    this.levelSong = this.sound.add("level", {
+      mute: false,
+      volume: 2,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0,
+    });
+
+    this.initPlayer();
+    this.initEnemies();
+
+    this.levelSong.play();
+  }
+
+  initPlayer() {
     this.player = new Player(this, 500, 500);
     this.player.setScale(2);
 
-    //Laser
     this.lasers = this.physics.add.group();
-    this.laserSound = this.sound.add("blaster");
+    this.laserSound = this.sound.add("blaster", {
+      mute: false,
+      volume: 0.5,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0,
+    });
+  }
 
-    //Enemies
+  initEnemies() {
     this.enemies = this.physics.add.group();
     this.physics.add.collider(
       this.enemies,
@@ -41,10 +66,15 @@ export default class Level extends Phaser.Scene {
       null,
       this
     );
-    this.impactSound = this.sound.add("explosion");
-    // this.laser.enableBody = true;
-    // this.laser.physicsBodyType = Phaser.Physics.ARCADE;
-    // this.laser.createMultiple(50,'laser');
+    this.impactSound = this.sound.add("explosion", {
+      mute: false,
+      volume: 0.2,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0,
+    });
 
     this.virus = this.add.group();
     this.createEnemies();
