@@ -1,5 +1,8 @@
 let earth_owner = "virus";
 let earth_scale = 1;
+let planet_1_scale = 1;
+
+let planet_owners = ["humanos", "virus", "virus", "virus", "virus", "virus", "virus", "virus"];
 
 export default class Map extends Phaser.Scene {
   constructor() {
@@ -9,8 +12,10 @@ export default class Map extends Phaser.Scene {
   init(data) {
     console.log("init data = " + data);
     if (data === "win") {
-      earth_owner = "player";
-      earth_scale = 2;
+      planet_owners[1] = "humanos";
+    }
+    else if (data === "lose"){
+      planet_owners[1] = "virus";
     }
   }
 
@@ -34,38 +39,42 @@ export default class Map extends Phaser.Scene {
       .setScale(2)
       .setRotation(300);
 
-    let planet_1 = this.add
+    this.planet_1 = this.add
     .image(150, 150, "grey_planet")
     .setDepth(1)
-    .setScale(1);
+    .setScale(planet_1_scale);
 
-    let planet_2 = this.add
+    if (planet_owners[1] === "humanos"){
+      this.planet_1.setScale(2);
+    }
+
+    this.planet_2 = this.add
     .image(220, 350, "grey_planet")
     .setDepth(1)
     .setScale(1);
 
     
-    let planet_3 = this.add
+    this.planet_3 = this.add
     .image(370, 270, "grey_planet")
     .setDepth(1)
     .setScale(1);
 
-    let planet_4 = this.add
+    this.planet_4 = this.add
     .image(500, 50, "grey_planet")
     .setDepth(1)
     .setScale(1);
     
-    let planet_5 = this.add
+    this.planet_5 = this.add
     .image(570, 400, "grey_planet")
     .setDepth(1)
     .setScale(1);
     
-    let planet_6 = this.add
+    this.planet_6 = this.add
     .image(650, 250, "grey_planet")
     .setDepth(1)
     .setScale(1);
     
-    let planet_7 = this.add
+    this.planet_7 = this.add
     .image(800, 150, "grey_planet")
     .setDepth(1)
     .setScale(3);
@@ -75,87 +84,87 @@ export default class Map extends Phaser.Scene {
       .setDepth(1)
       .setScale(1);
 
-    planet_1.setInteractive();
-    planet_1.on("pointerover", () => {
-      planet_1.setScale(2);
+    this.planet_1.setInteractive();
+    this.planet_1.on("pointerover", () => {
+      this.planet_1.setScale(2);
       this.planetSound.play();
     });
-    planet_1.on("pointerout", () => {
-      planet_1.setScale(1);
+    this.planet_1.on("pointerout", () => {
+      this.planet_1.setScale(1);
     });
-    planet_1.on("pointerup", () => {
+    this.planet_1.on("pointerup", () => {
       this.scene.start("level", "1");
     });
 
-    planet_2.setInteractive();
-    planet_2.on("pointerover", () => {
-      planet_2.setScale(1);
+    this.planet_2.setInteractive();
+    this.planet_2.on("pointerover", () => {
+      this.planet_2.setScale(1);
       this.planetSound.play();
     });
-    planet_2.on("pointerout", () => {
-      planet_2.setScale(1);
+    this.planet_2.on("pointerout", () => {
+      this.planet_2.setScale(1);
     });
-    planet_2.on("pointerup", () => {
+    this.planet_2.on("pointerup", () => {
       this.scene.start("level", "2");
     });
 
-    planet_3.setInteractive();
-    planet_3.on("pointerover", () => {
-      planet_3.setScale(2);
+    this.planet_3.setInteractive();
+    this.planet_3.on("pointerover", () => {
+      this.planet_3.setScale(2);
       this.planetSound.play();
     });
-    planet_3.on("pointerout", () => {
-      planet_3.setScale(1);
+    this.planet_3.on("pointerout", () => {
+      this.planet_3.setScale(1);
     });
-    planet_3.on("pointerup", () => {
+    this.planet_3.on("pointerup", () => {
       this.scene.start("level", "2");
     });
 
-    planet_4.setInteractive();
-    planet_4.on("pointerover", () => {
-      planet_4.setScale(2);
+    this.planet_4.setInteractive();
+    this.planet_4.on("pointerover", () => {
+      this.planet_4.setScale(2);
       this.planetSound.play();
     });
-    planet_4.on("pointerout", () => {
-      planet_4.setScale(1);
+    this.planet_4.on("pointerout", () => {
+      this.planet_4.setScale(1);
     });
-    planet_4.on("pointerup", () => {
+    this.planet_4.on("pointerup", () => {
       this.scene.start("level");
     });
 
-    planet_5.setInteractive();
-    planet_5.on("pointerover", () => {
-      planet_5.setScale(2);
+    this.planet_5.setInteractive();
+    this.planet_5.on("pointerover", () => {
+      this.planet_5.setScale(2);
       this.planetSound.play();
     });
-    planet_5.on("pointerout", () => {
-      planet_5.setScale(1);
+    this.planet_5.on("pointerout", () => {
+      this.planet_5.setScale(1);
     });
-    planet_5.on("pointerup", () => {
+    this.planet_5.on("pointerup", () => {
       this.scene.start("level");
     });
 
-    planet_6.setInteractive();
-    planet_6.on("pointerover", () => {
-      planet_6.setScale(2);
+    this.planet_6.setInteractive();
+    this.planet_6.on("pointerover", () => {
+      this.planet_6.setScale(2);
       this.planetSound.play();
     });
-    planet_6.on("pointerout", () => {
-      planet_6.setScale(1);
+    this.planet_6.on("pointerout", () => {
+      this.planet_6.setScale(1);
     });
-    planet_6.on("pointerup", () => {
+    this.planet_6.on("pointerup", () => {
       this.scene.start("level");
     });
 
-    planet_7.setInteractive();
-    planet_7.on("pointerover", () => {
-      planet_7.setScale(5);
+    this.planet_7.setInteractive();
+    this.planet_7.on("pointerover", () => {
+      this.planet_7.setScale(5);
       this.planetSound.play();
     });
-    planet_7.on("pointerout", () => {
-      planet_7.setScale(4);
+    this.planet_7.on("pointerout", () => {
+      this.planet_7.setScale(4);
     });
-    planet_7.on("pointerup", () => {
+    this.planet_7.on("pointerup", () => {
       this.scene.start("level");
     });
   }

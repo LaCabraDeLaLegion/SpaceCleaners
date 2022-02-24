@@ -226,4 +226,9 @@ export default class Level extends Phaser.Scene {
 
     console.log("Bichos vivos iniciales: " + this.alive_monsters);
   }
+
+  game_over(){
+    this.scene.start("map", "lose");
+  }
+
 }

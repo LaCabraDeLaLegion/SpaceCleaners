@@ -62,6 +62,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
   damage(damage){
     this.lives -= damage;
     console.log("Vidas: "+ this.lives);
+    if (this.lives <= 0)
+      this.scene.game_over();
   }
 
 }
