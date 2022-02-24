@@ -73,7 +73,7 @@ export default class Level extends Phaser.Scene {
       let victory = this.add.image(450, 250, "level_victory").setDepth(1);
       victory.setInteractive();
       victory.on("pointerup", () => {
-        this.scene.start("map", "win");
+        this.scene.start("map",  ["win", this.level]);
         this.levelSong.stop();
       });
     }
