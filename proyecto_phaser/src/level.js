@@ -9,6 +9,10 @@ export default class Level extends Phaser.Scene {
     super({ key: "level" });
   }
 
+  init(data) {
+    console.log("Nivel = " + data);
+  }
+
   preload() {
     this.load.setPath("assets/");
 

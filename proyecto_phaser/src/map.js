@@ -34,28 +34,128 @@ export default class Map extends Phaser.Scene {
       .setScale(2)
       .setRotation(300);
 
-    let grey = this.add
-      .image(350, 150, "grey_planet")
-      .setDepth(1)
-      .setScale(1.5);
+    let planet_1 = this.add
+    .image(150, 150, "grey_planet")
+    .setDepth(1)
+    .setScale(1);
 
-    let ice = this.add.image(350, 350, "ice_planet").setDepth(1);
-    let lava = this.add.image(650, 200, "lava_planet").setDepth(1).setScale(2);
+    let planet_2 = this.add
+    .image(220, 350, "grey_planet")
+    .setDepth(1)
+    .setScale(1);
+
+    
+    let planet_3 = this.add
+    .image(370, 270, "grey_planet")
+    .setDepth(1)
+    .setScale(1);
+
+    let planet_4 = this.add
+    .image(500, 50, "grey_planet")
+    .setDepth(1)
+    .setScale(1);
+    
+    let planet_5 = this.add
+    .image(570, 400, "grey_planet")
+    .setDepth(1)
+    .setScale(1);
+    
+    let planet_6 = this.add
+    .image(650, 250, "grey_planet")
+    .setDepth(1)
+    .setScale(1);
+    
+    let planet_7 = this.add
+    .image(800, 150, "grey_planet")
+    .setDepth(1)
+    .setScale(3);
 
     let earth = this.add
-      .image(150, 250, "earth_planet")
+      .image(50, 250, "earth_planet")
       .setDepth(1)
-      .setScale(earth_scale);
+      .setScale(1);
 
-    earth.setInteractive();
-    earth.on("pointerover", () => {
-      earth.setScale(earth_scale + 0.5);
+    planet_1.setInteractive();
+    planet_1.on("pointerover", () => {
+      planet_1.setScale(2);
       this.planetSound.play();
     });
-    earth.on("pointerout", () => {
-      earth.setScale(earth_scale);
+    planet_1.on("pointerout", () => {
+      planet_1.setScale(1);
     });
-    earth.on("pointerup", () => {
+    planet_1.on("pointerup", () => {
+      this.scene.start("level", "1");
+    });
+
+    planet_2.setInteractive();
+    planet_2.on("pointerover", () => {
+      planet_2.setScale(1);
+      this.planetSound.play();
+    });
+    planet_2.on("pointerout", () => {
+      planet_2.setScale(1);
+    });
+    planet_2.on("pointerup", () => {
+      this.scene.start("level", "2");
+    });
+
+    planet_3.setInteractive();
+    planet_3.on("pointerover", () => {
+      planet_3.setScale(2);
+      this.planetSound.play();
+    });
+    planet_3.on("pointerout", () => {
+      planet_3.setScale(1);
+    });
+    planet_3.on("pointerup", () => {
+      this.scene.start("level", "2");
+    });
+
+    planet_4.setInteractive();
+    planet_4.on("pointerover", () => {
+      planet_4.setScale(2);
+      this.planetSound.play();
+    });
+    planet_4.on("pointerout", () => {
+      planet_4.setScale(1);
+    });
+    planet_4.on("pointerup", () => {
+      this.scene.start("level");
+    });
+
+    planet_5.setInteractive();
+    planet_5.on("pointerover", () => {
+      planet_5.setScale(2);
+      this.planetSound.play();
+    });
+    planet_5.on("pointerout", () => {
+      planet_5.setScale(1);
+    });
+    planet_5.on("pointerup", () => {
+      this.scene.start("level");
+    });
+
+    planet_6.setInteractive();
+    planet_6.on("pointerover", () => {
+      planet_6.setScale(2);
+      this.planetSound.play();
+    });
+    planet_6.on("pointerout", () => {
+      planet_6.setScale(1);
+    });
+    planet_6.on("pointerup", () => {
+      this.scene.start("level");
+    });
+
+    planet_7.setInteractive();
+    planet_7.on("pointerover", () => {
+      planet_7.setScale(5);
+      this.planetSound.play();
+    });
+    planet_7.on("pointerout", () => {
+      planet_7.setScale(4);
+    });
+    planet_7.on("pointerup", () => {
       this.scene.start("level");
     });
   }
