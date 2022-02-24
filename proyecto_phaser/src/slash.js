@@ -5,6 +5,7 @@ export default class Slash extends Phaser.GameObjects.Sprite {
     this.scene.physics.add.existing(this);
     this.target = target;
     this.damage = type;
+    this.angle = 0;
     this.type = Number(type);
 
     if (target.x == this.x) this.directionX = 0;
@@ -16,6 +17,7 @@ export default class Slash extends Phaser.GameObjects.Sprite {
     else {
       this.y += 2 + this.type;
       this.x += this.directionX * 2;
+      this.angle += 10;
     }
   }
 }
