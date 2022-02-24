@@ -7,6 +7,7 @@ import Slash from "./slash.js";
 export default class Level extends Phaser.Scene {
   constructor() {
     super({ key: "level" });
+    this.level = 1;
   }
 
   init(data) {
@@ -113,7 +114,6 @@ export default class Level extends Phaser.Scene {
   initPlayer() {
     this.player = new Player(this, 500, 500);
     this.player.setScale(2);
-    this.player.setCollideWorldBounds(true);
 
     this.lasers = this.physics.add.group();
     this.laserSound = this.sound.add("blaster", {
@@ -232,7 +232,7 @@ export default class Level extends Phaser.Scene {
   }
 
   game_over(){
-    this.scene.start("map", "lose");
+    this.scene.start("map", ["lose", this.level]);
   }
 
 }

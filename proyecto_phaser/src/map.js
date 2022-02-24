@@ -7,18 +7,19 @@ let planet_counter = 1;
 export default class Map extends Phaser.Scene {
   constructor() {
     super({ key: "map" });
-    this.probability = 100;
+    this.probability = 0;
   }
 
   init(data) {
+    
     console.log("init data = " + data);
-    if (data === "win") {
-      planet_owners[1] = "humanos";
+    if (data[0] === "win") {
+      planet_owners[data[1]] = "humanos";
       planet_counter++;
 
     }
-    else if (data === "lose"){
-      planet_owners[1] = "virus";
+    else if (data[0] === "lose"){
+      planet_owners[data[1]] = "virus";
       let random = Phaser.Math.Between(0, 100);
       if (random <= this.probability){
         planet_owners[0] = "virus";
