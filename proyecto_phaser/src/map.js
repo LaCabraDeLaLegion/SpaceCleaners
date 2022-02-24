@@ -1,21 +1,29 @@
-let earth_owner = "virus";
-let earth_scale = 1;
 let planet_1_scale = 1;
 
 let planet_owners = ["humanos", "virus", "virus", "virus", "virus", "virus", "virus", "virus"];
 
+let planet_counter = 1;
+
 export default class Map extends Phaser.Scene {
   constructor() {
     super({ key: "map" });
+    this.probability = 100;
   }
 
   init(data) {
     console.log("init data = " + data);
     if (data === "win") {
       planet_owners[1] = "humanos";
+      planet_counter++;
+
     }
     else if (data === "lose"){
       planet_owners[1] = "virus";
+      let random = Phaser.Math.Between(0, 100);
+      if (random <= this.probability){
+        planet_owners[0] = "virus";
+        planet_counter--;
+      }
     }
   }
 
@@ -31,6 +39,15 @@ export default class Map extends Phaser.Scene {
   }
 
   create() {
+
+    console.log("contador planetas = " + planet_counter);
+    if (planet_counter >= 8){
+      this.scene.start("win");
+    }
+    else if (planet_counter < 1){
+      this.scene.start("gameover");
+    }
+
     this.planetSound = this.sound.add("button");
 
     this.add
