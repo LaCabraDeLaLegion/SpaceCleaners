@@ -14,6 +14,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.speed = 400;
     this.movingx = false;
     this.movingy = false;
+    this.lives = 10;
   }
 
   preUpdate(t, dt) {
@@ -56,6 +57,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.scene.addLaser();
       this.shootTime = 15;
     }
+  }
+
+  damage(damage){
+    this.lives -= damage;
+    console.log("Vidas: "+ this.lives);
   }
 
 }

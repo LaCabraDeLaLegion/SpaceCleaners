@@ -102,6 +102,7 @@ export default class Level extends Phaser.Scene {
           y: 500,
         }
       );
+      this.slashes.add(this.slash);
       this.slash.setScale(0.1);
     }
   }
@@ -132,8 +133,21 @@ export default class Level extends Phaser.Scene {
       this
     );
 
+    this.slashes = this.physics.add.group();
+    this.physics.add.collider(
+      this.player,
+      this.slashes,
+      this.onBossHit,
+      null,
+      this
+    );
     this.virus = this.add.group();
     this.createEnemies();
+  }
+
+  onBossHit(player, slash) {
+    slash.destroy();
+    player.damage(slash.damage);
   }
 
   addLaser() {
