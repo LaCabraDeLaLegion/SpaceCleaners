@@ -34,6 +34,7 @@ export default class Level extends Phaser.Scene {
   }
 
   create() {
+
     this.input.setDefaultCursor("url(assets/sprites/cursor.cur), pointer");
 
     this.alive_monsters = 0;
@@ -75,6 +76,8 @@ export default class Level extends Phaser.Scene {
         this.levelSong.stop();
       });
     }
+
+    this.slashes
   }
 
   startBossBattle() {
@@ -110,6 +113,7 @@ export default class Level extends Phaser.Scene {
   initPlayer() {
     this.player = new Player(this, 500, 500);
     this.player.setScale(2);
+    this.player.setCollideWorldBounds(true);
 
     this.lasers = this.physics.add.group();
     this.laserSound = this.sound.add("blaster", {
