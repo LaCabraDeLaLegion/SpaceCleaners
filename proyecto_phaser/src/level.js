@@ -19,6 +19,7 @@ export default class Level extends Phaser.Scene {
 
     //Images
     this.load.image("player", "/sprites/ship.png");
+    this.load.image("player_damage", "/sprites/ship_damage.png");
     this.load.image("laser", "/sprites/laser.png");
     this.load.image("V1", "/sprites/V1.png");
     this.load.image("H1", "/sprites/H1.png");
@@ -32,10 +33,10 @@ export default class Level extends Phaser.Scene {
     this.load.audio("blaster", "/sounds/blaster.mp3");
     this.load.audio("explosion", "/sounds/explosion.mp3");
     this.load.audio("level", "/sounds/level1_song.mp3");
+    this.load.audio("damage", "/sounds/damage.mp3");
   }
 
   create() {
-
     this.input.setDefaultCursor("url(assets/sprites/cursor.cur), pointer");
 
     this.alive_monsters = 0;
@@ -60,6 +61,16 @@ export default class Level extends Phaser.Scene {
       delay: 0,
     });
 
+    this.damageSound = this.sound.add("damage", {
+      mute: false,
+      volume: 0.2,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0,
+    });
+
     this.initPlayer();
     this.initEnemies();
 
@@ -73,12 +84,12 @@ export default class Level extends Phaser.Scene {
       let victory = this.add.image(450, 250, "level_victory").setDepth(1);
       victory.setInteractive();
       victory.on("pointerup", () => {
-        this.scene.start("map",  ["win", this.level]);
+        this.scene.start("map", ["win", this.level]);
         this.levelSong.stop();
       });
     }
 
-    this.slashes
+    this.slashes;
   }
 
   startBossBattle() {
@@ -150,8 +161,13 @@ export default class Level extends Phaser.Scene {
   }
 
   onBossHit(player, slash) {
+    this.damageSound.play();
     slash.destroy();
     player.damage(slash.damage);
+    this.player.setTexture("player_damage");
+    this.time.delayedCall(100, () => {
+      this.player.setTexture("player");
+    });
   }
 
   addLaser() {
@@ -231,8 +247,7 @@ export default class Level extends Phaser.Scene {
     console.log("Bichos vivos iniciales: " + this.alive_monsters);
   }
 
-  game_over(){
+  game_over() {
     this.scene.start("map", ["lose", this.level]);
   }
-
 }
