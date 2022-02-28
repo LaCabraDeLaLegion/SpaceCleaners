@@ -94,10 +94,18 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     
     mutate(){
         this.level++;
-        this.setTexture("V1");
-        this.setScale(3);
-        this.body.setSize(12, 12, false);
-        this.type = "monster";
+        if (this.type === "human"){
+            this.setTexture("V1");
+            this.setScale(3);
+            this.body.setSize(12, 12, false);
+            this.type = "monster";
+        }
+        else {
+            this.setTexture("V1");
+            this.setScale(4);
+            this.lives++;
+            this.body.setSize(12, 12, false);
+        }
         console.log("mutate");
     }
 }

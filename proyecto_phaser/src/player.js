@@ -6,10 +6,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.keyA = this.scene.input.keyboard.addKey("A");
     this.keyS = this.scene.input.keyboard.addKey("S");
     this.keyD = this.scene.input.keyboard.addKey("D");
+    this.keyC = this.scene.input.keyboard.addKey("C");
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.body.setCollideWorldBounds();
     this.shootTime = 0;
+    this.medicineTime = 0;
     this.speed = 400;
     this.movingx = false;
     this.movingy = false;
@@ -20,6 +22,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     super.preUpdate(t, dt);
 
     this.shootTime--;
+    this.medicineTime--;
 
     if (this.cursors.left.isDown || this.keyA.isDown) {
       if (!this.movingy) this.body.setVelocityX(-this.speed);
@@ -50,6 +53,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
     if (this.cursors.space.isDown && this.shootTime <= 0) {
       this.scene.addLaser();
       this.shootTime = 15;
+    }
+
+    if (this.keyC.isDown && this.medicineTime <= 0){
+      this.scene.addMedicine();
+      this.medicineTime = 15;
     }
   }
 

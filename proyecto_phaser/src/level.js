@@ -3,6 +3,7 @@ import Laser from "./laser.js";
 import Enemy from "./enemy.js";
 import Boss from "./boss.js";
 import Slash from "./slash.js";
+import Medicine from "./medicine.js";
 
 export default class Level extends Phaser.Scene {
   constructor() {
@@ -28,6 +29,7 @@ export default class Level extends Phaser.Scene {
     this.load.image("slash1", "/sprites/slash1.png");
     this.load.image("slash2", "/sprites/slash2.png");
     this.load.image("level_victory", "/sprites/level_victory.png");
+    this.load.image("mask", "/sprites/mascarilla.png");
 
     //Audio
     this.load.audio("blaster", "/sounds/blaster.mp3");
@@ -127,6 +129,7 @@ export default class Level extends Phaser.Scene {
     this.player.setScale(2);
 
     this.lasers = this.physics.add.group();
+    this.medicines = this.physics.add.group();
     this.laserSound = this.sound.add("blaster", {
       mute: false,
       volume: 0.5,
@@ -144,6 +147,14 @@ export default class Level extends Phaser.Scene {
       this.enemies,
       this.lasers,
       this.onHit,
+      null,
+      this
+    );
+
+    this.physics.add.collider(
+      this.enemies,
+      this.medicines,
+      this.onMedcineHit,
       null,
       this
     );
@@ -181,10 +192,30 @@ export default class Level extends Phaser.Scene {
     this.laserSound.play();
   }
 
+  addMedicine(){
+    this.medicine = new Medicine(this, this.player.x, this.player.y - 50, this.medicines);
+  }
+
   onHit(enemy, laser) {
     laser.destroy();
 
     if (enemy.type === "monster") {
+      this.impactSound.play();
+      enemy.damage();
+      console.log("monstruos vivos: " + this.alive_monsters);
+      if (enemy.lives == 0) {
+        this.alive_monsters--;
+      }
+    } else {
+      enemy.mutate();
+    }
+  }
+
+  onMedcineHit(enemy, medicine){
+    
+    medicine.destroy();
+    
+    if (enemy.type === "human") {
       this.impactSound.play();
       enemy.damage();
       console.log("monstruos vivos: " + this.alive_monsters);
