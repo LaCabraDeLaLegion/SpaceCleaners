@@ -22,7 +22,6 @@ export default class Level extends Phaser.Scene {
     this.load.image("player", "/sprites/ship.png");
     this.load.image("player_damage", "/sprites/ship_damage.png");
     this.load.image("laser", "/sprites/laser.png");
-    this.load.image("V1", "/sprites/V1.png");
     this.load.image("boss", "/sprites/boss1.png");
     this.load.image("boss_damage", "/sprites/boss1_damage.png");
     this.load.image("slash1", "/sprites/slash1.png");
@@ -54,6 +53,12 @@ export default class Level extends Phaser.Scene {
       frameHeight: 50
     });
     this.load.spritesheet("H6", "/sprites/Humans/H6.png", {
+      frameWidth: 50,
+      frameHeight: 50
+    });
+
+    //Virus
+    this.load.spritesheet("V1", "/sprites/Virus/V1.png", {
       frameWidth: 50,
       frameHeight: 50
     });
@@ -147,6 +152,14 @@ export default class Level extends Phaser.Scene {
     this.anims.create({
       key: 'player_walk_3',
       frames: this.anims.generateFrameNumbers("player_3"),
+      frameRate: 5,
+      repeat: -1
+    });
+
+    //Virus 
+    this.anims.create({
+      key: 'virus_1',
+      frames: this.anims.generateFrameNumbers("V1"),
       frameRate: 5,
       repeat: -1
     });
@@ -362,7 +375,7 @@ export default class Level extends Phaser.Scene {
     for (let x = 100; x < 200; x = x + 40) {
       for (let y = 50; y < 150; y = y + 50) {
         let monster = new Enemy(this, x, y, "monster", 1, this.enemies);
-        monster.setScale(3);
+        monster.play('virus_1');
         this.virus.add(this.add.sprite(monster));
         this.alive_monsters = this.alive_monsters + 1;
         this.tweens.timeline({
