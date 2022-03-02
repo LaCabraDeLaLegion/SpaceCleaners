@@ -7,25 +7,34 @@ let planet_counter = 1;
 export default class Map extends Phaser.Scene {
   constructor() {
     super({ key: "map" });
-    this.probability = 0;
+    this.probability = 20;
+    //10 turns where the enemies do not get planets back
+    this.truce = 10;
   }
 
   init(data) {
     
     console.log("init data = " + data);
 
+    this.truce--;
+
     if (data[0] === "win") {
       planet_owners[data[1]] = "humanos";
       planet_counter++;
     }
 
-    else if (data[0] === "lose"){
-      planet_owners[data[1]] = "virus";
-      let random = Phaser.Math.Between(0, 100);
-      if (random <= this.probability){
-        planet_owners[0] = "virus";
-        planet_counter--;
+    let random = Phaser.Math.Between(0, 100);
+    if (random <= this.probability && this.truce < 0){
+      let found = false;
+      let index = 7;
+      while (found === false){
+        if (planet_owners[index] === "humanos"){
+          found = true;
+          planet_owners[index] = "virus";
+        }
+        index--;
       }
+      planet_counter--;
     }
   }
 
