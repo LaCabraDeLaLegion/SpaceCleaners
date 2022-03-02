@@ -13,11 +13,12 @@ export default class Map extends Phaser.Scene {
   init(data) {
     
     console.log("init data = " + data);
+
     if (data[0] === "win") {
       planet_owners[data[1]] = "humanos";
       planet_counter++;
-
     }
+
     else if (data[0] === "lose"){
       planet_owners[data[1]] = "virus";
       let random = Phaser.Math.Between(0, 100);
@@ -35,23 +36,25 @@ export default class Map extends Phaser.Scene {
     this.load.audio("button", "../../sounds/button.ogg");
   
     //Spritesheets
-    this.load.spritesheet("planet_1", "planet_spritesheet_2.png", {
+
+    //Virus
+    this.load.spritesheet("planet_1_virus", "planet_spritesheet_1.png", {
       frameWidth: 50,
       frameHeight: 50
     });
-    this.load.spritesheet("planet_2", "planet_spritesheet_3.png", {
+    this.load.spritesheet("planet_2_virus", "planet_spritesheet_1.png", {
       frameWidth: 50,
       frameHeight: 50
     });
-    this.load.spritesheet("planet_3", "planet_spritesheet_1.png", {
+    this.load.spritesheet("planet_3_virus", "planet_spritesheet_1.png", {
       frameWidth: 50,
       frameHeight: 50
     });
-    this.load.spritesheet("planet_4", "planet_spritesheet_3.png", {
+    this.load.spritesheet("planet_4_virus", "planet_spritesheet_1.png", {
       frameWidth: 50,
       frameHeight: 50
     });
-    this.load.spritesheet("planet_5", "planet_spritesheet_1.png", {
+    this.load.spritesheet("planet_5_virus", "planet_spritesheet_1.png", {
       frameWidth: 50,
       frameHeight: 50
     });
@@ -59,11 +62,45 @@ export default class Map extends Phaser.Scene {
       frameWidth: 50,
       frameHeight: 50
     });
-    this.load.spritesheet("planet_6", "moon_spritesheet.png", {
+    this.load.spritesheet("planet_6_virus", "planet_spritesheet_1.png", {
       frameWidth: 50,
       frameHeight: 50
     });
-    this.load.spritesheet("planet_7", "planet_spritesheet_1.png", {
+    this.load.spritesheet("planet_7_virus", "planet_spritesheet_1.png", {
+      frameWidth: 50,
+      frameHeight: 50
+    });
+
+    //Player
+    this.load.spritesheet("planet_1_player", "planet_spritesheet_2.png", {
+      frameWidth: 50,
+      frameHeight: 50
+    });
+    this.load.spritesheet("planet_2_player", "planet_spritesheet_2.png", {
+      frameWidth: 50,
+      frameHeight: 50
+    });
+    this.load.spritesheet("planet_3_player", "planet_spritesheet_1.png", {
+      frameWidth: 50,
+      frameHeight: 50
+    });
+    this.load.spritesheet("planet_4_player", "planet_spritesheet_2.png", {
+      frameWidth: 50,
+      frameHeight: 50
+    });
+    this.load.spritesheet("planet_5_player", "planet_spritesheet_2.png", {
+      frameWidth: 50,
+      frameHeight: 50
+    });
+    this.load.spritesheet("earth", "earth_spritesheet.png", {
+      frameWidth: 50,
+      frameHeight: 50
+    });
+    this.load.spritesheet("planet_6_player", "planet_spritesheet_2.png", {
+      frameWidth: 50,
+      frameHeight: 50
+    });
+    this.load.spritesheet("planet_7_player", "planet_spritesheet_2.png", {
       frameWidth: 50,
       frameHeight: 50
     });
@@ -87,79 +124,166 @@ export default class Map extends Phaser.Scene {
       .setScale(2)
       .setRotation(300);
 
-    this.planet_1 = this.physics.add.sprite(150, 150, "planet_1");
-    this.anims.create({
-      key: 'rotate_planet1',
-      frames: this.anims.generateFrameNumbers("planet_1"),
-      frameRate: 5,
-      repeat: -1
-    });
-    this.planet_1.setDepth(2);
-    this.planet_1.play('rotate_planet1');
-
-    if (planet_owners[1] === "humanos"){
-      this.planet_1.setScale(2);
+    if (planet_owners[1] === "virus"){
+      this.planet_1 = this.physics.add.sprite(150, 150, "planet_1_virus");
+      this.anims.create({
+        key: 'rotate_planet_1_virus',
+        frames: this.anims.generateFrameNumbers("planet_1_virus"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_1.setDepth(2);
+      this.planet_1.play('rotate_planet_1_virus');
+    }
+    else {
+      this.planet_1 = this.physics.add.sprite(150, 150, "planet_1_player");
+      this.anims.create({
+        key: 'rotate_planet_1_player',
+        frames: this.anims.generateFrameNumbers("planet_1_player"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_1.setDepth(2);
+      this.planet_1.play('rotate_planet_1_player');
     }
 
-    this.planet_2 = this.physics.add.sprite(220, 350, "planet_2");
-    this.anims.create({
-      key: 'rotate_planet2',
-      frames: this.anims.generateFrameNumbers("planet_2"),
-      frameRate: 5,
-      repeat: -1
-    });
-    this.planet_2.setDepth(2);
-    this.planet_2.play('rotate_planet2');
-  
-    this.planet_3 = this.physics.add.sprite(370, 270, "planet_3");
-    this.anims.create({
-      key: 'rotate_planet3',
-      frames: this.anims.generateFrameNumbers("planet_3"),
-      frameRate: 5,
-      repeat: -1
-    });
-    this.planet_3.setDepth(2);
-    this.planet_3.play('rotate_planet3');
-    
-    this.planet_4 = this.physics.add.sprite(500, 50, "planet_4");
-    this.anims.create({
-      key: 'rotate_planet4',
-      frames: this.anims.generateFrameNumbers("planet_4"),
-      frameRate: 5,
-      repeat: -1
-    });
-    this.planet_4.setDepth(2);
-    this.planet_4.play('rotate_planet4');
+    if (planet_owners[2] === "virus"){
+      this.planet_2 = this.physics.add.sprite(220, 350, "planet_2_virus");
+      this.anims.create({
+        key: 'rotate_planet_2_virus',
+        frames: this.anims.generateFrameNumbers("planet_2_virus"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_2.setDepth(2);
+      this.planet_2.play('rotate_planet_2_virus');
+    }
+    else {
+      this.planet_2 = this.physics.add.sprite(220, 350, "planet_2_player");
+      this.anims.create({
+        key: 'rotate_planet_2_player',
+        frames: this.anims.generateFrameNumbers("planet_2_player"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_2.setDepth(2);
+      this.planet_2.play('rotate_planet_2_player');
+    }
 
-    this.planet_5 = this.physics.add.sprite(570, 400, "planet_5");
-    this.anims.create({
-      key: 'rotate_planet5',
-      frames: this.anims.generateFrameNumbers("planet_5"),
-      frameRate: 5,
-      repeat: -1
-    });
-    this.planet_5.setDepth(2);
-    this.planet_5.play('rotate_planet5');
-    
-    this.planet_6 = this.physics.add.sprite(650, 250, "planet_6");
-    this.anims.create({
-      key: 'rotate_planet6',
-      frames: this.anims.generateFrameNumbers("planet_6"),
-      frameRate: 5,
-      repeat: -1
-    });
-    this.planet_6.setDepth(2);
-    this.planet_6.play('rotate_planet6');
+    if (planet_owners[3] === "virus"){
+      this.planet_3 = this.physics.add.sprite(370, 270, "planet_3_virus");
+      this.anims.create({
+        key: 'rotate_planet_3_virus',
+        frames: this.anims.generateFrameNumbers("planet_3_virus"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_3.setDepth(2);
+      this.planet_3.play('rotate_planet_3_virus');
+    }
+    else {
+      this.planet_3 = this.physics.add.sprite(370, 270, "planet_3_player");
+      this.anims.create({
+        key: 'rotate_planet_3_player',
+        frames: this.anims.generateFrameNumbers("planet_3_player"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_3.setDepth(2);
+      this.planet_3.play('rotate_planet_3_player');
+    }
 
-    this.planet_7 = this.physics.add.sprite(800, 150, "planet_7");
-    this.anims.create({
-      key: 'rotate_planet7',
-      frames: this.anims.generateFrameNumbers("planet_7"),
-      frameRate: 5,
-      repeat: -1
-    });
-    this.planet_7.setDepth(2);
-    this.planet_7.play('rotate_planet7');
+    if (planet_owners[4] === "virus"){
+      this.planet_4 = this.physics.add.sprite(500, 50, "planet_4_virus");
+      this.anims.create({
+        key: 'rotate_planet_4_virus',
+        frames: this.anims.generateFrameNumbers("planet_4_virus"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_4.setDepth(2);
+      this.planet_4.play('rotate_planet_4_virus');  
+    }
+    else {
+      this.planet_4 = this.physics.add.sprite(500, 50, "planet_4_player");
+      this.anims.create({
+        key: 'rotate_planet_4_player',
+        frames: this.anims.generateFrameNumbers("planet_4_player"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_4.setDepth(2);
+      this.planet_4.play('rotate_planet_4_player');
+    }
+    
+    if (planet_owners[5] === "virus"){
+      this.planet_5 = this.physics.add.sprite(570, 400, "planet_5_virus");
+      this.anims.create({
+        key: 'rotate_planet_5_virus',
+        frames: this.anims.generateFrameNumbers("planet_5_virus"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_5.setDepth(2);
+      this.planet_5.play('rotate_planet_5_virus');
+    }
+    else {
+      this.planet_5 = this.physics.add.sprite(570, 400, "planet_5_player");
+      this.anims.create({
+        key: 'rotate_planet_5_player',
+        frames: this.anims.generateFrameNumbers("planet_5_player"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_5.setDepth(2);
+      this.planet_5.play('rotate_planet_5_player');
+    }
+
+    if (planet_owners[6] === "virus"){
+      this.planet_6 = this.physics.add.sprite(650, 250, "planet_6_virus");
+      this.anims.create({
+        key: 'rotate_planet_6_virus',
+        frames: this.anims.generateFrameNumbers("planet_6_virus"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_6.setDepth(2);
+      this.planet_6.play('rotate_planet_6_virus');
+    }
+    else {
+      this.planet_6 = this.physics.add.sprite(650, 250, "planet_6_player");
+      this.anims.create({
+        key: 'rotate_planet_6_player',
+        frames: this.anims.generateFrameNumbers("planet_6_player"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_6.setDepth(2);
+      this.planet_6.play('rotate_planet_6_player');
+    }
+
+    if (planet_owners[7] === "virus"){
+      this.planet_7 = this.physics.add.sprite(800, 150, "planet_7_virus");
+      this.anims.create({
+        key: 'rotate_planet_7_virus',
+        frames: this.anims.generateFrameNumbers("planet_7_virus"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_7.setDepth(2);
+      this.planet_7.play('rotate_planet_7_virus');
+    }
+    else {
+      this.planet_7 = this.physics.add.sprite(800, 150, "planet_7_player");
+      this.anims.create({
+        key: 'rotate_planet_7_player',
+        frames: this.anims.generateFrameNumbers("planet_7_player"),
+        frameRate: 5,
+        repeat: -1
+      });
+      this.planet_7.setDepth(2);
+      this.planet_7.play('rotate_planet_7_player');
+    }
 
     this.earth = this.physics.add.sprite(50, 250, "earth");
     this.anims.create({

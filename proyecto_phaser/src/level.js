@@ -8,11 +8,11 @@ import Medicine from "./medicine.js";
 export default class Level extends Phaser.Scene {
   constructor() {
     super({ key: "level" });
-    this.level = 1;
   }
 
   init(data) {
     console.log("Nivel = " + data);
+    this.level = data;
   }
 
   preload() {
