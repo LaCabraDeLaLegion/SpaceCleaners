@@ -58,8 +58,11 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         super(scene, x, y, name);
         
         this.scene.add.existing(this);
+        
         this.scene.physics.add.existing(this);
+        
         enemyGroup.add(this);
+        
         this.type = type_of_enemy;
         level = level_of_enemy;
         if (level === 1){
@@ -96,9 +99,10 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.level++;
         if (this.type === "human"){
             this.setTexture("V1");
-            this.setScale(3);
+            this.setScale(4);
             this.body.setSize(12, 12, false);
             this.type = "monster";
+            this.anims.stop();
         }
         else {
             this.setTexture("V1");
