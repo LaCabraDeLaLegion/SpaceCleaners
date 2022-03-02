@@ -1,6 +1,6 @@
 export default class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
-    super(scene, x, y, "player");
+    super(scene, x, y, "player_1");
     this.cursors = this.scene.input.keyboard.createCursorKeys();
     this.keyW = this.scene.input.keyboard.addKey("W");
     this.keyA = this.scene.input.keyboard.addKey("A");
