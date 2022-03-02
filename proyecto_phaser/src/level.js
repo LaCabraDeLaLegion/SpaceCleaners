@@ -80,10 +80,23 @@ export default class Level extends Phaser.Scene {
   }
 
   create() {
+
+    this.createAnimations();
+    this.addSounds();
+
     this.input.setDefaultCursor("url(assets/sprites/cursor.cur), pointer");
 
     this.alive_monsters = 0;
     this.bossInScene = false;
+
+    this.initPlayer();
+    this.initEnemies();
+
+    this.levelSong.play();
+  }
+
+  addSounds(){
+
     this.levelSong = this.sound.add("level", {
       mute: false,
       volume: 2,
@@ -114,10 +127,68 @@ export default class Level extends Phaser.Scene {
       delay: 0,
     });
 
-    this.initPlayer();
-    this.initEnemies();
+  }
 
-    this.levelSong.play();
+  createAnimations(){
+
+    //Players
+    this.anims.create({
+      key: 'player_walk_1',
+      frames: this.anims.generateFrameNumbers("player_1"),
+      frameRate: 5,
+      repeat: -1
+    });
+    this.anims.create({
+      key: 'player_walk_2',
+      frames: this.anims.generateFrameNumbers("player_2"),
+      frameRate: 5,
+      repeat: -1
+    });
+    this.anims.create({
+      key: 'player_walk_3',
+      frames: this.anims.generateFrameNumbers("player_3"),
+      frameRate: 5,
+      repeat: -1
+    });
+
+    //Infected humans
+    this.anims.create({
+      key: 'human_walk_1',
+      frames: this.anims.generateFrameNumbers("H1"),
+      frameRate: 5,
+      repeat: -1
+    });
+    this.anims.create({
+      key: 'human_walk_2',
+      frames: this.anims.generateFrameNumbers("H2"),
+      frameRate: 5,
+      repeat: -1
+    });
+    this.anims.create({
+      key: 'human_walk_3',
+      frames: this.anims.generateFrameNumbers("H3"),
+      frameRate: 5,
+      repeat: -1
+    });
+    this.anims.create({
+      key: 'human_walk_4',
+      frames: this.anims.generateFrameNumbers("H4"),
+      frameRate: 5,
+      repeat: -1
+    });
+    this.anims.create({
+      key: 'human_walk_5',
+      frames: this.anims.generateFrameNumbers("H5"),
+      frameRate: 5,
+      repeat: -1
+    });
+    this.anims.create({
+      key: 'human_walk_6',
+      frames: this.anims.generateFrameNumbers("H6"),
+      frameRate: 5,
+      repeat: -1
+    });
+
   }
 
   update() {
@@ -166,13 +237,6 @@ export default class Level extends Phaser.Scene {
   }
 
   initPlayer() {
-
-    this.anims.create({
-      key: 'player_walk_1',
-      frames: this.anims.generateFrameNumbers("player_1"),
-      frameRate: 5,
-      repeat: -1
-    });
 
     this.player = new Player(this, 500, 500);
 
@@ -312,43 +376,6 @@ export default class Level extends Phaser.Scene {
   }
 
   createHumans() {
-
-    this.anims.create({
-      key: 'human_walk_1',
-      frames: this.anims.generateFrameNumbers("H1"),
-      frameRate: 5,
-      repeat: -1
-    });
-    this.anims.create({
-      key: 'human_walk_2',
-      frames: this.anims.generateFrameNumbers("H2"),
-      frameRate: 5,
-      repeat: -1
-    });
-    this.anims.create({
-      key: 'human_walk_3',
-      frames: this.anims.generateFrameNumbers("H3"),
-      frameRate: 5,
-      repeat: -1
-    });
-    this.anims.create({
-      key: 'human_walk_4',
-      frames: this.anims.generateFrameNumbers("H4"),
-      frameRate: 5,
-      repeat: -1
-    });
-    this.anims.create({
-      key: 'human_walk_5',
-      frames: this.anims.generateFrameNumbers("H5"),
-      frameRate: 5,
-      repeat: -1
-    });
-    this.anims.create({
-      key: 'human_walk_6',
-      frames: this.anims.generateFrameNumbers("H6"),
-      frameRate: 5,
-      repeat: -1
-    });
 
     let human = new Enemy(this, 200, 150, "human", 1, this.enemies);
 
