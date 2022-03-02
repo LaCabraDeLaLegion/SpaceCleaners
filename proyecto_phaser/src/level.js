@@ -30,7 +30,9 @@ export default class Level extends Phaser.Scene {
     this.load.image("level_victory", "/sprites/level_victory.png");
     this.load.image("mask", "/sprites/mascarilla.png");
 
-    //Spritesheets
+    //Spritesheets -------------------------------------------------------------
+
+    //Humans
     this.load.spritesheet("H1", "/sprites/Humans/H1.png", {
       frameWidth: 50,
       frameHeight: 50
@@ -56,7 +58,21 @@ export default class Level extends Phaser.Scene {
       frameHeight: 50
     });
 
-    //Audio
+    //Players
+    this.load.spritesheet("player_1", "/sprites/Players/player_1.png", {
+      frameWidth: 50,
+      frameHeight: 50
+    });
+    this.load.spritesheet("player_2", "/sprites/Players/player_2.png", {
+      frameWidth: 50,
+      frameHeight: 50
+    });
+    this.load.spritesheet("player_3", "/sprites/Players/player_3.png", {
+      frameWidth: 50,
+      frameHeight: 50
+    });
+
+    //Audio -------------------------------------------------------------------
     this.load.audio("blaster", "/sounds/blaster.mp3");
     this.load.audio("explosion", "/sounds/explosion.mp3");
     this.load.audio("level", "/sounds/level1_song.mp3");
@@ -150,8 +166,17 @@ export default class Level extends Phaser.Scene {
   }
 
   initPlayer() {
+
+    this.anims.create({
+      key: 'player_walk_1',
+      frames: this.anims.generateFrameNumbers("player_1"),
+      frameRate: 5,
+      repeat: -1
+    });
+
     this.player = new Player(this, 500, 500);
-    this.player.setScale(2);
+
+    this.player.play('player_walk_1');
 
     this.lasers = this.physics.add.group();
     this.medicines = this.physics.add.group();
@@ -200,10 +225,11 @@ export default class Level extends Phaser.Scene {
     this.damageSound.play();
     slash.destroy();
     player.damage(slash.damage);
-    this.player.setTexture("player_damage");
-    this.time.delayedCall(100, () => {
+    //this.player.setTexture("player_damage");
+    /*this.time.delayedCall(100, () => {
       this.player.setTexture("player");
     });
+    */
   }
 
   addLaser() {
