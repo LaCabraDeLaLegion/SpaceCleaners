@@ -82,7 +82,11 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
         super.preUpdate(t, dt);
 
-        if (this.lives <= 0) this.destroy();
+        if (this.lives <= 0){
+            this.scene.time.delayedCall(200, () => {
+                this.destroy();
+            });
+        }
 
     }
 
@@ -92,6 +96,17 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
     damage() {
         this.lives--;
+        this.anims.stop();
+        if (this.type === "human"){
+
+        }
+        else {
+            this.setTexture("V1-damage");
+            this.scene.time.delayedCall(200, () => {
+                this.setTexture("V1");
+                this.anims.play('virus_1');
+            });
+        }
     }
 
     

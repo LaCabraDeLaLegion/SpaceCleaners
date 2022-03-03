@@ -28,6 +28,7 @@ export default class Level extends Phaser.Scene {
     this.load.image("slash2", "/sprites/slash2.png");
     this.load.image("level_victory", "/sprites/level_victory.png");
     this.load.image("mask", "/sprites/mascarilla.png");
+    this.load.image("V1-damage", "/sprites/Virus/V1-damage.png");
 
     //Spritesheets -------------------------------------------------------------
 

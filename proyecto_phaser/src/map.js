@@ -337,7 +337,7 @@ export default class Map extends Phaser.Scene {
       this.planet_3.setScale(1);
     });
     this.planet_3.on("pointerup", () => {
-      this.scene.start("level", "2");
+      this.scene.start("level", "3");
     });
 
     this.planet_4.setInteractive();
@@ -349,7 +349,7 @@ export default class Map extends Phaser.Scene {
       this.planet_4.setScale(1);
     });
     this.planet_4.on("pointerup", () => {
-      this.scene.start("level");
+      this.scene.start("level", "4");
     });
 
     this.planet_5.setInteractive();
@@ -361,7 +361,7 @@ export default class Map extends Phaser.Scene {
       this.planet_5.setScale(1);
     });
     this.planet_5.on("pointerup", () => {
-      this.scene.start("level");
+      this.scene.start("level", "5");
     });
 
     this.planet_6.setInteractive();
@@ -373,7 +373,7 @@ export default class Map extends Phaser.Scene {
       this.planet_6.setScale(1);
     });
     this.planet_6.on("pointerup", () => {
-      this.scene.start("level");
+      this.scene.start("level", "6");
     });
 
     this.planet_7.setInteractive();
@@ -385,7 +385,7 @@ export default class Map extends Phaser.Scene {
       this.planet_7.setScale(4);
     });
     this.planet_7.on("pointerup", () => {
-      this.scene.start("level");
+      this.scene.start("level", "7");
     });
   }
 }
