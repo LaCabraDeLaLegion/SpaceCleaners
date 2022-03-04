@@ -102,7 +102,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         }
         else {
             this.setTexture("V1-damage");
-            this.scene.time.delayedCall(200, () => {
+            this.scene.time.delayedCall(150, () => {
                 this.setTexture("V1");
                 this.anims.play('virus_1');
             });

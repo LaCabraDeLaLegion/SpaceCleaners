@@ -51,7 +51,7 @@ export default class Menu extends Phaser.Scene {
       this.playSound.play();
       this.time.delayedCall(1000, () => {
         this.introSong.pause();
-        this.scene.start("map");
+        this.scene.start("map", [null, null, null]);
       });
     });
 

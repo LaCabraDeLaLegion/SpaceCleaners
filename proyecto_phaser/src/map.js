@@ -44,6 +44,9 @@ export default class Map extends Phaser.Scene {
       }
       planet_counter--;
     }
+
+    if (!data[2]) this.inventory = {shield: false, weapon: [], medicine: [], money: 0};
+    else this.inventory = data[2];
   }
 
   preload() {
@@ -351,7 +354,7 @@ export default class Map extends Phaser.Scene {
       this.planet_1.setScale(1);
     });
     this.planet_1.on("pointerup", () => {
-      this.scene.start("level", "1");
+      this.scene.start("level", "1", this.inventory);
     });
 
     this.planet_2.setInteractive();

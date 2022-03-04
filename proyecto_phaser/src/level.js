@@ -12,7 +12,8 @@ export default class Level extends Phaser.Scene {
 
   init(data) {
     console.log("Nivel = " + data);
-    this.level = data;
+    this.level = data[0];
+    this.inventory = data[1];
   }
 
   preload() {
@@ -414,6 +415,6 @@ export default class Level extends Phaser.Scene {
   }
 
   game_over() {
-    this.scene.start("map", ["lose", this.level]);
+    this.scene.start("map", ["lose", this.level, this.inventory]);
   }
 }
