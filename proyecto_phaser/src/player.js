@@ -1,3 +1,4 @@
+import Laser from "./laser.js";
 export default class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y, "player_1");
@@ -51,11 +52,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
 
     if (this.cursors.space.isDown && this.shootTime <= 0) {
-      this.scene.addLaser();
+      const laser = new Laser(this.scene, this.x, this.y - 50); //Crear arma segun inventario
+      this.scene.addLaser(laser);
       this.shootTime = 15;
     }
 
-    if (this.keyC.isDown && this.medicineTime <= 0){
+    if (this.keyC.isDown && this.medicineTime <= 0) {
       this.scene.addMedicine();
       this.medicineTime = 15;
     }

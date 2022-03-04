@@ -1,5 +1,4 @@
 import Player from "./player.js";
-import Laser from "./laser.js";
 import Enemy from "./enemy.js";
 import Boss from "./boss.js";
 import Slash from "./slash.js";
@@ -36,47 +35,47 @@ export default class Level extends Phaser.Scene {
     //Humans
     this.load.spritesheet("H1", "/sprites/Humans/H1.png", {
       frameWidth: 50,
-      frameHeight: 50
+      frameHeight: 50,
     });
     this.load.spritesheet("H2", "/sprites/Humans/H2.png", {
       frameWidth: 50,
-      frameHeight: 50
+      frameHeight: 50,
     });
     this.load.spritesheet("H3", "/sprites/Humans/H3.png", {
       frameWidth: 50,
-      frameHeight: 50
+      frameHeight: 50,
     });
     this.load.spritesheet("H4", "/sprites/Humans/H4.png", {
       frameWidth: 50,
-      frameHeight: 50
+      frameHeight: 50,
     });
     this.load.spritesheet("H5", "/sprites/Humans/H5.png", {
       frameWidth: 50,
-      frameHeight: 50
+      frameHeight: 50,
     });
     this.load.spritesheet("H6", "/sprites/Humans/H6.png", {
       frameWidth: 50,
-      frameHeight: 50
+      frameHeight: 50,
     });
 
     //Virus
     this.load.spritesheet("V1", "/sprites/Virus/V1.png", {
       frameWidth: 50,
-      frameHeight: 50
+      frameHeight: 50,
     });
 
     //Players
     this.load.spritesheet("player_1", "/sprites/Players/player_1.png", {
       frameWidth: 50,
-      frameHeight: 50
+      frameHeight: 50,
     });
     this.load.spritesheet("player_2", "/sprites/Players/player_2.png", {
       frameWidth: 50,
-      frameHeight: 50
+      frameHeight: 50,
     });
     this.load.spritesheet("player_3", "/sprites/Players/player_3.png", {
       frameWidth: 50,
-      frameHeight: 50
+      frameHeight: 50,
     });
 
     //Audio -------------------------------------------------------------------
@@ -87,7 +86,6 @@ export default class Level extends Phaser.Scene {
   }
 
   create() {
-
     this.createAnimations();
     this.addSounds();
 
@@ -102,8 +100,7 @@ export default class Level extends Phaser.Scene {
     this.levelSong.play();
   }
 
-  addSounds(){
-
+  addSounds() {
     this.levelSong = this.sound.add("level", {
       mute: false,
       volume: 2,
@@ -133,77 +130,74 @@ export default class Level extends Phaser.Scene {
       loop: false,
       delay: 0,
     });
-
   }
 
-  createAnimations(){
-
+  createAnimations() {
     //Players
     this.anims.create({
-      key: 'player_walk_1',
+      key: "player_walk_1",
       frames: this.anims.generateFrameNumbers("player_1"),
       frameRate: 5,
-      repeat: -1
+      repeat: -1,
     });
     this.anims.create({
-      key: 'player_walk_2',
+      key: "player_walk_2",
       frames: this.anims.generateFrameNumbers("player_2"),
       frameRate: 5,
-      repeat: -1
+      repeat: -1,
     });
     this.anims.create({
-      key: 'player_walk_3',
+      key: "player_walk_3",
       frames: this.anims.generateFrameNumbers("player_3"),
       frameRate: 5,
-      repeat: -1
+      repeat: -1,
     });
 
-    //Virus 
+    //Virus
     this.anims.create({
-      key: 'virus_1',
+      key: "virus_1",
       frames: this.anims.generateFrameNumbers("V1"),
       frameRate: 5,
-      repeat: -1
+      repeat: -1,
     });
 
     //Infected humans
     this.anims.create({
-      key: 'human_walk_1',
+      key: "human_walk_1",
       frames: this.anims.generateFrameNumbers("H1"),
       frameRate: 5,
-      repeat: -1
+      repeat: -1,
     });
     this.anims.create({
-      key: 'human_walk_2',
+      key: "human_walk_2",
       frames: this.anims.generateFrameNumbers("H2"),
       frameRate: 5,
-      repeat: -1
+      repeat: -1,
     });
     this.anims.create({
-      key: 'human_walk_3',
+      key: "human_walk_3",
       frames: this.anims.generateFrameNumbers("H3"),
       frameRate: 5,
-      repeat: -1
+      repeat: -1,
     });
     this.anims.create({
-      key: 'human_walk_4',
+      key: "human_walk_4",
       frames: this.anims.generateFrameNumbers("H4"),
       frameRate: 5,
-      repeat: -1
+      repeat: -1,
     });
     this.anims.create({
-      key: 'human_walk_5',
+      key: "human_walk_5",
       frames: this.anims.generateFrameNumbers("H5"),
       frameRate: 5,
-      repeat: -1
+      repeat: -1,
     });
     this.anims.create({
-      key: 'human_walk_6',
+      key: "human_walk_6",
       frames: this.anims.generateFrameNumbers("H6"),
       frameRate: 5,
-      repeat: -1
+      repeat: -1,
     });
-
   }
 
   update() {
@@ -252,10 +246,9 @@ export default class Level extends Phaser.Scene {
   }
 
   initPlayer() {
-
     this.player = new Player(this, 500, 500);
 
-    this.player.play('player_walk_1');
+    this.player.play("player_walk_1");
 
     this.lasers = this.physics.add.group();
     this.medicines = this.physics.add.group();
@@ -311,19 +304,20 @@ export default class Level extends Phaser.Scene {
     */
   }
 
-  addLaser() {
-    this.laser = new Laser(
-      this,
-      this.player.x,
-      this.player.y - 50,
-      this.lasers
-    );
+  addLaser(laser) {
+    this.laser = laser;
+    this.laser.addGroup(this.lasers);
     this.laser.setScale(0.25);
     this.laserSound.play();
   }
 
-  addMedicine(){
-    this.medicine = new Medicine(this, this.player.x, this.player.y - 50, this.medicines);
+  addMedicine() {
+    this.medicine = new Medicine(
+      this,
+      this.player.x,
+      this.player.y - 50,
+      this.medicines
+    );
   }
 
   onHit(enemy, laser) {
@@ -341,10 +335,9 @@ export default class Level extends Phaser.Scene {
     }
   }
 
-  onMedcineHit(enemy, medicine){
-    
+  onMedcineHit(enemy, medicine) {
     medicine.destroy();
-    
+
     if (enemy.type === "human") {
       this.impactSound.play();
       enemy.damage();
@@ -377,7 +370,7 @@ export default class Level extends Phaser.Scene {
     for (let x = 100; x < 200; x = x + 40) {
       for (let y = 50; y < 150; y = y + 50) {
         let monster = new Enemy(this, x, y, "monster", 1, this.enemies);
-        monster.play('virus_1');
+        monster.play("virus_1");
         this.virus.add(this.add.sprite(monster));
         this.alive_monsters = this.alive_monsters + 1;
         this.tweens.timeline({
@@ -391,12 +384,11 @@ export default class Level extends Phaser.Scene {
   }
 
   createHumans() {
-
     let human = new Enemy(this, 200, 150, "human", 1, this.enemies);
 
     this.alive_monsters = this.alive_monsters + 1;
 
-    human.play('human_walk_1');
+    human.play("human_walk_1");
 
     this.tweens.timeline({
       targets: human,
@@ -406,9 +398,7 @@ export default class Level extends Phaser.Scene {
     });
 
     for (let x = 200; x < 200; x = x + 40) {
-      for (let y = 50; y < 150; y = y + 50) {
-        
-      }
+      for (let y = 50; y < 150; y = y + 50) {}
     }
 
     console.log("Bichos vivos iniciales: " + this.alive_monsters);
