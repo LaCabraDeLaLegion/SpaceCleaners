@@ -1,13 +1,8 @@
-export default class Laser extends Phaser.GameObjects.Sprite {
+import Weapon from "./weapon.js";
+
+export default class Laser extends Weapon {
   constructor(scene, x, y) {
     super(scene, x, y, "laser");
-    this.scene.add.existing(this);
-    this.scene.physics.add.existing(this);
-    // laserGroup.add(this);
-  }
-
-  addGroup(laserGroup) {
-    laserGroup.add(this);
   }
 
   preUpdate(t, dt) {
