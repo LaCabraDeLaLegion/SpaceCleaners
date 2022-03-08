@@ -4,7 +4,7 @@ export default class Menu extends Phaser.Scene {
   }
 
   preload() {
-    this.load.setPath("assets/sprites/menu/");
+    this.load.setPath("assets/sprites/Menu/");
     this.load.image("background", "background.png");
     this.load.image("play", "play.png");
 
