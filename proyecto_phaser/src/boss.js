@@ -6,7 +6,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     this.dialog = false;
     this.direction = -1;
     this.attackTime = 60;
-    this.life = 100;
+    this.life = 50;
     this.text = this.scene.add.text(350, 200, "I will destroy you!", {
       fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
     });
@@ -21,7 +21,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
       this.text.destroy();
     } else {
       if (this.attackTime <= 0) {
-        this.scene.bossAttack(this.life >= 50 ? "1" : "2", 2);
+        this.scene.bossAttack(this.life >= 25 ? "1" : "2", 2);
         this.attackTime = 60;
       }
 

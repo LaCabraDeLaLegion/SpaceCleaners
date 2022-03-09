@@ -66,7 +66,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.type = type_of_enemy;
         level = level_of_enemy;
         if (level === 1){
-            this.lives = 1;
+            this.lives = 2;
         }
 
         if (type === "monster"){
@@ -76,6 +76,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             movements = tweens_humans[level - 1];
         }
 
+        this.dead = false;
+
     }
 
     preUpdate(t, dt) {
@@ -84,6 +86,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
         if (this.lives <= 0){
             this.scene.time.delayedCall(200, () => {
+                this.dead = true;
                 this.destroy();
             });
         }
@@ -103,8 +106,10 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         else {
             this.setTexture("V1-damage");
             this.scene.time.delayedCall(150, () => {
-                this.setTexture("V1");
-                this.anims.play('virus_1');
+                if (!this.dead) {
+                    this.setTexture("V1");
+                    this.anims.play('virus_1'); 
+                }
             });
         }
     }
