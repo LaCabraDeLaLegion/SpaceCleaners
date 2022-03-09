@@ -4,6 +4,8 @@ Enlace para probar el juego: [https://lacabradelalegion.github.io/SpaceCleaners/
 
 Enlace al repositorio: [https://github.com/LaCabraDeLaLegion/SpaceCleaners](https://github.com/LaCabraDeLaLegion/SpaceCleaners)
 
+Enlace a la presentación: [https://docs.google.com/presentation/d/17bKwn0qyr5MR6_n9_nOfwZ7p6-1Niwod4ZkqMNIZnZY/edit?usp=sharing](https://docs.google.com/presentation/d/17bKwn0qyr5MR6_n9_nOfwZ7p6-1Niwod4ZkqMNIZnZY/edit?usp=sharing)
+
 # GDD
 
 Para consultar el GDD del juego utilizar el siguiente enlace: [https://docs.google.com/document/d/10XLAFpWlU9FMnmG6lCexI5x2gXz0NO3c7H5pKOfypbc/edit?usp=sharing](https://docs.google.com/document/d/10XLAFpWlU9FMnmG6lCexI5x2gXz0NO3c7H5pKOfypbc/edit?usp=sharing)
