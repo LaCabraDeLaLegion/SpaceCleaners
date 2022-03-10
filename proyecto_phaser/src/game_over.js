@@ -9,10 +9,12 @@ export default class GameOver extends Phaser.Scene {
     }
   
     preload() {
+      this.load.setPath("assets/");
+      this.load.image("game_over_final", "game_over_final.png");
     }
   
-    create() {
-        console.log("GAME OVER");
+    create() {  
+      this.add.image(450, 250, "game_over_final");
     }
   }
   
