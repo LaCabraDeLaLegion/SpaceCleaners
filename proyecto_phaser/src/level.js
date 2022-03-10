@@ -1,8 +1,9 @@
 import Player from "./player.js";
-import Enemy from "./enemy.js";
 import Boss from "./boss.js";
 import Slash from "./slash.js";
 import Medicine from "./medicine.js";
+import Virus from "./enemies/virus.js";
+import Human from "./enemies/human.js";
 
 export default class Level extends Phaser.Scene {
   constructor() {
@@ -322,15 +323,14 @@ export default class Level extends Phaser.Scene {
 
   onHit(enemy, laser) {
     laser.destroy();
-
-    if (enemy.type === "monster") {
+    if (enemy.type === "virus") {
       this.impactSound.play();
       enemy.damage();
       console.log("monstruos vivos: " + this.alive_monsters);
       if (enemy.lives == 0) {
         this.alive_monsters--;
       }
-    } else {
+    } else if (enemy.type === "human"){
       enemy.mutate();
     }
   }
@@ -368,34 +368,23 @@ export default class Level extends Phaser.Scene {
 
   createMonsters() {
     for (let x = 100; x < 200; x = x + 40) {
-      for (let y = 50; y < 150; y = y + 50) {
-        let monster = new Enemy(this, x, y, "monster", 1, this.enemies);
+      for (let y = 50; y < 150; y = y + 50) { 
+        let monster = new Virus(this, x, y, 1, this.enemies);
         monster.play("virus_1");
-        this.virus.add(this.add.sprite(monster));
         this.alive_monsters = this.alive_monsters + 1;
-        this.tweens.timeline({
-          targets: monster,
-          ease: "Linear",
-          duration: 2000,
-          tweens: monster.getMovements(),
-        });
+        this.tweens.timeline({targets: monster, ease: "Linear", duration:2000, tweens:monster.movements});
       }
     }
+
   }
 
   createHumans() {
-    let human = new Enemy(this, 200, 150, "human", 1, this.enemies);
 
-    this.alive_monsters = this.alive_monsters + 1;
-
+    let human = new Human(this, 200, 150, 1, this.enemies);
     human.play("human_walk_1");
+    this.alive_monsters = this.alive_monsters + 1;
+    this.tweens.timeline({targets: human, ease: "Linear", duration:2000, tweens: human.movements});
 
-    this.tweens.timeline({
-      targets: human,
-      ease: "Linear",
-      duration: 2000,
-      tweens: human.getMovements(),
-    });
 
     for (let x = 200; x < 200; x = x + 40) {
       for (let y = 50; y < 150; y = y + 50) {}
