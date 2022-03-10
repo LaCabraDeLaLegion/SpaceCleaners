@@ -312,13 +312,9 @@ export default class Level extends Phaser.Scene {
     this.laserSound.play();
   }
 
-  addMedicine() {
-    this.medicine = new Medicine(
-      this,
-      this.player.x,
-      this.player.y - 50,
-      this.medicines
-    );
+  addMedicine(medicine) {
+    this.medicine = medicine;
+    this.medicine.addGroup(this.medicines);
   }
 
   onHit(enemy, laser) {

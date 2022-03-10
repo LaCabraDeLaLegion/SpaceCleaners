@@ -1,4 +1,5 @@
 import Laser from "./weapons/laser.js";
+import Medicine from "./weapons/medicine.js";
 export default class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y, "player_1");
@@ -58,7 +59,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
 
     if (this.keyC.isDown && this.medicineTime <= 0) {
-      this.scene.addMedicine();
+      const medicine = new Medicine(this.scene, this.x, this.y - 50); //Crear medicina segun inventario
+      this.scene.addMedicine(medicine);
       this.medicineTime = 15;
     }
   }
