@@ -1,7 +1,7 @@
 import Player from "./player.js";
 import Boss from "./boss.js";
 import Slash from "./slash.js";
-import Medicine from "./medicine.js";
+import Medicine from "./weapons/medicine.js";
 import Virus from "./enemies/virus.js";
 import Human from "./enemies/human.js";
 

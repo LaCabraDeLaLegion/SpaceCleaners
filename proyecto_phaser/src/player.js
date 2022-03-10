@@ -1,4 +1,4 @@
-import Laser from "./laser.js";
+import Laser from "./weapons/laser.js";
 export default class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y, "player_1");
