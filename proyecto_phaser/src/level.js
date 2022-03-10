@@ -1,7 +1,6 @@
 import Player from "./player.js";
 import Boss from "./boss.js";
 import Slash from "./slash.js";
-import Medicine from "./weapons/medicine.js";
 import Virus from "./enemies/virus.js";
 import Human from "./enemies/human.js";
 
@@ -30,7 +29,11 @@ export default class Level extends Phaser.Scene {
     this.load.image("level_victory", "/sprites/level_victory.png");
     this.load.image("level_lose", "you_lose.png");
     this.load.image("mask", "/sprites/mascarilla.png");
-    this.load.image("V1-damage", "/sprites/Virus/V1-damage.png");
+    this.load.image("V1-damage", "/sprites/Virus/V1_damage.png");
+    this.load.image("V2-damage", "/sprites/Virus/V2_damage.png");
+    this.load.image("V3-damage", "/sprites/Virus/V3_damage.png");
+    this.load.image("V4-damage", "/sprites/Virus/V4_damage.png");
+
 
     //Spritesheets -------------------------------------------------------------
 
@@ -65,6 +68,19 @@ export default class Level extends Phaser.Scene {
       frameWidth: 50,
       frameHeight: 50,
     });
+    this.load.spritesheet("V2", "/sprites/Virus/V2.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("V3", "/sprites/Virus/V3.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("V4", "/sprites/Virus/V4.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+
 
     //Players
     this.load.spritesheet("player_1", "/sprites/Players/player_1.png", {
@@ -159,6 +175,24 @@ export default class Level extends Phaser.Scene {
     this.anims.create({
       key: "virus_1",
       frames: this.anims.generateFrameNumbers("V1"),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "virus_2",
+      frames: this.anims.generateFrameNumbers("V2"),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "virus_3",
+      frames: this.anims.generateFrameNumbers("V3"),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "virus_4",
+      frames: this.anims.generateFrameNumbers("V4"),
       frameRate: 5,
       repeat: -1,
     });
@@ -398,7 +432,7 @@ export default class Level extends Phaser.Scene {
     for (let x = 100; x < 200; x = x + 40) {
       for (let y = 50; y < 150; y = y + 50) { 
         let monster = new Virus(this, x, y, 1, this.enemies);
-        monster.play("virus_1");
+        monster.play(monster.animation);
         this.alive_monsters = this.alive_monsters + 1;
         this.tweens.timeline({targets: monster, ease: "Linear", duration:2000, tweens:monster.movements});
       }
@@ -409,7 +443,8 @@ export default class Level extends Phaser.Scene {
   createHumans() {
 
     let human = new Human(this, 200, 150, 1, this.enemies);
-    human.play("human_walk_1");
+    human.play(human.animation);
+    //human.play("human_walk_1");
     this.alive_monsters = this.alive_monsters + 1;
     this.tweens.timeline({targets: human, ease: "Linear", duration:2000, tweens: human.movements});
 

@@ -9,6 +9,7 @@ let vertical_tween = [
     
 let level_images = ["H1", "H2", "H3", "H4"];
 let level_damage_images = ["H1-damage", "H2-damage", "H3-damage", "H4-damage"];
+let level_animations = ["human_walk_1","human_walk_2","human_walk_3","human_walk_4","human_walk_5","human_walk_6"];
 let level_lives = [1, 3, 5, 7];
 
 //Para crear movimientos personalizados para los monstruos creamos
@@ -43,6 +44,7 @@ export default class Human extends Enemy{
         this.level = level_of_enemy;
         this.lives = level_lives[level_of_enemy - 1];
         this.movements = level_tweens[level_of_enemy - 1];
+        this.animation = level_animations[level_of_enemy - 1];
     }
 
     damage() {
