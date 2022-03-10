@@ -1,6 +1,12 @@
-export default class Enemy extends Phaser.GameObjects.Sprite {
-  constructor(scene, x, y) {
-    super(scene, x, y, "boss");
+let images = ["boss", "", "", "", "", ""];
+let damage_images = ["boss_damage", "", "", "", "", ""];
+
+export default class Boss extends Phaser.GameObjects.Sprite {
+
+  constructor(scene, x, y, boss_level) {
+    let name = images[boss_level - 1];
+    super(scene, x, y, name);
+    this.level = boss_level;
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.dialog = false;
@@ -42,5 +48,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
   recieveDamage(damage){
       this.life -= damage;
+      this.setTexture(damage_images[this.level - 1]);
   }
 }

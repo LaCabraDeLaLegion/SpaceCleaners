@@ -279,7 +279,7 @@ export default class Level extends Phaser.Scene {
   }
 
   startBossBattle() {
-    this.boss = new Boss(this, 420, -50);
+    this.boss = new Boss(this, 420, -50, 1);
     this.physics.add.collider(
       this.boss,
       this.lasers,
@@ -411,7 +411,6 @@ export default class Level extends Phaser.Scene {
   onHitBoss(boss, laser) {
     laser.destroy();
     this.impactSound.play();
-    this.boss.setTexture("boss_damage");
     this.boss.recieveDamage(1);
     if (this.boss.life > 0){
       this.time.delayedCall(100, () => {
