@@ -3,7 +3,7 @@ import Virus from "./virus.js";
 
 
 let vertical_tween = [
-{y: 400}
+{y: 500}
 ];
 
     

@@ -204,7 +204,8 @@ export default class Level extends Phaser.Scene {
   update() {
     if (this.alive_monsters <= 0 && !this.bossInScene) {
       this.startBossBattle();
-    } else if (this.bossInScene && this.boss.life <= 0) {
+    } 
+    else if (this.bossInScene && this.boss.life <= 0) {
       let victory = this.add.image(450, 250, "level_victory").setDepth(1);
       victory.setInteractive();
       victory.on("pointerup", () => {
@@ -213,6 +214,13 @@ export default class Level extends Phaser.Scene {
       });
     }
 
+    this.enemies.getChildren().forEach((enemy) => {
+      if (enemy.y >= 500){
+        this.scene.start("map", ["lose", this.level, this.inventory]);
+      }
+    }
+    );
+    
     this.slashes;
   }
 
