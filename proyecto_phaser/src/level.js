@@ -28,6 +28,7 @@ export default class Level extends Phaser.Scene {
     this.load.image("slash1", "/sprites/slash1.png");
     this.load.image("slash2", "/sprites/slash2.png");
     this.load.image("level_victory", "/sprites/level_victory.png");
+    this.load.image("level_lose", "you_lose.png");
     this.load.image("mask", "/sprites/mascarilla.png");
     this.load.image("V1-damage", "/sprites/Virus/V1-damage.png");
 
@@ -202,6 +203,9 @@ export default class Level extends Phaser.Scene {
   }
 
   update() {
+    
+    let destroy = false;
+
     if (this.alive_monsters <= 0 && !this.bossInScene) {
       this.startBossBattle();
     } 
@@ -216,12 +220,28 @@ export default class Level extends Phaser.Scene {
 
     this.enemies.getChildren().forEach((enemy) => {
       if (enemy.y >= 500){
-        this.scene.start("map", ["lose", this.level, this.inventory]);
+        this.player.setVisible(false);
+        let lose = this.add.image(450, 250, "level_lose").setDepth(1);
+        lose.setInteractive();
+        lose.on("pointerup", () => {
+          this.scene.start("map", ["lose", this.level, this.inventory]);
+          this.levelSong.stop();
+        });
+        destroy = true;
       }
     }
     );
-    
+
+    if (destroy){
+      this.destroy_enemies();
+    }
     this.slashes;
+  }
+
+  destroy_enemies(){
+    this.enemies.getChildren().forEach((enemy) => { 
+      this.enemies.killAndHide(enemy);
+    });
   }
 
   startBossBattle() {
@@ -358,11 +378,15 @@ export default class Level extends Phaser.Scene {
     laser.destroy();
     this.impactSound.play();
     this.boss.setTexture("boss_damage");
-    this.time.delayedCall(100, () => {
-      this.boss.setTexture("boss");
-    });
-
     this.boss.recieveDamage(1);
+    if (this.boss.life > 0){
+      this.time.delayedCall(100, () => {
+        this.boss.setTexture("boss");
+      });
+    }
+    else {
+       this.boss.destroy();
+    }
   }
 
   createEnemies() {
@@ -398,6 +422,16 @@ export default class Level extends Phaser.Scene {
   }
 
   game_over() {
-    this.scene.start("map", ["lose", this.level, this.inventory]);
+    this.boss.destroy();
+    this.player.setVisible(false);
+    this.slashes.getChildren().forEach((slash) => {
+      this.slashes.killAndHide(slash);
+    });
+    let lose = this.add.image(450, 250, "level_lose").setDepth(1);
+    lose.setInteractive();
+    lose.on("pointerup", () => {
+        this.scene.start("map", ["lose", this.level, this.inventory]);
+        this.levelSong.stop();
+    });
   }
 }
