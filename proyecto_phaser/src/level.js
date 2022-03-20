@@ -34,7 +34,6 @@ export default class Level extends Phaser.Scene {
     this.load.image("V3-damage", "/sprites/Virus/V3_damage.png");
     this.load.image("V4-damage", "/sprites/Virus/V4_damage.png");
 
-
     //Spritesheets -------------------------------------------------------------
 
     //Humans
@@ -80,7 +79,6 @@ export default class Level extends Phaser.Scene {
       frameWidth: 50,
       frameHeight: 50,
     });
-
 
     //Players
     this.load.spritesheet("player_1", "/sprites/Players/player_1.png", {
@@ -237,13 +235,11 @@ export default class Level extends Phaser.Scene {
   }
 
   update() {
-    
     let destroy = false;
 
     if (this.alive_monsters <= 0 && !this.bossInScene) {
       this.startBossBattle();
-    } 
-    else if (this.bossInScene && this.boss.life <= 0) {
+    } else if (this.bossInScene && this.boss.life <= 0) {
       let victory = this.add.image(450, 250, "level_victory").setDepth(1);
       victory.setInteractive();
       victory.on("pointerup", () => {
@@ -253,7 +249,7 @@ export default class Level extends Phaser.Scene {
     }
 
     this.enemies.getChildren().forEach((enemy) => {
-      if (enemy.y >= 500){
+      if (enemy.y >= 500) {
         this.player.setVisible(false);
         let lose = this.add.image(450, 250, "level_lose").setDepth(1);
         lose.setInteractive();
@@ -263,17 +259,16 @@ export default class Level extends Phaser.Scene {
         });
         destroy = true;
       }
-    }
-    );
+    });
 
-    if (destroy){
+    if (destroy) {
       this.destroy_enemies();
     }
     this.slashes;
   }
 
-  destroy_enemies(){
-    this.enemies.getChildren().forEach((enemy) => { 
+  destroy_enemies() {
+    this.enemies.getChildren().forEach((enemy) => {
       this.enemies.killAndHide(enemy);
     });
   }
@@ -388,7 +383,7 @@ export default class Level extends Phaser.Scene {
       if (enemy.lives == 0) {
         this.alive_monsters--;
       }
-    } else if (enemy.type === "human"){
+    } else if (enemy.type === "human") {
       enemy.mutate();
     }
   }
@@ -412,13 +407,12 @@ export default class Level extends Phaser.Scene {
     laser.destroy();
     this.impactSound.play();
     this.boss.recieveDamage(1);
-    if (this.boss.life > 0){
+    if (this.boss.life > 0) {
       this.time.delayedCall(100, () => {
         this.boss.setTexture("boss");
       });
-    }
-    else {
-       this.boss.destroy();
+    } else {
+      this.boss.destroy();
     }
   }
 
@@ -429,24 +423,31 @@ export default class Level extends Phaser.Scene {
 
   createMonsters() {
     for (let x = 100; x < 200; x = x + 40) {
-      for (let y = 50; y < 150; y = y + 50) { 
+      for (let y = 50; y < 150; y = y + 50) {
         let monster = new Virus(this, x, y, 1, this.enemies);
         monster.play(monster.animation);
         this.alive_monsters = this.alive_monsters + 1;
-        this.tweens.timeline({targets: monster, ease: "Linear", duration:2000, tweens:monster.movements});
+        this.tweens.timeline({
+          targets: monster,
+          ease: "Linear",
+          duration: 2000,
+          tweens: monster.movements,
+        });
       }
     }
-
   }
 
   createHumans() {
-
     let human = new Human(this, 200, 150, 1, this.enemies);
     human.play(human.animation);
     //human.play("human_walk_1");
     this.alive_monsters = this.alive_monsters + 1;
-    this.tweens.timeline({targets: human, ease: "Linear", duration:2000, tweens: human.movements});
-
+    this.tweens.timeline({
+      targets: human,
+      ease: "Linear",
+      duration: 2000,
+      tweens: human.movements,
+    });
 
     for (let x = 200; x < 200; x = x + 40) {
       for (let y = 50; y < 150; y = y + 50) {}
@@ -464,8 +465,8 @@ export default class Level extends Phaser.Scene {
     let lose = this.add.image(450, 250, "level_lose").setDepth(1);
     lose.setInteractive();
     lose.on("pointerup", () => {
-        this.scene.start("map", ["lose", this.level, this.inventory]);
-        this.levelSong.stop();
+      this.scene.start("map", ["lose", this.level, this.inventory]);
+      this.levelSong.stop();
     });
   }
 }

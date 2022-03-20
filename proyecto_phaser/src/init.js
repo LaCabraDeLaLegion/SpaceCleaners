@@ -10,15 +10,18 @@ var config = {
   height: 500,
   parent: "container",
   scene: [Menu, Map, Level, Win, GameOver],
-  render: {pixelArt: true},
+  render: { pixelArt: true },
+  fps: {
+    target: 60,
+    forceSetTimeOut: false,
+  },
   physics: {
     default: "arcade",
     arcade: {
-      debug: false
-    }
-  }
+      debug: false,
+    },
+  },
 };
 
-let game = new Phaser.Game(config);
-
-
+const game = new Phaser.Game(config);
+console.log(game.loop.actualFps);
