@@ -4,6 +4,10 @@ let level_images = ["V1", "V2", "V3", "V4"];
 let level_damage_images = ["V1-damage", "V2-damage", "V3-damage", "V4-damage"];
 let level_animations = ["virus_1", "virus_2", "virus_3", "virus_4"];
 let level_lives = [1, 3, 5, 7];
+let vertical_tween = [
+    {y: 500}
+    ];
+    
 
 //Para crear movimientos personalizados para los monstruos creamos
 //timelines especificos. Los tweens que se anadiran al timeline dependeran del nivel y tipo
@@ -73,6 +77,8 @@ export default class Virus extends Enemy{
             this.lives += 2;
             this.anims.stop();
             this.play(level_animations[this.level-1]); //Esto es lo que falta por planetar
+            this.movements = vertical_tween;
+            this.scene.tweens.timeline({targets: this, ease: "Linear", duration:2000, tweens:this.movements});
             console.log("mutate");
         }
         else {
@@ -81,6 +87,8 @@ export default class Virus extends Enemy{
             this.lives = level_lives[this.level-1];
             this.anims.stop();
             this.play(level_animations[this.level-1]); //Esto es lo que falta por planetar
+            this.movements = vertical_tween;
+            this.scene.tweens.timeline({targets: this, ease: "Linear", duration:2000, tweens:this.movements});
             console.log("mutate");
         }
     }
