@@ -194,30 +194,21 @@ export default class Level extends Phaser.Scene {
 
   onHit(enemy, laser) {
     laser.destroy();
-    if (enemy.type === "virus") {
-      this.impactSound.play();
-      enemy.damage();
-      console.log("monstruos vivos: " + this.alive_monsters);
-      if (enemy.lives == 0) {
-        this.alive_monsters--;
-      }
-    } else if (enemy.type === "human") {
-      enemy.mutate();
+    this.impactSound.play();
+    enemy.weapon_hit();
+    console.log("monstruos vivos: " + this.alive_monsters);
+    if (enemy.lives == 0) {
+      this.alive_monsters--;
     }
   }
 
   onMedcineHit(enemy, medicine) {
     medicine.destroy();
-
-    if (enemy.type === "human") {
-      this.impactSound.play();
-      enemy.damage();
-      console.log("monstruos vivos: " + this.alive_monsters);
-      if (enemy.lives == 0) {
-        this.alive_monsters--;
-      }
-    } else {
-      enemy.mutate();
+    this.impactSound.play();
+    enemy.medicine_hit();
+    console.log("monstruos vivos: " + this.alive_monsters);
+    if (enemy.lives == 0) {
+      this.alive_monsters--;
     }
   }
 

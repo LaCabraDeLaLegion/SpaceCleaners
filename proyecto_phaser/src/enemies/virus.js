@@ -50,7 +50,7 @@ export default class Virus extends Enemy{
         this.movements = level_tweens[level_of_enemy - 1];
     }
 
-    damage() {
+    weapon_hit(){
         console.log("virus.damage");
         this.lives--;
         this.anims.stop();
@@ -66,8 +66,7 @@ export default class Virus extends Enemy{
         });
     }
 
-    
-    mutate(){
+    medicine_hit(){
         this.level++;
         this.setTexture(level_images[this.level - 1]);
         this.lives = level_lives[this.level-1];

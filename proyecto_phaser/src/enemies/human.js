@@ -57,8 +57,15 @@ export default class Human extends Enemy{
         this.animation = level_animations[level_of_enemy - 1];
     }
 
-    damage() {
-        //De momento no hay animacion de dano para el humano
+    weapon_hit(){
+        let virus = new Virus(this.scene, this.x, this.y, this.level + 1, this.group);
+        virus.movements = vertical_tween;
+        virus.play("virus_1");
+        this.scene.tweens.timeline({targets: virus, ease: "Linear", duration:2000, tweens:virus.movements});
+        this.destroy();
+    }
+
+    medicine_hit(){
         this.lives--;
         /*
         this.anims.stop();
@@ -70,15 +77,5 @@ export default class Human extends Enemy{
             }
         });
         */
-    }
-
-    
-    mutate(){
-        //Idea actual. Creamos un virus en la misma posicion y en el mismo grupo. Le ponemos movimiento vertical. Destruimos el humano
-        let virus = new Virus(this.scene, this.x, this.y, this.level + 1, this.group);
-        virus.movements = vertical_tween;
-        virus.play("virus_1");
-        this.scene.tweens.timeline({targets: virus, ease: "Linear", duration:2000, tweens:virus.movements});
-        this.destroy();
     }
 }
