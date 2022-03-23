@@ -298,35 +298,43 @@ export default class Level extends Phaser.Scene {
 
   createMonsters() {
     
-    for (let x = 50; x < 900; x = x + 100) {
-      for (let y = 50; y < 150; y = y + 50) {
-        let monster = new Virus(this, x, y, 1, this.enemies);
+    if (this.level == 1){
+      let y = 0;
+      for (let i = 1; i<=20; i++){
+        let random_x = Phaser.Math.Between(0, 900);
+        y = y - 50;
+        let monster = new Virus(this, random_x, y, 1, this.enemies);
         monster.play(monster.animation);
         this.alive_monsters = this.alive_monsters + 1;
-        this.tweens.timeline({
+
+       this.tweens.timeline({
           targets: monster,
           ease: "Linear",
           duration: 2000,
           tweens: monster.movements,
         });
+
       }
     }
   }
 
   createHumans() {
-    let human = new Human(this, 200, 150, 1, this.enemies);
-    human.play(human.animation);
-    //human.play("human_walk_1");
-    this.alive_monsters = this.alive_monsters + 1;
-    this.tweens.timeline({
-      targets: human,
-      ease: "Linear",
-      duration: 2000,
-      tweens: human.movements,
-    });
 
-    for (let x = 200; x < 200; x = x + 40) {
-      for (let y = 50; y < 150; y = y + 50) {}
+    if (this.level == 1){
+      let y = - 200;
+      for (let i = 1; i<=10; i++){
+        let random_x = Phaser.Math.Between(0, 900);
+        y = y - 50;
+        let human = new Human(this, random_x, y, 1, this.enemies);
+        human.play(human.animation);
+        this.alive_monsters = this.alive_monsters + 1;
+        this.tweens.timeline({
+          targets: human,
+          ease: "Linear",
+          duration: 2000,
+          tweens: human.movements,
+        });
+      }
     }
 
     console.log("Bichos vivos iniciales: " + this.alive_monsters);

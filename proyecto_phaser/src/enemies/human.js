@@ -17,10 +17,20 @@ let level_lives = [1, 3, 5, 7];
 //La lista tweens_monsters contiene para cada nivel representado por el indice la lista de tweens
 let level_tweens = [
     [ //Provisional para el nivel 1
-        {x: "+= 400"},
-        {y: "+= 200"},
-        {x: "-= 400"},
-        {y: "-= 200"}
+        {x: "+=50",
+         y: "+=100"},
+        {x: "-=50",
+         y: "+=100"},
+        {x: "+=50",
+         y: "+=100"},
+        {x: "-=50",
+         y: "+=100"},
+        {x: "+=50",
+         y: "+=100"},
+        {x: "-=50",
+         y: "+=100"},
+        {x: "+=50",
+         y: "+=100"}
     ],
     [
         {},
