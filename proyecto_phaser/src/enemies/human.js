@@ -42,7 +42,7 @@ let level_tweens = [
 
 export default class Human extends Enemy{
   
-    constructor(scene, x, y, level_of_enemy, group) {
+    constructor(scene, x, y, level_of_enemy, group, planet_level) {
         
         let name = level_images[level_of_enemy - 1];
 
@@ -55,14 +55,25 @@ export default class Human extends Enemy{
         this.lives = level_lives[level_of_enemy - 1];
         this.movements = level_tweens[level_of_enemy - 1];
         this.animation = level_animations[level_of_enemy - 1];
+        this.max_level = planet_level;
     }
 
     weapon_hit(){
-        let virus = new Virus(this.scene, this.x, this.y, this.level + 1, this.group);
-        virus.movements = vertical_tween;
-        virus.play("virus_1");
-        this.scene.tweens.timeline({targets: virus, ease: "Linear", duration:2000, tweens:virus.movements});
-        this.destroy();
+        if (this.level >= this.max_level){
+            let virus = new Virus(this.scene, this.x, this.y, this.level, this.group);
+            virus.lives += 2;
+            virus.movements = vertical_tween;
+            virus.play("virus_1");
+            this.scene.tweens.timeline({targets: virus, ease: "Linear", duration:2000, tweens:virus.movements});
+            this.destroy();
+        }
+        else {
+            let virus = new Virus(this.scene, this.x, this.y, this.level + 1, this.group);
+            virus.movements = vertical_tween;
+            virus.play("virus_1");
+            this.scene.tweens.timeline({targets: virus, ease: "Linear", duration:2000, tweens:virus.movements});
+            this.destroy();
+        }
     }
 
     medicine_hit(){

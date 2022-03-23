@@ -300,7 +300,7 @@ export default class Level extends Phaser.Scene {
 
        this.tweens.timeline({
           targets: monster,
-          ease: "Linear",
+          ease: "easeInExpo",
           duration: 2000,
           tweens: monster.movements,
         });
@@ -321,7 +321,7 @@ export default class Level extends Phaser.Scene {
         this.alive_monsters = this.alive_monsters + 1;
         this.tweens.timeline({
           targets: human,
-          ease: "Linear",
+          ease: "easeInOutCubic",
           duration: 2000,
           tweens: human.movements,
         });

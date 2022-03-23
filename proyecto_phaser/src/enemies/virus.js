@@ -35,7 +35,7 @@ let level_tweens = [
 
 export default class Virus extends Enemy{
   
-    constructor(scene, x, y, level_of_enemy, group) {
+    constructor(scene, x, y, level_of_enemy, group, planet_level) {
         
         let name = level_images[level_of_enemy - 1];
 
@@ -48,6 +48,7 @@ export default class Virus extends Enemy{
         this.level = level_of_enemy;
         this.lives = level_lives[level_of_enemy - 1];
         this.movements = level_tweens[level_of_enemy - 1];
+        this.max_level = planet_level;
     }
 
     weapon_hit(){
@@ -67,11 +68,20 @@ export default class Virus extends Enemy{
     }
 
     medicine_hit(){
-        this.level++;
-        this.setTexture(level_images[this.level - 1]);
-        this.lives = level_lives[this.level-1];
-        this.anims.stop();
-        this.play(level_animations[this.level-1]); //Esto es lo que falta por planetar
-        console.log("mutate");
+        if (this.level >= this.max_level){
+            this.lives = level_lives[this.level - 1];
+            this.lives += 2;
+            this.anims.stop();
+            this.play(level_animations[this.level-1]); //Esto es lo que falta por planetar
+            console.log("mutate");
+        }
+        else {
+            this.level++;
+            this.setTexture(level_images[this.level - 1]);
+            this.lives = level_lives[this.level-1];
+            this.anims.stop();
+            this.play(level_animations[this.level-1]); //Esto es lo que falta por planetar
+            console.log("mutate");
+        }
     }
 }
