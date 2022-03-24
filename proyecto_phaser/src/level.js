@@ -66,7 +66,7 @@ export default class Level extends Phaser.Scene {
     }
 
     this.enemies.getChildren().forEach((enemy) => {
-      if (enemy.y >= 500) {
+      if (enemy.y >= this.cameras.main.height) {
         this.player.setVisible(false);
         let lose = this.add.image(450, 250, "level_lose").setDepth(1);
         lose.setInteractive();

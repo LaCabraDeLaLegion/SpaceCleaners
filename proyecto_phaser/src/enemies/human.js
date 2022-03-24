@@ -1,11 +1,5 @@
 import Enemy from "./enemy.js";
 import Virus from "./virus.js";
-
-
-let vertical_tween = [
-{y: 500}
-];
-
     
 let level_images = ["H1", "H2", "H3", "H4"];
 let level_damage_images = ["H1-damage", "H2-damage", "H3-damage", "H4-damage"];
@@ -62,14 +56,18 @@ export default class Human extends Enemy{
         if (this.level >= this.max_level){
             let virus = new Virus(this.scene, this.x, this.y, this.level, this.group);
             virus.lives += 2;
-            virus.movements = vertical_tween;
+            virus.movements = [
+                {y: this.scene.cameras.main.height}
+                ];
             virus.play("virus_1");
             this.scene.tweens.timeline({targets: virus, ease: "Linear", duration:2000, tweens:virus.movements});
             this.destroy();
         }
         else {
             let virus = new Virus(this.scene, this.x, this.y, this.level + 1, this.group);
-            virus.movements = vertical_tween;
+            virus.movements = [
+                {y: this.scene.cameras.main.height}
+                ];
             virus.play("virus_1");
             this.scene.tweens.timeline({targets: virus, ease: "Linear", duration:2000, tweens:virus.movements});
             this.destroy();

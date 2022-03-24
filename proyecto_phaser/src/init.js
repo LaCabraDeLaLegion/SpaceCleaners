@@ -4,17 +4,15 @@ import Map from "./map.js";
 import Win from "./win.js";
 import GameOver from "./game_over.js";
 
-const DPR = window.devicePixelRatio
-const { width, height } = window.screen
+const game_width = 0;
+const game_height = 0;
 
-// Set width and height.
-const WIDTH = Math.round(Math.max(width, height) * DPR)
-const HEIGHT = Math.round(Math.min(width, height) * DPR)
+const DPR = window.devicePixelRatio
 
 var config = {
   type: Phaser.AUTO,
-  width: 900,
-  height: 500,
+  width: window.innerWidth/2,
+  height: window.innerHeight,
   parent: "container",
   scene: [Menu, Map, Level, Win, GameOver],
   render: { pixelArt: true },
