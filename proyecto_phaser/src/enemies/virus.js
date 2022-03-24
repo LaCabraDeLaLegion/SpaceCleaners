@@ -1,37 +1,9 @@
 import Enemy from "./enemy.js";
 
-let level_images = ["V1", "V2", "V3", "V4"];
+let level_images = ["V1", "V2", "V2", "V2"];
 let level_damage_images = ["V1-damage", "V2-damage", "V3-damage", "V4-damage"];
 let level_animations = ["virus_1", "virus_2", "virus_3", "virus_4"];
 let level_lives = [1, 3, 5, 7];
-
-//Para crear movimientos personalizados para los monstruos creamos
-//timelines especificos. Los tweens que se anadiran al timeline dependeran del nivel y tipo
-//La lista tweens_monsters contiene para cada nivel representado por el indice la lista de tweens
-let level_tweens = [
-    [ //Provisional para el nivel 1
-        {x: "+=50",
-         y: "+=100"},
-        {x: "-=50",
-         y: "+=100"},
-        {x: "+=50",
-         y: "+=100"},
-        {x: "-=50",
-         y: "+=100"},
-        {x: "+=50",
-         y: "+=100"},
-        {x: "-=50",
-         y: "+=100"},
-        {x: "+=50",
-         y: "+=100"}
-    ],
-    [
-        {},
-        {},
-        {},
-        {}
-    ]
-];
 
 export default class Virus extends Enemy{
   
@@ -47,7 +19,6 @@ export default class Virus extends Enemy{
         this.type = "virus";
         this.level = level_of_enemy;
         this.lives = level_lives[level_of_enemy - 1];
-        this.movements = level_tweens[level_of_enemy - 1];
         this.max_level = planet_level;
     }
 
@@ -73,10 +44,9 @@ export default class Virus extends Enemy{
             this.lives += 2;
             this.anims.stop();
             this.play(level_animations[this.level-1]); //Esto es lo que falta por planetar
-            this.movements = [
-                {y: this.scene.cameras.main.height}
-                ];
-            this.scene.tweens.timeline({targets: this, ease: "Linear", duration:2000, tweens:this.movements});
+            this.scene.tweens.timeline({targets: virus, ease: "Linear", tweens:[
+                    {y: this.scene.cameras.main.height}
+                    ]});
             console.log("mutate");
         }
         else {
@@ -85,10 +55,9 @@ export default class Virus extends Enemy{
             this.lives = level_lives[this.level-1];
             this.anims.stop();
             this.play(level_animations[this.level-1]); //Esto es lo que falta por planetar
-            this.movements = [
-                {y: this.scene.cameras.main.height}
-                ];
-            this.scene.tweens.timeline({targets: this, ease: "Linear", duration:2000, tweens:this.movements});
+            this.scene.tweens.timeline({targets: virus, ease: "Linear", tweens:[
+                    {y: this.scene.cameras.main.height}
+                    ]});
             console.log("mutate");
         }
     }

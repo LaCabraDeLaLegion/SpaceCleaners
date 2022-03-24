@@ -11,6 +11,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
         this.dead = false;
 
+        this.x_right = true;
+        this.counter = 0;
     }
 
     addToGroup(group){
@@ -28,6 +30,22 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
                 console.log("destroy");
             });
         }
+
+        this.y += 1;
+        if (this.x_right){
+            this.x += 1;
+            this.counter++;
+        }
+        else {
+            this.x -= 1;
+            this.counter++;
+        }
+
+        if (this.counter == 50){
+            this.counter = 0;
+            this.x_right = !this.x_right;
+        }
+
 
     }
 }

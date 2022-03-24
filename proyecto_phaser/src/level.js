@@ -228,105 +228,34 @@ export default class Level extends Phaser.Scene {
   createEnemies() {
     this.createMonsters();
     this.createHumans();
-
-    /*
-    console.log("createEnemies");
-    console.log("enemies: " + this.alive_monsters);
-
-    let random_is_virus = Phaser.Math.Between(0, 100);
-    let random_level_of_enemy = Phaser.Math.Between(0, 100);
-
-    //Crete new viruses and humans depending on the level
-    if (this.level == 1 && this.alive_monsters < 10){
-      
-      let random_x = Phaser.Math.Between(0, 900);
-
-      //De momento, probabilidad de que sea virus o humano es del 50%
-      //Para los niveles del enemigo. Dependera del nivel. Para el nivel 1 solo bichos de nivel 1
-      if (random_is_virus >= 50){
-        let monster = new Virus(this, random_x, 50, 1, this.enemies);
-        monster.play(monster.animation);
-        this.alive_monsters = this.alive_monsters + 1;
-        this.tweens.timeline({
-          targets: monster,
-          ease: "Linear",
-          duration: 2000,
-          tweens: monster.movements,
-        });
-      }
-      else {
-        let human = new Human(this, random_x, 50, 1, this.enemies);
-        human.play(human.animation);
-        this.alive_monsters = this.alive_monsters + 1;
-        this.tweens.timeline({
-          targets: human,
-          ease: "Linear",
-          duration: 2000,
-          tweens: human.movements,
-        });
-      }
-    }
-    else if (this.level == 2 && this.alive_monsters < 20){
-
-    }
-    else if (this.level == 3  && this.alive_monsters < 30){
-
-    }
-    else if (this.level == 4 && this.alive_monsters < 40){
-
-    }
-    else if (this.level == 5 && this.alive_monsters < 50){
-
-    }
-    else if (this.level == 6 && this.alive_monsters < 60){
-
-    }
-    else if (this.level == 7 && this.alive_monsters < 70){
-
-    }
-    */
   }
 
   createMonsters() {
     
-    if (this.level == 1){
-      let y = 0;
-      for (let i = 1; i<=20; i++){
-        let random_x = Phaser.Math.Between(0, this.cameras.main.width - 50);
-        y = y - 50;
-        let monster = new Virus(this, random_x, y, 1, this.enemies);
-        monster.play(monster.animation);
-        this.alive_monsters = this.alive_monsters + 1;
-
-       this.tweens.timeline({
-          targets: monster,
-          ease: "easeInExpo",
-          duration: 2000,
-          tweens: monster.movements,
-        });
-
-      }
+    let y = 0;
+    for (let i = 1; i<=20 + (this.level - 1)*10; i++){
+      let random_x = Phaser.Math.Between(0, this.cameras.main.width - 50);
+      let random_level = Phaser.Math.Between(1, this.level);
+      y = y - 50;
+      let monster = new Virus(this, random_x, y, random_level, this.enemies);
+      monster.play(monster.animation);
+      this.alive_monsters = this.alive_monsters + 1;
     }
+
   }
 
   createHumans() {
 
-    if (this.level == 1){
-      let y = - 200;
-      for (let i = 1; i<=10; i++){
+    let y = - 200;
+      for (let i = 1; i<=10 + (this.level - 1)*10; i++){
         let random_x = Phaser.Math.Between(0, this.cameras.main.width - 50);
+        let random_level = Phaser.Math.Between(1, this.level);
+        console.log("random human level: " + random_level)
         y = y - 50;
-        let human = new Human(this, random_x, y, 1, this.enemies);
+        let human = new Human(this, random_x, y, random_level, this.enemies);
         human.play(human.animation);
         this.alive_monsters = this.alive_monsters + 1;
-        this.tweens.timeline({
-          targets: human,
-          ease: "easeInOutCubic",
-          duration: 2000,
-          tweens: human.movements,
-        });
       }
-    }
 
     console.log("Bichos vivos iniciales: " + this.alive_monsters);
   }
