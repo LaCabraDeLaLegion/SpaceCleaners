@@ -57,7 +57,7 @@ export default class Level extends Phaser.Scene {
     if (this.alive_monsters <= 0 && !this.bossInScene) {
       this.startBossBattle();
     } else if (this.bossInScene && this.boss.life <= 0) {
-      let victory = this.add.image(450, 250, "level_victory").setDepth(1);
+      let victory = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, "level_victory").setDepth(1);
       victory.setInteractive();
       victory.on("pointerup", () => {
         this.scene.start("map", ["win", this.level]);
@@ -68,7 +68,7 @@ export default class Level extends Phaser.Scene {
     this.enemies.getChildren().forEach((enemy) => {
       if (enemy.y >= this.cameras.main.height) {
         this.player.setVisible(false);
-        let lose = this.add.image(450, 250, "level_lose").setDepth(1);
+        let lose = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, "level_lose").setDepth(1);
         lose.setInteractive();
         lose.on("pointerup", () => {
           this.scene.start("map", ["lose", this.level, this.inventory]);
@@ -292,7 +292,7 @@ export default class Level extends Phaser.Scene {
     if (this.level == 1){
       let y = 0;
       for (let i = 1; i<=20; i++){
-        let random_x = Phaser.Math.Between(0, 900);
+        let random_x = Phaser.Math.Between(0, this.cameras.main.width - 50);
         y = y - 50;
         let monster = new Virus(this, random_x, y, 1, this.enemies);
         monster.play(monster.animation);
@@ -314,7 +314,7 @@ export default class Level extends Phaser.Scene {
     if (this.level == 1){
       let y = - 200;
       for (let i = 1; i<=10; i++){
-        let random_x = Phaser.Math.Between(0, 900);
+        let random_x = Phaser.Math.Between(0, this.cameras.main.width - 50);
         y = y - 50;
         let human = new Human(this, random_x, y, 1, this.enemies);
         human.play(human.animation);
@@ -337,7 +337,7 @@ export default class Level extends Phaser.Scene {
     this.slashes.getChildren().forEach((slash) => {
       this.slashes.killAndHide(slash);
     });
-    let lose = this.add.image(450, 250, "level_lose").setDepth(1);
+    let lose = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, "level_lose").setDepth(1);
     lose.setInteractive();
     lose.on("pointerup", () => {
       this.scene.start("map", ["lose", this.level, this.inventory]);
