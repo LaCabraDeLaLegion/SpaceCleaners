@@ -56,6 +56,7 @@ export default class Human extends Enemy{
         if (this.level >= this.max_level){
             let virus = new Virus(this.scene, this.x, this.y, this.level, this.group);
             virus.lives += 2;
+            console.log("camera height: ", this.scene.cameras.main.height);
             virus.movements = [
                 {y: this.scene.cameras.main.height}
                 ];
