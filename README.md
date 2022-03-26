@@ -8,7 +8,10 @@ Enlace para probar el juego: [https://lacabradelalegion.github.io/SpaceCleaners/
 
 Enlace a la página pública del juego: [https://lacabradelalegion.github.io/SpaceCleaners/index.html](https://lacabradelalegion.github.io/SpaceCleaners/index.html)
 
+AVISO: Todo este contenido puede verse también e nla página pública del juego.
+
 Grupo: 8 (NOMBRE QUE NO TENEMOS. WIIIIII)
+
 
 # GDD #
 
