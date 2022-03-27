@@ -1,0 +1,73 @@
+.header {
+    padding: 10px;
+    text-align: center;
+    background: #47077f;
+    color: #fb2aab;
+    font-family: "Bungee";
+    text-shadow: 1px 1px 1px white;
+}
+
+.navigator{
+    overflow: hidden;
+    font-family: "Bungee";
+    background-color: #232442;
+}
+
+.navigator a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #f5d349;
+    text-shadow: 1px 1px 1px white;
+}
+
+.navigator a:hover {
+    background-color: #f5d349;
+    color: #0f101d;
+  }
+
+.cards {  
+    padding: 0 16px;
+    text-align: center;
+    align-content: center;
+    font-size: 30px;
+    text-align: center;
+    font-family: "Bungee";
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.432);
+}
+
+.column {
+    font-size: 20px;
+    float: left;
+    width: 25%;
+    margin-bottom: 16px;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    padding: 2px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 90%;
+    font-family: "DM Sans";
+    background-color: #f5d349;
+    border-radius: 10px;
+  }
+
+  .card h1 {
+      font-family: "Bungee";
+      font-size: 25px;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  .container {
+    padding: 2px 16px;
+  }
