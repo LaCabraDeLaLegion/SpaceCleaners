@@ -44,7 +44,7 @@ export default class Virus extends Enemy{
             this.lives += 2;
             this.anims.stop();
             this.play(level_animations[this.level-1]); //Esto es lo que falta por planetar
-            this.scene.tweens.timeline({targets: virus, ease: "Linear", tweens:[
+            this.scene.tweens.timeline({targets: this, ease: "Linear", tweens:[
                     {y: this.scene.cameras.main.height}
                     ]});
             console.log("mutate");
@@ -55,7 +55,7 @@ export default class Virus extends Enemy{
             this.lives = level_lives[this.level-1];
             this.anims.stop();
             this.play(level_animations[this.level-1]); //Esto es lo que falta por planetar
-            this.scene.tweens.timeline({targets: virus, ease: "Linear", tweens:[
+            this.scene.tweens.timeline({targets: this, ease: "Linear", tweens:[
                     {y: this.scene.cameras.main.height}
                     ]});
             console.log("mutate");
