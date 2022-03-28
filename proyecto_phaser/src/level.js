@@ -232,10 +232,6 @@ export default class Level extends Phaser.Scene {
 
   createMonsters() {
     
-    let monster = new Virus(this, 100, 100, 1, this.enemies);
-    monster.play(monster.animation);
-    this.alive_monsters = 1;
-    /*
     let y = 0;
     for (let i = 1; i<=20 + (this.level - 1)*10; i++){
       let random_x = Phaser.Math.Between(0, this.cameras.main.width - 50);
@@ -245,13 +241,11 @@ export default class Level extends Phaser.Scene {
       monster.play(monster.animation);
       this.alive_monsters = this.alive_monsters + 1;
     }
-    */
 
   }
 
   createHumans() {
 
-    /*
     let y = - 200;
       for (let i = 1; i<=10 + (this.level - 1)*10; i++){
         let random_x = Phaser.Math.Between(0, this.cameras.main.width - 50);
@@ -262,8 +256,6 @@ export default class Level extends Phaser.Scene {
         human.play(human.animation);
         this.alive_monsters = this.alive_monsters + 1;
       }
-
-      */
 
     console.log("Bichos vivos iniciales: " + this.alive_monsters);
   }
