@@ -54,7 +54,7 @@ const store = {
         desc: "Coming soon",
         price: 10,
         page: 1,
-        img: "item1",
+        img: "item2",
         maxQuantity: 3
       },
       {
@@ -64,7 +64,7 @@ const store = {
         desc: "Coming soon",
         price: 100,
         page: 1,
-        img: "item1",
+        img: "item2",
         maxQuantity: 3
       },
     ],

@@ -55,6 +55,7 @@ export default class Shop extends Phaser.Scene {
     this.load.image("cash", "/sprites/cash.png");
     this.load.image("item", "/sprites/shop_item.png");
     this.load.image("item1", "/sprites/mascarilla.png");
+    this.load.image("item2", "/sprites/weapon.png");
     this.load.image("buy", "/sprites/shop_buy.png");
     this.load.image("buy_btn_hover", "/sprites/buy_btn_hover.png");
     this.load.image("coin", "/sprites/coin.png");
