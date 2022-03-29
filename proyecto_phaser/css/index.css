@@ -14,3 +14,8 @@ h1{
 body{
     background-image: url("../assets/sprites/Map/background.png");
 }
+
+@font-face {
+    font-family: MinimalPixel;
+    src: url("../assets/fonts/minimalpixel.ttf");
+}
