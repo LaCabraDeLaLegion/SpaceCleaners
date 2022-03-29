@@ -113,7 +113,7 @@ export default class Level extends Phaser.Scene {
         type,
         {
           x: this.player.x,
-          y: 500,
+          y: this.player.y,
         }
       );
       this.slashes.add(this.slash);
