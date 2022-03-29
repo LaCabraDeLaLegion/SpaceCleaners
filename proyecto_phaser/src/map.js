@@ -45,7 +45,8 @@ export default class Map extends Phaser.Scene {
       planet_counter--;
     }
 
-    if (!data[2]) this.inventory = {shield: false, weapon: [], medicine: [], money: 0};
+    if (!data[2])
+      this.inventory = { shield: false, weapons: [], medicines: [], money: 30 };
     else this.inventory = data[2];
   }
 
@@ -147,7 +148,11 @@ export default class Map extends Phaser.Scene {
 
     //Shop
     let shopButton = this.add
-      .image(this.cameras.main.width / 10 * 8, this.cameras.main.height / 9, "shop_btn")
+      .image(
+        (this.cameras.main.width / 10) * 8,
+        this.cameras.main.height / 9,
+        "shop_btn"
+      )
       .setDepth(2)
       .setScale(0.3);
     shopButton.setInteractive();
@@ -162,7 +167,7 @@ export default class Map extends Phaser.Scene {
       this.playSound.play();
       this.time.delayedCall(1000, () => {
         // this.introSong.pause();
-        this.scene.start("shop");
+        this.scene.start("shop", this.inventory);
       });
     });
 
@@ -176,12 +181,20 @@ export default class Map extends Phaser.Scene {
     this.planetSound = this.sound.add("button");
 
     this.add
-      .image(this.cameras.main.width / 2, this.cameras.main.height / 2, "background_map")
+      .image(
+        this.cameras.main.width / 2,
+        this.cameras.main.height / 2,
+        "background_map"
+      )
       .setDepth(1)
       .setScale(3);
 
     if (planet_owners[1] === "virus") {
-      this.planet_1 = this.physics.add.sprite(this.cameras.main.width / 3, this.cameras.main.height / 9 * 2, "planet_1_virus");
+      this.planet_1 = this.physics.add.sprite(
+        this.cameras.main.width / 3,
+        (this.cameras.main.height / 9) * 2,
+        "planet_1_virus"
+      );
       this.anims.create({
         key: "rotate_planet_1_virus",
         frames: this.anims.generateFrameNumbers("planet_1_virus"),
@@ -191,7 +204,11 @@ export default class Map extends Phaser.Scene {
       this.planet_1.setDepth(2);
       this.planet_1.play("rotate_planet_1_virus");
     } else {
-      this.planet_1 = this.physics.add.sprite(this.cameras.main.width / 3, this.cameras.main.height / 9 * 2, "planet_1_player");
+      this.planet_1 = this.physics.add.sprite(
+        this.cameras.main.width / 3,
+        (this.cameras.main.height / 9) * 2,
+        "planet_1_player"
+      );
       this.anims.create({
         key: "rotate_planet_1_player",
         frames: this.anims.generateFrameNumbers("planet_1_player"),
@@ -203,7 +220,11 @@ export default class Map extends Phaser.Scene {
     }
 
     if (planet_owners[2] === "virus") {
-      this.planet_2 = this.physics.add.sprite(this.cameras.main.width / 2, this.cameras.main.height / 9 * 3, "planet_2_virus");
+      this.planet_2 = this.physics.add.sprite(
+        this.cameras.main.width / 2,
+        (this.cameras.main.height / 9) * 3,
+        "planet_2_virus"
+      );
       this.anims.create({
         key: "rotate_planet_2_virus",
         frames: this.anims.generateFrameNumbers("planet_2_virus"),
@@ -213,7 +234,11 @@ export default class Map extends Phaser.Scene {
       this.planet_2.setDepth(2);
       this.planet_2.play("rotate_planet_2_virus");
     } else {
-      this.planet_2 = this.physics.add.sprite(this.cameras.main.width / 2, this.cameras.main.height / 9 * 3, "planet_2_player");
+      this.planet_2 = this.physics.add.sprite(
+        this.cameras.main.width / 2,
+        (this.cameras.main.height / 9) * 3,
+        "planet_2_player"
+      );
       this.anims.create({
         key: "rotate_planet_2_player",
         frames: this.anims.generateFrameNumbers("planet_2_player"),
@@ -225,7 +250,11 @@ export default class Map extends Phaser.Scene {
     }
 
     if (planet_owners[3] === "virus") {
-      this.planet_3 = this.physics.add.sprite(this.cameras.main.width / 5, this.cameras.main.height / 9 * 4, "planet_3_virus");
+      this.planet_3 = this.physics.add.sprite(
+        this.cameras.main.width / 5,
+        (this.cameras.main.height / 9) * 4,
+        "planet_3_virus"
+      );
       this.anims.create({
         key: "rotate_planet_3_virus",
         frames: this.anims.generateFrameNumbers("planet_3_virus"),
@@ -235,7 +264,11 @@ export default class Map extends Phaser.Scene {
       this.planet_3.setDepth(2);
       this.planet_3.play("rotate_planet_3_virus");
     } else {
-      this.planet_3 = this.physics.add.sprite(this.cameras.main.width / 5, this.cameras.main.height / 9 * 4, "planet_3_player");
+      this.planet_3 = this.physics.add.sprite(
+        this.cameras.main.width / 5,
+        (this.cameras.main.height / 9) * 4,
+        "planet_3_player"
+      );
       this.anims.create({
         key: "rotate_planet_3_player",
         frames: this.anims.generateFrameNumbers("planet_3_player"),
@@ -247,7 +280,11 @@ export default class Map extends Phaser.Scene {
     }
 
     if (planet_owners[4] === "virus") {
-      this.planet_4 = this.physics.add.sprite(this.cameras.main.width / 2, this.cameras.main.height / 9 * 5, "planet_4_virus");
+      this.planet_4 = this.physics.add.sprite(
+        this.cameras.main.width / 2,
+        (this.cameras.main.height / 9) * 5,
+        "planet_4_virus"
+      );
       this.anims.create({
         key: "rotate_planet_4_virus",
         frames: this.anims.generateFrameNumbers("planet_4_virus"),
@@ -257,7 +294,11 @@ export default class Map extends Phaser.Scene {
       this.planet_4.setDepth(2);
       this.planet_4.play("rotate_planet_4_virus");
     } else {
-      this.planet_4 = this.physics.add.sprite(this.cameras.main.width / 2, this.cameras.main.height / 9 * 5, "planet_4_player");
+      this.planet_4 = this.physics.add.sprite(
+        this.cameras.main.width / 2,
+        (this.cameras.main.height / 9) * 5,
+        "planet_4_player"
+      );
       this.anims.create({
         key: "rotate_planet_4_player",
         frames: this.anims.generateFrameNumbers("planet_4_player"),
@@ -269,7 +310,11 @@ export default class Map extends Phaser.Scene {
     }
 
     if (planet_owners[5] === "virus") {
-      this.planet_5 = this.physics.add.sprite(this.cameras.main.width / 5 * 4, this.cameras.main.height / 9 * 6, "planet_5_virus");
+      this.planet_5 = this.physics.add.sprite(
+        (this.cameras.main.width / 5) * 4,
+        (this.cameras.main.height / 9) * 6,
+        "planet_5_virus"
+      );
       this.anims.create({
         key: "rotate_planet_5_virus",
         frames: this.anims.generateFrameNumbers("planet_5_virus"),
@@ -279,7 +324,11 @@ export default class Map extends Phaser.Scene {
       this.planet_5.setDepth(2);
       this.planet_5.play("rotate_planet_5_virus");
     } else {
-      this.planet_5 = this.physics.add.sprite(this.cameras.main.width  / 5 * 4, this.cameras.main.height / 9 * 6, "planet_5_player");
+      this.planet_5 = this.physics.add.sprite(
+        (this.cameras.main.width / 5) * 4,
+        (this.cameras.main.height / 9) * 6,
+        "planet_5_player"
+      );
       this.anims.create({
         key: "rotate_planet_5_player",
         frames: this.anims.generateFrameNumbers("planet_5_player"),
@@ -291,7 +340,11 @@ export default class Map extends Phaser.Scene {
     }
 
     if (planet_owners[6] === "virus") {
-      this.planet_6 = this.physics.add.sprite(this.cameras.main.width  / 5 * 3, this.cameras.main.height / 9 * 7, "planet_6_virus");
+      this.planet_6 = this.physics.add.sprite(
+        (this.cameras.main.width / 5) * 3,
+        (this.cameras.main.height / 9) * 7,
+        "planet_6_virus"
+      );
       this.anims.create({
         key: "rotate_planet_6_virus",
         frames: this.anims.generateFrameNumbers("planet_6_virus"),
@@ -301,7 +354,11 @@ export default class Map extends Phaser.Scene {
       this.planet_6.setDepth(2);
       this.planet_6.play("rotate_planet_6_virus");
     } else {
-      this.planet_6 = this.physics.add.sprite(this.cameras.main.width  / 5 * 3, this.cameras.main.height / 9 * 7, "planet_6_player");
+      this.planet_6 = this.physics.add.sprite(
+        (this.cameras.main.width / 5) * 3,
+        (this.cameras.main.height / 9) * 7,
+        "planet_6_player"
+      );
       this.anims.create({
         key: "rotate_planet_6_player",
         frames: this.anims.generateFrameNumbers("planet_6_player"),
@@ -313,7 +370,11 @@ export default class Map extends Phaser.Scene {
     }
 
     if (planet_owners[7] === "virus") {
-      this.planet_7 = this.physics.add.sprite(this.cameras.main.width / 3, this.cameras.main.height / 9 * 8, "planet_7_virus");
+      this.planet_7 = this.physics.add.sprite(
+        this.cameras.main.width / 3,
+        (this.cameras.main.height / 9) * 8,
+        "planet_7_virus"
+      );
       this.anims.create({
         key: "rotate_planet_7_virus",
         frames: this.anims.generateFrameNumbers("planet_7_virus"),
@@ -323,7 +384,11 @@ export default class Map extends Phaser.Scene {
       this.planet_7.setDepth(2).setScale(2);
       this.planet_7.play("rotate_planet_7_virus");
     } else {
-      this.planet_7 = this.physics.add.sprite(this.cameras.main.width / 3, this.cameras.main.height / 9 * 8, "planet_7_player");
+      this.planet_7 = this.physics.add.sprite(
+        this.cameras.main.width / 3,
+        (this.cameras.main.height / 9) * 8,
+        "planet_7_player"
+      );
       this.anims.create({
         key: "rotate_planet_7_player",
         frames: this.anims.generateFrameNumbers("planet_7_player"),
@@ -334,7 +399,11 @@ export default class Map extends Phaser.Scene {
       this.planet_7.play("rotate_planet_7_player");
     }
 
-    this.earth = this.physics.add.sprite(this.cameras.main.width / 2, this.cameras.main.height / 9, "earth");
+    this.earth = this.physics.add.sprite(
+      this.cameras.main.width / 2,
+      this.cameras.main.height / 9,
+      "earth"
+    );
     this.anims.create({
       key: "rotate_earth",
       frames: this.anims.generateFrameNumbers("earth"),
