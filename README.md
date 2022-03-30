@@ -79,15 +79,21 @@ Nivel máximo de humanos infectados: 1
 Patrón: 
 
 (Primer grupo que aparece)
+
 V1 V1 H1 V1 V1
+
 V1 V1 H1 V1 V1
 
 (Segundo grupo que aparece) -> Tiempo de espera: 10 segundos
+
 V1 V1 H1 V1 V1
+
 V1 V1 H1 V1 V1
 
 (Tercer grupo que aparece)  -> Tiempo de espera: 20 segundos
+
 V1 V1 H1 V1 V1
+
 H1 H1 H1 H1 H1
 
 Boss: nivel 1
