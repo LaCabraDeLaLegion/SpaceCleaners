@@ -66,6 +66,8 @@ Por ejemplo, el jugador puede haber desinfectado los niveles 1, 2 y 3 pero los v
 
 A continuación tenemos las características de cada nivel.
 
+(METER IMÁGENES DE LOS PATRONES PORQUE EL MARKDOWN ME TOCA LAS NARICES :) )
+
 ##### Nivel 1 #####
 
 Número de virus mutados: 20
