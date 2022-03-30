@@ -1,0 +1,53 @@
+body{
+    font-family: "DM Sans";
+    font-size: 18px;
+}
+
+#text_container {
+    padding: 2%;
+}
+
+.header {
+    padding: 10px;
+    text-align: center;
+    background: #47077f;
+    color: #fb2aab;
+    font-family: "Bungee";
+    text-shadow: 1px 1px 1px white;
+}
+
+.navigator{
+    overflow: hidden;
+    font-family: "Bungee";
+    background-color: #232442;
+}
+
+.navigator a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #f5d349;
+    text-shadow: 1px 1px 1px white;
+}
+
+.navigator a:hover {
+    background-color: #f5d349;
+    color: #0f101d;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: "Bungee";
+    text-align: center;
+    text-shadow: 1px 1px 2px rgb(138, 138, 138);
+}
+
+h1 {
+    color: #fb2aab;
+}
+
+h2 {
+    color: #47077f;
+}

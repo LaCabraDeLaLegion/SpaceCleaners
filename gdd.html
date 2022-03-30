@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/gdd.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+   
+    <div class="header">
+        <h1>Space Cleaners</h1>
+    </div>
+
+    <div class="navigator">
+        <a href="index.html"><i class="fa fa-home"></i></a>
+        <a href="/proyecto_phaser/index.html">El juego</a>
+        <a href="#">GDD</a>
+        <a href="#">Instrucciones</a>
+        <a href="gdd.html">Sobre Nosotros</a>
+    </div>
+
+    <div id="text_container">
+
+        <h1 id="gdd">Game Development Document </h1>
+        
+        <h2 id="datos-generales">Datos generales</h2>
+
+        <p>Descripción general: Este juego está basado en juegos de tipo arcade como el space invaders. En este caso el enemigo es un virus que ha infectado una serie de planetas que el jugador deberá desinfectar para ganar la partida. En cambio, si el virus consigue infectar la Tierra el jugador habrá perdido la batalla.</p>
+        
+        <ul>
+            <li>Género: arcade</li>
+            <li>PEGI: 7 (Esto habrá que pensarlo, he puesto un número al azar pinto pinto gorgorito)</li>
+            <li>Plataforma: ????</li>
+        </ul>
+
+        <h2 id="historia">Historia</h2>
+        <p>La raza humana ha establecido colonias a lo largo y ancho de la galaxia. Una catástrofe natural ha hecho que se libere un virus mutado con el que estaban trabajando unos científicos en el planeta más lejano. Este virus se expande con mucha rapidez y ha mutado a pasos agigantados. Ahora todas las colonias han sido infectadas, los humanos que allí vivían son prácticamente zombies presas de la enfermedad y especímenes monstruosos fruto de las mutaciones del virus asolan las calles. Sólo queda la Tierra.</p>
+        <p>El gobierno mundial ha creado un ejército de emergencia y ha utilizado todos los recursos disponibles para aprovisionar a sus soldados de armas y medicinas diseñadas por sus científicos para eliminar la infección. La misión del jugador será liderar este ejército para destruir al virus.</p>
+        
+        <h2 id="funcionamiento-general-del-juego">Funcionamiento general del juego</h2>
+        <p>El funcionamiento del juego es muy sencillo. Al iniciar el juego hay 7 planetas además de la Tierra infectados por el virus. El jugador deberá ir desinfectando cada planeta hasta conseguir desinfectarlos todos.</p>
+        <p>Los planetas reperesentan distintos niveles del juego que van aumentando en dificultad cuanto más nos alejamos de la Tierra. Al iniciar la partida sólo el nivel 1 está desbloqueado (disponible para desinfectar). Cuando se desinfecta un planeta los planetas vecinos se desbloquean.</p>
+        <p>Cuando el jugador selecciona un planeta para desinfectar se inicia el nivel correspondiente. Cada nivel tiene 2 fases: desinfección y pelea con un boss. La primera fase consiste en eliminar todos los enemigos antes de que alcancen a nuestras tropas (límite inferior de la pantalla). En cada nivel aparecerá un boss que intentará matar al jugador lanzando distintos ataques. Si el jugador consigue matar al boss antes de quedarse sin vida habrá ganado la partida.</p>
+        <p>En caso de que el jugador gane ambas fases del nivel el planeta será desinfectado. En caso contrario el planeeta seguirá infectado. Cada batalla representa un turno. Cada turno el virus tiene una probabilidad determinada de reinfectar un planeta.</p>
+        <p>Cada vez que el jugador supera un nivel se le otorgan una serie de monedas que puede utilizar en la tienda del juego para comprar armas, medicinas y consumibles. Estos elementos se irán desbloqueando según el jugador vaya desbloqueando niveles.</p>
+        
+        <h2 id="mapa">Mapa</h2>
+        <p>El jugador deberá decidir qué planeta va a intentar desinfectar. Para ello dispone de un mapa en el que se muestran todos los planetas así como su estado (infectado o desinfectado) y si está desbloqueado o no. Se utiliza un código de colores para mostrar al jugador qué planetas están infectados y candados para simbolizar si está bloqueado.</p>
+        <p>Al comienzo de la partida, el mapa mostrará todos los planetas menos la Tierra como infectados. Además, el único planeta desbloqueado (posible desinfectar) es el planeta más cercano a la Tierra correspondiente al nivel 1. Cada planeta tiene un nivel de dificultad distinto y están ordenados en el mapa por nivel de dificultad utiliznado la Tierra como referencia.</p>
+        <p>Aspecto inicial del mapa:
+        (CAPTURA DE PANTALLA DEL MAPA)</p>
+        <p>Según el jugador va desinfectando niveles el siguiente nivel se desbloquea. Adicionalmente, tras cada batalla el virus tiene la posibilidad de reinfectar un planeta (la probabilidad de que esto sucede depende del nivel de dificultad del juego seleccionado por el jugador). Para que el jugador tenga la posibilidad de adaptarse al juego se dan unas rondas de tregua en las que los virus no reinfectan planetas (cuántas dependerá del nivel de dificutlad).</p>
+        <p>Características de los niveles de dificultad (provisional):</p>
+        <ul>
+        <li>EASY: probabilidad de reinfección 10% y 10 turnos de tregua.</li>
+        <li>MEDIUM: probabilidad de reinfección 20% y 5 turnos de tregua.</li>
+        <li>HARD: probabilidad de reinfección 40% y 2 turnos de tregua.</li>
+        </ul>
+        <p>Por ejemplo, el jugador puede haber desinfectado los niveles 1, 2 y 3 pero los virus han reinfectado el planeta número 2 en el mismo turno quedando el mapa de la siguiente manera:</p>
+        <p>(CAPTURA DE PANTALLA DEL MAPA)</p>
+        <p>A continuación tenemos las características de cada nivel.</p>
+        <p>(METER IMÁGENES DE LOS PATRONES PORQUE EL MARKDOWN ME TOCA LAS NARICES :) )</p>
+        
+        <h4 id="nivel-1">Nivel 1</h4>
+        <p>Número de virus mutados: 20</p>
+        <p>Número de humanos infectados: 10</p>
+        <p>Nivel máximo de virus: 1</p>
+        <p>Nivel máximo de humanos infectados: 1</p>
+        <p>Patrón: </p>
+        <p>(Primer grupo que aparece)</p>
+        <p>V1 V1 H1 V1 V1</p>
+        <p>V1 V1 H1 V1 V1</p>
+        <p>(Segundo grupo que aparece) -&gt; Tiempo de espera: 10 segundos</p>
+        <p>V1 V1 H1 V1 V1</p>
+        <p>V1 V1 H1 V1 V1</p>
+        <p>(Tercer grupo que aparece)  -&gt; Tiempo de espera: 20 segundos</p>
+        <p>V1 V1 H1 V1 V1</p>
+        <p>H1 H1 H1 H1 H1</p>
+        <p>Boss: nivel 1</p>
+        <p>Agujeros negros: No</p>
+        <p>Monedas: 100</p>
+        
+        <h4 id="nivel-2">Nivel 2</h4>
+        <p>Número de virus mutados: 20</p>
+        <p>Número de humanos infectados: 20</p>
+        <p>Nivel máximo de virus: 2</p>
+        <p>Nivel máximo de humanos infectados: 2</p>
+        <p>Patrón: </p>
+        <p>(Primer grupo que aparece)</p>
+        <p>H1 V1 V1 H1 V1 V1 H1</p>
+        <p>H1 V1 V1 H1 V1 V1 H1</p>
+        <p>(Segundo grupo que aparece) -&gt; Tiempo de espera: 10 segundos</p>
+        <p>H1 V1 V1 H1 V1 V1 H1</p>
+        <p>   V1 V1 H1 V1 V1</p>
+        <p>(Tercer grupo que aparece)  -&gt; Tiempo de espera: 25 segundos</p>
+        <p>H2 V2 V2 H2 V2 V2 H2</p>
+        <p>H2 H2 H2 H2 H2 H2 H2</p>
+        <p>Boss: nivel 2</p>
+        <p>Agujeros negros: No</p>
+        <p>Monedas: 200</p>
+        
+        <h4 id="nivel-3">Nivel 3</h4>
+        <p>Número de virus mutados: 25</p>
+        <p>Número de humanos infectados: 25</p>
+        <p>Nivel máximo de virus: 3</p>
+        <p>Nivel máximo de humanos infectados: 3</p>
+        <p>Patrón: </p>
+        <p>(Primer grupo que aparece)</p>
+        <p>V1 V1 H1 H1 V1 V1</p>
+        <p>V2 V2 H2 H2 V2 V2</p>
+        <p>(Segundo grupo que aparece) -&gt; Tiempo de espera: 10 segundos</p>
+        <p>V2 V2 H2 H2 H2 V2 V2</p>
+        <p>V2 V2 H2 H2 H2 V2 V2</p>
+        <p>(Tercer grupo que aparece)  -&gt; Tiempo de espera: 25 segundos</p>
+        <p>H3 V2 V2 H2 H2 V2 V2 H3</p>
+        <pre><code>  <span class="hljs-built_in">V3</span> H3 H3 <span class="hljs-built_in">V3</span>
+
+            H3 H3
+        </code></pre><p>(Cuarto grupo que aparece) -&gt; Tiempo de espera: 50 segundos</p>
+        <p>H3 H3 H3 H3 H3 H3 H3 </p>
+        <p>   H3 V3 V3 V3 H3</p>
+        <p>Boss: nivel 3</p>
+        <p>Agujeros negros: Sí</p>
+        <p>Monedas: 300</p>
+
+        <h4 id="nivel-4">Nivel 4</h4>
+        <h4 id="nivel-5">Nivel 5</h4>
+        <h4 id="nivel-6">Nivel 6</h4>
+        <h4 id="nivel-7">Nivel 7</h4>
+        
+        <h2 id="enemigos">Enemigos</h2>
+        <p>Hay dos etapas en cada ronda: desinfección del virus y pelea con el boss. En la primera etapa, el jugador deberá eliminar a todos los enemigos antes de que éstos lleguen al final de la pantalla (alcancen a las tropas). Una vez todos los enemigos son eliminados entra en escena el boss final (diferente para cada nivel). Para ganar la partida el jugador deberá bajar la vida del boss a 0 y eliminarlo. Por su parte el boss lanza ataques al jugador que le irán quitando vida. Si el jugador pierde toda su vida pierde la partida.</p>
+        <p>En la primera etapa hay dos tipos diferentes de enemigos: virus mutados y humanos infectados. El objetivo es eliminar los virus mutados utilizando armas y desinfectar a los humanos utilizando medicinas. Si se utiliza el arma sobre un humano mutará conviertiéndose en un virus de mayor nivel cuyo movimiento pasará a ser vertical. Lo mismo sucede si se ataca con una medicina a un virus.</p>
+        
+        <h3 id="virus-mutados">Virus mutados</h3>
+        <p>Los virus mutados pueden ser de 6 niveles.</p>
+        <h4 id="nivel-1">Nivel 1</h4>
+        <p>Vidas: 1</p>
+        <p>Desplazamiento: en zig zag (5 a la derecha y 5 a la izquierda)</p>
+        <p>Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.</p>
+        <p>Penalización por mutación: -5 monedas</p>
+        <p>Spritesheet del virus moviéndose:</p>
+        <p>Imágen del virus recibiendo daño:</p>
+        <p>Spritesheet del virus muriendo:</p>
+        
+        <h4 id="nivel-2">Nivel 2</h4>
+        <p>Vidas: 2</p>
+        <p>Desplazamiento: en zig zag (10 a la derecha y 10 a la izquierda de dos en dos)</p>
+        <p>Mutación: se convierte en un virus mutado de nivel 3 y su desplazamiento pasa a ser vertical.</p>
+        <p>Penalización por mutación: -10 monedas</p>
+        <p>Spritesheet del virus moviéndose:</p>
+        <p>Imágen del virus recibiendo daño:</p>
+        <p>Spritesheet del virus muriendo:</p>
+
+        <h4 id="nivel-3">Nivel 3</h4>
+        <p>Vidas: 3</p>
+        <p>Desplazamiento: en zig zag alternando (primero 5 a la derecha y 5 a la izquierda de uno en uno y luego 10 a la derecha y 10 a la izquierda de dos en dos)</p>
+        <p>Mutación: se convierte en un virus mutado de nivel 4 y su desplazamiento pasa a ser vertical.</p>
+        <p>Penalización por mutación: -15 monedas</p>
+        <p>Spritesheet del virus moviéndose:</p>
+        <p>Imágen del virus recibiendo daño:</p>
+        <p>Spritesheet del virus muriendo:</p>
+
+        <h4 id="nivel-4">Nivel 4</h4>
+        <p>Vidas: 5</p>
+        <p>Desplazamiento: en zig zag alternando (dos veces 5 a la derecha y 5 a la izquierda de uno en uno y luego 10 a la derecha y 10 a la izquierda de dos en dos)</p>
+        <p>Mutación: se convierte en un virus mutado de nivel 5 y su desplazamiento pasa a ser vertical.</p>
+        <p>Penalización por mutación: -20 monedas</p>
+        <p>Spritesheet del virus moviéndose:</p>
+        <p>Imágen del virus recibiendo daño:</p>
+        <p>Spritesheet del virus muriendo:</p>
+
+        <h4 id="nivel-5">Nivel 5</h4>
+        <p>Vidas: 7</p>
+        <p>Desplazamiento: en zig zag alternando (dos veces 5 a la derecha y 5 a la izquierda de uno en uno y luego dos veces 10 a la derecha y 10 a la izquierda de dos en dos)</p>
+        <p>Mutación: se convierte en un virus mutado de nivel 6 y su desplazamiento pasa a ser vertical.</p>
+        <p>Penalización por mutación: -25 monedas</p>
+        <p>Spritesheet del virus moviéndose:</p>
+        <p>Imágen del virus recibiendo daño:</p>
+        <p>Spritesheet del virus muriendo:</p>
+
+        <h4 id="nivel-6">Nivel 6</h4>
+        <p>Vidas: 8</p>
+        <p>Desplazamiento: en zig zag (20 a la derecha y 20 a la izquierda de dos en dos)</p>
+        <p>Mutación: su vida pasa a ser 10 y su desplazamiento pasa a ser vertical.</p>
+        <p>Penalización por mutación: -30 monedas</p>
+        <p>Spritesheet del virus moviéndose:</p>
+        <p>Imágen del virus recibiendo daño:</p>
+        <p>Spritesheet del virus muriendo:</p>
+
+        <h3 id="humanos-infectados">Humanos infectados</h3>
+
+        <h4 id="nivel-1">Nivel 1</h4>
+        <p>Vidas: 1</p>
+        <p>Desplazamiento: en zig zag (5 a la derecha y 5 a la izquierda)</p>
+        <p>Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.</p>
+        <p>Penalización por mutación: -5 monedas</p>
+        <p>Spritesheet del humano moviéndose:</p>
+        <p>Imágen del humano recibiendo daño:</p>
+        <p>Spritesheet del humano muriendo:</p>
+
+        <h4 id="nivel-2">Nivel 2</h4>
+        <p>Vidas: 2</p>
+        <p>Desplazamiento: en zig zag (10 a la derecha y 10 a la izquierda de dos en dos)</p>
+        <p>Mutación: se convierte en un virus mutado de nivel 3 y su desplazamiento pasa a ser vertical.</p>
+        <p>Penalización por mutación: -10 monedas</p>
+        <p>Spritesheet del humano moviéndose:</p>
+        <p>Imágen del humano recibiendo daño:</p>
+        <p>Spritesheet del humano muriendo:</p>
+
+        <h4 id="nivel-3">Nivel 3</h4>
+        <p>Vidas: 3</p>
+        <p>Desplazamiento: en zig zag alternando (primero 5 a la derecha y 5 a la izquierda de uno en uno y luego 10 a la derecha y 10 a la izquierda de dos en dos)</p>
+        <p>Mutación: se convierte en un virus mutado de nivel 4 y su desplazamiento pasa a ser vertical.</p>
+        <p>Penalización por mutación: -15 monedas</p>
+        <p>Spritesheet del humano moviéndose:</p>
+        <p>Imágen del humano recibiendo daño:</p>
+        <p>Spritesheet del humano muriendo:</p>
+
+        <h4 id="nivel-4">Nivel 4</h4>
+        <p>Vidas: 5</p>
+        <p>Desplazamiento: en zig zag alternando (dos veces 5 a la derecha y 5 a la izquierda de uno en uno y luego 10 a la derecha y 10 a la izquierda de dos en dos)</p>
+        <p>Mutación: se convierte en un virus mutado de nivel 5 y su desplazamiento pasa a ser vertical.</p>
+        <p>Penalización por mutación: -20 monedas</p>
+        <p>Spritesheet del humano moviéndose:</p>
+        <p>Imágen del humano recibiendo daño:</p>
+        <p>Spritesheet del humano muriendo:</p>
+
+        <h4 id="nivel-5">Nivel 5</h4>
+        <p>Vidas: 7</p>
+        <p>Desplazamiento: en zig zag alternando (dos veces 5 a la derecha y 5 a la izquierda de uno en uno y luego dos veces 10 a la derecha y 10 a la izquierda de dos en dos)</p>
+        <p>Mutación: se convierte en un virus mutado de nivel 6 y su desplazamiento pasa a ser vertical.</p>
+        <p>Penalización por mutación: -25 monedas</p>
+        <p>Spritesheet del humano moviéndose:</p>
+        <p>Imágen del humano recibiendo daño:</p>
+        <p>Spritesheet del humano muriendo:</p>
+
+        <h4 id="nivel-6">Nivel 6</h4>
+        <p>Vidas: 8</p>
+        <p>Desplazamiento: en zig zag (20 a la derecha y 20 a la izquierda de dos en dos)</p>
+        <p>Mutación: se convierte en un virus mutado de nivel 6 y su desplazamiento pasa a ser vertical.</p>
+        <p>Penalización por mutación: -30 monedas</p>
+        <p>Spritesheet del humano moviéndose:</p>
+        <p>Imágen del humano recibiendo daño:</p>
+        <p>Spritesheet del humano muriendo:</p>
+
+        <h3 id="bosses">Bosses</h3>
+
+        <h4 id="nivel-1">Nivel 1</h4>
+        <p>Vidas: 50</p>
+        <p>Desplazamiento: de extremo a extremo</p>
+        <p>Armas que lanza:</p>
+        <ul>
+        <li>Slash 1: <ul>
+        <li>Daño: 1 </li>
+        <li>Imágen:</li>
+        </ul>
+        </li>
+        <li>Slash 2:<ul>
+        <li>Daño: 2</li>
+        <li>Imágen: </li>
+        </ul>
+        </li>
+        </ul>
+        <p>Imágen del boss:</p>
+        <p>Imágen del boss sangrando:</p>
+
+        <h4 id="nivel-2">Nivel 2</h4>
+        <h4 id="nivel-3">Nivel 3</h4>
+        <h4 id="nivel-4">Nivel 4</h4>
+        <h4 id="nivel-5">Nivel 5</h4>
+        <h4 id="nivel-6">Nivel 6</h4>
+        <h4 id="nivel-7">Nivel 7</h4>
+
+        <h2 id="armas">Armas</h2>
+
+        <h3 id="laser">Laser</h3>
+        <p>Daño: 1</p>
+        <p>Precio: Gratis</p>
+        <p>Disponibilidad: Inicio</p>
+        <p>Imágen:</p>
+
+        <h2 id="medicinas">Medicinas</h2>
+
+        <h3 id="mascarilla">Mascarilla</h3>
+        <p>Daño: 1</p>
+        <p>Precio: Gratis</p>
+        <p>Disponibilidad: Inicio</p>
+        <p>Imágen:</p>
+
+        <h3 id="pastilla">Pastilla</h3>
+        <p>Daño: 2</p>
+        <p>Precio: Gratis</p>
+        <p>Disponibilidad: Nivel 3</p>
+        <p>Imágen:</p>
+
+        <h3 id="gel-hidroalcolico">Gel hidroalcólico</h3>
+        <p>Daño: 3</p>
+        <p>Precio: Gratis</p>
+        <p>Disponibilidad: Nivel 5</p>
+        <p>Imágen:</p>
+
+        <h2 id="consumibles">Consumibles</h2>
+
+        <h2 id="tienda">Tienda</h2>
+        <p>El jugador obtendrá monedas cada vez que supere un nivel. Si ha realizado acciones erróneas como lanzar una medicina a un virus se aplicará una penalización que reduce el número de monedas que se obtiene en el nivel.</p>
+        <p>Esas monedas pueden utilizarse en la tienda del juego para comprar las armas, medicinas y consumibles descritos anteriormente. Toda arma o medicina que tenga un precio puede comprarse en la tienda y el jugador podrá utilizarla para siempre. Sin embargo, los consumibles se van agotando en cada pelea por lo que el jugador tendrá que comprarlos de nuevo cuando se gasten.</p>
+        
+        <h2 id="elementos-temporales">Elementos temporales</h2>
+
+        <p>Durante las peleas contra el boss, dependiendo del nivel, pueden aparecer una serie de elmentos temporales cuya función es dificultar la partida para el jugador.</p>
+        
+        <h3 id="agujeros-negros">Agujeros negros</h3>
+        <p>Los agujeros negros atraen hacia sí al jugador impidiendo que se desplaze libremente por la pantalla.</p>
+        <p>Duración:</p>
+        <p>Spritesheet:</p>
+        
+        <h2 id="controles">Controles</h2>
+        <p>El jugador puede desplazarse en todas las direcciones utilzando las fechas o las teclas A, W, S, D.</p>
+        <p>Disparar un arma: Space Bar</p>
+        <p>Lanzar medicina: C</p>
+        <p>Consumible equipado en el primer slot: 1
+        Consumible equipado en el segundo slot: 2</p>
+
+    </div>
+
+
+
+</body>
+</html>

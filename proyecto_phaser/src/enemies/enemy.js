@@ -37,14 +37,14 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         }
         else {
             
-            this.y += 1;
+            this.y += 0.5;
 
             if (this.x_right){
-                this.x += 1;
+                this.x += 0.5;
                 this.counter++;
             }
             else {
-                this.x -= 1;
+                this.x -= 0.5;
                 this.counter++;
             }
 
