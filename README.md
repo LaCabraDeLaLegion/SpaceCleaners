@@ -102,6 +102,8 @@ Boss: nivel 1
 
 Agujeros negros: No
 
+Monedas: 100
+
 ##### Nivel 2 #####
 
 Número de virus mutados: 20
@@ -135,6 +137,8 @@ H2 H2 H2 H2 H2 H2 H2
 Boss: nivel 2
 
 Agujeros negros: No
+
+Monedas: 200
 
 ##### Nivel 3 #####
 
@@ -178,6 +182,8 @@ Boss: nivel 3
 
 Agujeros negros: Sí
 
+Monedas: 300
+
 ##### Nivel 4 #####
 
 ##### Nivel 5 #####
@@ -204,6 +210,8 @@ Desplazamiento: en zig zag (5 a la derecha y 5 a la izquierda)
 
 Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
 
+Penalización por mutación: -5 monedas
+
 Spritesheet del virus moviéndose:
 
 Imágen del virus recibiendo daño:
@@ -218,6 +226,8 @@ Desplazamiento: en zig zag (10 a la derecha y 10 a la izquierda de dos en dos)
 
 Mutación: se convierte en un virus mutado de nivel 3 y su desplazamiento pasa a ser vertical.
 
+Penalización por mutación: -10 monedas
+
 Spritesheet del virus moviéndose:
 
 Imágen del virus recibiendo daño:
@@ -230,7 +240,9 @@ Vidas: 3
 
 Desplazamiento: en zig zag alternando (primero 5 a la derecha y 5 a la izquierda de uno en uno y luego 10 a la derecha y 10 a la izquierda de dos en dos)
 
-Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+Mutación: se convierte en un virus mutado de nivel 4 y su desplazamiento pasa a ser vertical.
+
+Penalización por mutación: -15 monedas
 
 Spritesheet del virus moviéndose:
 
@@ -244,7 +256,9 @@ Vidas: 5
 
 Desplazamiento: en zig zag alternando (dos veces 5 a la derecha y 5 a la izquierda de uno en uno y luego 10 a la derecha y 10 a la izquierda de dos en dos)
 
-Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+Mutación: se convierte en un virus mutado de nivel 5 y su desplazamiento pasa a ser vertical.
+
+Penalización por mutación: -20 monedas
 
 Spritesheet del virus moviéndose:
 
@@ -258,7 +272,9 @@ Vidas: 7
 
 Desplazamiento: en zig zag alternando (dos veces 5 a la derecha y 5 a la izquierda de uno en uno y luego dos veces 10 a la derecha y 10 a la izquierda de dos en dos)
 
-Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+Mutación: se convierte en un virus mutado de nivel 6 y su desplazamiento pasa a ser vertical.
+
+Penalización por mutación: -25 monedas
 
 Spritesheet del virus moviéndose:
 
@@ -272,7 +288,9 @@ Vidas: 8
 
 Desplazamiento: en zig zag (20 a la derecha y 20 a la izquierda de dos en dos)
 
-Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+Mutación: su vida pasa a ser 10 y su desplazamiento pasa a ser vertical.
+
+Penalización por mutación: -30 monedas
 
 Spritesheet del virus moviéndose:
 
@@ -290,6 +308,8 @@ Desplazamiento: en zig zag (5 a la derecha y 5 a la izquierda)
 
 Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
 
+Penalización por mutación: -5 monedas
+
 Spritesheet del humano moviéndose:
 
 Imágen del humano recibiendo daño:
@@ -304,6 +324,8 @@ Desplazamiento: en zig zag (10 a la derecha y 10 a la izquierda de dos en dos)
 
 Mutación: se convierte en un virus mutado de nivel 3 y su desplazamiento pasa a ser vertical.
 
+Penalización por mutación: -10 monedas
+
 Spritesheet del humano moviéndose:
 
 Imágen del humano recibiendo daño:
@@ -316,7 +338,9 @@ Vidas: 3
 
 Desplazamiento: en zig zag alternando (primero 5 a la derecha y 5 a la izquierda de uno en uno y luego 10 a la derecha y 10 a la izquierda de dos en dos)
 
-Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+Mutación: se convierte en un virus mutado de nivel 4 y su desplazamiento pasa a ser vertical.
+
+Penalización por mutación: -15 monedas
 
 Spritesheet del humano moviéndose:
 
@@ -330,7 +354,9 @@ Vidas: 5
 
 Desplazamiento: en zig zag alternando (dos veces 5 a la derecha y 5 a la izquierda de uno en uno y luego 10 a la derecha y 10 a la izquierda de dos en dos)
 
-Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+Mutación: se convierte en un virus mutado de nivel 5 y su desplazamiento pasa a ser vertical.
+
+Penalización por mutación: -20 monedas
 
 Spritesheet del humano moviéndose:
 
@@ -344,7 +370,9 @@ Vidas: 7
 
 Desplazamiento: en zig zag alternando (dos veces 5 a la derecha y 5 a la izquierda de uno en uno y luego dos veces 10 a la derecha y 10 a la izquierda de dos en dos)
 
-Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+Mutación: se convierte en un virus mutado de nivel 6 y su desplazamiento pasa a ser vertical.
+
+Penalización por mutación: -25 monedas
 
 Spritesheet del humano moviéndose:
 
@@ -358,7 +386,9 @@ Vidas: 8
 
 Desplazamiento: en zig zag (20 a la derecha y 20 a la izquierda de dos en dos)
 
-Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+Mutación: se convierte en un virus mutado de nivel 6 y su desplazamiento pasa a ser vertical.
+
+Penalización por mutación: -30 monedas
 
 Spritesheet del humano moviéndose:
 
@@ -369,6 +399,22 @@ Spritesheet del humano muriendo:
 #### Bosses ####
 
 ##### Nivel 1 #####
+
+Vidas: 50
+
+Desplazamiento: de extremo a extremo
+
+Armas que lanza:
+- Slash 1: 
+    - Daño: 1 
+    - Imágen:
+- Slash 2:
+    - Daño: 2
+    - Imágen: 
+
+Imágen del boss:
+
+Imágen del boss sangrando:
 
 ##### Nivel 2 #####
 
@@ -384,11 +430,56 @@ Spritesheet del humano muriendo:
 
 ### Armas ###
 
+#### Laser ####
+
+Daño: 1
+
+Precio: Gratis
+
+Disponibilidad: Inicio
+
+Imágen:
+
 ### Medicinas ###
+
+
+#### Mascarilla ####
+
+Daño: 1
+
+Precio: Gratis
+
+Disponibilidad: Inicio
+
+Imágen:
+
+#### Pastilla ####
+
+Daño: 2
+
+Precio: Gratis
+
+Disponibilidad: Nivel 3
+
+Imágen:
+
+#### Gel hidroalcólico ####
+
+Daño: 3
+
+Precio: Gratis
+
+Disponibilidad: Nivel 5
+
+Imágen:
 
 ### Consumibles ###
 
 ### Tienda ###
+
+El jugador obtendrá monedas cada vez que supere un nivel. Si ha realizado acciones erróneas como lanzar una medicina a un virus se aplicará una penalización que reduce el número de monedas que se obtiene en el nivel.
+
+Esas monedas pueden utilizarse en la tienda del juego para comprar las armas, medicinas y consumibles descritos anteriormente. Toda arma o medicina que tenga un precio puede comprarse en la tienda y el jugador podrá utilizarla para siempre. Sin embargo, los consumibles se van agotando en cada pelea por lo que el jugador tendrá que comprarlos de nuevo cuando se gasten.
 
 ### Elementos temporales ###
 
@@ -407,4 +498,9 @@ Spritesheet:
 
 El jugador puede desplazarse en todas las direcciones utilzando las fechas o las teclas A, W, S, D.
 
+Disparar un arma: Space Bar
 
+Lanzar medicina: C
+
+Consumible equipado en el primer slot: 1
+Consumible equipado en el segundo slot: 2
