@@ -21,6 +21,7 @@ export default class Human extends Enemy{
         this.lives = level_lives[level_of_enemy - 1];
         this.animation = level_animations[level_of_enemy - 1];
         this.max_level = planet_level;
+        this.vertical = false;
     }
 
     weapon_hit(){
@@ -28,18 +29,22 @@ export default class Human extends Enemy{
             let virus = new Virus(this.scene, this.x, this.y, this.level, this.group);
             virus.lives += 2;
             virus.play("virus_1");
-            this.scene.tweens.timeline({targets: virus, ease: "Linear", tweens:[
+            /*this.scene.tweens.timeline({targets: virus, ease: "Linear", tweens:[
                 {y: this.scene.cameras.main.height}
                 ]});
+            */
             this.destroy();
+            virus.vertical = true;
         }
         else {
             let virus = new Virus(this.scene, this.x, this.y, this.level + 1, this.group);
             virus.play("virus_1");
-            this.scene.tweens.timeline({targets: virus, ease: "Linear", tweens:[
+            /*this.scene.tweens.timeline({targets: virus, ease: "Linear", tweens:[
                 {y: this.scene.cameras.main.height}
                 ]});
+            */
             this.destroy();
+            virus.vertical = true;
         }
     }
 

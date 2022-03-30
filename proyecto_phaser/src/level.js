@@ -232,30 +232,93 @@ export default class Level extends Phaser.Scene {
 
   createMonsters() {
     
-    let y = 0;
-    for (let i = 1; i<=20 + (this.level - 1)*10; i++){
-      let random_x = Phaser.Math.Between(0, this.cameras.main.width - 50);
-      let random_level = Phaser.Math.Between(1, this.level);
-      y = y - 50;
-      let monster = new Virus(this, random_x, y, random_level, this.enemies);
-      monster.play(monster.animation);
-      this.alive_monsters = this.alive_monsters + 1;
-    }
+    this.alive_monsters = 30;
 
+    if (this.level == 1){
+
+      // Grupo 1
+
+      let monster = new Virus(this, 450, 50, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 500, 50, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 600, 50, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 650, 50, 1, this.enemies);
+      monster.play(monster.animation);
+      
+      monster = new Virus(this, 450, 100, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 500, 100, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 600, 100, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 650, 100, 1, this.enemies);
+      monster.play(monster.animation);
+
+      //Grupo 2
+      monster = new Virus(this, 150, -50, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 200, -50, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 300, -50, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 350, -50, 1, this.enemies);
+      monster.play(monster.animation);
+      
+      monster = new Virus(this, 150, -100, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 200, -100, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 300, -100, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 350, -100, 1, this.enemies);
+      monster.play(monster.animation);
+
+
+      //Grupo 3
+      monster = new Virus(this, 50, -250, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 100, -250, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 200, -250, 1, this.enemies);
+      monster.play(monster.animation);
+      monster = new Virus(this, 250, -250, 1, this.enemies);
+      monster.play(monster.animation);
+
+    }
   }
 
   createHumans() {
 
-    let y = - 200;
-      for (let i = 1; i<=10 + (this.level - 1)*10; i++){
-        let random_x = Phaser.Math.Between(0, this.cameras.main.width - 50);
-        let random_level = Phaser.Math.Between(1, this.level);
-        console.log("random human level: " + random_level)
-        y = y - 50;
-        let human = new Human(this, random_x, y, random_level, this.enemies);
-        human.play(human.animation);
-        this.alive_monsters = this.alive_monsters + 1;
-      }
+    if (this.level == 1){
+     
+      //Grupo 1
+      let human = new Human(this, 550, 50, 1, this.enemies);
+      human.play(human.animation);
+      human = new Human(this, 550, 100, 1, this.enemies);
+      human.play(human.animation);
+
+      //Grupo 2
+      human = new Human(this, 250, -100, 1, this.enemies);
+      human.play(human.animation);
+      human = new Human(this, 250, -50, 1, this.enemies);
+      human.play(human.animation);
+
+      //Grupo 3
+      human = new Human(this, 150, -250, 1, this.enemies);
+      human.play(human.animation);
+      human = new Human(this, 50, -200, 1, this.enemies);
+      human.play(human.animation);
+      human = new Human(this, 100, -200, 1, this.enemies);
+      human.play(human.animation);
+      human = new Human(this, 150, -200, 1, this.enemies);
+      human.play(human.animation);
+      human = new Human(this, 200, -200, 1, this.enemies);
+      human.play(human.animation);
+      human = new Human(this, 250, -200, 1, this.enemies);
+      human.play(human.animation);
+    }
 
     console.log("Bichos vivos iniciales: " + this.alive_monsters);
   }

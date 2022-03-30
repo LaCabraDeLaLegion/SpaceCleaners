@@ -31,21 +31,29 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             });
         }
 
-        this.y += 1;
-        if (this.x_right){
-            this.x += 1;
-            this.counter++;
+        if (this.vertical == true){
+
+            this.y += 2;
         }
         else {
-            this.x -= 1;
-            this.counter++;
-        }
+            
+            this.y += 1;
 
-        if (this.counter == 50){
-            this.counter = 0;
-            this.x_right = !this.x_right;
-        }
+            if (this.x_right){
+                this.x += 1;
+                this.counter++;
+            }
+            else {
+                this.x -= 1;
+                this.counter++;
+            }
 
+            if (this.counter == 50){
+                this.counter = 0;
+                this.x_right = !this.x_right;
+            }
+
+        }
 
     }
 }

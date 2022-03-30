@@ -20,6 +20,7 @@ export default class Virus extends Enemy{
         this.level = level_of_enemy;
         this.lives = level_lives[level_of_enemy - 1];
         this.max_level = planet_level;
+        this.vertical = false;
     }
 
     weapon_hit(){
@@ -44,9 +45,11 @@ export default class Virus extends Enemy{
             this.lives += 2;
             this.anims.stop();
             this.play(level_animations[this.level-1]); //Esto es lo que falta por planetar
-            this.scene.tweens.timeline({targets: this, ease: "Linear", tweens:[
+            /*this.scene.tweens.timeline({targets: this, ease: "Linear", tweens:[
                     {y: this.scene.cameras.main.height}
                     ]});
+            */
+            this.vertical = true;
             console.log("mutate");
         }
         else {
@@ -55,10 +58,12 @@ export default class Virus extends Enemy{
             this.lives = level_lives[this.level-1];
             this.anims.stop();
             this.play(level_animations[this.level-1]); //Esto es lo que falta por planetar
-            this.scene.tweens.timeline({targets: this, ease: "Linear", tweens:[
+            /*this.scene.tweens.timeline({targets: this, ease: "Linear", tweens:[
                     {y: this.scene.cameras.main.height}
                     ]});
+            */
             console.log("mutate");
+            this.vertical = true;
         }
     }
 }
