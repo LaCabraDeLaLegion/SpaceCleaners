@@ -122,7 +122,7 @@ H1 V1 V1 H1 V1 V1 H1
 
 H1 V1 V1 H1 V1 V1 H1
 
-V1 V1 H1 V1 V1
+   V1 V1 H1 V1 V1
 
 (Tercer grupo que aparece)  -> Tiempo de espera: 25 segundos
 
