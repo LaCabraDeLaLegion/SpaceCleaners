@@ -68,18 +68,95 @@ A continuación tenemos las características de cada nivel.
 
 ##### Nivel 1 #####
 
-Número de virus mutados:
-Número de humanos infectados:
-Nivel máximo de virus:
-Nivel máximo de humanos infectados:
-Grupos:
-Patrón:
+Número de virus mutados: 20
+
+Número de humanos infectados: 10
+
+Nivel máximo de virus: 1
+
+Nivel máximo de humanos infectados: 1
+
+Patrón: 
+
+(Primer grupo que aparece)
+V1 V1 H1 V1 V1
+V1 V1 H1 V1 V1
+
+(Segundo grupo que aparece) -> Tiempo de espera: 10 segundos
+V1 V1 H1 V1 V1
+V1 V1 H1 V1 V1
+
+(Tercer grupo que aparece)  -> Tiempo de espera: 20 segundos
+V1 V1 H1 V1 V1
+H1 H1 H1 H1 H1
+
 Boss: nivel 1
+
 Agujeros negros: No
 
 ##### Nivel 2 #####
 
+Número de virus mutados: 20
+
+Número de humanos infectados: 20
+
+Nivel máximo de virus: 2
+
+Nivel máximo de humanos infectados: 2
+
+Patrón: 
+
+(Primer grupo que aparece)
+H1 V1 V1 H1 V1 V1 H1
+H1 V1 V1 H1 V1 V1 H1
+
+(Segundo grupo que aparece) -> Tiempo de espera: 10 segundos
+H1 V1 V1 H1 V1 V1 H1
+   V1 V1 H1 V1 V1
+
+(Tercer grupo que aparece)  -> Tiempo de espera: 25 segundos
+H2 V2 V2 H2 V2 V2 H2
+H2 H2 H2 H2 H2 H2 H2
+
+Boss: nivel 2
+
+Agujeros negros: No
+
 ##### Nivel 3 #####
+
+Número de virus mutados: 25
+
+Número de humanos infectados: 25
+
+Nivel máximo de virus: 3
+
+Nivel máximo de humanos infectados: 3
+
+Patrón: 
+
+(Primer grupo que aparece)
+
+V1 V1 H1 H1 V1 V1
+V2 V2 H2 H2 V2 V2
+
+(Segundo grupo que aparece) -> Tiempo de espera: 10 segundos
+
+V2 V2 H2 H2 H2 V2 V2
+V2 V2 H2 H2 H2 V2 V2
+
+(Tercer grupo que aparece)  -> Tiempo de espera: 25 segundos
+
+H3 V2 V2 H2 H2 V2 V2 H3
+      V3 H3 H3 V3
+         H3 H3
+
+(Cuarto grupo que aparece) -> Tiempo de espera: 50 segundos
+H3 H3 H3 H3 H3 H3 H3 
+   H3 V3 V3 V3 H3
+
+Boss: nivel 3
+
+Agujeros negros: Sí
 
 ##### Nivel 4 #####
 
@@ -187,15 +264,87 @@ Spritesheet del virus muriendo:
 
 ##### Nivel 1 #####
 
+Vidas: 1
+
+Desplazamiento: en zig zag (5 a la derecha y 5 a la izquierda)
+
+Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+
+Spritesheet del humano moviéndose:
+
+Imágen del humano recibiendo daño:
+
+Spritesheet del humano muriendo:
+
 ##### Nivel 2 #####
+
+Vidas: 2
+
+Desplazamiento: en zig zag (10 a la derecha y 10 a la izquierda de dos en dos)
+
+Mutación: se convierte en un virus mutado de nivel 3 y su desplazamiento pasa a ser vertical.
+
+Spritesheet del humano moviéndose:
+
+Imágen del humano recibiendo daño:
+
+Spritesheet del humano muriendo:
 
 ##### Nivel 3 #####
 
+Vidas: 3
+
+Desplazamiento: en zig zag alternando (primero 5 a la derecha y 5 a la izquierda de uno en uno y luego 10 a la derecha y 10 a la izquierda de dos en dos)
+
+Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+
+Spritesheet del humano moviéndose:
+
+Imágen del humano recibiendo daño:
+
+Spritesheet del humano muriendo:
+
 ##### Nivel 4 #####
+
+Vidas: 5
+
+Desplazamiento: en zig zag alternando (dos veces 5 a la derecha y 5 a la izquierda de uno en uno y luego 10 a la derecha y 10 a la izquierda de dos en dos)
+
+Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+
+Spritesheet del humano moviéndose:
+
+Imágen del humano recibiendo daño:
+
+Spritesheet del humano muriendo:
 
 ##### Nivel 5 #####
 
+Vidas: 7
+
+Desplazamiento: en zig zag alternando (dos veces 5 a la derecha y 5 a la izquierda de uno en uno y luego dos veces 10 a la derecha y 10 a la izquierda de dos en dos)
+
+Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+
+Spritesheet del humano moviéndose:
+
+Imágen del humano recibiendo daño:
+
+Spritesheet del humano muriendo:
+
 ##### Nivel 6 #####
+
+Vidas: 8
+
+Desplazamiento: en zig zag (20 a la derecha y 20 a la izquierda de dos en dos)
+
+Mutación: se convierte en un virus mutado de nivel 2 y su desplazamiento pasa a ser vertical.
+
+Spritesheet del humano moviéndose:
+
+Imágen del humano recibiendo daño:
+
+Spritesheet del humano muriendo:
 
 #### Bosses ####
 
@@ -210,6 +359,8 @@ Spritesheet del virus muriendo:
 ##### Nivel 5 #####
 
 ##### Nivel 6 #####
+
+##### Nivel 7 #####
 
 ### Armas ###
 
