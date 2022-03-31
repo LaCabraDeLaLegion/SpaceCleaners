@@ -5,9 +5,9 @@ export default class Bomb extends Weapon {
       
     super(scene, x, y, name);
     if (name == "basic_bomb"){
-        this.damage = 100;
+        this.damage = 5;
         this.speed = 1;
-        this.range = 2;
+        this.range = 100;
     }
   }
 

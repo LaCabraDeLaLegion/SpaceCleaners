@@ -354,19 +354,20 @@ export default class Level extends Phaser.Scene {
   }
 
   onBombHit(enemy, bomb){
-
     this.enemies.getChildren().forEach((child) => {
-      console.log("bomb " + bomb.x);
-      if (child.x - bomb.x < bomb.range || bomb.x - child.x < bomb.range || child.y - bomb.y < bomb.range || child.y + bomb.y < bomb.range){
-        console.log("cond1: " + child.x - bomb.x + " cond2: " + bomb.x - child.x + " cond3: " + child.y - bomb.y + " cond4: " +  child.y + bomb.y);
+      if (child.y > 0 && Phaser.Math.Difference(child.x, bomb.x) < bomb.range && Phaser.Math.Difference(child.y, bomb.y) < bomb.range){
         child.lives -= bomb.damage;
-        let expl = this.add.sprite(this, child.x, child.y, "explosion");
-        expl.play("explode");
-        expl.on('animationcomplete', () => {
-          expl.destroy();
-        })
+        if (child.lives <= 0){
+          this.alive_monsters--;
+        }
       }
     }, this);
+    let expl = this.add.sprite(enemy.x, enemy.y, "explosion");
+    expl.setScale(3);
+    expl.play("explode");
+    expl.on('animationcomplete', () => {
+      expl.destroy();
+    })
     bomb.destroy();
   }
 
@@ -425,7 +426,6 @@ export default class Level extends Phaser.Scene {
       key: "explode",
       frames: this.anims.generateFrameNumbers("explosion"),
       frameRate: 5,
-      repeat: false,
     });
     //Players
     this.anims.create({
