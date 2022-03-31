@@ -3,6 +3,9 @@ import Boss from "./boss.js";
 import Slash from "./slash.js";
 import Virus from "./enemies/virus.js";
 import Human from "./enemies/human.js";
+import Shield from "./weapons/consumibles/shield.js";
+import Potion from "./weapons/consumibles/potion.js";
+import Bomb from "./weapons/consumibles/bomb.js";
 
 export default class Level extends Phaser.Scene {
 
@@ -13,7 +16,8 @@ export default class Level extends Phaser.Scene {
   init(data) {
     console.log("Nivel = " + data[0]);
     this.level = data[0];
-    this.inventory = data[1];
+    //this.inventory = data[1];
+    this.inventory = {skin: "player_1", shield: ["basic_shield", 5], potion: ["basic_potion", 10], bomb: ["basic_bomb", 2]};
   }
 
   preload() {
@@ -122,11 +126,10 @@ export default class Level extends Phaser.Scene {
   }
 
   initPlayer() {
-    this.player = new Player(this, 500, 500);
-
+    this.player = new Player(this, 500, 500, this.inventory);
     this.player.play("player_walk_1");
-
     this.lasers = this.physics.add.group();
+    this.bombs = this.physics.add.group();
     this.medicines = this.physics.add.group();
     this.laserSound = this.sound.add("blaster", {
       mute: false,
@@ -141,6 +144,15 @@ export default class Level extends Phaser.Scene {
 
   initEnemies() {
     this.enemies = this.physics.add.group();
+
+    this.physics.add.collider(
+      this.enemies,
+      this.bombs,
+      this.onBombHit,
+      null,
+      this
+    );
+
     this.physics.add.collider(
       this.enemies,
       this.lasers,
@@ -323,6 +335,42 @@ export default class Level extends Phaser.Scene {
     console.log("Bichos vivos iniciales: " + this.alive_monsters);
   }
 
+  createShield(){
+    this.inventory.shield[1]--;
+    //let shield = new Shield(this.player.x, this.player.y, this.inventory.shield[0]);
+  }
+
+  usePotion(){
+    this.inventory.potion[1]--;
+    if (this.inventory.potion[0] == "basic_potion"){
+      this.player.lives++;
+    }
+  }
+
+  useBomb(){
+    this.inventory.bomb[1]--;
+    let bomba = new Bomb(this, this.player.x, this.player.y + 20, this.inventory.bomb[0]);
+    this.bombs.add(bomba); 
+  }
+
+  onBombHit(enemy, bomb){
+
+    this.enemies.getChildren().forEach((child) => {
+      console.log("bomb " + bomb.x);
+      if (child.x - bomb.x < bomb.range || bomb.x - child.x < bomb.range || child.y - bomb.y < bomb.range || child.y + bomb.y < bomb.range){
+        console.log("cond1: " + child.x - bomb.x + " cond2: " + bomb.x - child.x + " cond3: " + child.y - bomb.y + " cond4: " +  child.y + bomb.y);
+        child.lives -= bomb.damage;
+        let expl = this.add.sprite(this, child.x, child.y, "explosion");
+        expl.play("explode");
+        expl.on('animationcomplete', () => {
+          expl.destroy();
+        })
+      }
+    }, this);
+    bomb.destroy();
+  }
+
+
   game_over() {
     this.boss.destroy();
     this.player.setVisible(false);
@@ -371,6 +419,14 @@ export default class Level extends Phaser.Scene {
   }
 
   createAnimations() {
+
+    //Explosion
+    this.anims.create({
+      key: "explode",
+      frames: this.anims.generateFrameNumbers("explosion"),
+      frameRate: 5,
+      repeat: false,
+    });
     //Players
     this.anims.create({
       key: "player_walk_1",
@@ -457,6 +513,12 @@ export default class Level extends Phaser.Scene {
   }
 
   load_spritesheets(){
+
+    //Explosions
+    this.load.spritesheet("explosion", "/sprites/consumibles/explosion.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
     //Infected humans
     this.load.spritesheet("H1", "/sprites/Humans/H1.png", {
       frameWidth: 50,
@@ -531,6 +593,7 @@ export default class Level extends Phaser.Scene {
     this.load.image("V2-damage", "/sprites/Virus/V2_damage.png");
     this.load.image("V3-damage", "/sprites/Virus/V3_damage.png");
     this.load.image("V4-damage", "/sprites/Virus/V4_damage.png");
+    this.load.image("basic_bomb", "/sprites/consumibles/basic_bomb.png")
   }
 
   load_audio(){

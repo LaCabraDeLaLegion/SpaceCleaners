@@ -1,23 +1,36 @@
 import Laser from "./weapons/laser.js";
 import Medicine from "./weapons/medicine.js";
 export default class Player extends Phaser.GameObjects.Sprite {
-  constructor(scene, x, y) {
-    super(scene, x, y, "player_1");
+  constructor(scene, x, y, inventory) {
+    super(scene, x, y, inventory.skin);
     this.cursors = this.scene.input.keyboard.createCursorKeys();
+
+    //Movement
     this.keyW = this.scene.input.keyboard.addKey("W");
     this.keyA = this.scene.input.keyboard.addKey("A");
     this.keyS = this.scene.input.keyboard.addKey("S");
     this.keyD = this.scene.input.keyboard.addKey("D");
+
+    //Medicine
     this.keyC = this.scene.input.keyboard.addKey("C");
+
+    //Consumible
+    this.key_one = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
+    this.key_two = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO);
+    this.key_three = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
+
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.body.setCollideWorldBounds();
     this.shootTime = 0;
     this.medicineTime = 0;
+    this.consumibleTime = 0;
     this.speed = 400;
     this.movingx = false;
     this.movingy = false;
     this.lives = 10;
+
+    this.inventory = inventory;
   }
 
   preUpdate(t, dt) {
@@ -25,6 +38,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     this.shootTime--;
     this.medicineTime--;
+    this.consumibleTime--;
 
     if (this.cursors.left.isDown || this.keyA.isDown) {
       if (!this.movingy) this.body.setVelocityX(-this.speed);
@@ -62,6 +76,19 @@ export default class Player extends Phaser.GameObjects.Sprite {
       const medicine = new Medicine(this.scene, this.x, this.y - 50); //Crear medicina segun inventario
       this.scene.addMedicine(medicine);
       this.medicineTime = 15;
+    }
+
+    if (this.key_one.isDown && this.inventory.shield[1] > 0 && this.consumibleTime <= 0){
+      this.scene.createShield();
+      this.consumibleTime = 15;
+    }
+    else if (this.key_two.isDown && this.inventory.potion[1] > 0 && this.consumibleTime <= 0){
+      this.scene.usePotion();
+      this.consumibleTime = 15;
+    }
+    else if(this.key_three.isDown && this.inventory.bomb[1] > 0 && this.consumibleTime <= 0){
+      this.scene.useBomb();
+      this.consumibleTime = 15;
     }
   }
 
