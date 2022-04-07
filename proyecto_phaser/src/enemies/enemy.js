@@ -23,17 +23,9 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
         super.preUpdate(t, dt);
 
-        if (this.lives <= 0){
-            this.scene.time.delayedCall(200, () => {
-                this.dead = true;
-                this.destroy();
-                console.log("destroy");
-            });
-        }
-
-        if (this.vertical == true){
-
-            this.y += 2;
+        if (this.vertical == true) {
+            //if (!(this.dying && this.y > (this.scene.cameras.main.height - 5)))
+                this.y += 2;
         }
         else {
             

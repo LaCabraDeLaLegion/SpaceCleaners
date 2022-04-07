@@ -24,6 +24,19 @@ export default class Human extends Enemy{
         this.vertical = false;
     }
 
+    preUpdate(t, dt) {
+        super.preUpdate(t, dt);
+
+        if (this.lives <= 0){
+            this.scene.time.delayedCall(200, () => {
+                this.dead = true;
+                this.destroy();
+                console.log("destroy");
+            });
+        }
+
+    }
+
     weapon_hit(){
         if (this.level >= this.max_level){
             let virus = new Virus(this.scene, this.x, this.y, this.level, this.group);

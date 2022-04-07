@@ -455,6 +455,18 @@ export default class Level extends Phaser.Scene {
       repeat: -1,
     });
     this.anims.create({
+      key: "virus_1_damage",
+      frames: this.anims.generateFrameNumbers("V1_damage"),
+      frameRate: 15,
+      repeat: 0,
+    });
+    this.anims.create({
+      key: "virus_1_death",
+      frames: this.anims.generateFrameNumbers("V1_death"),
+      frameRate: 20,
+      repeat: 0,
+    });
+    this.anims.create({
       key: "virus_2",
       frames: this.anims.generateFrameNumbers("V2"),
       frameRate: 5,
@@ -549,6 +561,14 @@ export default class Level extends Phaser.Scene {
     this.load.spritesheet("V1", "/sprites/Virus/V1.png", {
       frameWidth: 50,
       frameHeight: 50,
+    });
+    this.load.spritesheet("V1_damage", "/sprites/Virus/V1_damage.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("V1_death", "/sprites/Virus/V1_death.png", {
+      frameWidth: 70,
+      frameHeight: 70,
     });
     this.load.spritesheet("V2", "/sprites/Virus/V2.png", {
       frameWidth: 50,
