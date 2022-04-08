@@ -38,19 +38,17 @@ export default class Human extends Enemy{
     }
 
     weapon_hit(){
+        console.log("level: " + this.level + "   max_level: " + this.max_level);
         if (this.level >= this.max_level){
-            let virus = new Virus(this.scene, this.x, this.y, this.level, this.group);
+            console.log("Data for new virus: " + this.x, this.y, this.level, this.group, this.max_level);
+            let virus = new Virus(this.scene, this.x, this.y, this.level, this.group, this.max_level);
             virus.lives += 2;
             virus.play("virus_1");
-            /*this.scene.tweens.timeline({targets: virus, ease: "Linear", tweens:[
-                {y: this.scene.cameras.main.height}
-                ]});
-            */
             this.destroy();
             virus.vertical = true;
         }
         else {
-            let virus = new Virus(this.scene, this.x, this.y, this.level + 1, this.group);
+            let virus = new Virus(this.scene, this.x, this.y, this.level + 1, this.group, this.max_level);
             virus.play("virus_1");
             /*this.scene.tweens.timeline({targets: virus, ease: "Linear", tweens:[
                 {y: this.scene.cameras.main.height}
