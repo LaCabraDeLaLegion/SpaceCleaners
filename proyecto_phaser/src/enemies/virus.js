@@ -1,11 +1,10 @@
 import Enemy from "./enemy.js";
 
-let level_images = ["V1", "V2", "V3", "V4", "V5"];
-let level_damage_images = ["V1-damage", "V2-damage", "V3-damage", "V4-damage", "V5-damage"];
-let level_animations = ["virus_1", "virus_2", "virus_3", "virus_4", "virus_5"];
-let level_damage_anims = ["virus_1_damage"];
-let level_death_anims = ["virus_1_death"];
-let level_lives = [1, 3, 5, 7];
+let level_images = ["V1", "V2", "V3", "V4", "V5", "V6"];
+let level_damage_images = ["V1-damage", "V2-damage", "V3-damage", "V4-damage", "V5-damage", "V6-damage"];
+let level_animations = ["virus_1", "virus_2", "virus_3", "virus_4", "virus_5", "virus_6"];
+let level_damage_anims = ["virus_1_damage", "V2-damage", "V3-damage", "V4-damage", "V5-damage", "V6-damage"];
+let level_death_anims = ["virus_1_death", "V2-damage", "V3-damage", "V4-damage", "V5-damage", "V6-damage"];
 
 export default class Virus extends Enemy{
   
@@ -22,7 +21,7 @@ export default class Virus extends Enemy{
         this.group = group;
         this.type = "virus";
         this.level = level_of_enemy;
-        this.lives = level_lives[level_of_enemy - 1];
+        this.lives = level_of_enemy;
         this.max_level = planet_level;
         this.vertical = false;
         this.apparition_group = apparition_group;
@@ -69,8 +68,8 @@ export default class Virus extends Enemy{
 
     medicine_hit() {
         if (this.level >= this.max_level){
-            this.lives = level_lives[this.level - 1];
-            this.lives += 2;
+            this.lives = this.level;
+            this.lives += 1;
             this.anims.stop();
             this.play(level_animations[this.level-1]); //Esto es lo que falta por planetar
             /*this.scene.tweens.timeline({targets: this, ease: "Linear", tweens:[
@@ -83,7 +82,7 @@ export default class Virus extends Enemy{
         else {
             this.level++;
             this.setTexture(level_images[this.level - 1]);
-            this.lives = level_lives[this.level-1];
+            this.lives = this.level;
             this.anims.stop();
             this.damage_anim = level_damage_anims[this.level - 1];
             this.death_anim = level_death_anims[this.level - 1];

@@ -4,7 +4,6 @@ import Virus from "./virus.js";
 let level_images = ["H1", "H2", "H3", "H4", "H5", "H6"];
 let level_damage_images = ["H1-damage", "H2-damage", "H3-damage", "H4-damage", "H5-damage", "H6-damage"];
 let level_animations = ["human_walk_1","human_walk_2","human_walk_3","human_walk_4","human_walk_5","human_walk_6"];
-let level_lives = [1, 3, 5, 7];
 
 export default class Human extends Enemy{
   
@@ -18,7 +17,7 @@ export default class Human extends Enemy{
         this.group = group;
         this.type = "human";
         this.level = level_of_enemy;
-        this.lives = level_lives[level_of_enemy - 1];
+        this.lives = level_of_enemy
         this.animation = level_animations[level_of_enemy - 1];
         this.max_level = planet_level;
         this.vertical = false;

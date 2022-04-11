@@ -1239,6 +1239,12 @@ export default class Level extends Phaser.Scene {
       frameRate: 5,
       repeat: -1,
     });
+    this.anims.create({
+      key: "virus_6",
+      frames: this.anims.generateFrameNumbers("V6"),
+      frameRate: 5,
+      repeat: -1,
+    });
 
     //Infected humans
     this.anims.create({
@@ -1341,6 +1347,10 @@ export default class Level extends Phaser.Scene {
       frameWidth: 50,
       frameHeight: 50,
     });
+    this.load.spritesheet("V6", "/sprites/Virus/V6.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
 
     //Players
     this.load.spritesheet("player_1", "/sprites/Players/player_1.png", {
@@ -1373,6 +1383,7 @@ export default class Level extends Phaser.Scene {
     this.load.image("V3-damage", "/sprites/Virus/V3_damage.png");
     this.load.image("V4-damage", "/sprites/Virus/V4_damage.png");
     this.load.image("V5-damage", "/sprites/Virus/V5_damage.png");
+    this.load.image("V6-damage", "/sprites/Virus/V6_damage.png");
     this.load.image("basic_bomb", "/sprites/consumibles/basic_bomb.png")
   }
 
