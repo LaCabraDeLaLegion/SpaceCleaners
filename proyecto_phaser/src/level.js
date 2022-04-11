@@ -759,6 +759,12 @@ export default class Level extends Phaser.Scene {
       frameRate: 5,
       repeat: -1,
     });
+    this.anims.create({
+      key: "virus_5",
+      frames: this.anims.generateFrameNumbers("V5"),
+      frameRate: 5,
+      repeat: -1,
+    });
 
     //Infected humans
     this.anims.create({
