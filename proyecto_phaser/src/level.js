@@ -250,52 +250,52 @@ export default class Level extends Phaser.Scene {
 
       // Grupo 1
 
-      let monster = new Virus(this, 450, 50, 1, this.enemies, this.level);
+      let monster = new Virus(this, 50, 50, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 500, 50, 1, this.enemies, this.level);
+      monster = new Virus(this, 100, 50, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 600, 50, 1, this.enemies, this.level);
+      monster = new Virus(this, 200, 50, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 650, 50, 1, this.enemies, this.level);
+      monster = new Virus(this, 250, 50, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
       
-      monster = new Virus(this, 450, 100, 1, this.enemies, this.level);
+      monster = new Virus(this, 50, 100, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 500, 100, 1, this.enemies, this.level);
+      monster = new Virus(this, 100, 100, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 600, 100, 1, this.enemies, this.level);
+      monster = new Virus(this, 200, 100, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 650, 100, 1, this.enemies, this.level);
+      monster = new Virus(this, 250, 100, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
 
       //Grupo 2
-      monster = new Virus(this, 150, -50, 1, this.enemies, this.level);
+      monster = new Virus(this, 50, -50, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 200, -50, 1, this.enemies, this.level);
+      monster = new Virus(this, 100, -50, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -50, 1, this.enemies, this.level);
+      monster = new Virus(this, 200, -50, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 350, -50, 1, this.enemies, this.level);
+      monster = new Virus(this, 250, -50, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
       
-      monster = new Virus(this, 150, -100, 1, this.enemies, this.level);
+      monster = new Virus(this, 50, -100, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 200, -100, 1, this.enemies, this.level);
+      monster = new Virus(this, 100, -100, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -100, 1, this.enemies, this.level);
+      monster = new Virus(this, 200, -100, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 350, -100, 1, this.enemies, this.level);
+      monster = new Virus(this, 250, -100, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
 
       //Grupo 3
-      monster = new Virus(this, 50, -250, 1, this.enemies, this.level);
+      monster = new Virus(this, 50, -250, 1, this.enemies, this.level, 3);
+      monster.play(monster.animation)
+      monster = new Virus(this, 100, -250, 1, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -250, 1, this.enemies, this.level);
+      monster = new Virus(this, 200, -250, 1, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 200, -250, 1, this.enemies, this.level);
-      monster.play(monster.animation);
-      monster = new Virus(this, 250, -250, 1, this.enemies, this.level);
+      monster = new Virus(this, 250, -250, 1, this.enemies, this.level, 3);
       monster.play(monster.animation);
 
     }
@@ -304,52 +304,52 @@ export default class Level extends Phaser.Scene {
       this.alive_monsters = 40;
 
       //Grupo 1
-      let monster = new Virus(this, 100, -100, 1, this.enemies, this.level);
+      let monster = new Virus(this, 100, -100, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -100, 1, this.enemies, this.level);
+      monster = new Virus(this, 150, -100, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -100, 1, this.enemies, this.level);
+      monster = new Virus(this, 250, -100, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -100, 1, this.enemies, this.level);
+      monster = new Virus(this, 300, -100, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
     
-      monster = new Virus(this, 100, -50, 1, this.enemies, this.level);
+      monster = new Virus(this, 100, -50, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -50, 1, this.enemies, this.level);
+      monster = new Virus(this, 150, -50, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -50, 1, this.enemies, this.level);
+      monster = new Virus(this, 250, -50, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -50, 1, this.enemies, this.level);
+      monster = new Virus(this, 300, -50, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
 
       //Grupo 2
-      monster = new Virus(this, 100, -250, 1, this.enemies, this.level);
+      monster = new Virus(this, 100, -250, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -250, 1, this.enemies, this.level);
+      monster = new Virus(this, 150, -250, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -250, 1, this.enemies, this.level);
+      monster = new Virus(this, 250, -250, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -250, 1, this.enemies, this.level);
+      monster = new Virus(this, 300, -250, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
-      monster = new Virus(this, 100, -200, 1, this.enemies, this.level);
+      monster = new Virus(this, 100, -200, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -200, 1, this.enemies, this.level);
+      monster = new Virus(this, 150, -200, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -200, 1, this.enemies, this.level);
+      monster = new Virus(this, 250, -200, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -200, 1, this.enemies, this.level);
+      monster = new Virus(this, 300, -200, 1, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
       //Grupo 3
 
-      monster = new Virus(this, 100, -400, 2, this.enemies, this.level);
+      monster = new Virus(this, 100, -400, 2, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -400, 2, this.enemies, this.level);
+      monster = new Virus(this, 150, -400, 2, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -400, 2, this.enemies, this.level);
+      monster = new Virus(this, 250, -400, 2, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -400, 2, this.enemies, this.level);
+      monster = new Virus(this, 300, -400, 2, this.enemies, this.level, 3);
       monster.play(monster.animation);
 
     }
@@ -358,66 +358,66 @@ export default class Level extends Phaser.Scene {
       this.alive_monsters = 50;
 
       //Grupo 1
-      let monster = new Virus(this, 50, -100, 1, this.enemies, this.level);
+      let monster = new Virus(this, 50, -100, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -100, 1, this.enemies, this.level);
+      monster = new Virus(this, 100, -100, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -100, 1, this.enemies, this.level);
+      monster = new Virus(this, 250, -100, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -100, 1, this.enemies, this.level);
+      monster = new Virus(this, 300, -100, 1, this.enemies, this.level, 1);
       monster.play(monster.animation);
     
-      monster = new Virus(this, 50, -50, 2, this.enemies, this.level);
+      monster = new Virus(this, 50, -50, 2, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -50, 2, this.enemies, this.level);
+      monster = new Virus(this, 100, -50, 2, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -50, 2, this.enemies, this.level);
+      monster = new Virus(this, 250, -50, 2, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -50, 2, this.enemies, this.level);
+      monster = new Virus(this, 300, -50, 2, this.enemies, this.level, 1);
       monster.play(monster.animation);
 
       //Grupo 2
-      monster = new Virus(this, 50, -250, 2, this.enemies, this.level);
+      monster = new Virus(this, 50, -250, 2, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -250, 2, this.enemies, this.level);
+      monster = new Virus(this, 100, -250, 2, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -250, 2, this.enemies, this.level);
+      monster = new Virus(this, 300, -250, 2, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 350, -250, 2, this.enemies, this.level);
+      monster = new Virus(this, 350, -250, 2, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
-      monster = new Virus(this, 50, -200, 2, this.enemies, this.level);
+      monster = new Virus(this, 50, -200, 2, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -200, 2, this.enemies, this.level);
+      monster = new Virus(this, 100, -200, 2, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -200, 2, this.enemies, this.level);
+      monster = new Virus(this, 300, -200, 2, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 350, -200, 2, this.enemies, this.level);
+      monster = new Virus(this, 350, -200, 2, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
       //Grupo 3
 
-      monster = new Virus(this, 100, -450, 2, this.enemies, this.level);
+      monster = new Virus(this, 100, -450, 2, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -450, 2, this.enemies, this.level);
+      monster = new Virus(this, 150, -450, 2, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -450, 2, this.enemies, this.level);
+      monster = new Virus(this, 300, -450, 2, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 350, -450, 2, this.enemies, this.level);
+      monster = new Virus(this, 350, -450, 2, this.enemies, this.level, 3);
       monster.play(monster.animation);
 
-      monster = new Virus(this, 150, -400, 3, this.enemies, this.level);
+      monster = new Virus(this, 150, -400, 3, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -400, 3, this.enemies, this.level);
+      monster = new Virus(this, 300, -400, 3, this.enemies, this.level, 3);
       monster.play(monster.animation);
 
       //Grupo 4
 
-      monster = new Virus(this, 150, -550, 3, this.enemies, this.level);
+      monster = new Virus(this, 150, -550, 3, this.enemies, this.level, 4);
       monster.play(monster.animation);
-      monster = new Virus(this, 200, -550, 3, this.enemies, this.level);
+      monster = new Virus(this, 200, -550, 3, this.enemies, this.level, 4);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -550, 3, this.enemies, this.level);
+      monster = new Virus(this, 250, -550, 3, this.enemies, this.level, 4);
       monster.play(monster.animation);
     }
     else if (this.level == 4){
@@ -425,238 +425,238 @@ export default class Level extends Phaser.Scene {
       this.alive_monsters = 40;
 
       //Grupo 1
-      let monster = new Virus(this, 100, -100, 2, this.enemies, this.level);
+      let monster = new Virus(this, 100, -100, 2, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -100, 2, this.enemies, this.level);
+      monster = new Virus(this, 150, -100, 2, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -100, 2, this.enemies, this.level);
+      monster = new Virus(this, 250, -100, 2, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -100, 2, this.enemies, this.level);
+      monster = new Virus(this, 300, -100, 2, this.enemies, this.level, 1);
       monster.play(monster.animation);
     
-      monster = new Virus(this, 100, -50, 2, this.enemies, this.level);
+      monster = new Virus(this, 100, -50, 2, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -50, 2, this.enemies, this.level);
+      monster = new Virus(this, 150, -50, 2, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -50, 2, this.enemies, this.level);
+      monster = new Virus(this, 250, -50, 2, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -50, 2, this.enemies, this.level);
+      monster = new Virus(this, 300, -50, 2, this.enemies, this.level, 1);
       monster.play(monster.animation);
 
       //Grupo 2
-      monster = new Virus(this, 100, -250, 3, this.enemies, this.level);
+      monster = new Virus(this, 100, -250, 3, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -250, 3, this.enemies, this.level);
+      monster = new Virus(this, 150, -250, 3, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -250, 3, this.enemies, this.level);
+      monster = new Virus(this, 250, -250, 3, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -250, 3, this.enemies, this.level);
+      monster = new Virus(this, 300, -250, 3, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
-      monster = new Virus(this, 100, -200, 3, this.enemies, this.level);
+      monster = new Virus(this, 100, -200, 3, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -200, 3, this.enemies, this.level);
+      monster = new Virus(this, 150, -200, 3, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -200, 3, this.enemies, this.level);
+      monster = new Virus(this, 250, -200, 3, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -200, 3, this.enemies, this.level);
+      monster = new Virus(this, 300, -200, 3, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
       //Grupo 3
 
-      monster = new Virus(this, 100, -400, 4, this.enemies, this.level);
+      monster = new Virus(this, 100, -400, 4, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -400, 4, this.enemies, this.level);
+      monster = new Virus(this, 150, -400, 4, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -400, 4, this.enemies, this.level);
+      monster = new Virus(this, 250, -400, 4, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -400, 4, this.enemies, this.level);
+      monster = new Virus(this, 300, -400, 4, this.enemies, this.level, 3);
       monster.play(monster.animation);
 
     }
     else if (this.level == 5){
 
       //Grupo 1
-      let monster = new Virus(this, 50, -100, 3, this.enemies, this.level);
+      let monster = new Virus(this, 50, -100, 3, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -100, 3, this.enemies, this.level);
+      monster = new Virus(this, 100, -100, 3, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -100, 3, this.enemies, this.level);
+      monster = new Virus(this, 250, -100, 3, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -100, 3, this.enemies, this.level);
+      monster = new Virus(this, 300, -100, 3, this.enemies, this.level, 1);
       monster.play(monster.animation);
     
-      monster = new Virus(this, 50, -50, 4, this.enemies, this.level);
+      monster = new Virus(this, 50, -50, 4, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -50, 4, this.enemies, this.level);
+      monster = new Virus(this, 100, -50, 4, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -50, 4, this.enemies, this.level);
+      monster = new Virus(this, 250, -50, 4, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -50, 4, this.enemies, this.level);
+      monster = new Virus(this, 300, -50, 4, this.enemies, this.level, 1);
       monster.play(monster.animation);
 
       //Grupo 2
-      monster = new Virus(this, 50, -250, 4, this.enemies, this.level);
+      monster = new Virus(this, 50, -250, 4, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -250, 4, this.enemies, this.level);
+      monster = new Virus(this, 100, -250, 4, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -250, 4, this.enemies, this.level);
+      monster = new Virus(this, 300, -250, 4, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 350, -250, 4, this.enemies, this.level);
+      monster = new Virus(this, 350, -250, 4, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
-      monster = new Virus(this, 50, -200, 4, this.enemies, this.level);
+      monster = new Virus(this, 50, -200, 4, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -200, 4, this.enemies, this.level);
+      monster = new Virus(this, 100, -200, 4, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -200, 4, this.enemies, this.level);
+      monster = new Virus(this, 300, -200, 4, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 350, -200, 4, this.enemies, this.level);
+      monster = new Virus(this, 350, -200, 4, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
       //Grupo 3
 
-      monster = new Virus(this, 100, -450, 4, this.enemies, this.level);
+      monster = new Virus(this, 100, -450, 4, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -450, 4, this.enemies, this.level);
+      monster = new Virus(this, 150, -450, 4, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -450, 4, this.enemies, this.level);
+      monster = new Virus(this, 300, -450, 4, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 350, -450, 4, this.enemies, this.level);
+      monster = new Virus(this, 350, -450, 4, this.enemies, this.level, 3);
       monster.play(monster.animation);
 
-      monster = new Virus(this, 150, -400, 5, this.enemies, this.level);
+      monster = new Virus(this, 150, -400, 5, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -400, 5, this.enemies, this.level);
+      monster = new Virus(this, 300, -400, 5, this.enemies, this.level, 3);
       monster.play(monster.animation);
 
       //Grupo 4
 
-      monster = new Virus(this, 150, -550, 5, this.enemies, this.level);
+      monster = new Virus(this, 150, -550, 5, this.enemies, this.level, 4);
       monster.play(monster.animation);
-      monster = new Virus(this, 200, -550, 5, this.enemies, this.level);
+      monster = new Virus(this, 200, -550, 5, this.enemies, this.level, 4);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -550, 5, this.enemies, this.level);
+      monster = new Virus(this, 250, -550, 5, this.enemies, this.level, 4);
       monster.play(monster.animation);
 
     }
     else if (this.level == 6){
-      
+
       this.alive_monsters = 40;
 
       //Grupo 1
-      let monster = new Virus(this, 100, -100, 5, this.enemies, this.level);
+      let monster = new Virus(this, 100, -100, 5, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -100, 5, this.enemies, this.level);
+      monster = new Virus(this, 150, -100, 5, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -100, 5, this.enemies, this.level);
+      monster = new Virus(this, 250, -100, 5, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -100, 5, this.enemies, this.level);
+      monster = new Virus(this, 300, -100, 5, this.enemies, this.level, 1);
       monster.play(monster.animation);
     
-      monster = new Virus(this, 100, -50, 5, this.enemies, this.level);
+      monster = new Virus(this, 100, -50, 5, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -50, 5, this.enemies, this.level);
+      monster = new Virus(this, 150, -50, 5, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -50, 5, this.enemies, this.level);
+      monster = new Virus(this, 250, -50, 5, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -50, 5, this.enemies, this.level);
+      monster = new Virus(this, 300, -50, 5, this.enemies, this.level, 1);
       monster.play(monster.animation);
 
       //Grupo 2
-      monster = new Virus(this, 100, -250, 6, this.enemies, this.level);
+      monster = new Virus(this, 100, -250, 6, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -250, 6, this.enemies, this.level);
+      monster = new Virus(this, 150, -250, 6, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -250, 6, this.enemies, this.level);
+      monster = new Virus(this, 250, -250, 6, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -250, 6, this.enemies, this.level);
+      monster = new Virus(this, 300, -250, 6, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
-      monster = new Virus(this, 100, -200, 5, this.enemies, this.level);
+      monster = new Virus(this, 100, -200, 5, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -200, 5, this.enemies, this.level);
+      monster = new Virus(this, 150, -200, 5, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -200, 5, this.enemies, this.level);
+      monster = new Virus(this, 250, -200, 5, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -200, 5, this.enemies, this.level);
+      monster = new Virus(this, 300, -200, 5, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
       //Grupo 3
 
-      monster = new Virus(this, 100, -400, 6, this.enemies, this.level);
+      monster = new Virus(this, 100, -400, 6, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -400, 6, this.enemies, this.level);
+      monster = new Virus(this, 150, -400, 6, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -400, 6, this.enemies, this.level);
+      monster = new Virus(this, 250, -400, 6, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -400, 6, this.enemies, this.level);
+      monster = new Virus(this, 300, -400, 6, this.enemies, this.level, 3);
       monster.play(monster.animation);
 
     }
     else if (this.level == 7){
 
       //Grupo 1
-      let monster = new Virus(this, 50, -100, 5, this.enemies, this.level);
+      let monster = new Virus(this, 50, -100, 5, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -100, 5, this.enemies, this.level);
+      monster = new Virus(this, 100, -100, 5, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -100, 5, this.enemies, this.level);
+      monster = new Virus(this, 250, -100, 5, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -100, 5, this.enemies, this.level);
+      monster = new Virus(this, 300, -100, 5, this.enemies, this.level, 1);
       monster.play(monster.animation);
     
-      monster = new Virus(this, 50, -50, 6, this.enemies, this.level);
+      monster = new Virus(this, 50, -50, 6, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -50, 6, this.enemies, this.level);
+      monster = new Virus(this, 100, -50, 6, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -50, 6, this.enemies, this.level);
+      monster = new Virus(this, 250, -50, 6, this.enemies, this.level, 1);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -50, 6, this.enemies, this.level);
+      monster = new Virus(this, 300, -50, 6, this.enemies, this.level, 1);
       monster.play(monster.animation);
 
       //Grupo 2
-      monster = new Virus(this, 50, -250, 5, this.enemies, this.level);
+      monster = new Virus(this, 50, -250, 5, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -250, 5, this.enemies, this.level);
+      monster = new Virus(this, 100, -250, 5, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -250, 5, this.enemies, this.level);
+      monster = new Virus(this, 300, -250, 5, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 350, -250, 5, this.enemies, this.level);
+      monster = new Virus(this, 350, -250, 5, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
-      monster = new Virus(this, 50, -200, 6, this.enemies, this.level);
+      monster = new Virus(this, 50, -200, 6, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 100, -200, 6, this.enemies, this.level);
+      monster = new Virus(this, 100, -200, 6, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -200, 6, this.enemies, this.level);
+      monster = new Virus(this, 300, -200, 6, this.enemies, this.level, 2);
       monster.play(monster.animation);
-      monster = new Virus(this, 350, -200, 6, this.enemies, this.level);
+      monster = new Virus(this, 350, -200, 6, this.enemies, this.level, 2);
       monster.play(monster.animation);
 
       //Grupo 3
 
-      monster = new Virus(this, 100, -450, 5, this.enemies, this.level);
+      monster = new Virus(this, 100, -450, 5, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 150, -450, 5, this.enemies, this.level);
+      monster = new Virus(this, 150, -450, 5, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -450, 5, this.enemies, this.level);
+      monster = new Virus(this, 300, -450, 5, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 350, -450, 5, this.enemies, this.level);
+      monster = new Virus(this, 350, -450, 5, this.enemies, this.level, 3);
       monster.play(monster.animation);
 
-      monster = new Virus(this, 150, -400, 6, this.enemies, this.level);
+      monster = new Virus(this, 150, -400, 6, this.enemies, this.level, 3);
       monster.play(monster.animation);
-      monster = new Virus(this, 300, -400, 6, this.enemies, this.level);
+      monster = new Virus(this, 300, -400, 6, this.enemies, this.level, 3);
       monster.play(monster.animation);
 
       //Grupo 4
 
-      monster = new Virus(this, 150, -550, 6, this.enemies, this.level);
+      monster = new Virus(this, 150, -550, 6, this.enemies, this.level, 4);
       monster.play(monster.animation);
-      monster = new Virus(this, 200, -550, 6, this.enemies, this.level);
+      monster = new Virus(this, 200, -550, 6, this.enemies, this.level, 4);
       monster.play(monster.animation);
-      monster = new Virus(this, 250, -550, 6, this.enemies, this.level);
+      monster = new Virus(this, 250, -550, 6, this.enemies, this.level, 4);
       monster.play(monster.animation);
 
     }
@@ -669,82 +669,83 @@ export default class Level extends Phaser.Scene {
     if (this.level == 1){
      
       //Grupo 1
-      let human = new Human(this, 550, 50, 1, this.enemies, this.level);
+      let human = new Human(this, 150, 50, 1, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 550, 100, 1, this.enemies, this.level);
+      human = new Human(this, 150, 100, 1, this.enemies, this.level, 1);
       human.play(human.animation);
 
       //Grupo 2
-      human = new Human(this, 250, -100, 1, this.enemies, this.level);
+      human = new Human(this, 150, -100, 1, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 250, -50, 1, this.enemies, this.level);
+      human = new Human(this, 150, -50, 1, this.enemies, this.level, 2);
       human.play(human.animation);
 
       //Grupo 3
-      human = new Human(this, 150, -250, 1, this.enemies, this.level);
+      human = new Human(this, 150, -250, 1, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 50, -200, 1, this.enemies, this.level);
+
+      human = new Human(this, 50, -200, 1, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 100, -200, 1, this.enemies, this.level);
+      human = new Human(this, 100, -200, 1, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 150, -200, 1, this.enemies, this.level);
+      human = new Human(this, 150, -200, 1, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 200, -200, 1, this.enemies, this.level);
+      human = new Human(this, 200, -200, 1, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 250, -200, 1, this.enemies, this.level);
+      human = new Human(this, 250, -200, 1, this.enemies, this.level, 3);
       human.play(human.animation);
     }
     else if (this.level == 2){
 
       //Grupo 1
-      let human = new Human(this, 50, -100, 1, this.enemies, this.level);
+      let human = new Human(this, 50, -100, 1, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -100, 1, this.enemies, this.level);
+      human = new Human(this, 200, -100, 1, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 350, -100, 1, this.enemies, this.level);
+      human = new Human(this, 350, -100, 1, this.enemies, this.level, 1);
       human.play(human.animation);
 
-      human = new Human(this, 50, -50, 1, this.enemies, this.level);
+      human = new Human(this, 50, -50, 1, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -50, 1, this.enemies, this.level);
+      human = new Human(this, 200, -50, 1, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 350, -50, 1, this.enemies, this.level);
+      human = new Human(this, 350, -50, 1, this.enemies, this.level, 1);
       human.play(human.animation);
 
       //Grupo 2
 
-      human = new Human(this, 50, -250, 1, this.enemies, this.level);
+      human = new Human(this, 50, -250, 1, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 200, -250, 1, this.enemies, this.level);
+      human = new Human(this, 200, -250, 1, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 350, -250, 1, this.enemies, this.level);
+      human = new Human(this, 350, -250, 1, this.enemies, this.level, 2);
       human.play(human.animation);
 
-      human = new Human(this, 200, -200, 1, this.enemies, this.level);
+      human = new Human(this, 200, -200, 1, this.enemies, this.level, 2);
       human.play(human.animation);
 
       //Grupo 3
 
-      human = new Human(this, 50, -400, 2, this.enemies, this.level);
+      human = new Human(this, 50, -400, 2, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 50, -400, 2, this.enemies, this.level);
+      human = new Human(this, 200, -400, 2, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 50, -400, 2, this.enemies, this.level);
+      human = new Human(this, 350, -400, 2, this.enemies, this.level, 3);
       human.play(human.animation);
 
-      human = new Human(this, 50, -350, 2, this.enemies, this.level);
+      human = new Human(this, 50, -350, 2, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 100, -350, 2, this.enemies, this.level);
+      human = new Human(this, 100, -350, 2, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 150, -350, 2, this.enemies, this.level);
+      human = new Human(this, 150, -350, 2, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 200, -350, 2, this.enemies, this.level);
+      human = new Human(this, 200, -350, 2, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 250, -350, 2, this.enemies, this.level);
+      human = new Human(this, 250, -350, 2, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 300, -350, 2, this.enemies, this.level);
+      human = new Human(this, 300, -350, 2, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 350, -350, 2, this.enemies, this.level);
+      human = new Human(this, 350, -350, 2, this.enemies, this.level, 3);
       human.play(human.animation);
 
     }
@@ -752,126 +753,126 @@ export default class Level extends Phaser.Scene {
 
       //Grupo 1
 
-      let human = new Human(this, 150, -100, 1, this.enemies, this.level);
+      let human = new Human(this, 150, -100, 1, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -100, 1, this.enemies, this.level);
+      human = new Human(this, 200, -100, 1, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 150, -50, 2, this.enemies, this.level);
+      human = new Human(this, 150, -50, 2, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -50, 2, this.enemies, this.level);
+      human = new Human(this, 200, -50, 2, this.enemies, this.level, 1);
       human.play(human.animation);
 
       //Grupo 2
 
-      human = new Human(this, 150, -250, 2, this.enemies, this.level);
+      human = new Human(this, 150, -250, 2, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 200, -250, 2, this.enemies, this.level);
+      human = new Human(this, 200, -250, 2, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 250, -250, 2, this.enemies, this.level);
+      human = new Human(this, 250, -250, 2, this.enemies, this.level, 2);
       human.play(human.animation);
 
-      human = new Human(this, 150, -200, 2, this.enemies, this.level);
+      human = new Human(this, 150, -200, 2, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 200, -200, 2, this.enemies, this.level);
+      human = new Human(this, 200, -200, 2, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 250, -200, 2, this.enemies, this.level);
+      human = new Human(this, 250, -200, 2, this.enemies, this.level, 2);
       human.play(human.animation);
 
       //Grupo 3
 
-      human = new Human(this, 50, -450, 3, this.enemies, this.level);
+      human = new Human(this, 50, -450, 3, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 200, -450, 2, this.enemies, this.level);
+      human = new Human(this, 200, -450, 2, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 250, -450, 2, this.enemies, this.level);
+      human = new Human(this, 250, -450, 2, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 400, -450, 3, this.enemies, this.level);
-      human.play(human.animation);
-
-      human = new Human(this, 150, -400, 3, this.enemies, this.level);
-      human.play(human.animation);
-      human = new Human(this, 200, -400, 3, this.enemies, this.level);
+      human = new Human(this, 400, -450, 3, this.enemies, this.level, 3);
       human.play(human.animation);
 
-      human = new Human(this, 150, -350, 3, this.enemies, this.level);
+      human = new Human(this, 150, -400, 3, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 200, -350, 3, this.enemies, this.level);
+      human = new Human(this, 200, -400, 3, this.enemies, this.level, 3);
+      human.play(human.animation);
+
+      human = new Human(this, 150, -350, 3, this.enemies, this.level, 3);
+      human.play(human.animation);
+      human = new Human(this, 200, -350, 3, this.enemies, this.level, 3);
       human.play(human.animation);
 
       //Grupo 4
 
-      human = new Human(this, 50, -600, 3, this.enemies, this.level);
+      human = new Human(this, 50, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 100, -600, 3, this.enemies, this.level);
+      human = new Human(this, 100, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 150, -600, 3, this.enemies, this.level);
+      human = new Human(this, 150, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 200, -600, 3, this.enemies, this.level);
+      human = new Human(this, 200, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 250, -600, 3, this.enemies, this.level);
+      human = new Human(this, 250, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 300, -600, 3, this.enemies, this.level);
+      human = new Human(this, 300, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 350, -600, 3, this.enemies, this.level);
+      human = new Human(this, 350, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
 
-      human = new Human(this, 100, -550, 3, this.enemies, this.level);
+      human = new Human(this, 100, -550, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 300, -550, 3, this.enemies, this.level);
+      human = new Human(this, 300, -550, 3, this.enemies, this.level, 4);
       human.play(human.animation);
 
     }
     else if (this.level == 4){
 
       //Grupo 1
-      let human = new Human(this, 50, -100, 2, this.enemies, this.level);
+      let human = new Human(this, 50, -100, 2, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -100, 2, this.enemies, this.level);
+      human = new Human(this, 200, -100, 2, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 350, -100, 2, this.enemies, this.level);
+      human = new Human(this, 350, -100, 2, this.enemies, this.level, 1);
       human.play(human.animation);
 
-      human = new Human(this, 50, -50, 2, this.enemies, this.level);
+      human = new Human(this, 50, -50, 2, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -50, 2, this.enemies, this.level);
+      human = new Human(this, 200, -50, 2, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 350, -50, 2, this.enemies, this.level);
+      human = new Human(this, 350, -50, 2, this.enemies, this.level, 1);
       human.play(human.animation);
 
       //Grupo 2
 
-      human = new Human(this, 50, -250, 3, this.enemies, this.level);
+      human = new Human(this, 50, -250, 3, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 200, -250, 3, this.enemies, this.level);
+      human = new Human(this, 200, -250, 3, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 350, -250, 3, this.enemies, this.level);
+      human = new Human(this, 350, -250, 3, this.enemies, this.level, 2);
       human.play(human.animation);
 
-      human = new Human(this, 200, -200, 3, this.enemies, this.level);
+      human = new Human(this, 200, -200, 3, this.enemies, this.level, 2);
       human.play(human.animation);
 
       //Grupo 3
 
-      human = new Human(this, 50, -400, 3, this.enemies, this.level);
+      human = new Human(this, 50, -400, 3, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 50, -400, 3, this.enemies, this.level);
+      human = new Human(this, 50, -400, 3, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 50, -400, 3, this.enemies, this.level);
+      human = new Human(this, 50, -400, 3, this.enemies, this.level, 3);
       human.play(human.animation);
 
-      human = new Human(this, 50, -350, 4, this.enemies, this.level);
+      human = new Human(this, 50, -350, 4, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 100, -350, 4, this.enemies, this.level);
+      human = new Human(this, 100, -350, 4, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 150, -350, 4, this.enemies, this.level);
+      human = new Human(this, 150, -350, 4, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 200, -350, 4, this.enemies, this.level);
+      human = new Human(this, 200, -350, 4, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 250, -350, 4, this.enemies, this.level);
+      human = new Human(this, 250, -350, 4, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 300, -350, 4, this.enemies, this.level);
+      human = new Human(this, 300, -350, 4, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 350, -350, 4, this.enemies, this.level);
+      human = new Human(this, 350, -350, 4, this.enemies, this.level, 3);
       human.play(human.animation);
 
     }
@@ -879,72 +880,72 @@ export default class Level extends Phaser.Scene {
 
       //Grupo 1
 
-      let human = new Human(this, 150, -100, 3, this.enemies, this.level);
+      let human = new Human(this, 150, -100, 3, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -100, 3, this.enemies, this.level);
+      human = new Human(this, 200, -100, 3, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 150, -50, 3, this.enemies, this.level);
+      human = new Human(this, 150, -50, 3, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -50, 3, this.enemies, this.level);
+      human = new Human(this, 200, -50, 3, this.enemies, this.level, 1);
       human.play(human.animation);
 
       //Grupo 2
 
-      human = new Human(this, 150, -250, 3, this.enemies, this.level);
+      human = new Human(this, 150, -250, 3, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 200, -250, 3, this.enemies, this.level);
+      human = new Human(this, 200, -250, 3, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 250, -250, 3, this.enemies, this.level);
+      human = new Human(this, 250, -250, 3, this.enemies, this.level, 2);
       human.play(human.animation);
 
-      human = new Human(this, 150, -200, 4, this.enemies, this.level);
+      human = new Human(this, 150, -200, 4, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 200, -200, 4, this.enemies, this.level);
+      human = new Human(this, 200, -200, 4, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 250, -200, 4, this.enemies, this.level);
+      human = new Human(this, 250, -200, 4, this.enemies, this.level, 2);
       human.play(human.animation);
 
       //Grupo 3
 
-      human = new Human(this, 50, -450, 4, this.enemies, this.level);
+      human = new Human(this, 50, -450, 4, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 200, -450, 4, this.enemies, this.level);
+      human = new Human(this, 200, -450, 4, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 250, -450, 4, this.enemies, this.level);
+      human = new Human(this, 250, -450, 4, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 400, -450, 4, this.enemies, this.level);
-      human.play(human.animation);
-
-      human = new Human(this, 150, -400, 5, this.enemies, this.level);
-      human.play(human.animation);
-      human = new Human(this, 200, -400, 5, this.enemies, this.level);
+      human = new Human(this, 400, -450, 4, this.enemies, this.level, 3);
       human.play(human.animation);
 
-      human = new Human(this, 150, -350, 5, this.enemies, this.level);
+      human = new Human(this, 150, -400, 5, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 200, -350, 5, this.enemies, this.level);
+      human = new Human(this, 200, -400, 5, this.enemies, this.level, 3);
+      human.play(human.animation);
+
+      human = new Human(this, 150, -350, 5, this.enemies, this.level, 3);
+      human.play(human.animation);
+      human = new Human(this, 200, -350, 5, this.enemies, this.level, 3);
       human.play(human.animation);
 
       //Grupo 4
 
-      human = new Human(this, 50, -600, 5, this.enemies, this.level);
+      human = new Human(this, 50, -600, 5, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 100, -600, 5, this.enemies, this.level);
+      human = new Human(this, 100, -600, 5, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 150, -600, 5, this.enemies, this.level);
+      human = new Human(this, 150, -600, 5, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 200, -600, 5, this.enemies, this.level);
+      human = new Human(this, 200, -600, 5, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 250, -600, 5, this.enemies, this.level);
+      human = new Human(this, 250, -600, 5, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 300, -600, 5, this.enemies, this.level);
+      human = new Human(this, 300, -600, 5, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 350, -600, 5, this.enemies, this.level);
+      human = new Human(this, 350, -600, 5, this.enemies, this.level, 4);
       human.play(human.animation);
 
-      human = new Human(this, 100, -550, 5, this.enemies, this.level);
+      human = new Human(this, 100, -550, 5, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 300, -550, 5, this.enemies, this.level);
+      human = new Human(this, 300, -550, 5, this.enemies, this.level, 4);
       human.play(human.animation);
 
     }
@@ -952,126 +953,126 @@ export default class Level extends Phaser.Scene {
 
       //Grupo 1
 
-      let human = new Human(this, 150, -100, 1, this.enemies, this.level);
+      let human = new Human(this, 150, -100, 1, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -100, 1, this.enemies, this.level);
+      human = new Human(this, 200, -100, 1, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 150, -50, 2, this.enemies, this.level);
+      human = new Human(this, 150, -50, 2, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -50, 2, this.enemies, this.level);
+      human = new Human(this, 200, -50, 2, this.enemies, this.level, 1);
       human.play(human.animation);
 
       //Grupo 2
 
-      human = new Human(this, 150, -250, 2, this.enemies, this.level);
+      human = new Human(this, 150, -250, 2, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 200, -250, 2, this.enemies, this.level);
+      human = new Human(this, 200, -250, 2, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 250, -250, 2, this.enemies, this.level);
+      human = new Human(this, 250, -250, 2, this.enemies, this.level, 2);
       human.play(human.animation);
 
-      human = new Human(this, 150, -200, 2, this.enemies, this.level);
+      human = new Human(this, 150, -200, 2, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 200, -200, 2, this.enemies, this.level);
+      human = new Human(this, 200, -200, 2, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 250, -200, 2, this.enemies, this.level);
+      human = new Human(this, 250, -200, 2, this.enemies, this.level, 2);
       human.play(human.animation);
 
       //Grupo 3
 
-      human = new Human(this, 50, -450, 3, this.enemies, this.level);
+      human = new Human(this, 50, -450, 3, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 200, -450, 2, this.enemies, this.level);
+      human = new Human(this, 200, -450, 2, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 250, -450, 2, this.enemies, this.level);
+      human = new Human(this, 250, -450, 2, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 400, -450, 3, this.enemies, this.level);
-      human.play(human.animation);
-
-      human = new Human(this, 150, -400, 3, this.enemies, this.level);
-      human.play(human.animation);
-      human = new Human(this, 200, -400, 3, this.enemies, this.level);
+      human = new Human(this, 400, -450, 3, this.enemies, this.level, 3);
       human.play(human.animation);
 
-      human = new Human(this, 150, -350, 3, this.enemies, this.level);
+      human = new Human(this, 150, -400, 3, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 200, -350, 3, this.enemies, this.level);
+      human = new Human(this, 200, -400, 3, this.enemies, this.level, 3);
+      human.play(human.animation);
+
+      human = new Human(this, 150, -350, 3, this.enemies, this.level, 3);
+      human.play(human.animation);
+      human = new Human(this, 200, -350, 3, this.enemies, this.level, 3);
       human.play(human.animation);
 
       //Grupo 4
 
-      human = new Human(this, 50, -600, 3, this.enemies, this.level);
+      human = new Human(this, 50, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 100, -600, 3, this.enemies, this.level);
+      human = new Human(this, 100, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 150, -600, 3, this.enemies, this.level);
+      human = new Human(this, 150, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 200, -600, 3, this.enemies, this.level);
+      human = new Human(this, 200, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 250, -600, 3, this.enemies, this.level);
+      human = new Human(this, 250, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 300, -600, 3, this.enemies, this.level);
+      human = new Human(this, 300, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 350, -600, 3, this.enemies, this.level);
+      human = new Human(this, 350, -600, 3, this.enemies, this.level, 4);
       human.play(human.animation);
 
-      human = new Human(this, 100, -550, 3, this.enemies, this.level);
+      human = new Human(this, 100, -550, 3, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 300, -550, 3, this.enemies, this.level);
+      human = new Human(this, 300, -550, 3, this.enemies, this.level, 4);
       human.play(human.animation);
 
     }
     else if (this.level == 4){
 
       //Grupo 1
-      let human = new Human(this, 50, -100, 4, this.enemies, this.level);
+      let human = new Human(this, 50, -100, 4, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -100, 4, this.enemies, this.level);
+      human = new Human(this, 200, -100, 4, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 350, -100, 4, this.enemies, this.level);
+      human = new Human(this, 350, -100, 4, this.enemies, this.level, 1);
       human.play(human.animation);
 
-      human = new Human(this, 50, -50, 4, this.enemies, this.level);
+      human = new Human(this, 50, -50, 4, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -50, 4, this.enemies, this.level);
+      human = new Human(this, 200, -50, 4, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 350, -50, 4, this.enemies, this.level);
+      human = new Human(this, 350, -50, 4, this.enemies, this.level, 1);
       human.play(human.animation);
 
       //Grupo 2
 
-      human = new Human(this, 50, -250, 5, this.enemies, this.level);
+      human = new Human(this, 50, -250, 5, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 200, -250, 5, this.enemies, this.level);
+      human = new Human(this, 200, -250, 5, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 350, -250, 5, this.enemies, this.level);
+      human = new Human(this, 350, -250, 5, this.enemies, this.level, 2);
       human.play(human.animation);
 
-      human = new Human(this, 200, -200, 5, this.enemies, this.level);
+      human = new Human(this, 200, -200, 5, this.enemies, this.level, 2);
       human.play(human.animation);
 
       //Grupo 3
 
-      human = new Human(this, 50, -400, 5, this.enemies, this.level);
+      human = new Human(this, 50, -400, 5, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 50, -400, 5, this.enemies, this.level);
+      human = new Human(this, 50, -400, 5, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 50, -400, 5, this.enemies, this.level);
+      human = new Human(this, 50, -400, 5, this.enemies, this.level, 3);
       human.play(human.animation);
 
-      human = new Human(this, 50, -350, 6, this.enemies, this.level);
+      human = new Human(this, 50, -350, 6, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 100, -350, 6, this.enemies, this.level);
+      human = new Human(this, 100, -350, 6, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 150, -350, 6, this.enemies, this.level);
+      human = new Human(this, 150, -350, 6, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 200, -350, 6, this.enemies, this.level);
+      human = new Human(this, 200, -350, 6, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 250, -350, 6, this.enemies, this.level);
+      human = new Human(this, 250, -350, 6, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 300, -350, 6, this.enemies, this.level);
+      human = new Human(this, 300, -350, 6, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 350, -350, 6, this.enemies, this.level);
+      human = new Human(this, 350, -350, 6, this.enemies, this.level, 3);
       human.play(human.animation);
 
     }
@@ -1079,72 +1080,72 @@ export default class Level extends Phaser.Scene {
 
       //Grupo 1
 
-      let human = new Human(this, 150, -100, 5, this.enemies, this.level);
+      let human = new Human(this, 150, -100, 5, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -100, 5, this.enemies, this.level);
+      human = new Human(this, 200, -100, 5, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 150, -50, 5, this.enemies, this.level);
+      human = new Human(this, 150, -50, 5, this.enemies, this.level, 1);
       human.play(human.animation);
-      human = new Human(this, 200, -50, 5, this.enemies, this.level);
+      human = new Human(this, 200, -50, 5, this.enemies, this.level, 1);
       human.play(human.animation);
 
       //Grupo 2
 
-      human = new Human(this, 150, -250, 6, this.enemies, this.level);
+      human = new Human(this, 150, -250, 6, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 200, -250, 6, this.enemies, this.level);
+      human = new Human(this, 200, -250, 6, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 250, -250, 6, this.enemies, this.level);
+      human = new Human(this, 250, -250, 6, this.enemies, this.level, 2);
       human.play(human.animation);
 
-      human = new Human(this, 150, -200, 6, this.enemies, this.level);
+      human = new Human(this, 150, -200, 6, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 200, -200, 6, this.enemies, this.level);
+      human = new Human(this, 200, -200, 6, this.enemies, this.level, 2);
       human.play(human.animation);
-      human = new Human(this, 250, -200, 6, this.enemies, this.level);
+      human = new Human(this, 250, -200, 6, this.enemies, this.level, 2);
       human.play(human.animation);
 
       //Grupo 3
 
-      human = new Human(this, 50, -450, 5, this.enemies, this.level);
+      human = new Human(this, 50, -450, 5, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 200, -450, 5, this.enemies, this.level);
+      human = new Human(this, 200, -450, 5, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 250, -450, 5, this.enemies, this.level);
+      human = new Human(this, 250, -450, 5, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 400, -450, 5, this.enemies, this.level);
-      human.play(human.animation);
-
-      human = new Human(this, 150, -400, 6, this.enemies, this.level);
-      human.play(human.animation);
-      human = new Human(this, 200, -400, 6, this.enemies, this.level);
+      human = new Human(this, 400, -450, 5, this.enemies, this.level, 3);
       human.play(human.animation);
 
-      human = new Human(this, 150, -350, 5, this.enemies, this.level);
+      human = new Human(this, 150, -400, 6, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 200, -350, 5, this.enemies, this.level);
+      human = new Human(this, 200, -400, 6, this.enemies, this.level, 3);
+      human.play(human.animation);
+
+      human = new Human(this, 150, -350, 5, this.enemies, this.level, 3);
+      human.play(human.animation);
+      human = new Human(this, 200, -350, 5, this.enemies, this.level, 3);
       human.play(human.animation);
 
       //Grupo 4
 
-      human = new Human(this, 50, -600, 6, this.enemies, this.level);
+      human = new Human(this, 50, -600, 6, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 100, -600, 6, this.enemies, this.level);
+      human = new Human(this, 100, -600, 6, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 150, -600, 6, this.enemies, this.level);
+      human = new Human(this, 150, -600, 6, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 200, -600, 6, this.enemies, this.level);
+      human = new Human(this, 200, -600, 6, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 250, -600, 6, this.enemies, this.level);
+      human = new Human(this, 250, -600, 6, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 300, -600, 6, this.enemies, this.level);
+      human = new Human(this, 300, -600, 6, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 350, -600, 6, this.enemies, this.level);
+      human = new Human(this, 350, -600, 6, this.enemies, this.level, 4);
       human.play(human.animation);
 
-      human = new Human(this, 100, -550, 6, this.enemies, this.level);
+      human = new Human(this, 100, -550, 6, this.enemies, this.level, 4);
       human.play(human.animation);
-      human = new Human(this, 300, -550, 6, this.enemies, this.level);
+      human = new Human(this, 300, -550, 6, this.enemies, this.level, 4);
       human.play(human.animation);
 
     }

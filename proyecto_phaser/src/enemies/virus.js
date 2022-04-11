@@ -9,11 +9,11 @@ let level_lives = [1, 3, 5, 7];
 
 export default class Virus extends Enemy{
   
-    constructor(scene, x, y, level_of_enemy, group, planet_level) {
+    constructor(scene, x, y, level_of_enemy, group, planet_level, apparition_group) {
         
         let name = level_images[level_of_enemy - 1];
 
-        super(scene, x, y, name);
+        super(scene, x + (100*apparition_group), y, name);
         
         this.addToGroup(group);
         this.animation = level_animations[level_of_enemy - 1];
@@ -25,6 +25,7 @@ export default class Virus extends Enemy{
         this.lives = level_lives[level_of_enemy - 1];
         this.max_level = planet_level;
         this.vertical = false;
+        this.apparition_group = apparition_group;
     }
 
     
@@ -76,7 +77,7 @@ export default class Virus extends Enemy{
                     {y: this.scene.cameras.main.height}
                     ]});
             */
-            this.vertical = true;
+            //this.vertical = true;
             console.log("mutate");
         }
         else {
@@ -92,7 +93,7 @@ export default class Virus extends Enemy{
                     ]});
             */
             console.log("mutate");
-            this.vertical = true;
+            //this.vertical = true;
         }
     }
 }
