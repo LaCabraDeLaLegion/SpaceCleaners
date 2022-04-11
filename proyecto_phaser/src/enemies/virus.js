@@ -1,7 +1,7 @@
 import Enemy from "./enemy.js";
 
-let level_images = ["V1", "V2", "V2", "V2"];
-let level_damage_images = ["V1-damage", "V2-damage", "V3-damage", "V4-damage"];
+let level_images = ["V1", "V2", "V3", "V4", "V5"];
+let level_damage_images = ["V1-damage", "V2-damage", "V3-damage", "V4-damage", "V5-damage"];
 let level_animations = ["virus_1", "virus_2", "virus_3", "virus_4"];
 let level_damage_anims = ["virus_1_damage"];
 let level_death_anims = ["virus_1_death"];
