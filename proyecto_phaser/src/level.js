@@ -476,6 +476,8 @@ export default class Level extends Phaser.Scene {
     }
     else if (this.level == 5){
 
+      this.alive_monsters = 50;
+
       //Grupo 1
       let monster = new Virus(this, 50, -100, 3, this.enemies, this.level, 1);
       monster.play(monster.animation);
@@ -595,6 +597,8 @@ export default class Level extends Phaser.Scene {
 
     }
     else if (this.level == 7){
+
+      this.alive_monsters = 50;
 
       //Grupo 1
       let monster = new Virus(this, 50, -100, 5, this.enemies, this.level, 1);
@@ -789,14 +793,14 @@ export default class Level extends Phaser.Scene {
       human = new Human(this, 400, -450, 3, this.enemies, this.level, 3);
       human.play(human.animation);
 
-      human = new Human(this, 150, -400, 3, this.enemies, this.level, 3);
-      human.play(human.animation);
       human = new Human(this, 200, -400, 3, this.enemies, this.level, 3);
       human.play(human.animation);
-
-      human = new Human(this, 150, -350, 3, this.enemies, this.level, 3);
+      human = new Human(this, 250, -400, 3, this.enemies, this.level, 3);
       human.play(human.animation);
+
       human = new Human(this, 200, -350, 3, this.enemies, this.level, 3);
+      human.play(human.animation);
+      human = new Human(this, 250, -350, 3, this.enemies, this.level, 3);
       human.play(human.animation);
 
       //Grupo 4
@@ -855,9 +859,9 @@ export default class Level extends Phaser.Scene {
 
       human = new Human(this, 50, -400, 3, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 50, -400, 3, this.enemies, this.level, 3);
+      human = new Human(this, 200, -400, 3, this.enemies, this.level, 3);
       human.play(human.animation);
-      human = new Human(this, 50, -400, 3, this.enemies, this.level, 3);
+      human = new Human(this, 350, -400, 3, this.enemies, this.level, 3);
       human.play(human.animation);
 
       human = new Human(this, 50, -350, 4, this.enemies, this.level, 3);
@@ -916,14 +920,14 @@ export default class Level extends Phaser.Scene {
       human = new Human(this, 400, -450, 4, this.enemies, this.level, 3);
       human.play(human.animation);
 
-      human = new Human(this, 150, -400, 5, this.enemies, this.level, 3);
-      human.play(human.animation);
       human = new Human(this, 200, -400, 5, this.enemies, this.level, 3);
       human.play(human.animation);
-
-      human = new Human(this, 150, -350, 5, this.enemies, this.level, 3);
+      human = new Human(this, 250, -400, 5, this.enemies, this.level, 3);
       human.play(human.animation);
+
       human = new Human(this, 200, -350, 5, this.enemies, this.level, 3);
+      human.play(human.animation);
+      human = new Human(this, 250, -350, 5, this.enemies, this.level, 3);
       human.play(human.animation);
 
       //Grupo 4
@@ -950,79 +954,6 @@ export default class Level extends Phaser.Scene {
 
     }
     else if (this.level == 6){
-
-      //Grupo 1
-
-      let human = new Human(this, 150, -100, 1, this.enemies, this.level, 1);
-      human.play(human.animation);
-      human = new Human(this, 200, -100, 1, this.enemies, this.level, 1);
-      human.play(human.animation);
-      human = new Human(this, 150, -50, 2, this.enemies, this.level, 1);
-      human.play(human.animation);
-      human = new Human(this, 200, -50, 2, this.enemies, this.level, 1);
-      human.play(human.animation);
-
-      //Grupo 2
-
-      human = new Human(this, 150, -250, 2, this.enemies, this.level, 2);
-      human.play(human.animation);
-      human = new Human(this, 200, -250, 2, this.enemies, this.level, 2);
-      human.play(human.animation);
-      human = new Human(this, 250, -250, 2, this.enemies, this.level, 2);
-      human.play(human.animation);
-
-      human = new Human(this, 150, -200, 2, this.enemies, this.level, 2);
-      human.play(human.animation);
-      human = new Human(this, 200, -200, 2, this.enemies, this.level, 2);
-      human.play(human.animation);
-      human = new Human(this, 250, -200, 2, this.enemies, this.level, 2);
-      human.play(human.animation);
-
-      //Grupo 3
-
-      human = new Human(this, 50, -450, 3, this.enemies, this.level, 3);
-      human.play(human.animation);
-      human = new Human(this, 200, -450, 2, this.enemies, this.level, 3);
-      human.play(human.animation);
-      human = new Human(this, 250, -450, 2, this.enemies, this.level, 3);
-      human.play(human.animation);
-      human = new Human(this, 400, -450, 3, this.enemies, this.level, 3);
-      human.play(human.animation);
-
-      human = new Human(this, 150, -400, 3, this.enemies, this.level, 3);
-      human.play(human.animation);
-      human = new Human(this, 200, -400, 3, this.enemies, this.level, 3);
-      human.play(human.animation);
-
-      human = new Human(this, 150, -350, 3, this.enemies, this.level, 3);
-      human.play(human.animation);
-      human = new Human(this, 200, -350, 3, this.enemies, this.level, 3);
-      human.play(human.animation);
-
-      //Grupo 4
-
-      human = new Human(this, 50, -600, 3, this.enemies, this.level, 4);
-      human.play(human.animation);
-      human = new Human(this, 100, -600, 3, this.enemies, this.level, 4);
-      human.play(human.animation);
-      human = new Human(this, 150, -600, 3, this.enemies, this.level, 4);
-      human.play(human.animation);
-      human = new Human(this, 200, -600, 3, this.enemies, this.level, 4);
-      human.play(human.animation);
-      human = new Human(this, 250, -600, 3, this.enemies, this.level, 4);
-      human.play(human.animation);
-      human = new Human(this, 300, -600, 3, this.enemies, this.level, 4);
-      human.play(human.animation);
-      human = new Human(this, 350, -600, 3, this.enemies, this.level, 4);
-      human.play(human.animation);
-
-      human = new Human(this, 100, -550, 3, this.enemies, this.level, 4);
-      human.play(human.animation);
-      human = new Human(this, 300, -550, 3, this.enemies, this.level, 4);
-      human.play(human.animation);
-
-    }
-    else if (this.level == 4){
 
       //Grupo 1
       let human = new Human(this, 50, -100, 4, this.enemies, this.level, 1);

@@ -12,7 +12,7 @@ export default class Human extends Enemy{
         
         let name = level_images[level_of_enemy - 1];
         console.log("imagen humano " + name);
-        super(scene, x + (100*apparition_group), y, name);
+        super(scene, x + (100*apparition_group) - 50, y, name);
         
         this.addToGroup(group);
         this.group = group;

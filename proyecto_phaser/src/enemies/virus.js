@@ -13,7 +13,7 @@ export default class Virus extends Enemy{
         
         let name = level_images[level_of_enemy - 1];
 
-        super(scene, x + (100*apparition_group), y, name);
+        super(scene, x + (100*apparition_group) - 50, y, name);
         
         this.addToGroup(group);
         this.animation = level_animations[level_of_enemy - 1];
