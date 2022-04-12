@@ -96,7 +96,7 @@ export default class Level extends Phaser.Scene {
   }
 
   startBossBattle() {
-    this.boss = new Boss(this, 420, -50, 1);
+    this.boss = new Boss(this, 420, -50, this.level);
     this.physics.add.collider(
       this.boss,
       this.lasers,
@@ -229,11 +229,15 @@ export default class Level extends Phaser.Scene {
     this.impactSound.play();
     this.boss.recieveDamage(1);
     if (this.boss.life > 0) {
+      this.boss.setTexture(this.boss.damage_image);
       this.time.delayedCall(100, () => {
-        this.boss.setTexture("boss");
+        this.boss.setTexture(this.boss.image);
       });
     } else {
-      this.boss.destroy();
+      this.boss.setTexture(this.boss.death_image);
+      this.time.delayedCall(100, () => {
+        this.boss.destroy();
+      });
     }
   }
 
@@ -1222,10 +1226,34 @@ export default class Level extends Phaser.Scene {
       repeat: -1,
     });
     this.anims.create({
+      key: "virus_2_damage",
+      frames: this.anims.generateFrameNumbers("V2_damage"),
+      frameRate: 15,
+      repeat: 0,
+    });
+    this.anims.create({
+      key: "virus_2_death",
+      frames: this.anims.generateFrameNumbers("V2_damage"),
+      frameRate: 20,
+      repeat: 0,
+    });
+    this.anims.create({
       key: "virus_3",
       frames: this.anims.generateFrameNumbers("V3"),
       frameRate: 5,
       repeat: -1,
+    });
+    this.anims.create({
+      key: "virus_3_damage",
+      frames: this.anims.generateFrameNumbers("V3_damage"),
+      frameRate: 15,
+      repeat: 0,
+    });
+    this.anims.create({
+      key: "virus_3_death",
+      frames: this.anims.generateFrameNumbers("V3_damage"),
+      frameRate: 20,
+      repeat: 0,
     });
     this.anims.create({
       key: "virus_4",
@@ -1234,16 +1262,52 @@ export default class Level extends Phaser.Scene {
       repeat: -1,
     });
     this.anims.create({
+      key: "virus_4_damage",
+      frames: this.anims.generateFrameNumbers("V4_damage"),
+      frameRate: 15,
+      repeat: 0,
+    });
+    this.anims.create({
+      key: "virus_4_death",
+      frames: this.anims.generateFrameNumbers("V4_damage"),
+      frameRate: 20,
+      repeat: 0,
+    });
+    this.anims.create({
       key: "virus_5",
       frames: this.anims.generateFrameNumbers("V5"),
       frameRate: 5,
       repeat: -1,
     });
     this.anims.create({
+      key: "virus_5_damage",
+      frames: this.anims.generateFrameNumbers("V5_damage"),
+      frameRate: 15,
+      repeat: 0,
+    });
+    this.anims.create({
+      key: "virus_5_death",
+      frames: this.anims.generateFrameNumbers("V5_damage"),
+      frameRate: 20,
+      repeat: 0,
+    });
+    this.anims.create({
       key: "virus_6",
       frames: this.anims.generateFrameNumbers("V6"),
       frameRate: 5,
       repeat: -1,
+    });
+    this.anims.create({
+      key: "virus_6_damage",
+      frames: this.anims.generateFrameNumbers("V6_damage"),
+      frameRate: 15,
+      repeat: 0,
+    });
+    this.anims.create({
+      key: "virus_6_death",
+      frames: this.anims.generateFrameNumbers("V6_damage"),
+      frameRate: 20,
+      repeat: 0,
     });
 
     //Infected humans
@@ -1335,21 +1399,61 @@ export default class Level extends Phaser.Scene {
       frameWidth: 50,
       frameHeight: 50,
     });
+    this.load.spritesheet("V2_damage", "/sprites/Virus/V2_damage.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("V2_death", "/sprites/Virus/V2_death.png", {
+      frameWidth: 70,
+      frameHeight: 70,
+    });
     this.load.spritesheet("V3", "/sprites/Virus/V3.png", {
       frameWidth: 50,
       frameHeight: 50,
+    });
+    this.load.spritesheet("V3_damage", "/sprites/Virus/V3_damage.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("V3_death", "/sprites/Virus/V3_death.png", {
+      frameWidth: 70,
+      frameHeight: 70,
     });
     this.load.spritesheet("V4", "/sprites/Virus/V4.png", {
       frameWidth: 50,
       frameHeight: 50,
     });
+    this.load.spritesheet("V4_damage", "/sprites/Virus/V4_damage.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("V4_death", "/sprites/Virus/V4_death.png", {
+      frameWidth: 70,
+      frameHeight: 70,
+    });
     this.load.spritesheet("V5", "/sprites/Virus/V5.png", {
       frameWidth: 50,
       frameHeight: 50,
     });
+    this.load.spritesheet("V5_damage", "/sprites/Virus/V5_damage.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("V5_death", "/sprites/Virus/V1_death.png", {
+      frameWidth: 70,
+      frameHeight: 70,
+    });
     this.load.spritesheet("V6", "/sprites/Virus/V6.png", {
       frameWidth: 50,
       frameHeight: 50,
+    });
+    this.load.spritesheet("V6_damage", "/sprites/Virus/V6_damage.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("V6_death", "/sprites/Virus/V6_death.png", {
+      frameWidth: 70,
+      frameHeight: 70,
     });
 
     //Players
@@ -1370,21 +1474,59 @@ export default class Level extends Phaser.Scene {
   load_images(){
     this.load.image("player", "/sprites/ship.png");
     this.load.image("player_damage", "/sprites/ship_damage.png");
-    this.load.image("laser", "/sprites/laser.png");
     this.load.image("boss", "/sprites/boss1.png");
     this.load.image("boss_damage", "/sprites/boss1_damage.png");
     this.load.image("slash1", "/sprites/slash1.png");
     this.load.image("slash2", "/sprites/slash2.png");
     this.load.image("level_victory", "/sprites/level_victory.png");
     this.load.image("level_lose", "you_lose.png");
-    this.load.image("mask", "/sprites/mascarilla.png");
-    this.load.image("V1-damage", "/sprites/Virus/V1_damage.png");
-    this.load.image("V2-damage", "/sprites/Virus/V2_damage.png");
-    this.load.image("V3-damage", "/sprites/Virus/V3_damage.png");
-    this.load.image("V4-damage", "/sprites/Virus/V4_damage.png");
-    this.load.image("V5-damage", "/sprites/Virus/V5_damage.png");
-    this.load.image("V6-damage", "/sprites/Virus/V6_damage.png");
-    this.load.image("basic_bomb", "/sprites/consumibles/basic_bomb.png")
+
+    //Medicinas
+    this.load.image("mask", "/sprites/Medicinas/mascarilla.png");
+    this.load.image("tablet", "/sprites/Medicinas/tablet.png");
+    this.load.image("gel", "/sprites/Medicinas/water_drop.png");
+
+    //Armas
+    this.load.image("laser", "/sprites/Armas/laser.png");
+    this.load.image("fire", "/sprites/Armas/fire.png");
+    this.load.image("bullet", "/sprites/Armas/bullet.png");
+
+    //Virus
+    //this.load.image("V1-damage", "/sprites/Virus/V1_damage.png");
+    //this.load.image("V2-damage", "/sprites/Virus/V2_damage.png");
+    //this.load.image("V3-damage", "/sprites/Virus/V3_damage.png");
+    //this.load.image("V4-damage", "/sprites/Virus/V4_damage.png");
+    //this.load.image("V5-damage", "/sprites/Virus/V5_damage.png");
+    //this.load.image("V6-damage", "/sprites/Virus/V6_damage.png");
+
+    //Consumibles
+    this.load.image("basic_bomb", "/sprites/consumibles/basic_bomb.png");
+    this.load.image("basic_shield", "/sprites/consumibles/shield.png");
+    this.load.image("basic_kit", "/sprites/consumibles/first_aid.png");
+
+    //Bosses
+    this.load.image("B1", "/sprites/Boss/B1.png");
+    this.load.image("B2", "/sprites/Boss/B2.png");
+    this.load.image("B3", "/sprites/Boss/B3.png");
+    this.load.image("B4", "/sprites/Boss/B4.png");
+    this.load.image("B5", "/sprites/Boss/B5.png");
+    this.load.image("B6", "/sprites/Boss/B6.png");
+    this.load.image("B7", "/sprites/Boss/B7.png");
+    this.load.image("B1_damage", "/sprites/Boss/B1_damage.png");
+    this.load.image("B2_damage", "/sprites/Boss/B2_damage.png");
+    this.load.image("B3_damage", "/sprites/Boss/B3_damage.png");
+    this.load.image("B4_damage", "/sprites/Boss/B4_damage.png");
+    this.load.image("B5_damage", "/sprites/Boss/B5_damage.png");
+    this.load.image("B6_damage", "/sprites/Boss/B6_damage.png");
+    this.load.image("B7_damage", "/sprites/Boss/B7_damage.png");
+    this.load.image("B1_death", "/sprites/Boss/B1_death.png");
+    this.load.image("B2_death", "/sprites/Boss/B2_death.png");
+    this.load.image("B3_death", "/sprites/Boss/B3_death.png");
+    this.load.image("B4_death", "/sprites/Boss/B4_death.png");
+    this.load.image("B5_death", "/sprites/Boss/B5_death.png");
+    this.load.image("B6_death", "/sprites/Boss/B6_death.png");
+    this.load.image("B7_death", "/sprites/Boss/B7_death.png");
+    
   }
 
   load_audio(){

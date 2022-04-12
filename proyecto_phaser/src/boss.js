@@ -1,5 +1,6 @@
-let images = ["boss", "", "", "", "", ""];
-let damage_images = ["boss_damage", "", "", "", "", ""];
+let images = ["B1", "B2", "B3", "B4", "B5", "B6", "B7"];
+let damage_images =  ["B1_damage", "B2_damage", "B3_damage", "B4_damage", "B5_damage", "B6_damage", "B7_damage"];
+let death_images =  ["B1_death", "B2_death", "B3_death", "B4_death", "B5_death", "B6_death", "B7_death"];
 
 export default class Boss extends Phaser.GameObjects.Sprite {
 
@@ -7,6 +8,9 @@ export default class Boss extends Phaser.GameObjects.Sprite {
     let name = images[boss_level - 1];
     super(scene, x, y, name);
     this.level = boss_level;
+    this.image = images[boss_level - 1];
+    this.damage_image = damage_images[boss_level - 1];
+    this.death_image = death_images[boss_level - 1];
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.dialog = false;
@@ -48,6 +52,5 @@ export default class Boss extends Phaser.GameObjects.Sprite {
 
   recieveDamage(damage){
       this.life -= damage;
-      this.setTexture(damage_images[this.level - 1]);
   }
 }
