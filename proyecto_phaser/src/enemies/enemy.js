@@ -29,7 +29,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         }
         else {
             
-            this.y += 0.5;
+            this.y += 0.25;
 
             if (this.x_right){
                 this.x += 0.5;
