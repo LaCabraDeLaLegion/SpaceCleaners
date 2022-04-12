@@ -106,6 +106,9 @@ export default class Level extends Phaser.Scene {
     );
     this.boss.setScale(0.25);
     this.bossInScene = true;
+    if (this.level > 1){
+      this.boss.setScale(2);
+    }
   }
 
   bossAttack(type, n) {
