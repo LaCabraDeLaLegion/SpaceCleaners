@@ -11,6 +11,17 @@ let planet_owners = [
   "virus",
 ];
 
+let planets_state = [
+  "unlocked",
+  "unlocked",
+  "locked",
+  "locked",
+  "locked",
+  "locked",
+  "locked",
+  "locked",
+];
+
 let planet_counter = 1;
 
 export default class Map extends Phaser.Scene {
@@ -29,6 +40,12 @@ export default class Map extends Phaser.Scene {
     if (data[0] === "win") {
       planet_owners[data[1]] = "humanos";
       planet_counter++;
+      if (data[1] < 7){
+        if (planets_state[data[1] + 1] == "locked"){
+          //Desbloquear cosas en la tienda e inventario
+        }
+        planets_state[data[1] + 1] = "unlocked";
+      }
     }
 
     let random = Phaser.Math.Between(0, 100);
@@ -47,6 +64,7 @@ export default class Map extends Phaser.Scene {
 
     if (!data[2])
       this.inventory = { shield: false, weapons: [], medicines: [], money: 30 };
+    
     else this.inventory = data[2];
   }
 
@@ -62,6 +80,8 @@ export default class Map extends Phaser.Scene {
     //Shop
     this.load.image("shop_btn", "../logo_shop.png");
 
+    //Lock
+    this.load.image("lock", "lock.png");
     //Spritesheets
 
     //Virus
@@ -311,7 +331,7 @@ export default class Map extends Phaser.Scene {
 
     this.planet_1.setInteractive();
     this.planet_1.on("pointerover", () => {
-      this.planet_1.setScale(2);
+      this.planet_1.setScale(1.25);
       this.planetSound.play();
     });
     this.planet_1.on("pointerout", () => {
@@ -321,76 +341,130 @@ export default class Map extends Phaser.Scene {
       this.scene.start("level", "1", this.inventory);
     });
 
-    this.planet_2.setInteractive();
-    this.planet_2.on("pointerover", () => {
-      this.planet_2.setScale(2);
-      this.planetSound.play();
-    });
-    this.planet_2.on("pointerout", () => {
-      this.planet_2.setScale(1);
-    });
-    this.planet_2.on("pointerup", () => {
-      this.scene.start("level", "2");
-    });
+    if (planets_state[2] == "unlocked"){
+      this.planet_2.setInteractive();
+      this.planet_2.on("pointerover", () => {
+        this.planet_2.setScale(1.25);
+        this.planetSound.play();
+      });
+      this.planet_2.on("pointerout", () => {
+        this.planet_2.setScale(1);
+      });
+      this.planet_2.on("pointerup", () => {
+        this.scene.start("level", "2");
+      });
+    }
+    else {
+      this.physics.add.sprite(
+        this.planet_2.x,
+        this.planet_2.y,
+        "lock"
+      ).setDepth(5).setScale(1.5);
+    }
 
-    this.planet_3.setInteractive();
-    this.planet_3.on("pointerover", () => {
-      this.planet_3.setScale(2);
-      this.planetSound.play();
-    });
-    this.planet_3.on("pointerout", () => {
-      this.planet_3.setScale(1);
-    });
-    this.planet_3.on("pointerup", () => {
-      this.scene.start("level", "3");
-    });
+    if (planets_state[3] == "unlocked"){
+      this.planet_3.setInteractive();
+      this.planet_3.on("pointerover", () => {
+        this.planet_3.setScale(1.25);
+        this.planetSound.play();
+      });
+      this.planet_3.on("pointerout", () => {
+        this.planet_3.setScale(1);
+      });
+      this.planet_3.on("pointerup", () => {
+        this.scene.start("level", "3");
+      });
+    }
+    else {
+      this.physics.add.sprite(
+        this.planet_3.x,
+        this.planet_3.y,
+        "lock"
+      ).setDepth(5).setScale(2);
+    }
 
-    this.planet_4.setInteractive();
-    this.planet_4.on("pointerover", () => {
-      this.planet_4.setScale(2);
-      this.planetSound.play();
-    });
-    this.planet_4.on("pointerout", () => {
-      this.planet_4.setScale(1);
-    });
-    this.planet_4.on("pointerup", () => {
-      this.scene.start("level", "4");
-    });
+    if (planets_state[4] == "unlocked"){
+      this.planet_4.setInteractive();
+      this.planet_4.on("pointerover", () => {
+        this.planet_4.setScale(1.25);
+        this.planetSound.play();
+      });
+      this.planet_4.on("pointerout", () => {
+        this.planet_4.setScale(1);
+      });
+      this.planet_4.on("pointerup", () => {
+        this.scene.start("level", "4");
+      });
+    }
+    else {
+      this.physics.add.sprite(
+        this.planet_4.x,
+        this.planet_4.y,
+        "lock"
+      ).setDepth(5).setScale(1.5);
+    }
 
-    this.planet_5.setInteractive();
-    this.planet_5.on("pointerover", () => {
-      this.planet_5.setScale(2);
-      this.planetSound.play();
-    });
-    this.planet_5.on("pointerout", () => {
-      this.planet_5.setScale(1);
-    });
-    this.planet_5.on("pointerup", () => {
-      this.scene.start("level", "5");
-    });
+    if (planets_state[5] == "unlocked"){
+      this.planet_5.setInteractive();
+      this.planet_5.on("pointerover", () => {
+        this.planet_5.setScale(1.25);
+        this.planetSound.play();
+      });
+      this.planet_5.on("pointerout", () => {
+        this.planet_5.setScale(1);
+      });
+      this.planet_5.on("pointerup", () => {
+        this.scene.start("level", "5");
+      });
+    } 
+    else {
+      this.physics.add.sprite(
+        this.planet_5.x,
+        this.planet_5.y,
+        "lock"
+      ).setDepth(5).setScale(1.5);
+    }
 
-    this.planet_6.setInteractive();
-    this.planet_6.on("pointerover", () => {
-      this.planet_6.setScale(2);
-      this.planetSound.play();
-    });
-    this.planet_6.on("pointerout", () => {
-      this.planet_6.setScale(1);
-    });
-    this.planet_6.on("pointerup", () => {
-      this.scene.start("level", "6");
-    });
+    if (planets_state[6] == "unlocked"){
+      this.planet_6.setInteractive();
+      this.planet_6.on("pointerover", () => {
+        this.planet_6.setScale(1.25);
+        this.planetSound.play();
+      });
+      this.planet_6.on("pointerout", () => {
+        this.planet_6.setScale(1);
+      });
+      this.planet_6.on("pointerup", () => {
+        this.scene.start("level", "6");
+      });
+    }
+    else {
+      this.physics.add.sprite(
+        this.planet_6.x,
+        this.planet_6.y,
+        "lock"
+      ).setDepth(5).setScale(1.5);
+    }
 
-    this.planet_7.setInteractive();
-    this.planet_7.on("pointerover", () => {
-      this.planet_7.setScale(2.5);
-      this.planetSound.play();
-    });
-    this.planet_7.on("pointerout", () => {
-      this.planet_7.setScale(2);
-    });
-    this.planet_7.on("pointerup", () => {
-      this.scene.start("level", "7");
-    });
+    if (planets_state[7] == "unlocked"){
+      this.planet_7.setInteractive();
+      this.planet_7.on("pointerover", () => {
+        this.planet_7.setScale(1.25);
+        this.planetSound.play();
+      });
+      this.planet_7.on("pointerout", () => {
+        this.planet_7.setScale(1);
+      });
+      this.planet_7.on("pointerup", () => {
+        this.scene.start("level", "7");
+      });
+    }
+    else {
+      this.physics.add.sprite(
+        this.planet_7.x,
+        this.planet_7.y,
+        "lock"
+      ).setDepth(5).setScale(4);
+    }
   }
 }
