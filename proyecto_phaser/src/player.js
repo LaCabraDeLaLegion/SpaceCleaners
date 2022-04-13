@@ -47,6 +47,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.medicineTime = 0;
     this.consumibleTime = 0;
     this.shieldTime = 0;
+    this.healTime = 0;
+    this.damageTime = 0;
     this.speed = 400;
     this.movingx = false;
     this.movingy = false;
@@ -62,8 +64,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.medicineTime--;
     this.consumibleTime--;
     this.shieldTime--;
+    this.damageTime--;
+    this.healTime--;
 
-    if (this.shieldTime <= 0 && this.consumibleTime <= 0){
+    if (this.shieldTime <= 0 && this.consumibleTime <= 0 && this.damageTime <= 0 && this.healTime <= 0){
       this.anims.stop();
       this.play(this.normal_animation);
     }
@@ -108,7 +112,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     if (this.key_one.isDown && this.inventory.shield[1] > 0 && this.consumibleTime <= 0){
       this.scene.createShield();
-      this.consumibleTime = 15;
+      this.consumibleTime = 500;
       this.shieldTime = 500;
       this.anims.stop();
       this.play(this.shield_animation);
@@ -117,8 +121,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.scene.usePotion();
       this.consumibleTime = 15;
       this.anims.stop();
+      this.healTime = 50;
       this.play(this.heal_animation);
       this.once("animationcomplete", () => this.play(this.normal_animation));
+      console.log("normal_animation at : heal");
     }
     else if(this.key_three.isDown && this.inventory.bomb[1] > 0 && this.consumibleTime <= 0){
       this.scene.useBomb();
@@ -129,14 +135,14 @@ export default class Player extends Phaser.GameObjects.Sprite {
   damage(damage) {
 
     if (this.shieldTime <= 0){
+
+      this.damageTime = 50;
       this.anims.stop();
+      this.play(this.damage_animation);
       this.lives -= damage;
       console.log("Vidas: " + this.lives);
       if (this.lives <= 0) {
         this.scene.game_over();
-      }
-      else {
-        this.once("animationcomplete", () => this.play(this.normal_animation));
       }
     }
   }
