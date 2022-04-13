@@ -93,7 +93,7 @@ export default class Introduction extends Phaser.Scene {
         this.playSound.play();
         this.time.delayedCall(1000, () => {
           this.introSong.pause();
-          this.scene.start("map", [null, null, null]);
+          this.scene.start("menu", [null, null, null]);
         });
       });
 
