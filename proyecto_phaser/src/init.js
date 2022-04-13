@@ -4,6 +4,7 @@ import Map from "./map.js";
 import Win from "./win.js";
 import GameOver from "./game_over.js";
 import Shop from "./shop.js";
+import Introduction from "./introduction.js";
 
 const game_width = 0;
 const game_height = 0;
@@ -15,7 +16,7 @@ var config = {
   width: window.innerWidth/2,
   height: window.innerHeight,
   parent: "container",
-  scene: [Menu, Map, Shop, Level, Win, GameOver],
+  scene: [Introduction, Menu, Map, Shop, Level, Win, GameOver],
   render: { pixelArt: true },
   fps: {
     target: 60,
