@@ -1202,6 +1202,60 @@ export default class Level extends Phaser.Scene {
       frameRate: 5,
       repeat: -1,
     });
+    this.anims.create({
+      key: "player_walk_1_damage",
+      frames: this.anims.generateFrameNumbers("player_1_damage"),
+      frameRate: 5,
+      repeat: 20,
+    });
+    this.anims.create({
+      key: "player_walk_2_damage",
+      frames: this.anims.generateFrameNumbers("player_2_damage"),
+      frameRate: 5,
+      repeat: 20,
+    });
+    this.anims.create({
+      key: "player_walk_3_damage",
+      frames: this.anims.generateFrameNumbers("player_3_damage"),
+      frameRate: 5,
+      repeat: 20,
+    });
+    this.anims.create({
+      key: "player_walk_1_heal",
+      frames: this.anims.generateFrameNumbers("player_1_heal"),
+      frameRate: 5,
+      repeat: 200,
+    });
+    this.anims.create({
+      key: "player_walk_2_heal",
+      frames: this.anims.generateFrameNumbers("player_2_heal"),
+      frameRate: 5,
+      repeat: 20,
+    });
+    this.anims.create({
+      key: "player_walk_3_heal",
+      frames: this.anims.generateFrameNumbers("player_3_heal"),
+      frameRate: 5,
+      repeat: 20,
+    });
+    this.anims.create({
+      key: "player_walk_1_shield",
+      frames: this.anims.generateFrameNumbers("player_1_shield"),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "player_walk_2_shield",
+      frames: this.anims.generateFrameNumbers("player_2_shield"),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "player_walk_3_shield",
+      frames: this.anims.generateFrameNumbers("player_3_shield"),
+      frameRate: 5,
+      repeat: -1,
+    });
 
     //Virus
     this.anims.create({
@@ -1469,6 +1523,42 @@ export default class Level extends Phaser.Scene {
       frameHeight: 50,
     });
     this.load.spritesheet("player_3", "/sprites/Players/player_3.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("player_1_damage", "/sprites/Players/player_1_damage.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("player_2_damage", "/sprites/Players/player_2_damage.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("player_3_damage", "/sprites/Players/player_3_damage.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("player_1_heal", "/sprites/Players/player_1_heal.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("player_2_heal", "/sprites/Players/player_2_heal.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("player_3_heal", "/sprites/Players/player_3_heal.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("player_1_shield", "/sprites/Players/player_1_shield.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("player_2_shield", "/sprites/Players/player_2_shield.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
+    this.load.spritesheet("player_3_shield", "/sprites/Players/player_3_shield.png", {
       frameWidth: 50,
       frameHeight: 50,
     });
