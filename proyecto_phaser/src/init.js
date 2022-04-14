@@ -1,4 +1,10 @@
-import Level from "./level.js";
+import Level1 from "./level/level1.js";
+import Level2 from "./level/level2.js";
+import Level3 from "./level/level3.js";
+import Level4 from "./level/level4.js";
+import Level5 from "./level/level5.js";
+import Level6 from "./level/level6.js";
+import Level7 from "./level/level7.js";
 import Menu from "./menu.js";
 import Map from "./map.js";
 import Win from "./win.js";
@@ -16,7 +22,7 @@ var config = {
   width: window.innerWidth/2,
   height: window.innerHeight,
   parent: "container",
-  scene: [Introduction, Menu, Map, Shop, Level, Win, GameOver],
+  scene: [Introduction, Menu, Map, Shop, Level1, Level2, Level3, Level4, Level5, Level6, Level7, Win, GameOver],
   render: { pixelArt: true },
   fps: {
     target: 60,

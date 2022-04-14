@@ -3,7 +3,7 @@ import Enemy from "./enemy.js";
 let level_images = ["V1", "V2", "V3", "V4", "V5", "V6"];
 let level_animations = ["virus_1", "virus_2", "virus_3", "virus_4", "virus_5", "virus_6"];
 let level_damage_anims = ["virus_1_damage", "virus_2_damage", "virus_3_damage", "virus_4_damage", "virus_5_damage", "virus_6_damage"];
-let level_death_anims = ["virus_1_death", "virus_2_death", "virus_3_death","virus_4_death", "virus_5_death", "virus_6_death"];
+let level_death_anims = ["virus_1_death"];
 
 export default class Virus extends Enemy{
   
