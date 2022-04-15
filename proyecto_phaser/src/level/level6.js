@@ -1,6 +1,11 @@
 import Level from "./level.js";
 import Virus from "../enemies/virus.js";
 import Human from "../enemies/human.js";
+import virus_data from "../data/virus_data.js";
+import humans_data from "../data/humans_data.js";
+
+const enemy_virus = virus_data.data;
+const enemy_humans = humans_data.data;
 
 export default class Level6 extends Level {
 
@@ -13,8 +18,8 @@ export default class Level6 extends Level {
       this.level = 6;
       this.virus_maxlevel = 6;
       this.human_maxlevel = 6;
-      this.level_virus = ["virus_5", "virus_6"];
-      this.level_humans = ["human_4", "human_5", "human_6"];
+      this.level_virus = [enemy_virus[5], enemy_virus[6]];
+      this.level_humans = [enemy_humans[4], enemy_humans[5], enemy_humans[3]];
       console.log("Nivel = 6");
     }
   
