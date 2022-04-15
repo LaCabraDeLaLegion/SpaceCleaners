@@ -19,6 +19,7 @@ export default class Level extends Phaser.Scene {
 
   preload() {
     this.load.setPath("assets/");
+    this.load_spritesheets();
   }
 
   create() {
@@ -26,6 +27,10 @@ export default class Level extends Phaser.Scene {
 
     this.alive_monsters = 0;
     this.bossInScene = false;
+
+    this.createAnimations();
+    this.initPlayer();
+    
 
     /*
     this.text = this.add.text(32, 32);
@@ -309,23 +314,15 @@ export default class Level extends Phaser.Scene {
       frames: this.anims.generateFrameNumbers("explosion"),
       frameRate: 5,
     });
-    this.createPlayerAnims();
+    this.createEnemyAnims();
   }
   
-  createPlayerAnims() {
-    switch(this.inventory.skin) {
-      case "player_1":
-        Anim_Factory.player_anims(this, "player_1");
-        break;
-      case "player_2":
-        Anim_Factory.player_anims(this, "player_2");
-        break;
-      case "player_3":
-        Anim_Factory.player_anims(this, "player_3");
-        break;
-      default:
-        break;
-    }
+  createEnemyAnims() {
+    for (let i = 0; i < this.level_virus.length; i++) 
+      Anim_Factory.virus_anims(this, this.level_virus[i]);
+
+    for (let i = 0; i < this.level_humans.length; i++)
+      Anim_Factory.humans_anims(this, this.level_humans[i]); 
   }
 
   load_spritesheets() {
@@ -334,24 +331,27 @@ export default class Level extends Phaser.Scene {
       frameWidth: 50,
       frameHeight: 50,
     });
-    this.load_player_spritesheets();
+    try {
+      this.load_player_spritesheets();
+      this.load_enemies_spritesheets();
+    } catch (error) {
+      console.log(error.message);
+      console.log(error.stack);
+    }
   }
 
   load_player_spritesheets() {
-    switch(this.inventory.skin) {
-      case "player_1":
-        Anim_Factory.player_spritesheets(this, "player_1");
-        break;
-      case "player_2":
-        Anim_Factory.player_spritesheets(this, "player_2");
-        break;
-      case "player_3":
-        Anim_Factory.player_spritesheets(this, "player_3");
-        break;
-      default:
-        break;
-    }
+    Anim_Factory.player_spritesheets(this, this.inventory.skin);   
   }
+
+  load_enemies_spritesheets() {
+    for (let i = 0; i < this.level_virus.length; i++)
+      Anim_Factory.virus_spritesheets(this, this.level_virus[i]);
+
+    for (let i = 0; i < this.level_humans.length; i++)
+      Anim_Factory.humans_spritesheets(this, this.level_humans[i]); 
+  }
+
 
   load_images(){
     this.load.image("player", "/sprites/ship.png");

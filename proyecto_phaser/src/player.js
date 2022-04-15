@@ -1,28 +1,17 @@
 import Laser from "./weapons/laser.js";
 import Medicine from "./weapons/medicine.js";
+import Anim_Factory from "./level/anim_factory.js";
+
 export default class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, inventory) {
 
     super(scene, x, y, inventory.skin);
 
-    if (inventory.skin == "player_1"){
-      this.normal_animation = "player_walk_1";
-      this.damage_animation = "player_walk_1_damage";
-      this.heal_animation = "player_walk_1_heal";
-      this.shield_animation = "player_walk_1_shield";
-    }
-    else if (inventory.skin == "player_2"){
-      this.normal_animation = "player_walk_2";
-      this.damage_animation = "player_walk_2_damage";
-      this.heal_animation = "player_walk_2_heal";
-      this.shield_animation = "player_walk_2_shield";
-    }
-    else if (inventory.skin == "player_3"){
-      this.normal_animation = "player_walk_3";
-      this.damage_animation = "player_walk_3_damage";
-      this.heal_animation = "player_walk_3_heal";
-      this.shield_animation = "player_walk_3_shield";
-    }
+    Anim_Factory.player_anims(scene, inventory.skin);
+    this.normal_animation = inventory.skin + "_walk";
+    this.damage_animation = inventory.skin + "_walk_damage"
+    this.heal_animation = inventory.skin + "_walk_heal";
+    this.shield_animation = inventory.skin + "_walk_shield";
 
     this.cursors = this.scene.input.keyboard.createCursorKeys();
 
@@ -55,6 +44,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.lives = 10;
 
     this.inventory = inventory;
+
+    this.current_animation = this.normal_animation;
   }
 
   preUpdate(t, dt) {
@@ -68,8 +59,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.healTime--;
 
     if (this.shieldTime <= 0 && this.consumibleTime <= 0 && this.damageTime <= 0 && this.healTime <= 0){
-      this.anims.stop();
-      this.play(this.normal_animation);
+      this.current_animation = this.normal_animation;
     }
 
     if (this.cursors.left.isDown || this.keyA.isDown) {
@@ -114,22 +104,29 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.scene.createShield();
       this.consumibleTime = 500;
       this.shieldTime = 500;
-      this.anims.stop();
-      this.play(this.shield_animation);
+      this.current_animation = this.shield_animation;
     }
     else if (this.key_two.isDown && this.inventory.potion[1] > 0 && this.consumibleTime <= 0){
       this.scene.usePotion();
       this.consumibleTime = 15;
-      this.anims.stop();
       this.healTime = 50;
-      this.play(this.heal_animation);
-      this.once("animationcomplete", () => this.play(this.normal_animation));
-      console.log("normal_animation at : heal");
+      this.current_animation = this.heal_animation;
     }
     else if(this.key_three.isDown && this.inventory.bomb[1] > 0 && this.consumibleTime <= 0){
       this.scene.useBomb();
       this.consumibleTime = 15;
     }
+
+    if (this.cursors.up.isDown || this.keyW.isDown || this.cursors.left.isDown || this.keyA.isDown ||
+      this.cursors.down.isDown || this.keyS.isDown || this.cursors.right.isDown || this.keyD.isDown) 
+    {
+      this.play(this.current_animation, this.current_animation);
+    } else {
+      this.play(this.current_animation, this.current_animation);
+      this.anims.stop();
+    }
+
+    
   }
 
   damage(damage) {

@@ -1,38 +1,41 @@
 import Enemy from "./enemy.js";
 import Virus from "./virus.js";
+import humans_data from "../data/humans_data.js";
     
-let level_images = ["H1", "H2", "H3", "H4", "H5", "H6"];
-let level_damage_images = ["H1-damage", "H2-damage", "H3-damage", "H4-damage", "H5-damage", "H6-damage"];
-let level_animations = ["human_walk_1","human_walk_2","human_walk_3","human_walk_4","human_walk_5","human_walk_6"];
-
-export default class Human extends Enemy{
+export default class Human extends Enemy {
   
-    constructor(scene, x, y, level_of_enemy, group, planet_level, apparition_group) {
+    constructor(scene, x, y, level, group, max_level, apparition_group) { 
         
-        let name = level_images[level_of_enemy - 1];
-        console.log("imagen humano " + name);
-        super(scene, x + (100*apparition_group) - 50, y, name);
+        const data = humans_data.data[level];
+
+        super(scene, x + (100*apparition_group) - 50, y, level, group, max_level, apparition_group, data);
         
-        this.addToGroup(group);
-        this.group = group;
         this.type = "human";
-        this.level = level_of_enemy;
-        this.lives = level_of_enemy
-        this.animation = level_animations[level_of_enemy - 1];
-        this.max_level = planet_level;
-        this.vertical = false;
-        this.apparition_group = apparition_group;
+        this.heal_anim = data.name + "_heal";
+        this.healed_anim = data.name + "_healed";
+
     }
 
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
 
-        if (this.lives <= 0){
-            this.scene.time.delayedCall(200, () => {
-                this.dead = true;
-                this.destroy();
-                console.log("destroy");
-            });
+        if (!this.healing) {
+            this.walking = true;
+            if (!this.healed) this.play(this.walk_anim, this.walk_anim);
+        }
+        else 
+            this.walking = false;
+        
+
+        if (!this.healed && this.lives <= 0) {
+            this.healed = true;
+            this.body.destroy();
+            if (this.walking) this.anims.stop();
+            this.on("animationcomplete", () => {
+                this.play(this.healed_anim);
+                this.on("animationcomplete", () => this.destroy());
+            }); 
+                 
         }
 
     }
@@ -40,27 +43,28 @@ export default class Human extends Enemy{
     weapon_hit(){
         console.log("level: " + this.level + "   max_level: " + this.max_level);
         if (this.level >= this.max_level){
-            console.log("Data for new virus: " + this.x, this.y, this.level, this.group, this.max_level, 0);
-            let virus = new Virus(this.scene, this.x, this.y, this.level, this.group, this.max_level, 0);
-            virus.lives += 2;
-            virus.play("virus_1");
+            console.log("Data for new virus: " + this.x, this.y, this.level, this.group, this.max_level, this.apparition_group);
+            this.setVisible(false);
+            let virus = new Virus(this.scene, this.x + 50, this.y, this.level, this.group, this.max_level, 0);
+            virus.syncMovement(this.counter, this.x_right);
             this.destroy();
-            //virus.vertical = true;
         }
         else {
-            let virus = new Virus(this.scene, this.x, this.y, this.level + 1, this.group, this.max_level, 0);
-            virus.play("virus_1");
-            /*this.scene.tweens.timeline({targets: virus, ease: "Linear", tweens:[
-                {y: this.scene.cameras.main.height}
-                ]});
-            */
+            this.setVisible(false);
+            let virus = new Virus(this.scene, this.x + 50, this.y, this.level + 1, this.group, this.max_level, 0);
+            virus.syncMovement(this.counter, this.x_right);
             this.destroy();
-            //virus.vertical = true;
         }
     }
 
     medicine_hit(){
         this.lives--;
+        this.play(this.heal_anim);
+        this.healing = true;
+        this.on("animationcomplete", () => {
+            this.healing = false;
+        });
+        
         /*
         this.anims.stop();
         this.setTexture(level_damage_images[this.level-1]);
