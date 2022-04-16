@@ -4,12 +4,11 @@ import Anim_Factory from "./level/anim_factory.js";
 
 export default class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, inventory) {
-
     super(scene, x, y, inventory.skin);
 
     Anim_Factory.player_anims(scene, inventory.skin);
     this.normal_animation = inventory.skin + "_walk";
-    this.damage_animation = inventory.skin + "_walk_damage"
+    this.damage_animation = inventory.skin + "_walk_damage";
     this.heal_animation = inventory.skin + "_walk_heal";
     this.shield_animation = inventory.skin + "_walk_shield";
 
@@ -25,9 +24,15 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.keyC = this.scene.input.keyboard.addKey("C");
 
     //Consumible
-    this.key_one = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
-    this.key_two = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO);
-    this.key_three = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
+    this.key_one = this.scene.input.keyboard.addKey(
+      Phaser.Input.Keyboard.KeyCodes.ONE
+    );
+    this.key_two = this.scene.input.keyboard.addKey(
+      Phaser.Input.Keyboard.KeyCodes.TWO
+    );
+    this.key_three = this.scene.input.keyboard.addKey(
+      Phaser.Input.Keyboard.KeyCodes.THREE
+    );
 
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
@@ -58,7 +63,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.damageTime--;
     this.healTime--;
 
-    if (this.shieldTime <= 0 && this.consumibleTime <= 0 && this.damageTime <= 0 && this.healTime <= 0){
+    if (
+      this.shieldTime <= 0 &&
+      this.consumibleTime <= 0 &&
+      this.damageTime <= 0 &&
+      this.healTime <= 0
+    ) {
       this.current_animation = this.normal_animation;
     }
 
@@ -100,44 +110,57 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.medicineTime = 15;
     }
 
-    if (this.key_one.isDown && this.inventory.shield[1] > 0 && this.consumibleTime <= 0){
+    if (
+      this.key_one.isDown &&
+      this.inventory.shield[1] > 0 &&
+      this.consumibleTime <= 0
+    ) {
       this.scene.createShield();
       this.consumibleTime = 500;
       this.shieldTime = 500;
       this.current_animation = this.shield_animation;
-    }
-    else if (this.key_two.isDown && this.inventory.potion[1] > 0 && this.consumibleTime <= 0){
+    } else if (
+      this.key_two.isDown &&
+      this.inventory.potions[1] > 0 &&
+      this.consumibleTime <= 0
+    ) {
       this.scene.usePotion();
       this.consumibleTime = 15;
       this.healTime = 50;
       this.current_animation = this.heal_animation;
-    }
-    else if(this.key_three.isDown && this.inventory.bomb[1] > 0 && this.consumibleTime <= 0){
+    } else if (
+      this.key_three.isDown &&
+      this.inventory.bomb[1] > 0 &&
+      this.consumibleTime <= 0
+    ) {
       this.scene.useBomb();
       this.consumibleTime = 15;
     }
 
-    if (this.cursors.up.isDown || this.keyW.isDown || this.cursors.left.isDown || this.keyA.isDown ||
-      this.cursors.down.isDown || this.keyS.isDown || this.cursors.right.isDown || this.keyD.isDown) 
-    {
+    if (
+      this.cursors.up.isDown ||
+      this.keyW.isDown ||
+      this.cursors.left.isDown ||
+      this.keyA.isDown ||
+      this.cursors.down.isDown ||
+      this.keyS.isDown ||
+      this.cursors.right.isDown ||
+      this.keyD.isDown
+    ) {
       this.play(this.current_animation, this.current_animation);
     } else {
       this.play(this.current_animation, this.current_animation);
       this.anims.stop();
     }
-
-    
   }
 
   damage(damage) {
-
-    if (this.shieldTime <= 0){
-
+    if (this.shieldTime <= 0) {
       this.damageTime = 50;
       this.anims.stop();
       this.play(this.damage_animation);
       this.lives -= damage;
-      
+
       console.log("Vidas: " + this.lives);
 
       if (this.lives <= 0) this.scene.game_over();

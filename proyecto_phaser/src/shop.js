@@ -5,7 +5,7 @@ export default class Shop extends Phaser.Scene {
     super({ key: "shop" });
 
     this.categories = {
-      medicines: store.medicines,
+      potions: store.potions,
       weapons: store.weapons,
     };
 
@@ -82,7 +82,7 @@ export default class Shop extends Phaser.Scene {
       category1
         .setTexture("category_selected")
         .setScale(this.globalWidth / 1200);
-      this.createCategory("medicines", 1);
+      this.createCategory("potions", 1);
     });
 
     let category2 = this.add
@@ -135,7 +135,7 @@ export default class Shop extends Phaser.Scene {
       .text(
         (this.globalWidth / 9.35) * 1.5,
         (this.globalHeight / 7) * 1.15,
-        "Medicines",
+        "potions",
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(2)
@@ -159,7 +159,7 @@ export default class Shop extends Phaser.Scene {
       .setDepth(2)
       .setScale(this.globalWidth / 600);
 
-    this.createCategory("medicines", 1);
+    this.createCategory("potions", 1);
   }
 
   createUI() {
@@ -178,7 +178,7 @@ export default class Shop extends Phaser.Scene {
     close.on("pointerup", () => {
       this.playSound.play();
       this.time.delayedCall(1000, () => {
-        this.scene.start("map", [null, null, null]);
+        this.scene.start("map", [null, null, this.inventory]);
       });
     });
     let cash = this.add
@@ -365,12 +365,11 @@ export default class Shop extends Phaser.Scene {
       this.inventory.money -= item.price;
 
       switch (item.category) {
-        case "medicines":
-          console.log("medicines");
-          this.inventory.medicines.push(item);
+        case "potions":
+          this.inventory.potions.push(item.info);
           break;
         case "weapons":
-          this.inventory.weapons.push(item);
+          this.inventory.weapons.push(item.info);
           break;
       }
 

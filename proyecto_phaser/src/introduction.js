@@ -1,4 +1,4 @@
-import Sound from "./data/sounds";
+import Sound from "./data/sounds.js";
 
 let texto = [
   [

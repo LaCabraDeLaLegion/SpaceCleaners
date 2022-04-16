@@ -66,7 +66,13 @@ export default class Map extends Phaser.Scene {
     }
 
     if (!data[2])
-      this.inventory = { shield: false, weapons: [], medicines: [], money: 30 };
+      this.inventory = {
+        skin: "player_1",
+        shield: [],
+        weapons: [],
+        potions: [],
+        money: 30,
+      };
     else this.inventory = data[2];
   }
 
@@ -322,7 +328,7 @@ export default class Map extends Phaser.Scene {
       this.planet_1.setScale(1);
     });
     this.planet_1.on("pointerup", () => {
-      this.scene.start("level1", "1", this.inventory);
+      this.scene.start("level1", ["1", this.inventory]);
     });
 
     if (planets_state[2] == "unlocked") {

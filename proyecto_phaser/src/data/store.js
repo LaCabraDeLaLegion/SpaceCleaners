@@ -1,5 +1,5 @@
 const store = {
-  medicines: {
+  potions: {
     items: [
       {
         info: { name: "Basic Medicine", quantity: 0, health: 1 },

@@ -11,10 +11,11 @@ export default class Level extends Phaser.Scene {
 
   // PHASER METHODS
   init(data) {
+    console.log("DATA", data[1]);
     this.inventory = {
       skin: "player_1",
       shield: ["basic_shield", 5],
-      potion: ["basic_potion", 10],
+      potions: ["basic_potions", 10],
       bomb: ["basic_bomb", 2],
     };
   }
@@ -187,8 +188,8 @@ export default class Level extends Phaser.Scene {
   }
 
   usePotion() {
-    this.inventory.potion[1]--;
-    if (this.inventory.potion[0] == "basic_potion") this.player.lives++;
+    this.inventory.potions[1]--;
+    if (this.inventory.potions[0] == "basic_potions") this.player.lives++;
   }
 
   useBomb() {
