@@ -1,9 +1,27 @@
+import AttackFactory from "./attacks/factory/attack_factory.js";
+import Attack from "./attacks/factory/attacks_enum.js";
+
 let images = ["B1", "B2", "B3", "B4", "B5", "B6", "B7"];
-let damage_images =  ["B1_damage", "B2_damage", "B3_damage", "B4_damage", "B5_damage", "B6_damage", "B7_damage"];
-let death_images =  ["B1_death", "B2_death", "B3_death", "B4_death", "B5_death", "B6_death", "B7_death"];
+let damage_images = [
+  "B1_damage",
+  "B2_damage",
+  "B3_damage",
+  "B4_damage",
+  "B5_damage",
+  "B6_damage",
+  "B7_damage",
+];
+let death_images = [
+  "B1_death",
+  "B2_death",
+  "B3_death",
+  "B4_death",
+  "B5_death",
+  "B6_death",
+  "B7_death",
+];
 
 export default class Boss extends Phaser.GameObjects.Sprite {
-
   constructor(scene, x, y, boss_level) {
     let name = images[boss_level - 1];
     super(scene, x, y, name);
@@ -31,7 +49,24 @@ export default class Boss extends Phaser.GameObjects.Sprite {
       this.text.destroy();
     } else {
       if (this.attackTime <= 0) {
-        this.scene.bossAttack(this.life >= 25 ? "1" : "2", 2);
+        
+        if (this.life >= 25) {
+          AttackFactory.createAttack(this.scene, Attack.AttackBoss1, this, {
+            x: this.scene.player.x,
+            y: this.scene.player.y,
+          });
+        } else {
+          AttackFactory.createAttack(
+            this.scene,
+            Attack.SuperAttackBoos1,
+            this,
+            {
+              x: this.scene.player.x,
+              y: this.scene.player.y,
+            }
+          );
+        }
+
         this.attackTime = 60;
       }
 
@@ -50,7 +85,7 @@ export default class Boss extends Phaser.GameObjects.Sprite {
     }
   }
 
-  recieveDamage(damage){
-      this.life -= damage;
+  recieveDamage(damage) {
+    this.life -= damage;
   }
 }

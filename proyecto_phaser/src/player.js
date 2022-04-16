@@ -137,10 +137,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.anims.stop();
       this.play(this.damage_animation);
       this.lives -= damage;
+      
       console.log("Vidas: " + this.lives);
-      if (this.lives <= 0) {
-        this.scene.game_over();
-      }
+
+      if (this.lives <= 0) this.scene.game_over();
     }
   }
 }

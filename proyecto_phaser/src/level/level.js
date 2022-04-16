@@ -1,20 +1,22 @@
 import Player from "../player.js";
 import Boss from "../boss.js";
-import Slash from "../slash.js";
 import Shield from "../weapons/consumibles/shield.js";
 import Potion from "../weapons/consumibles/potion.js";
 import Bomb from "../weapons/consumibles/bomb.js";
 import Anim_Factory from "./anim_factory.js";
 
 export default class Level extends Phaser.Scene {
-
   constructor(key) {
     super({ key });
   }
 
   init(data) {
-    //this.inventory = data[0];
-    this.inventory = {skin: "player_1", shield: ["basic_shield", 5], potion: ["basic_potion", 10], bomb: ["basic_bomb", 2]};
+    this.inventory = {
+      skin: "player_1",
+      shield: ["basic_shield", 5],
+      potion: ["basic_potion", 10],
+      bomb: ["basic_bomb", 2],
+    };
   }
 
   preload() {
@@ -25,34 +27,27 @@ export default class Level extends Phaser.Scene {
   create() {
     this.input.setDefaultCursor("url(assets/sprites/cursor.cur), pointer");
 
+    this.gameOver = false;
     this.alive_monsters = 0;
     this.bossInScene = false;
 
     this.createAnimations();
     this.initPlayer();
-    
-
-    /*
-    this.text = this.add.text(32, 32);
-    this.timedEvent = this.time.addEvent({delay: 3000, callback: this.createEnemies(), callbackScope: this, loop: true});
-
-    for (let i = this.level; i< (10*this.level + 1); i++){
-      console.log("delay = ", 3000 * i);
-      //this.time.delayedCall(1000 * i, this.createEnemies());
-    }
-    */
   }
 
   update() {
-    
     let destroy = false;
-
-    //this.text.setText('Event.progress: ' + this.timedEvent.getProgress().toString().substr(0, 4));
 
     if (this.alive_monsters <= 0 && !this.bossInScene) {
       this.startBossBattle();
     } else if (this.bossInScene && this.boss.life <= 0) {
-      let victory = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, "level_victory").setDepth(1);
+      let victory = this.add
+        .image(
+          this.cameras.main.width / 2,
+          this.cameras.main.height / 2,
+          "level_victory"
+        )
+        .setDepth(1);
       victory.setInteractive();
       victory.on("pointerup", () => {
         this.scene.start("map", ["win", this.level]);
@@ -63,7 +58,13 @@ export default class Level extends Phaser.Scene {
     this.enemies.getChildren().forEach((enemy) => {
       if (enemy.y >= this.cameras.main.height) {
         this.player.setVisible(false);
-        let lose = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, "level_lose").setDepth(1);
+        let lose = this.add
+          .image(
+            this.cameras.main.width / 2,
+            this.cameras.main.height / 2,
+            "level_lose"
+          )
+          .setDepth(1);
         lose.setInteractive();
         lose.on("pointerup", () => {
           this.scene.start("map", ["lose", this.level, this.inventory]);
@@ -76,8 +77,6 @@ export default class Level extends Phaser.Scene {
     if (destroy) {
       this.destroy_enemies();
     }
-    this.slashes;
-    
   }
 
   destroy_enemies() {
@@ -97,27 +96,11 @@ export default class Level extends Phaser.Scene {
     );
     this.boss.setScale(0.25);
     this.bossInScene = true;
-    if (this.level > 1){
+    if (this.level > 1) {
       this.boss.setScale(2);
     }
   }
 
-  bossAttack(type, n) {
-    for (let i = 0; i < n; i++) {
-      this.slash = new Slash(
-        this,
-        this.boss.x + 50 * i,
-        this.boss.y + 80,
-        type,
-        {
-          x: this.player.x,
-          y: this.player.y,
-        }
-      );
-      this.slashes.add(this.slash);
-      this.slash.setScale(0.1);
-    }
-  }
 
   initPlayer() {
     this.player = new Player(this, 500, 500, this.inventory);
@@ -161,27 +144,6 @@ export default class Level extends Phaser.Scene {
       null,
       this
     );
-
-    this.slashes = this.physics.add.group();
-    this.physics.add.collider(
-      this.player,
-      this.slashes,
-      this.onBossHit,
-      null,
-      this
-    );
-    this.virus = this.add.group();
-  }
-
-  onBossHit(player, slash) {
-    this.damageSound.play();
-    slash.destroy();
-    player.damage(slash.damage);
-    //this.player.setTexture("player_damage");
-    /*this.time.delayedCall(100, () => {
-      this.player.setTexture("player");
-    });
-    */
   }
 
   addLaser(laser) {
@@ -233,29 +195,38 @@ export default class Level extends Phaser.Scene {
     }
   }
 
-  createShield(){
+  createShield() {
     this.inventory.shield[1]--;
     //let shield = new Shield(this.player.x, this.player.y, this.inventory.shield[0]);
   }
 
-  usePotion(){
+  usePotion() {
     this.inventory.potion[1]--;
-    if (this.inventory.potion[0] == "basic_potion"){
+    if (this.inventory.potion[0] == "basic_potion") {
       this.player.lives++;
     }
   }
 
-  useBomb(){
+  useBomb() {
     this.inventory.bomb[1]--;
-    let bomba = new Bomb(this, this.player.x, this.player.y + 20, this.inventory.bomb[0]);
-    this.bombs.add(bomba); 
+    let bomba = new Bomb(
+      this,
+      this.player.x,
+      this.player.y + 20,
+      this.inventory.bomb[0]
+    );
+    this.bombs.add(bomba);
   }
 
-  onBombHit(enemy, bomb){
+  onBombHit(enemy, bomb) {
     this.enemies.getChildren().forEach((child) => {
-      if (child.y > 0 && Phaser.Math.Difference(child.x, bomb.x) < bomb.range && Phaser.Math.Difference(child.y, bomb.y) < bomb.range){
+      if (
+        child.y > 0 &&
+        Phaser.Math.Difference(child.x, bomb.x) < bomb.range &&
+        Phaser.Math.Difference(child.y, bomb.y) < bomb.range
+      ) {
         child.lives -= bomb.damage;
-        if (child.lives <= 0){
+        if (child.lives <= 0) {
           this.alive_monsters--;
         }
       }
@@ -263,20 +234,24 @@ export default class Level extends Phaser.Scene {
     let expl = this.add.sprite(enemy.x, enemy.y, "explosion");
     expl.setScale(3);
     expl.play("explode");
-    expl.on('animationcomplete', () => {
+    expl.on("animationcomplete", () => {
       expl.destroy();
-    })
+    });
     bomb.destroy();
   }
 
-
   game_over() {
+    this.gameOver = true;
     this.boss.destroy();
     this.player.setVisible(false);
-    this.slashes.getChildren().forEach((slash) => {
-      this.slashes.killAndHide(slash);
-    });
-    let lose = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, "level_lose").setDepth(1);
+   
+    let lose = this.add
+      .image(
+        this.cameras.main.width / 2,
+        this.cameras.main.height / 2,
+        "level_lose"
+      )
+      .setDepth(1);
     lose.setInteractive();
     lose.on("pointerup", () => {
       this.scene.start("map", ["lose", this.level, this.inventory]);
@@ -284,7 +259,6 @@ export default class Level extends Phaser.Scene {
     });
   }
 
-  
   addSounds() {
     this.impactSound = this.sound.add("explosion", {
       mute: false,
@@ -316,13 +290,13 @@ export default class Level extends Phaser.Scene {
     });
     this.createEnemyAnims();
   }
-  
+
   createEnemyAnims() {
-    for (let i = 0; i < this.level_virus.length; i++) 
+    for (let i = 0; i < this.level_virus.length; i++)
       Anim_Factory.virus_anims(this, this.level_virus[i]);
 
     for (let i = 0; i < this.level_humans.length; i++)
-      Anim_Factory.humans_anims(this, this.level_humans[i]); 
+      Anim_Factory.humans_anims(this, this.level_humans[i]);
   }
 
   load_spritesheets() {
@@ -341,7 +315,7 @@ export default class Level extends Phaser.Scene {
   }
 
   load_player_spritesheets() {
-    Anim_Factory.player_spritesheets(this, this.inventory.skin);   
+    Anim_Factory.player_spritesheets(this, this.inventory.skin);
   }
 
   load_enemies_spritesheets() {
@@ -349,17 +323,16 @@ export default class Level extends Phaser.Scene {
       Anim_Factory.virus_spritesheets(this, this.level_virus[i]);
 
     for (let i = 0; i < this.level_humans.length; i++)
-      Anim_Factory.humans_spritesheets(this, this.level_humans[i]); 
+      Anim_Factory.humans_spritesheets(this, this.level_humans[i]);
   }
 
-
-  load_images(){
+  load_images() {
     this.load.image("player", "/sprites/ship.png");
     this.load.image("player_damage", "/sprites/ship_damage.png");
     this.load.image("boss", "/sprites/boss1.png");
     this.load.image("boss_damage", "/sprites/boss1_damage.png");
-    this.load.image("slash1", "/sprites/slash1.png");
-    this.load.image("slash2", "/sprites/slash2.png");
+    this.load.image("slash", "/sprites/slash.png");
+    this.load.image("super_slash", "/sprites/super_slash.png");
     this.load.image("level_victory", "/sprites/level_victory.png");
     this.load.image("level_lose", "you_lose.png");
 
@@ -408,10 +381,9 @@ export default class Level extends Phaser.Scene {
     this.load.image("B5_death", "/sprites/Boss/B5_death.png");
     this.load.image("B6_death", "/sprites/Boss/B6_death.png");
     this.load.image("B7_death", "/sprites/Boss/B7_death.png");
-    
   }
 
-  load_audio(){
+  load_audio() {
     this.load.audio("blaster", "/sounds/blaster.mp3");
     this.load.audio("explosion", "/sounds/explosion.mp3");
     this.load.audio("damage", "/sounds/damage.mp3");

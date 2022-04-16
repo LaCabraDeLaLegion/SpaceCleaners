@@ -17,9 +17,10 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.x_right = true;
         this.counter = 0;
 
+        this.attackTime = 20;
+
         this.addToGroup(group);
         this.group = group;
-        this.vertical = false;
         this.apparition_group = apparition_group;
         this.max_level = max_level;
 
@@ -33,32 +34,32 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     }
 
     preUpdate(t, dt) {
-
         super.preUpdate(t, dt);
+            
+        //movement
+        this.y += 0.25;
 
-        if (this.vertical == true) {
-            //if (!(this.dying && this.y > (this.scene.cameras.main.height - 5)))
-                this.y += 2;
+        if (this.x_right){
+            this.x += 0.5;
+            this.counter++;
         }
         else {
-            
-            this.y += 0.25;
-
-            if (this.x_right){
-                this.x += 0.5;
-                this.counter++;
-            }
-            else {
-                this.x -= 0.5;
-                this.counter++;
-            }
-
-            if (this.counter == 50){
-                this.counter = 0;
-                this.x_right = !this.x_right;
-            }
-
+            this.x -= 0.5;
+            this.counter++;
         }
+
+        if (this.counter == 50){
+            this.counter = 0;
+            this.x_right = !this.x_right;
+        }
+
+        //attack
+        // this.attackTime--;
+
+        // if (this.attackTime <= 0) {
+        //     this.scene.virusAttack();
+        //     this.attackTime = 20;
+        // }
 
     }
 
