@@ -1,8 +1,10 @@
+import Attack from "../attacks/factory/attacks_enum.js";
+
 const virus_data = {
     data: [ 
         {},
         {
-            key: "V1", name: "virus_1", lives: 1
+            key: "V1", name: "virus_1", lives: 1, attackTime: 20, attack: Attack.BasicAttack
         },
         {
             key: "V2", name: "virus_2", lives: 2

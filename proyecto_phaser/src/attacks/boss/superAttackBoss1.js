@@ -1,5 +1,5 @@
-import Projectile from "./projectile.js";
-import ProjectileData from "../data/projectiles.js";
+import Projectile from "../projectile.js";
+import ProjectileData from "../../data/projectiles.js";
 
 export default class AttackBoss1 {
   /**

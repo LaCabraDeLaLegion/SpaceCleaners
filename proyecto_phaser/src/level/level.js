@@ -30,6 +30,8 @@ export default class Level extends Phaser.Scene {
     this.gameOver = false;
     this.alive_monsters = 0;
     this.bossInScene = false;
+    this.maxProjectiles = 10;
+    this.projectilesOnScreen = 0;
 
     this.createAnimations();
     this.initPlayer();
@@ -333,6 +335,7 @@ export default class Level extends Phaser.Scene {
     this.load.image("boss_damage", "/sprites/boss1_damage.png");
     this.load.image("slash", "/sprites/slash.png");
     this.load.image("super_slash", "/sprites/super_slash.png");
+    this.load.image("plasma", "/sprites/plasma.png");
     this.load.image("level_victory", "/sprites/level_victory.png");
     this.load.image("level_lose", "you_lose.png");
 

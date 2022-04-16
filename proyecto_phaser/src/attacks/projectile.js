@@ -18,6 +18,7 @@ export default class Projectile extends Phaser.GameObjects.Sprite {
     this.scene.physics.add.overlap(this.scene.player, this, () => {
       this.scene.player.damage(this.damage);
       this.damageSound.play();
+      this.scene.projectilesOnScreen--;
       this.destroy();
     });
   }
@@ -25,7 +26,10 @@ export default class Projectile extends Phaser.GameObjects.Sprite {
   preUpdate() {
     super.preUpdate();
 
-    if (this.scene.gameOver) this.destroy();
+    if (this.scene.gameOver || (this.y > this.scene.cameras.main.height)) {
+      this.scene.projectilesOnScreen--;
+      this.destroy();
+    }
     else {
       this.y += this.velocityY;
       this.x += this.velocityX * this.directionX;

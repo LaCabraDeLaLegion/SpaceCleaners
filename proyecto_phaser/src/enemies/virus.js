@@ -1,5 +1,7 @@
 import Enemy from "./enemy.js";
 import virus_data from "../data/virus_data.js";
+import Attack_Factory from "../attacks/factory/attack_factory.js";
+import Attack from "../attacks/factory/attacks_enum.js";
 
 export default class Virus extends Enemy {
   
@@ -10,6 +12,9 @@ export default class Virus extends Enemy {
         super(scene, x + (100*apparition_group) - 50, y, level, group, max_level, apparition_group, data);
 
         this.type = "virus";
+        this.attack = data.attack;
+        this.attackTime = data.attackTime;
+        this.attackCounter = data.attackTime;
         this.damage_anim = data.name + "_damage";
         this.death_anim = data.name + "_death";
 
@@ -34,6 +39,17 @@ export default class Virus extends Enemy {
                 this.play(this.death_anim);
                 this.on("animationcomplete", () => this.destroy());
             });  
+        }
+
+        this.attackCounter--;
+        if (!this.dying && this.attackCounter === 0) {
+            console.log("attack");
+            this.attackCounter = this.attackTime;
+            const chance = Math.random() * 100;
+            if (chance <= 5 && this.scene.projectilesOnScreen < this.scene.maxProjectiles) {
+                this.scene.projectilesOnScreen++;
+                Attack_Factory.createAttack(this.scene, this.attack, this, this.scene.player);
+            }
         }
     }
 
