@@ -14,9 +14,9 @@ let planet_owners = [
 let planets_state = [
   "unlocked",
   "unlocked",
-  "locked",
-  "locked",
-  "locked",
+  "unlocked",
+  "unlocked",
+  "unlocked",
   "locked",
   "locked",
   "locked",
@@ -84,6 +84,7 @@ export default class Map extends Phaser.Scene {
     this.load.audio("button", "../../sounds/button.ogg");
     this.load.image("play", "../../sounds/play.png");
     this.load.audio("button", "../../sounds/button.ogg");
+    this.load.audio("buySound", "../../sounds/buy.wav");
 
     //Shop
     this.load.image("shop_btn", "../logo_shop.png");
@@ -341,7 +342,7 @@ export default class Map extends Phaser.Scene {
         this.planet_2.setScale(1);
       });
       this.planet_2.on("pointerup", () => {
-        this.scene.start("level2", "2");
+        this.scene.start("level2", ["2", this.inventory]);
       });
     } else {
       this.physics.add

@@ -135,7 +135,7 @@ export default class Level3 extends Level {
 
   addSounds() {
     super.addSounds();
-    this.levelSong = this.sound.add("level", Sound.level);
+    this.levelSong = this.sound.add("level3", Sound.level);
   }
 
   load_images() {
@@ -144,6 +144,6 @@ export default class Level3 extends Level {
 
   load_audio() {
     super.load_audio();
-    this.load.audio("level", "/sounds/level1_song.mp3");
+    this.load.audio("level3", "/sounds/level3_song.wav");
   }
 }

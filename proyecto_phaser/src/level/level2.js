@@ -28,6 +28,7 @@ export default class Level2 extends Level {
     this.load_images();
     this.load_audio();
   }
+
   create() {
     super.create();
     this.addSounds();
@@ -112,7 +113,7 @@ export default class Level2 extends Level {
   }
   addSounds() {
     super.addSounds();
-    this.levelSong = this.sound.add("level", Sound.level);
+    this.levelSong = this.sound.add("level2", Sound.level);
   }
 
   load_images() {
@@ -121,6 +122,6 @@ export default class Level2 extends Level {
 
   load_audio() {
     super.load_audio();
-    this.load.audio("level", "/sounds/level1_song.mp3");
+    this.load.audio("level2", "/sounds/level2_song.mp3");
   }
 }

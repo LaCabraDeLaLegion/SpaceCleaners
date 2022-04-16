@@ -3,7 +3,6 @@ import Boss from "../boss.js";
 import Sound from "../data/sounds.js";
 import Bomb from "../weapons/consumibles/bomb.js";
 import Anim_Factory from "./anim_factory.js";
-import Attack_Factory from "../attacks/factory/attack_factory.js";
 import Attack from "../attacks/factory/attacks_enum.js";
 
 export default class Level extends Phaser.Scene {
@@ -133,6 +132,7 @@ export default class Level extends Phaser.Scene {
   addSounds() {
     this.impactSound = this.sound.add("explosion", Sound.explosion);
     this.damageSound = this.sound.add("damage", Sound.damage);
+    this.gameOverSound = this.sound.add("game_over", Sound.gameOver);
   }
 
   // ENEMIES
@@ -247,7 +247,9 @@ export default class Level extends Phaser.Scene {
   //OTHERS
   game_over() {
     this.gameOver = true;
-    this.boss.destroy();
+    this.levelSong.stop();
+    this.gameOverSound.play();
+    if(this.bossInScene)this.boss.destroy();
     this.player.setVisible(false);
 
     let lose = this.add
@@ -291,8 +293,8 @@ export default class Level extends Phaser.Scene {
   load_images() {
     this.load.image("player", "/sprites/ship.png");
     this.load.image("player_damage", "/sprites/ship_damage.png");
-    this.load.image("boss", "/sprites/boss1.png");
-    this.load.image("boss_damage", "/sprites/boss1_damage.png");
+    this.load.image("boss", "/sprites/Boss/B1.png");
+    this.load.image("boss_damage", "/sprites/Boss/B1_damage.png");
     this.load.image("slash", "/sprites/slash.png");
     this.load.image("super_slash", "/sprites/super_slash.png");
     this.load.image("plasma", "/sprites/plasma.png");
@@ -350,5 +352,6 @@ export default class Level extends Phaser.Scene {
     this.load.audio("blaster", "/sounds/blaster.mp3");
     this.load.audio("explosion", "/sounds/explosion.mp3");
     this.load.audio("damage", "/sounds/damage.mp3");
+    this.load.audio("game_over", "/sounds/game_over.wav");
   }
 }

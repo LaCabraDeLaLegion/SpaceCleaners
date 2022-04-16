@@ -1,5 +1,5 @@
 import store from "./data/store.js";
-import Sounds from "./data/sounds.js";
+import Sound from "./data/sounds.js";
 export default class Shop extends Phaser.Scene {
   constructor() {
     super({ key: "shop" });
@@ -35,7 +35,8 @@ export default class Shop extends Phaser.Scene {
     this.createTopBar();
 
     this.buttonSound = this.sound.add("button");
-    this.playSound = this.sound.add("playSound", Sounds.playSound);
+    this.playSound = this.sound.add("playSound", Sound.playSound);
+    this.buySound = this.sound.add("buySound", Sound.buySound);
   }
 
   load_images() {
@@ -59,6 +60,7 @@ export default class Shop extends Phaser.Scene {
   load_audio() {
     this.load.audio("button", "../../sounds/button.ogg");
     this.load.audio("playSound", "../../sounds/play.wav");
+    this.load.audio("buySound", "../sounds/buy.wav");
   }
 
   createTopBar() {
@@ -362,6 +364,7 @@ export default class Shop extends Phaser.Scene {
 
   buyItem(item) {
     if (item.price <= this.inventory.money) {
+      this.buySound.play();
       this.inventory.money -= item.price;
 
       switch (item.category) {
