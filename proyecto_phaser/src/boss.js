@@ -70,7 +70,7 @@ export default class Boss extends Phaser.GameObjects.Sprite {
           else this.x -= 2;
           break;
         case 1:
-          if (this.x >= 800) this.direction = -1;
+          if (this.x >= 550) this.direction = -1;
           else this.x += 2;
           break;
         case 0:

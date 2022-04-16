@@ -3,6 +3,8 @@ import Boss from "../boss.js";
 import Sound from "../data/sounds.js";
 import Bomb from "../weapons/consumibles/bomb.js";
 import Anim_Factory from "./anim_factory.js";
+import Attack_Factory from "../attacks/factory/attack_factory.js";
+import Attack from "../attacks/factory/attacks_enum.js";
 
 export default class Level extends Phaser.Scene {
   constructor(key) {
@@ -12,12 +14,20 @@ export default class Level extends Phaser.Scene {
   // PHASER METHODS
   init(data) {
     console.log("DATA", data[1]);
+    // this.inventory = {
+    //   skin: "player_1",
+    //   shield: ["basic_shield", 5],
+    //   potions: ["basic_potions", 10],
+    //   bomb: ["basic_bomb", 2],
+    // };
     this.inventory = {
       skin: "player_1",
-      shield: ["basic_shield", 5],
-      potions: ["basic_potions", 10],
-      bomb: ["basic_bomb", 2],
-    };
+      weapon: {name: "Basic Weapon", attack: Attack.Weapon1 },
+      shield: {name:"", quantity: 0},
+      potion: {name:"", quantity: 0, health: 0},
+      bombs: {name:"", quantity: 0, damage: 0},
+    }
+    //this.inventory = data[1];
   }
 
   preload() {
@@ -90,7 +100,6 @@ export default class Level extends Phaser.Scene {
     this.lasers = this.physics.add.group();
     this.bombs = this.physics.add.group();
     this.medicines = this.physics.add.group();
-    this.laserSound = this.sound.add("blaster", Sound.blaster);
   }
 
   initEnemies() {
@@ -170,13 +179,7 @@ export default class Level extends Phaser.Scene {
     }
   }
 
-  // PLAYER ACTIONS
-  addLaser(laser) {
-    this.laser = laser;
-    this.laser.addGroup(this.lasers);
-    this.laser.setScale(0.25);
-    this.laserSound.play();
-  }
+
 
   addMedicine(medicine) {
     this.medicine = medicine;

@@ -1,6 +1,7 @@
-import Laser from "./weapons/laser.js";
 import Medicine from "./weapons/medicine.js";
 import Anim_Factory from "./level/anim_factory.js";
+import Attack_Factory from "./attacks/factory/attack_factory.js";
+import Sound from "./data/sounds.js";
 
 export default class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, inventory) {
@@ -49,6 +50,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.lives = 10;
 
     this.inventory = inventory;
+
+    this.attack = this.inventory.weapon.attack;
+    this.attackSound = this.scene.sound.add("blaster", Sound.blaster);
 
     this.current_animation = this.normal_animation;
   }
@@ -99,8 +103,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
 
     if (this.cursors.space.isDown && this.shootTime <= 0) {
-      const laser = new Laser(this.scene, this.x, this.y - 50); //Crear arma segun inventario
-      this.scene.addLaser(laser);
+      Attack_Factory.createPlayerAttack(this.scene, this.attack, this);
+      this.attackSound.play();
       this.shootTime = 15;
     }
 

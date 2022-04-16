@@ -19,8 +19,8 @@ const DPR = window.devicePixelRatio
 
 var config = {
   type: Phaser.AUTO,
-  width: window.innerWidth/2,
-  height: window.innerHeight,
+  width: 600,
+  height: 1000,
   parent: "container",
   scene: [Introduction, Menu, Map, Shop, Level1, Level2, Level3, Level4, Level5, Level6, Level7, Win, GameOver],
   render: { pixelArt: true },
