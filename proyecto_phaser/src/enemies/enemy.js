@@ -6,7 +6,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         super(scene, x, y, data.key);
         
         this.scene.add.existing(this);
-        
         this.scene.physics.add.existing(this);
 
         this.level = level;
@@ -52,14 +51,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             this.counter = 0;
             this.x_right = !this.x_right;
         }
-
-        //attack
-        // this.attackTime--;
-
-        // if (this.attackTime <= 0) {
-        //     this.scene.virusAttack();
-        //     this.attackTime = 20;
-        // }
 
     }
 

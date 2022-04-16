@@ -1,5 +1,7 @@
+import Sound from "./data/sounds";
+
 let texto = [
-    [
+  [
     "La raza humana ha establecido colonias a lo largo",
     "y ancho de la galaxia.",
     "",
@@ -17,9 +19,9 @@ let texto = [
     "asolan las calles.",
     "",
     "",
-    "Sólo queda la Tierra"
-    ],
-    [
+    "Sólo queda la Tierra",
+  ],
+  [
     "El gobierno mundial ha creado un ejército de emergencia",
     "y ha utilizado todos los recursos disponibles",
     "para aprovisionar a sus soldados de armas y medicinas",
@@ -30,98 +32,91 @@ let texto = [
     "será liderar a nuestros soldados hasta la victoria",
     "",
     "Destruya el virus antes de que alcance la Tierra",
-    "o todos moriremos."
-    ],
-    ["Buena suerte."]
+    "o todos moriremos.",
+  ],
+  ["Buena suerte."],
 ];
 
 export default class Introduction extends Phaser.Scene {
-    constructor() {
-      super({ key: "introduction" });
-    }
-  
-    preload() {
-      this.load.setPath("assets/sprites/Introduction/");
-      //this.load.image("background", "background.png");
-      this.load.image("skip", "skip.png");
-      this.load.image("continue", "continue.png");
-  
-      this.load.audio("playSound", "../../sounds/play.wav");
-      this.load.audio("intro", "../../sounds/intro_song.wav");
-      this.load.audio("button", "../../sounds/button.ogg");
-    }
+  constructor() {
+    super({ key: "introduction" });
+  }
 
-    create() {
-  
-      this.playSound = this.sound.add("playSound", {
-        mute: false,
-        volume: 1,
-        rate: 3,
-        detune: 0,
-        seek: 0,
-        loop: false,
-        delay: 0,
-      });
-  
-      this.introSong = this.sound.add("intro", {
-        mute: false,
-        volume: 1.5,
-        rate: 0.65,
-        detune: 0,
-        seek: 0,
-        loop: true,
-        delay: 0,
-      });
-  
-      this.buttonSound = this.sound.add("button");
-  
-      this.text_counter = 0;
-      this.text = this.add.text(this.cameras.main.width/8, this.cameras.main.height/5, texto[0], {
-        fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', fontSize: '25px'
-      });
+  preload() {
+    this.load.setPath("assets/sprites/Introduction/");
+    //this.load.image("background", "background.png");
+    this.load.image("skip", "skip.png");
+    this.load.image("continue", "continue.png");
 
-      let skip = this.add.image(this.cameras.main.width - 120, 50, "skip").setDepth(1);
-      skip.setInteractive();
-      skip.on("pointerover", () => {
-        skip.setScale(1.1);
-        this.buttonSound.play();
+    this.load.audio("playSound", "../../sounds/play.wav");
+    this.load.audio("intro", "../../sounds/intro_song.wav");
+    this.load.audio("button", "../../sounds/button.ogg");
+  }
+
+  create() {
+    this.playSound = this.sound.add("playSound", Sound.playSound);
+    this.introSong = this.sound.add("intro", Sound.intro);
+
+    this.buttonSound = this.sound.add("button");
+
+    this.text_counter = 0;
+    this.text = this.add.text(
+      this.cameras.main.width / 8,
+      this.cameras.main.height / 5,
+      texto[0],
+      {
+        fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+        fontSize: "25px",
+      }
+    );
+
+    let skip = this.add
+      .image(this.cameras.main.width - 120, 50, "skip")
+      .setDepth(1);
+    skip.setInteractive();
+    skip.on("pointerover", () => {
+      skip.setScale(1.1);
+      this.buttonSound.play();
+    });
+    skip.on("pointerout", () => {
+      skip.setScale(1);
+    });
+    skip.on("pointerup", () => {
+      this.playSound.play();
+      this.time.delayedCall(1000, () => {
+        this.introSong.pause();
+        this.scene.start("menu", [null, null, null]);
       });
-      skip.on("pointerout", () => {
-        skip.setScale(1);
-      });
-      skip.on("pointerup", () => {
+    });
+
+    let continue_button = this.add
+      .image(
+        this.cameras.main.width - 120,
+        this.cameras.main.height - 50,
+        "continue"
+      )
+      .setDepth(1);
+    continue_button.setInteractive();
+    continue_button.on("pointerover", () => {
+      continue_button.setScale(1.1);
+      this.buttonSound.play();
+    });
+    continue_button.on("pointerout", () => {
+      continue_button.setScale(1);
+    });
+    continue_button.on("pointerup", () => {
+      this.text_counter++;
+      if (this.text_counter >= 3) {
         this.playSound.play();
         this.time.delayedCall(1000, () => {
           this.introSong.pause();
           this.scene.start("menu", [null, null, null]);
         });
-      });
+      } else {
+        this.text.setText(texto[this.text_counter]);
+      }
+    });
 
-      let continue_button = this.add.image(this.cameras.main.width - 120, this.cameras.main.height - 50, "continue").setDepth(1);
-      continue_button.setInteractive();
-      continue_button.on("pointerover", () => {
-        continue_button.setScale(1.1);
-        this.buttonSound.play();
-      });
-      continue_button.on("pointerout", () => {
-        continue_button.setScale(1);
-      });
-      continue_button.on("pointerup", () => {
-        this.text_counter++;
-        if (this.text_counter >= 3){
-            this.playSound.play();
-            this.time.delayedCall(1000, () => {
-                this.introSong.pause();
-                this.scene.start("menu", [null, null, null]);
-            });
-        }
-        else {
-            this.text.setText(texto[this.text_counter]);
-        }
-      });
-  
-      this.introSong.play();
-    }
-  
+    this.introSong.play();
   }
-  
+}

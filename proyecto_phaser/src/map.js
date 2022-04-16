@@ -1,4 +1,4 @@
-let planet_1_scale = 1;
+import Sound from "./data/sounds.js";
 
 let planet_owners = [
   "humanos",
@@ -33,15 +33,18 @@ export default class Map extends Phaser.Scene {
   }
 
   init(data) {
-    console.log("init data = " + data);
+    // console.log("init data = " + data);
+
+    this.globalWidth = this.cameras.main.width;
+    this.globalHeight = this.cameras.main.height;
 
     this.truce--;
 
     if (data[0] === "win") {
       planet_owners[data[1]] = "humanos";
       planet_counter++;
-      if (data[1] < 7){
-        if (planets_state[data[1] + 1] == "locked"){
+      if (data[1] < 7) {
+        if (planets_state[data[1] + 1] == "locked") {
           //Desbloquear cosas en la tienda e inventario
         }
         planets_state[data[1] + 1] = "unlocked";
@@ -64,7 +67,6 @@ export default class Map extends Phaser.Scene {
 
     if (!data[2])
       this.inventory = { shield: false, weapons: [], medicines: [], money: 30 };
-    
     else this.inventory = data[2];
   }
 
@@ -82,7 +84,6 @@ export default class Map extends Phaser.Scene {
 
     //Lock
     this.load.image("lock", "lock.png");
-    //Spritesheets
 
     //Virus
     this.load.spritesheet("planet_1_virus", "planet_1_virus.png", {
@@ -156,23 +157,11 @@ export default class Map extends Phaser.Scene {
   create() {
     //Sounds
     this.buttonSound = this.sound.add("button");
-    this.playSound = this.sound.add("playSound", {
-      mute: false,
-      volume: 1,
-      rate: 3,
-      detune: 0,
-      seek: 0,
-      loop: false,
-      delay: 0,
-    });
+    this.playSound = this.sound.add("playSound", Sound.playSound);
 
     //Shop
     let shopButton = this.add
-      .image(
-        (this.cameras.main.width / 10) * 8,
-        this.cameras.main.height / 9,
-        "shop_btn"
-      )
+      .image((this.globalWidth / 10) * 8, this.globalHeight / 9, "shop_btn")
       .setDepth(2)
       .setScale(0.3);
     shopButton.setInteractive();
@@ -200,27 +189,22 @@ export default class Map extends Phaser.Scene {
 
     this.planetSound = this.sound.add("button");
 
-    
     this.add
-      .image(
-        this.cameras.main.width / 2,
-        this.cameras.main.height / 2,
-        "background_map"
-      )
+      .image(this.globalWidth / 2, this.globalHeight / 2, "background_map")
       .setDepth(1)
       .setScale(2.5);
-    
+
     if (planet_owners[1] === "virus") {
       this.planet_1 = this.physics.add.sprite(
-        this.cameras.main.width / 3,
-        (this.cameras.main.height / 9) * 2,
+        this.globalWidth / 3,
+        (this.globalHeight / 9) * 2,
         "planet_1_virus"
       );
       this.planet_1.setDepth(2);
     } else {
       this.planet_1 = this.physics.add.sprite(
-        this.cameras.main.width / 3,
-        (this.cameras.main.height / 9) * 2,
+        this.globalWidth / 3,
+        (this.globalHeight / 9) * 2,
         "planet_1_player"
       );
       this.planet_1.setDepth(2);
@@ -228,15 +212,15 @@ export default class Map extends Phaser.Scene {
 
     if (planet_owners[2] === "virus") {
       this.planet_2 = this.physics.add.sprite(
-        this.cameras.main.width / 2,
-        (this.cameras.main.height / 9) * 3,
+        this.globalWidth / 2,
+        (this.globalHeight / 9) * 3,
         "planet_2_virus"
       );
       this.planet_2.setDepth(2);
     } else {
       this.planet_2 = this.physics.add.sprite(
-        this.cameras.main.width / 2,
-        (this.cameras.main.height / 9) * 3,
+        this.globalWidth / 2,
+        (this.globalHeight / 9) * 3,
         "planet_2_player"
       );
       this.planet_2.setDepth(2);
@@ -244,15 +228,15 @@ export default class Map extends Phaser.Scene {
 
     if (planet_owners[3] === "virus") {
       this.planet_3 = this.physics.add.sprite(
-        this.cameras.main.width / 5,
-        (this.cameras.main.height / 9) * 4,
+        this.globalWidth / 5,
+        (this.globalHeight / 9) * 4,
         "planet_3_virus"
       );
       this.planet_3.setDepth(2);
     } else {
       this.planet_3 = this.physics.add.sprite(
-        this.cameras.main.width / 5,
-        (this.cameras.main.height / 9) * 4,
+        this.globalWidth / 5,
+        (this.globalHeight / 9) * 4,
         "planet_3_player"
       );
       this.planet_3.setDepth(2);
@@ -260,15 +244,15 @@ export default class Map extends Phaser.Scene {
 
     if (planet_owners[4] === "virus") {
       this.planet_4 = this.physics.add.sprite(
-        this.cameras.main.width / 2,
-        (this.cameras.main.height / 9) * 5,
+        this.globalWidth / 2,
+        (this.globalHeight / 9) * 5,
         "planet_4_virus"
       );
       this.planet_4.setDepth(2);
     } else {
       this.planet_4 = this.physics.add.sprite(
-        this.cameras.main.width / 2,
-        (this.cameras.main.height / 9) * 5,
+        this.globalWidth / 2,
+        (this.globalHeight / 9) * 5,
         "planet_4_player"
       );
       this.planet_4.setDepth(2);
@@ -276,15 +260,15 @@ export default class Map extends Phaser.Scene {
 
     if (planet_owners[5] === "virus") {
       this.planet_5 = this.physics.add.sprite(
-        (this.cameras.main.width / 5) * 4,
-        (this.cameras.main.height / 9) * 6,
+        (this.globalWidth / 5) * 4,
+        (this.globalHeight / 9) * 6,
         "planet_5_virus"
       );
       this.planet_5.setDepth(2);
     } else {
       this.planet_5 = this.physics.add.sprite(
-        (this.cameras.main.width / 5) * 4,
-        (this.cameras.main.height / 9) * 6,
+        (this.globalWidth / 5) * 4,
+        (this.globalHeight / 9) * 6,
         "planet_5_player"
       );
       this.planet_5.setDepth(2);
@@ -292,15 +276,15 @@ export default class Map extends Phaser.Scene {
 
     if (planet_owners[6] === "virus") {
       this.planet_6 = this.physics.add.sprite(
-        (this.cameras.main.width / 5) * 3,
-        (this.cameras.main.height / 9) * 7,
+        (this.globalWidth / 5) * 3,
+        (this.globalHeight / 9) * 7,
         "planet_6_virus"
       );
       this.planet_6.setDepth(2);
     } else {
       this.planet_6 = this.physics.add.sprite(
-        (this.cameras.main.width / 5) * 3,
-        (this.cameras.main.height / 9) * 7,
+        (this.globalWidth / 5) * 3,
+        (this.globalHeight / 9) * 7,
         "planet_6_player"
       );
       this.planet_6.setDepth(2);
@@ -308,23 +292,23 @@ export default class Map extends Phaser.Scene {
 
     if (planet_owners[7] === "virus") {
       this.planet_7 = this.physics.add.sprite(
-        this.cameras.main.width / 3,
-        (this.cameras.main.height / 9) * 8,
+        this.globalWidth / 3,
+        (this.globalHeight / 9) * 8,
         "planet_7_virus"
       );
       this.planet_7.setDepth(2).setScale(2);
     } else {
       this.planet_7 = this.physics.add.sprite(
-        this.cameras.main.width / 3,
-        (this.cameras.main.height / 9) * 8,
+        this.globalWidth / 3,
+        (this.globalHeight / 9) * 8,
         "planet_7_player"
       );
       this.planet_7.setDepth(2).setScale(2);
     }
 
     this.earth = this.physics.add.sprite(
-      this.cameras.main.width / 2,
-      this.cameras.main.height / 9,
+      this.globalWidth / 2,
+      this.globalHeight / 9,
       "earth"
     );
     this.earth.setDepth(2);
@@ -341,7 +325,7 @@ export default class Map extends Phaser.Scene {
       this.scene.start("level1", "1", this.inventory);
     });
 
-    if (planets_state[2] == "unlocked"){
+    if (planets_state[2] == "unlocked") {
       this.planet_2.setInteractive();
       this.planet_2.on("pointerover", () => {
         this.planet_2.setScale(1.25);
@@ -353,16 +337,14 @@ export default class Map extends Phaser.Scene {
       this.planet_2.on("pointerup", () => {
         this.scene.start("level2", "2");
       });
-    }
-    else {
-      this.physics.add.sprite(
-        this.planet_2.x,
-        this.planet_2.y,
-        "lock"
-      ).setDepth(5).setScale(1.5);
+    } else {
+      this.physics.add
+        .sprite(this.planet_2.x, this.planet_2.y, "lock")
+        .setDepth(5)
+        .setScale(1.5);
     }
 
-    if (planets_state[3] == "unlocked"){
+    if (planets_state[3] == "unlocked") {
       this.planet_3.setInteractive();
       this.planet_3.on("pointerover", () => {
         this.planet_3.setScale(1.25);
@@ -374,16 +356,14 @@ export default class Map extends Phaser.Scene {
       this.planet_3.on("pointerup", () => {
         this.scene.start("level3", "3");
       });
-    }
-    else {
-      this.physics.add.sprite(
-        this.planet_3.x,
-        this.planet_3.y,
-        "lock"
-      ).setDepth(5).setScale(2);
+    } else {
+      this.physics.add
+        .sprite(this.planet_3.x, this.planet_3.y, "lock")
+        .setDepth(5)
+        .setScale(2);
     }
 
-    if (planets_state[4] == "unlocked"){
+    if (planets_state[4] == "unlocked") {
       this.planet_4.setInteractive();
       this.planet_4.on("pointerover", () => {
         this.planet_4.setScale(1.25);
@@ -395,16 +375,14 @@ export default class Map extends Phaser.Scene {
       this.planet_4.on("pointerup", () => {
         this.scene.start("level4", "4");
       });
-    }
-    else {
-      this.physics.add.sprite(
-        this.planet_4.x,
-        this.planet_4.y,
-        "lock"
-      ).setDepth(5).setScale(1.5);
+    } else {
+      this.physics.add
+        .sprite(this.planet_4.x, this.planet_4.y, "lock")
+        .setDepth(5)
+        .setScale(1.5);
     }
 
-    if (planets_state[5] == "unlocked"){
+    if (planets_state[5] == "unlocked") {
       this.planet_5.setInteractive();
       this.planet_5.on("pointerover", () => {
         this.planet_5.setScale(1.25);
@@ -416,16 +394,14 @@ export default class Map extends Phaser.Scene {
       this.planet_5.on("pointerup", () => {
         this.scene.start("level5", "5");
       });
-    } 
-    else {
-      this.physics.add.sprite(
-        this.planet_5.x,
-        this.planet_5.y,
-        "lock"
-      ).setDepth(5).setScale(1.5);
+    } else {
+      this.physics.add
+        .sprite(this.planet_5.x, this.planet_5.y, "lock")
+        .setDepth(5)
+        .setScale(1.5);
     }
 
-    if (planets_state[6] == "unlocked"){
+    if (planets_state[6] == "unlocked") {
       this.planet_6.setInteractive();
       this.planet_6.on("pointerover", () => {
         this.planet_6.setScale(1.25);
@@ -437,16 +413,14 @@ export default class Map extends Phaser.Scene {
       this.planet_6.on("pointerup", () => {
         this.scene.start("level6", "6");
       });
-    }
-    else {
-      this.physics.add.sprite(
-        this.planet_6.x,
-        this.planet_6.y,
-        "lock"
-      ).setDepth(5).setScale(1.5);
+    } else {
+      this.physics.add
+        .sprite(this.planet_6.x, this.planet_6.y, "lock")
+        .setDepth(5)
+        .setScale(1.5);
     }
 
-    if (planets_state[7] == "unlocked"){
+    if (planets_state[7] == "unlocked") {
       this.planet_7.setInteractive();
       this.planet_7.on("pointerover", () => {
         this.planet_7.setScale(1.25);
@@ -458,13 +432,11 @@ export default class Map extends Phaser.Scene {
       this.planet_7.on("pointerup", () => {
         this.scene.start("level7", "7");
       });
-    }
-    else {
-      this.physics.add.sprite(
-        this.planet_7.x,
-        this.planet_7.y,
-        "lock"
-      ).setDepth(5).setScale(4);
+    } else {
+      this.physics.add
+        .sprite(this.planet_7.x, this.planet_7.y, "lock")
+        .setDepth(5)
+        .setScale(4);
     }
   }
 }

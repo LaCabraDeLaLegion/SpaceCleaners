@@ -64,16 +64,5 @@ export default class Human extends Enemy {
         this.on("animationcomplete", () => {
             this.healing = false;
         });
-        
-        /*
-        this.anims.stop();
-        this.setTexture(level_damage_images[this.level-1]);
-        this.scene.time.delayedCall(150, () => {
-            if (!this.dead) {
-                this.setTexture(level_images[this.level - 1]);
-                this.anims.play('virus_1'); //Falla esto
-            }
-        });
-        */
     }
 }

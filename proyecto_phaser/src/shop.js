@@ -1,11 +1,12 @@
 import store from "./data/store.js";
+import Sounds from "./data/sounds.js";
 export default class Shop extends Phaser.Scene {
   constructor() {
     super({ key: "shop" });
 
     this.categories = {
       medicines: store.medicines,
-      weapons: store.weapons
+      weapons: store.weapons,
     };
 
     this.currentInterface = [];
@@ -13,6 +14,8 @@ export default class Shop extends Phaser.Scene {
 
   init(data) {
     this.inventory = data;
+    this.globalWidth = this.cameras.main.width;
+    this.globalHeight = this.cameras.main.height;
   }
 
   preload() {
@@ -22,25 +25,17 @@ export default class Shop extends Phaser.Scene {
   }
 
   create() {
-   this.add
+    this.add
       .image(0, 0, "background_shop")
       .setOrigin(0, 0)
       .setDepth(0)
-      .setScale(this.cameras.main.width / 44);
+      .setScale(this.globalWidth / 44);
 
     this.createUI();
     this.createTopBar();
 
     this.buttonSound = this.sound.add("button");
-    this.playSound = this.sound.add("playSound", {
-      mute: false,
-      volume: 1,
-      rate: 3,
-      detune: 0,
-      seek: 0,
-      loop: false,
-      delay: 0,
-    });
+    this.playSound = this.sound.add("playSound", Sounds.playSound);
   }
 
   load_images() {
@@ -68,133 +63,117 @@ export default class Shop extends Phaser.Scene {
 
   createTopBar() {
     let category1 = this.add
-      .image(
-        this.cameras.main.width / 9.35,
-        this.cameras.main.height / 7,
-        "category"
-      )
+      .image(this.globalWidth / 9.35, this.globalHeight / 7, "category")
       .setOrigin(0, 0)
       .setDepth(1)
-      .setScale(this.cameras.main.width / 1200);
+      .setScale(this.globalWidth / 1200);
     category1.setInteractive();
     category1.on("pointerover", () => {
       category1
         .setTexture("category_selected")
-        .setScale(this.cameras.main.width / 1200);
+        .setScale(this.globalWidth / 1200);
       this.buttonSound.play();
     });
     category1.on("pointerout", () => {
-      category1.setTexture("category").setScale(this.cameras.main.width / 1200);
+      category1.setTexture("category").setScale(this.globalWidth / 1200);
     });
     category1.on("pointerup", () => {
       this.playSound.play();
       category1
         .setTexture("category_selected")
-        .setScale(this.cameras.main.width / 1200);
+        .setScale(this.globalWidth / 1200);
       this.createCategory("medicines", 1);
     });
 
     let category2 = this.add
-      .image(
-        (this.cameras.main.width / 9.35) * 3.5,
-        this.cameras.main.height / 7,
-        "category"
-      )
+      .image((this.globalWidth / 9.35) * 3.5, this.globalHeight / 7, "category")
       .setOrigin(0, 0)
       .setDepth(1)
-      .setScale(this.cameras.main.width / 1200);
+      .setScale(this.globalWidth / 1200);
     category2.setInteractive();
     category2.on("pointerover", () => {
       category2
         .setTexture("category_selected")
-        .setScale(this.cameras.main.width / 1200);
+        .setScale(this.globalWidth / 1200);
       this.buttonSound.play();
     });
     category2.on("pointerout", () => {
-      category2.setTexture("category").setScale(this.cameras.main.width / 1200);
+      category2.setTexture("category").setScale(this.globalWidth / 1200);
     });
     category2.on("pointerup", () => {
       this.playSound.play();
       category2
         .setTexture("category_selected")
-        .setScale(this.cameras.main.width / 1200);
+        .setScale(this.globalWidth / 1200);
       this.createCategory("weapons", 1);
     });
 
     let category3 = this.add
-      .image(
-        (this.cameras.main.width / 9.35) * 6,
-        this.cameras.main.height / 7,
-        "category"
-      )
+      .image((this.globalWidth / 9.35) * 6, this.globalHeight / 7, "category")
       .setOrigin(0, 0)
       .setDepth(1)
-      .setScale(this.cameras.main.width / 1200);
+      .setScale(this.globalWidth / 1200);
     category3.setInteractive();
     category3.on("pointerover", () => {
       category3
         .setTexture("category_selected")
-        .setScale(this.cameras.main.width / 1200);
+        .setScale(this.globalWidth / 1200);
       this.buttonSound.play();
     });
     category3.on("pointerout", () => {
-      category3.setTexture("category").setScale(this.cameras.main.width / 1200);
+      category3.setTexture("category").setScale(this.globalWidth / 1200);
     });
     category3.on("pointerup", () => {
       this.playSound.play();
       category3
         .setTexture("category_selected")
-        .setScale(this.cameras.main.width / 1200);
+        .setScale(this.globalWidth / 1200);
       this.createCategory("shields", 1);
     });
 
     this.add
       .text(
-        (this.cameras.main.width / 9.35) * 1.5,
-        (this.cameras.main.height / 7) * 1.15,
+        (this.globalWidth / 9.35) * 1.5,
+        (this.globalHeight / 7) * 1.15,
         "Medicines",
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(2)
-      .setScale(this.cameras.main.width / 600);
+      .setScale(this.globalWidth / 600);
     this.add
       .text(
-        (this.cameras.main.width / 9.35) * 4,
-        (this.cameras.main.height / 7) * 1.15,
+        (this.globalWidth / 9.35) * 4,
+        (this.globalHeight / 7) * 1.15,
         "Weapons",
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(2)
-      .setScale(this.cameras.main.width / 600);
+      .setScale(this.globalWidth / 600);
     this.add
       .text(
-        (this.cameras.main.width / 9.35) * 6.5,
-        (this.cameras.main.height / 7) * 1.15,
+        (this.globalWidth / 9.35) * 6.5,
+        (this.globalHeight / 7) * 1.15,
         "Shields",
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(2)
-      .setScale(this.cameras.main.width / 600);
+      .setScale(this.globalWidth / 600);
 
     this.createCategory("medicines", 1);
   }
 
   createUI() {
     let close = this.add
-      .image(
-        this.cameras.main.width * 0.95,
-        this.cameras.main.height * 0.06,
-        "close"
-      )
+      .image(this.globalWidth * 0.95, this.globalHeight * 0.06, "close")
       .setDepth(1)
-      .setScale(this.cameras.main.width / 400);
+      .setScale(this.globalWidth / 400);
     close.setInteractive();
     close.on("pointerover", () => {
-      close.setScale(this.cameras.main.width / 300);
+      close.setScale(this.globalWidth / 300);
       this.buttonSound.play();
     });
     close.on("pointerout", () => {
-      close.setScale(this.cameras.main.width / 400);
+      close.setScale(this.globalWidth / 400);
     });
     close.on("pointerup", () => {
       this.playSound.play();
@@ -206,43 +185,43 @@ export default class Shop extends Phaser.Scene {
       .image(5, 10, "cash")
       .setOrigin(0, 0)
       .setDepth(1)
-      .setScale(this.cameras.main.width / 125);
+      .setScale(this.globalWidth / 125);
 
     this.currentMoney = this.add
       .text(
-        this.cameras.main.width * (0.25 -
-          this.inventory.money.toString().length * 0.01),
-        this.cameras.main.height * 0.05,
+        this.globalWidth *
+          (0.25 - this.inventory.money.toString().length * 0.01),
+        this.globalHeight * 0.05,
         this.inventory.money,
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(2)
-      .setScale(this.cameras.main.width / 600);
+      .setScale(this.globalWidth / 600);
   }
 
   createItem(item, position, category) {
     let item_bar = this.add
       .image(
-        this.cameras.main.width / 8,
-        (this.cameras.main.height / 4) * (1 + position),
+        this.globalWidth / 8,
+        (this.globalHeight / 4) * (1 + position),
         "item"
       )
       .setOrigin(0, 0)
       .setDepth(1)
-      .setScale(this.cameras.main.width / 130);
+      .setScale(this.globalWidth / 130);
     let item_img = this.add
       .image(
-        (this.cameras.main.width / 8) * 1.3,
-        (this.cameras.main.height / 4) * (1.15 + position),
+        (this.globalWidth / 8) * 1.3,
+        (this.globalHeight / 4) * (1.15 + position),
         item.img
       )
       .setOrigin(0, 0)
       .setDepth(2)
-      .setScale(this.cameras.main.width / 200);
+      .setScale(this.globalWidth / 200);
     let item_name = this.add
       .text(
-        (this.cameras.main.width / 8) * 2.7,
-        (this.cameras.main.height / 4) * (1.2 + position),
+        (this.globalWidth / 8) * 2.7,
+        (this.globalHeight / 4) * (1.2 + position),
         item.info.name +
           " (" +
           item.info.quantity +
@@ -252,63 +231,63 @@ export default class Shop extends Phaser.Scene {
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(2)
-      .setScale(this.cameras.main.width / 600);
+      .setScale(this.globalWidth / 600);
     let item_desc = this.add
       .text(
-        (this.cameras.main.width / 8) * 2.7,
-        (this.cameras.main.height / 4) * (1.5 + position),
+        (this.globalWidth / 8) * 2.7,
+        (this.globalHeight / 4) * (1.5 + position),
         item.desc,
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(2)
-      .setScale(this.cameras.main.width / 750);
+      .setScale(this.globalWidth / 750);
     let buy_btn = this.add
       .image(
-        (this.cameras.main.width / 8) * 5.5,
-        (this.cameras.main.height / 4) * (1.3 + position),
+        (this.globalWidth / 8) * 5.5,
+        (this.globalHeight / 4) * (1.3 + position),
         "buy"
       )
       .setOrigin(0, 0)
       .setDepth(2)
-      .setScale(this.cameras.main.width / 300);
-      buy_btn.setInteractive();
-      buy_btn.on("pointerover", () => {
-        buy_btn.setTexture("buy_btn_hover");
-        this.buttonSound.play();
-      });
-      buy_btn.on("pointerout", () => {
-        buy_btn.setTexture("buy");
-      });
-      buy_btn.on("pointerup", () => {
-       this.buyItem({...item, category});
-      });
+      .setScale(this.globalWidth / 300);
+    buy_btn.setInteractive();
+    buy_btn.on("pointerover", () => {
+      buy_btn.setTexture("buy_btn_hover");
+      this.buttonSound.play();
+    });
+    buy_btn.on("pointerout", () => {
+      buy_btn.setTexture("buy");
+    });
+    buy_btn.on("pointerup", () => {
+      this.buyItem({ ...item, category });
+    });
     let item_buyText = this.add
       .text(
-        (this.cameras.main.width / 8) * 5.75,
-        (this.cameras.main.height / 4) * (1.345 + position),
+        (this.globalWidth / 8) * 5.75,
+        (this.globalHeight / 4) * (1.345 + position),
         "Buy",
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(3)
-      .setScale(this.cameras.main.width / 750);
+      .setScale(this.globalWidth / 750);
     let item_coin = this.add
       .image(
-        (this.cameras.main.width / 8) * 5.5,
-        (this.cameras.main.height / 4) * (1.15 + position),
+        (this.globalWidth / 8) * 5.5,
+        (this.globalHeight / 4) * (1.15 + position),
         "coin"
       )
       .setOrigin(0, 0)
       .setDepth(2)
-      .setScale(this.cameras.main.width / 200);
+      .setScale(this.globalWidth / 200);
     let item_price = this.add
       .text(
-        (this.cameras.main.width / 8) * 5.75,
-        (this.cameras.main.height / 4) * (1.17 + position),
+        (this.globalWidth / 8) * 5.75,
+        (this.globalHeight / 4) * (1.17 + position),
         item.price,
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(2)
-      .setScale(this.cameras.main.width / 750);
+      .setScale(this.globalWidth / 750);
     this.currentInterface.push(
       item_bar,
       item_img,
@@ -325,22 +304,18 @@ export default class Shop extends Phaser.Scene {
     this.destroyCurrentInterface();
 
     let up = this.add
-      .image(
-        this.cameras.main.width * 0.945,
-        this.cameras.main.height * 0.4,
-        "up"
-      )
+      .image(this.globalWidth * 0.945, this.globalHeight * 0.4, "up")
       .setDepth(1)
-      .setScale(this.cameras.main.width / 400);
+      .setScale(this.globalWidth / 400);
     if (page === 1) up.setTexture("up_disabled");
     else {
       up.setInteractive();
       up.on("pointerover", () => {
-        up.setScale(this.cameras.main.width / 300);
+        up.setScale(this.globalWidth / 300);
         this.buttonSound.play();
       });
       up.on("pointerout", () => {
-        up.setScale(this.cameras.main.width / 400);
+        up.setScale(this.globalWidth / 400);
       });
       up.on("pointerup", () => {
         this.playSound.play();
@@ -349,23 +324,19 @@ export default class Shop extends Phaser.Scene {
     }
 
     let down = this.add
-      .image(
-        this.cameras.main.width * 0.945,
-        this.cameras.main.height * 0.6,
-        "down"
-      )
+      .image(this.globalWidth * 0.945, this.globalHeight * 0.6, "down")
       .setDepth(1)
-      .setScale(this.cameras.main.width / 400);
+      .setScale(this.globalWidth / 400);
     if (page === this.categories[category].num_pages)
       down.setTexture("down_disabled");
     else {
       down.setInteractive();
       down.on("pointerover", () => {
-        down.setScale(this.cameras.main.width / 300);
+        down.setScale(this.globalWidth / 300);
         this.buttonSound.play();
       });
       down.on("pointerout", () => {
-        down.setScale(this.cameras.main.width / 400);
+        down.setScale(this.globalWidth / 400);
       });
       down.on("pointerup", () => {
         this.playSound.play();
@@ -389,11 +360,11 @@ export default class Shop extends Phaser.Scene {
     this.currentInterface = [];
   }
 
-  buyItem(item){
-    if(item.price <= this.inventory.money){
+  buyItem(item) {
+    if (item.price <= this.inventory.money) {
       this.inventory.money -= item.price;
 
-      switch(item.category){
+      switch (item.category) {
         case "medicines":
           console.log("medicines");
           this.inventory.medicines.push(item);
@@ -406,15 +377,15 @@ export default class Shop extends Phaser.Scene {
       this.currentMoney.destroy();
 
       this.currentMoney = this.add
-      .text(
-        this.cameras.main.width * (0.25 -
-          this.inventory.money.toString().length * 0.01),
-        this.cameras.main.height * 0.05,
-        this.inventory.money,
-        { fontFamily: "MinimalPixel" }
-      )
-      .setDepth(2)
-      .setScale(this.cameras.main.width / 600);
+        .text(
+          this.globalWidth *
+            (0.25 - this.inventory.money.toString().length * 0.01),
+          this.globalHeight * 0.05,
+          this.inventory.money,
+          { fontFamily: "MinimalPixel" }
+        )
+        .setDepth(2)
+        .setScale(this.globalWidth / 600);
     }
   }
 }

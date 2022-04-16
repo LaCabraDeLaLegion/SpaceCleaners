@@ -1,0 +1,58 @@
+const sounds = {
+  damage: {
+    mute: false,
+    volume: 0.2,
+    rate: 1,
+    detune: 0,
+    seek: 0,
+    loop: false,
+    delay: 0,
+  },
+  explosion: {
+    mute: false,
+    volume: 0.2,
+    rate: 1,
+    detune: 0,
+    seek: 0,
+    loop: false,
+    delay: 0,
+  },
+  blaster: {
+    mute: false,
+    volume: 0.5,
+    rate: 1,
+    detune: 0,
+    seek: 0,
+    loop: false,
+    delay: 0,
+  },
+  playSound: {
+    mute: false,
+    volume: 1,
+    rate: 3,
+    detune: 0,
+    seek: 0,
+    loop: false,
+    delay: 0,
+  },
+  intro: {
+    mute: false,
+    volume: 1.5,
+    rate: 0.65,
+    detune: 0,
+    seek: 0,
+    loop: true,
+    delay: 0,
+  },
+  level: {
+    mute: false,
+    volume: 2,
+    rate: 1,
+    detune: 0,
+    seek: 0,
+    loop: false,
+    delay: 0,
+  },
+};
+
+export default sounds;

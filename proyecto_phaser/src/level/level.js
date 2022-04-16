@@ -1,7 +1,6 @@
 import Player from "../player.js";
 import Boss from "../boss.js";
-import Shield from "../weapons/consumibles/shield.js";
-import Potion from "../weapons/consumibles/potion.js";
+import Sound from "../data/sounds.js";
 import Bomb from "../weapons/consumibles/bomb.js";
 import Anim_Factory from "./anim_factory.js";
 
@@ -10,6 +9,7 @@ export default class Level extends Phaser.Scene {
     super({ key });
   }
 
+  // PHASER METHODS
   init(data) {
     this.inventory = {
       skin: "player_1",
@@ -32,6 +32,8 @@ export default class Level extends Phaser.Scene {
     this.bossInScene = false;
     this.maxProjectiles = 10;
     this.projectilesOnScreen = 0;
+    this.globalWidth = this.cameras.main.width;
+    this.globalHeight = this.cameras.main.height;
 
     this.createAnimations();
     this.initPlayer();
@@ -44,11 +46,7 @@ export default class Level extends Phaser.Scene {
       this.startBossBattle();
     } else if (this.bossInScene && this.boss.life <= 0) {
       let victory = this.add
-        .image(
-          this.cameras.main.width / 2,
-          this.cameras.main.height / 2,
-          "level_victory"
-        )
+        .image(this.globalWidth / 2, this.globalHeight / 2, "level_victory")
         .setDepth(1);
       victory.setInteractive();
       victory.on("pointerup", () => {
@@ -58,14 +56,10 @@ export default class Level extends Phaser.Scene {
     }
 
     this.enemies.getChildren().forEach((enemy) => {
-      if (enemy.y >= this.cameras.main.height) {
+      if (enemy.y >= this.globalHeight) {
         this.player.setVisible(false);
         let lose = this.add
-          .image(
-            this.cameras.main.width / 2,
-            this.cameras.main.height / 2,
-            "level_lose"
-          )
+          .image(this.globalWidth / 2, this.globalHeight / 2, "level_lose")
           .setDepth(1);
         lose.setInteractive();
         lose.on("pointerup", () => {
@@ -76,48 +70,26 @@ export default class Level extends Phaser.Scene {
       }
     });
 
-    if (destroy) {
-      this.destroy_enemies();
-    }
+    if (destroy) this.destroy_enemies();
   }
 
-  destroy_enemies() {
-    this.enemies.getChildren().forEach((enemy) => {
-      this.enemies.killAndHide(enemy);
+  // INIT
+  createAnimations() {
+    //Explosion
+    this.anims.create({
+      key: "explode",
+      frames: this.anims.generateFrameNumbers("explosion"),
+      frameRate: 5,
     });
+    this.createEnemyAnims();
   }
-
-  startBossBattle() {
-    this.boss = new Boss(this, 420, -50, this.level);
-    this.physics.add.collider(
-      this.boss,
-      this.lasers,
-      this.onHitBoss,
-      null,
-      this
-    );
-    this.boss.setScale(0.25);
-    this.bossInScene = true;
-    if (this.level > 1) {
-      this.boss.setScale(2);
-    }
-  }
-
 
   initPlayer() {
     this.player = new Player(this, 500, 500, this.inventory);
     this.lasers = this.physics.add.group();
     this.bombs = this.physics.add.group();
     this.medicines = this.physics.add.group();
-    this.laserSound = this.sound.add("blaster", {
-      mute: false,
-      volume: 0.5,
-      rate: 1,
-      detune: 0,
-      seek: 0,
-      loop: false,
-      delay: 0,
-    });
+    this.laserSound = this.sound.add("blaster", Sound.blaster);
   }
 
   initEnemies() {
@@ -142,42 +114,42 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(
       this.enemies,
       this.medicines,
-      this.onMedcineHit,
+      this.onMedicineHit,
       null,
       this
     );
   }
 
-  addLaser(laser) {
-    this.laser = laser;
-    this.laser.addGroup(this.lasers);
-    this.laser.setScale(0.25);
-    this.laserSound.play();
+  addSounds() {
+    this.impactSound = this.sound.add("explosion", Sound.explosion);
+    this.damageSound = this.sound.add("damage", Sound.damage);
   }
 
-  addMedicine(medicine) {
-    this.medicine = medicine;
-    this.medicine.addGroup(this.medicines);
+  // ENEMIES
+  createEnemyAnims() {
+    for (let i = 0; i < this.level_virus.length; i++)
+      Anim_Factory.virus_anims(this, this.level_virus[i]);
+
+    for (let i = 0; i < this.level_humans.length; i++)
+      Anim_Factory.humans_anims(this, this.level_humans[i]);
   }
 
-  onHit(enemy, laser) {
-    laser.destroy();
-    this.impactSound.play();
-    enemy.weapon_hit();
-    console.log("monstruos vivos: " + this.alive_monsters);
-    if (enemy.lives == 0) {
-      this.alive_monsters--;
-    }
+  destroy_enemies() {
+    this.enemies.getChildren().forEach((enemy) => {
+      this.enemies.killAndHide(enemy);
+    });
   }
 
-  onMedcineHit(enemy, medicine) {
-    medicine.destroy();
-    this.impactSound.play();
-    enemy.medicine_hit();
-    console.log("monstruos vivos: " + this.alive_monsters);
-    if (enemy.lives == 0) {
-      this.alive_monsters--;
-    }
+  startBossBattle() {
+    this.boss = new Boss(this, 420, -50, this.level);
+    this.physics.add.collider(
+      this.boss,
+      this.lasers,
+      this.onHitBoss,
+      null,
+      this
+    );
+    this.bossInScene = true;
   }
 
   onHitBoss(boss, laser) {
@@ -197,16 +169,26 @@ export default class Level extends Phaser.Scene {
     }
   }
 
+  // PLAYER ACTIONS
+  addLaser(laser) {
+    this.laser = laser;
+    this.laser.addGroup(this.lasers);
+    this.laser.setScale(0.25);
+    this.laserSound.play();
+  }
+
+  addMedicine(medicine) {
+    this.medicine = medicine;
+    this.medicine.addGroup(this.medicines);
+  }
+
   createShield() {
     this.inventory.shield[1]--;
-    //let shield = new Shield(this.player.x, this.player.y, this.inventory.shield[0]);
   }
 
   usePotion() {
     this.inventory.potion[1]--;
-    if (this.inventory.potion[0] == "basic_potion") {
-      this.player.lives++;
-    }
+    if (this.inventory.potion[0] == "basic_potion") this.player.lives++;
   }
 
   useBomb() {
@@ -218,6 +200,22 @@ export default class Level extends Phaser.Scene {
       this.inventory.bomb[0]
     );
     this.bombs.add(bomba);
+  }
+
+  onMedicineHit(enemy, medicine) {
+    this.impactSound.play();
+    medicine.destroy();
+    enemy.medicine_hit();
+    // console.log("monstruos vivos: " + this.alive_monsters);
+    if (enemy.lives == 0) this.alive_monsters--;
+  }
+
+  onHit(enemy, laser) {
+    this.impactSound.play();
+    laser.destroy();
+    enemy.weapon_hit();
+    // console.log("monstruos vivos: " + this.alive_monsters);
+    if (enemy.lives == 0) this.alive_monsters--;
   }
 
   onBombHit(enemy, bomb) {
@@ -242,17 +240,14 @@ export default class Level extends Phaser.Scene {
     bomb.destroy();
   }
 
+  //OTHERS
   game_over() {
     this.gameOver = true;
     this.boss.destroy();
     this.player.setVisible(false);
-   
+
     let lose = this.add
-      .image(
-        this.cameras.main.width / 2,
-        this.cameras.main.height / 2,
-        "level_lose"
-      )
+      .image(this.globalWidth / 2, this.globalHeight / 2, "level_lose")
       .setDepth(1);
     lose.setInteractive();
     lose.on("pointerup", () => {
@@ -261,46 +256,7 @@ export default class Level extends Phaser.Scene {
     });
   }
 
-  addSounds() {
-    this.impactSound = this.sound.add("explosion", {
-      mute: false,
-      volume: 0.2,
-      rate: 1,
-      detune: 0,
-      seek: 0,
-      loop: false,
-      delay: 0,
-    });
-
-    this.damageSound = this.sound.add("damage", {
-      mute: false,
-      volume: 0.2,
-      rate: 1,
-      detune: 0,
-      seek: 0,
-      loop: false,
-      delay: 0,
-    });
-  }
-
-  createAnimations() {
-    //Explosion
-    this.anims.create({
-      key: "explode",
-      frames: this.anims.generateFrameNumbers("explosion"),
-      frameRate: 5,
-    });
-    this.createEnemyAnims();
-  }
-
-  createEnemyAnims() {
-    for (let i = 0; i < this.level_virus.length; i++)
-      Anim_Factory.virus_anims(this, this.level_virus[i]);
-
-    for (let i = 0; i < this.level_humans.length; i++)
-      Anim_Factory.humans_anims(this, this.level_humans[i]);
-  }
-
+  // LOAD SECTION
   load_spritesheets() {
     //Explosions
     this.load.spritesheet("explosion", "/sprites/consumibles/explosion.png", {

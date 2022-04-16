@@ -1,3 +1,4 @@
+import Sound from "./data/sounds.js";
 export default class Menu extends Phaser.Scene {
   constructor() {
     super({ key: "menu" });
@@ -14,32 +15,24 @@ export default class Menu extends Phaser.Scene {
   }
 
   create() {
+    this.add
+      .image(
+        this.cameras.main.width / 2,
+        this.cameras.main.height / 2,
+        "background"
+      )
+      .setDepth(1)
+      .setRotation(1.571)
+      .setScale(1.4);
 
-    this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, "background").setDepth(1).setRotation(1.571 ).setScale(1.4);
-
-    this.playSound = this.sound.add("playSound", {
-      mute: false,
-      volume: 1,
-      rate: 3,
-      detune: 0,
-      seek: 0,
-      loop: false,
-      delay: 0,
-    });
-
-    this.introSong = this.sound.add("intro", {
-      mute: false,
-      volume: 1.5,
-      rate: 0.65,
-      detune: 0,
-      seek: 0,
-      loop: true,
-      delay: 0,
-    });
+    this.playSound = this.sound.add("playSound", Sound.playSound);
+    this.introSong = this.sound.add("intro", Sound.intro);
 
     this.buttonSound = this.sound.add("button");
 
-    let play = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, "play").setDepth(1);
+    let play = this.add
+      .image(this.cameras.main.width / 2, this.cameras.main.height / 2, "play")
+      .setDepth(1);
     play.setInteractive();
     play.on("pointerover", () => {
       play.setScale(2);
@@ -58,5 +51,4 @@ export default class Menu extends Phaser.Scene {
 
     this.introSong.play();
   }
-
 }
