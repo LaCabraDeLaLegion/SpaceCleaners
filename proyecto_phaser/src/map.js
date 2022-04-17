@@ -89,6 +89,9 @@ export default class Map extends Phaser.Scene {
     //Shop
     this.load.image("shop_btn", "../logo_shop.png");
 
+    //Inventory
+    this.load.image("inventory_btn", "../logo_inventory.png");
+
     //Lock
     this.load.image("lock", "lock.png");
 
@@ -187,7 +190,27 @@ export default class Map extends Phaser.Scene {
       });
     });
 
-    console.log("contador planetas = " + planet_counter);
+    //Inventory
+    let inventoryButton = this.add
+      .image((this.globalWidth / 10) * 8, this.globalHeight / 5, "inventory_btn")
+      .setDepth(2)
+      .setScale(0.3);
+    inventoryButton.setInteractive();
+    inventoryButton.on("pointerover", () => {
+      inventoryButton.setScale(0.4);
+      this.buttonSound.play();
+    });
+    inventoryButton.on("pointerout", () => {
+      inventoryButton.setScale(0.3);
+    });
+    inventoryButton.on("pointerup", () => {
+      this.playSound.play();
+      this.time.delayedCall(0, () => {
+        // this.introSong.pause();
+        this.scene.start("inventory", this.inventory);
+      });
+    });
+
     if (planet_counter >= 8) {
       this.scene.start("win");
     } else if (planet_counter < 1) {

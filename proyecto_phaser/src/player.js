@@ -115,16 +115,16 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     if (
       this.key_one.isDown &&
-      this.inventory.shield[1] > 0 &&
+      this.inventory.shield.quantity > 0 &&
       this.consumibleTime <= 0
     ) {
       this.scene.createShield();
-      this.consumibleTime = 500;
-      this.shieldTime = 500;
+      this.consumibleTime = this.inventory.shield.time;
+      this.shieldTime = this.inventory.shield.time;
       this.current_animation = this.shield_animation;
     } else if (
       this.key_two.isDown &&
-      this.inventory.potions[1] > 0 &&
+      this.inventory.potion.quantity > 0 &&
       this.consumibleTime <= 0
     ) {
       this.scene.usePotion();
@@ -133,7 +133,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.current_animation = this.heal_animation;
     } else if (
       this.key_three.isDown &&
-      this.inventory.bomb[1] > 0 &&
+      this.inventory.bombs.quantity > 0 &&
       this.consumibleTime <= 0
     ) {
       this.scene.useBomb();

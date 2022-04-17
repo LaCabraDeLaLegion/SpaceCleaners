@@ -14,12 +14,12 @@ export default class Projectile extends Phaser.GameObjects.Sprite {
     if (!target || target.x == this.x) this.directionX = 0;
     else this.directionX = target.x > this.x ? 1 : -1;
 
-    // this.scene.physics.add.overlap(this.scene.player, this, () => {
-    //   this.scene.player.damage(this.damage);
-    //   this.scene.damageSound.play();
-    //   this.scene.projectilesOnScreen--;
-    //   this.destroy();
-    // });
+    this.scene.physics.add.overlap(this.scene.player, this, () => {
+      this.scene.player.damage(this.damage);
+      this.scene.damageSound.play();
+      this.scene.projectilesOnScreen--;
+      this.destroy();
+    });
     
   }
 

@@ -12,22 +12,17 @@ export default class Level extends Phaser.Scene {
   // PHASER METHODS
   init(data) {
     console.log("DATA", data[1]);
-    // this.inventory = {
-    //   skin: "player_1",
-    //   shield: ["basic_shield", 5],
-    //   potions: ["basic_potions", 10],
-    //   bomb: ["basic_bomb", 2],
-    // };
+
     this.inventory = {
       skin: "player_1",
-      weapon: {name: "Basic Weapon", attack: Attack.Weapon3 },
-      shield: {name:"", quantity: 0},
-      potion: {name:"", quantity: 0, health: 0},
-      bombs: {name:"", quantity: 0, damage: 0},
-    }
+      weapon: { name: "Basic Weapon", attack: Attack.Weapon1 },
+      shield: { name: "basic shield", quantity: 0, quantity: 3, time: 200 },
+      potion: { name: "basic potion", quantity: 3, health: 2 },
+      bombs: { name: "basic bomb", quantity: 2, damage: 2 },
+    };
     //this.inventory = data[1];
   }
-  
+
   create() {
     this.input.setDefaultCursor("url(assets/sprites/cursor.cur), pointer");
 
@@ -154,31 +149,35 @@ export default class Level extends Phaser.Scene {
     }
   }
 
-
-
   addMedicine(medicine) {
     this.medicine = medicine;
     this.medicine.addGroup(this.medicines);
   }
 
   createShield() {
-    this.inventory.shield[1]--;
+    if (this.inventory.shield.quantity > 0) {
+      this.inventory.shield.quantity--;
+    }
   }
 
   usePotion() {
-    this.inventory.potions[1]--;
-    if (this.inventory.potions[0] == "basic_potions") this.player.lives++;
+    if (this.inventory.potion.quantity > 0) {
+      this.player.lives += this.inventory.potion.health;
+      this.inventory.potion.quantity--;
+    }
   }
 
   useBomb() {
-    this.inventory.bomb[1]--;
-    let bomba = new Bomb(
-      this,
-      this.player.x,
-      this.player.y + 20,
-      this.inventory.bomb[0]
-    );
-    this.bombs.add(bomba);
+    if (this.inventory.bombs.quantity > 0) {
+      this.inventory.bombs.quantity--;
+      let bomba = new Bomb(
+        this,
+        this.player.x,
+        this.player.y + 20,
+        this.inventory.bombs.name
+      );
+      this.bombs.add(bomba);
+    }
   }
 
   onMedicineHit(enemy, medicine) {
@@ -224,7 +223,7 @@ export default class Level extends Phaser.Scene {
     this.gameOver = true;
     this.levelSong.stop();
     this.gameOverSound.play();
-    if(this.bossInScene)this.boss.destroy();
+    if (this.bossInScene) this.boss.destroy();
     this.player.setVisible(false);
 
     let lose = this.add
@@ -236,5 +235,4 @@ export default class Level extends Phaser.Scene {
       this.levelSong.stop();
     });
   }
-
 }

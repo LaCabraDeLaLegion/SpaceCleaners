@@ -5,7 +5,6 @@ import SuperAttackBoss1 from "../boss/superAttackBoss1.js";
 import AttackWeapon1 from "../player/attackWeapon1.js";
 import AttackWeapon2 from "../player/attackWeapon2.js";
 import AttackWeapon3 from "../player/attackWeapon3.js";
-
 export default class Attack_Factory {
   static createAttack(scene, attack, enemy, target) {
     switch (attack) {
