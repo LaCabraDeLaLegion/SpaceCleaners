@@ -1,0 +1,16 @@
+import Weapon from "./weapon.js";
+
+export default class Laser extends Weapon {
+  constructor(scene, x, y) {
+    super(scene, x, y, "super_laser");
+    this.addGroup(this.scene.lasers);
+  }
+
+  preUpdate(t, dt) {
+    super.preUpdate(t, dt);
+
+    this.y -= 10;
+
+    if (this.y < 0) this.destroy();
+  }
+}

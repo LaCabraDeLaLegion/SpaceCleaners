@@ -2,7 +2,6 @@ import Player from "../player.js";
 import Boss from "../boss.js";
 import Sound from "../data/sounds.js";
 import Bomb from "../weapons/consumibles/bomb.js";
-import Anim_Factory from "./anim_factory.js";
 import Attack from "../attacks/factory/attacks_enum.js";
 
 export default class Level extends Phaser.Scene {
@@ -21,7 +20,7 @@ export default class Level extends Phaser.Scene {
     // };
     this.inventory = {
       skin: "player_1",
-      weapon: {name: "Basic Weapon", attack: Attack.Weapon1 },
+      weapon: {name: "Basic Weapon", attack: Attack.Weapon3 },
       shield: {name:"", quantity: 0},
       potion: {name:"", quantity: 0, health: 0},
       bombs: {name:"", quantity: 0, damage: 0},
