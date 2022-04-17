@@ -19,7 +19,7 @@ export default class Human extends Enemy {
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
 
-        if (!this.healing) {
+        if (!this.healing && !this.mutating) {
             this.walking = true;
             if (!this.healed) this.play(this.walk_anim, this.walk_anim);
         }
@@ -27,7 +27,7 @@ export default class Human extends Enemy {
             this.walking = false;
         
 
-        if (!this.healed && this.lives <= 0) {
+        if (!this.healed && !this.mutating && this.lives <= 0) {
             this.healed = true;
             this.body.destroy();
             if (this.walking) this.anims.stop();
@@ -41,19 +41,22 @@ export default class Human extends Enemy {
     }
 
     weapon_hit(){
-        console.log("level: " + this.level + "   max_level: " + this.max_level);
-        if (this.level >= this.max_level){
-            console.log("Data for new virus: " + this.x, this.y, this.level, this.group, this.max_level, this.apparition_group);
-            this.setVisible(false);
-            let virus = new Virus(this.scene, this.x + 50, this.y, this.level, this.group, this.max_level, 0);
-            virus.syncMovement(this.counter, this.x_right);
-            this.destroy();
-        }
-        else {
-            this.setVisible(false);
-            let virus = new Virus(this.scene, this.x + 50, this.y, this.level + 1, this.group, this.max_level, 0);
-            virus.syncMovement(this.counter, this.x_right);
-            this.destroy();
+        if (!this.mutating) {
+            this.mutating = true;
+            this.play("mutation_anim");
+            this.on("animationcomplete", () => {
+                this.setVisible(false);
+                if (this.level >= this.max_level){
+                    let virus = new Virus(this.scene, this.x + 50, this.y, this.level, this.group, this.max_level, 0);
+                    virus.syncMovement(this.counter, this.x_right);
+                    this.destroy();
+                }
+                else {
+                    let virus = new Virus(this.scene, this.x + 50, this.y, this.level + 1, this.group, this.max_level, 0);
+                    virus.syncMovement(this.counter, this.x_right);
+                    this.destroy();
+                } 
+            });  
         }
     }
 

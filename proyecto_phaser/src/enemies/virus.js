@@ -24,13 +24,6 @@ export default class Virus extends Enemy {
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
 
-        if (!this.takingdamage) {
-            this.walking = true;
-            if (!this.dying) this.play(this.walk_anim, this.walk_anim);
-        }
-        else 
-            this.walking = false;
-        
         if (!this.dying && this.lives <= 0) {
             this.dying = true;
             this.body.destroy();
@@ -57,32 +50,36 @@ export default class Virus extends Enemy {
    
 
     weapon_hit() {
-        console.log("virus.damage");
-        this.lives--;
-        this.play(this.damage_anim);
-        this.takingdamage = true;
-        this.on("animationcomplete", () => {
-            this.takingdamage = false;
-        });
+        if (!this.mutating) {
+            this.lives--;
+            this.play(this.damage_anim);
+            this.takingdamage = true;
+            this.on("animationcomplete", () => {
+                this.takingdamage = false;
+            });  
+        }
     }
     
 
 
     medicine_hit() {
-        if (this.level >= this.max_level){
-            this.lives = this.level;
-            this.lives += 1;
-            this.anims.stop();
-            this.play(this.walk_anim); 
-            console.log("mutate");
-        }
-        else {
-            this.setVisible(false);
-            let mutated_virus = new Virus(this.scene, this.x + 50, this.y, this.level + 1, this.group, this.max_level, 0);
-            console.log(mutated_virus.walk_anim);
-            mutated_virus.syncMovement(this.counter, this.x_right);
-            this.destroy();
-            console.log("mutate");
+        if (!this.mutating) {
+            if (this.level >= this.max_level){
+                this.lives = this.level;
+                this.lives += 1;
+                this.anims.stop();
+                this.play(this.walk_anim); 
+            }
+            else {
+                this.mutating = true;
+                this.play("mutation_anim");
+                this.on("animationcomplete", () => {
+                    this.setVisible(false);
+                    let mutated_virus = new Virus(this.scene, this.x + 50, this.y, this.level + 1, this.group, this.max_level, 0);
+                    mutated_virus.syncMovement(this.counter, this.x_right);
+                    this.destroy();
+                });
+            }
         }
     }
 }

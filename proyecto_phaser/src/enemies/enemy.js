@@ -34,6 +34,13 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
+
+        if (!this.takingdamage && !this.dying && !this.healing && !this.healed && !this.mutating) {
+            this.walking = true;
+            this.play(this.walk_anim, this.walk_anim);
+        }
+        else 
+            this.walking = false;
             
         //movement
         this.y += 0.25;

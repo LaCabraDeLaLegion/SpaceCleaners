@@ -51,6 +51,10 @@ export default class Loader extends Phaser.Scene {
             frameWidth: 20,
             frameHeight: 45,
           });
+        this.load.spritesheet("mutation", "/sprites/mutation.png", {
+            frameWidth: 100,
+            frameHeight: 100,
+        });
         Anim_Factory.player_spritesheets(this);
         Anim_Factory.virus_spritesheets(this);
         Anim_Factory.humans_spritesheets(this);
@@ -127,6 +131,12 @@ export default class Loader extends Phaser.Scene {
             frameRate: 5,
             repeat: -1,
         }); 
+        this.anims.create({
+          key: "mutation_anim",
+          frames: this.anims.generateFrameNumbers("mutation"),
+          frameRate: 8,
+          repeat: 1,
+      }); 
         Anim_Factory.player_anims(this);
         Anim_Factory.virus_anims(this);
         Anim_Factory.humans_anims(this);

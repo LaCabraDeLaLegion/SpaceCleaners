@@ -1,8 +1,9 @@
 import store from "./data/store.js";
 import Sound from "./data/sounds.js";
-export default class Shop extends Phaser.Scene {
+
+export default class Inventory extends Phaser.Scene {
   constructor() {
-    super({ key: "shop" });
+    super({ key: "inventory" });
 
     this.categories = {
       potions: store.potions,
@@ -197,4 +198,205 @@ export default class Shop extends Phaser.Scene {
       .setDepth(1)
       .setScale(this.globalWidth / 125);
 
-    this.currentMoney = this.add
+      this.currentMoney = this.add
+      .text(
+        this.globalWidth *
+          (0.25 - this.inventory.money.toString().length * 0.01),
+        this.globalHeight * 0.035,
+        this.inventory.money,
+        { fontFamily: "MinimalPixel" }
+      )
+      .setDepth(2)
+      .setScale(this.globalWidth / 600);
+  }
+
+  createItem(item, position, category) {
+    let item_bar = this.add
+      .image(
+        this.globalWidth / 8,
+        (this.globalHeight / 5) * (1 + position),
+        "item"
+      )
+      .setOrigin(0, 0)
+      .setDepth(1)
+      .setScale(this.globalWidth / 130);
+    let item_img = this.add
+      .image(
+        (this.globalWidth / 8) * 1.3,
+        (this.globalHeight / 5.1) * (1.15 + (position*1.02)),
+        item.img
+      )
+      .setOrigin(0, 0)
+      .setDepth(2)
+      .setScale(this.globalWidth / 200);
+    let item_name = this.add
+      .text(
+        (this.globalWidth / 8) * 2.7,
+        (this.globalHeight / 5.5) * (1.2 + position * 1.1),
+        item.info.name +
+          " (" +
+          item.info.quantity +
+          "/" +
+          item.maxQuantity +
+          ")",
+        { fontFamily: "MinimalPixel" }
+      )
+      .setDepth(2)
+      .setScale(this.globalWidth / 600);
+    let item_desc = this.add
+      .text(
+        (this.globalWidth / 8) * 2.7,
+        (this.globalHeight / 5.5) * (1.5 + position * 1.1),
+        item.desc,
+        { fontFamily: "MinimalPixel" }
+      )
+      .setDepth(2)
+      .setScale(this.globalWidth / 750);
+    let buy_btn = this.add
+      .image(
+        (this.globalWidth / 8) * 5.5,
+        (this.globalHeight / 5) * (1.3 + position),
+        "buy"
+      )
+      .setOrigin(0, 0)
+      .setDepth(2)
+      .setScale(this.globalWidth / 300);
+    buy_btn.setInteractive();
+    buy_btn.on("pointerover", () => {
+      buy_btn.setTexture("buy_btn_hover");
+      this.buttonSound.play();
+    });
+    buy_btn.on("pointerout", () => {
+      buy_btn.setTexture("buy");
+    });
+    buy_btn.on("pointerup", () => {
+      this.buyItem({ ...item, category });
+    });
+    let item_buyText = this.add
+      .text(
+        (this.globalWidth / 8) * 5.75,
+        (this.globalHeight / 5) * (1.345 + position),
+        "Buy",
+        { fontFamily: "MinimalPixel" }
+      )
+      .setDepth(3)
+      .setScale(this.globalWidth / 750);
+    let item_coin = this.add
+      .image(
+        (this.globalWidth / 8) * 5.5,
+        (this.globalHeight / 5) * (1.15 + position),
+        "coin"
+      )
+      .setOrigin(0, 0)
+      .setDepth(2)
+      .setScale(this.globalWidth / 200);
+    let item_price = this.add
+      .text(
+        (this.globalWidth / 8) * 5.75,
+        (this.globalHeight / 5) * (1.17 + position),
+        item.price,
+        { fontFamily: "MinimalPixel" }
+      )
+      .setDepth(2)
+      .setScale(this.globalWidth / 750);
+    this.currentInterface.push(
+      item_bar,
+      item_img,
+      item_name,
+      item_desc,
+      buy_btn,
+      item_buyText,
+      item_coin,
+      item_price
+    );
+  }
+
+  createCategory(category, page) {
+    this.destroyCurrentInterface();
+
+    let up = this.add
+      .image(this.globalWidth * 0.945, this.globalHeight * 0.4, "up")
+      .setDepth(1)
+      .setScale(this.globalWidth / 400);
+    if (page === 1) up.setTexture("up_disabled");
+    else {
+      up.setInteractive();
+      up.on("pointerover", () => {
+        up.setScale(this.globalWidth / 300);
+        this.buttonSound.play();
+      });
+      up.on("pointerout", () => {
+        up.setScale(this.globalWidth / 400);
+      });
+      up.on("pointerup", () => {
+        this.playSound.play();
+        this.createCategory(category, --page);
+      });
+    }
+
+    let down = this.add
+      .image(this.globalWidth * 0.945, this.globalHeight * 0.6, "down")
+      .setDepth(1)
+      .setScale(this.globalWidth / 400);
+    if (page === this.categories[category].num_pages)
+      down.setTexture("down_disabled");
+    else {
+      down.setInteractive();
+      down.on("pointerover", () => {
+        down.setScale(this.globalWidth / 300);
+        this.buttonSound.play();
+      });
+      down.on("pointerout", () => {
+        down.setScale(this.globalWidth / 400);
+      });
+      down.on("pointerup", () => {
+        this.playSound.play();
+        this.createCategory(category, ++page);
+      });
+    }
+
+    this.currentInterface.push(up, down);
+
+    let position = 0;
+    this.categories[category].items
+      .filter((item) => item.page === page)
+      .forEach((item) => {
+        this.createItem(item, position, category);
+        position += 0.85;
+      });
+  }
+
+  destroyCurrentInterface() {
+    this.currentInterface.forEach((item) => item.destroy());
+    this.currentInterface = [];
+  }
+
+  buyItem(item) {
+    if (item.price <= this.inventory.money) {
+      this.buySound.play();
+      this.inventory.money -= item.price;
+
+      switch (item.category) {
+        case "potions":
+          this.inventory.potions.push(item.info);
+          break;
+        case "weapons":
+          this.inventory.weapons.push(item.info);
+          break;
+      }
+
+      this.currentMoney.destroy();
+
+      this.currentMoney = this.add
+        .text(
+          this.globalWidth *
+            (0.25 - this.inventory.money.toString().length * 0.01),
+          this.globalHeight * 0.05,
+          this.inventory.money,
+          { fontFamily: "MinimalPixel" }
+        )
+        .setDepth(2)
+        .setScale(this.globalWidth / 600);
+    }
+  }
+}
