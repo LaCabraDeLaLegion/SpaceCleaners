@@ -18,15 +18,7 @@ export default class Level7 extends Level {
     this.level = 7;
     this.virus_maxlevel = 6;
     this.human_maxlevel = 6;
-    this.level_virus = [enemy_virus[5], enemy_virus[6]];
-    this.level_humans = [enemy_humans[5], enemy_humans[6]];
     console.log("Nivel = 7");
-  }
-
-  preload() {
-    super.preload();
-    this.load_images();
-    this.load_audio();
   }
 
   create() {

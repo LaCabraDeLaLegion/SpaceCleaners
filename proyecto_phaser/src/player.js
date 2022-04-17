@@ -7,7 +7,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, inventory) {
     super(scene, x, y, inventory.skin);
 
-    Anim_Factory.player_anims(scene, inventory.skin);
     this.normal_animation = inventory.skin + "_walk";
     this.damage_animation = inventory.skin + "_walk_damage";
     this.heal_animation = inventory.skin + "_walk_heal";

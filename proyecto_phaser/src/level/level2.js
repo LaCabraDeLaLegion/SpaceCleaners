@@ -5,8 +5,6 @@ import virus_data from "../data/virus_data.js";
 import humans_data from "../data/humans_data.js";
 import Sound from "../data/sounds.js";
 
-const enemy_virus = virus_data.data;
-const enemy_humans = humans_data.data;
 
 export default class Level2 extends Level {
   constructor() {
@@ -18,15 +16,7 @@ export default class Level2 extends Level {
     this.level = 2;
     this.virus_maxlevel = 2;
     this.human_maxlevel = 2;
-    this.level_virus = [enemy_virus[1], enemy_virus[2]];
-    this.level_humans = [enemy_humans[1], enemy_humans[2]];
     console.log("Nivel = 2");
-  }
-
-  preload() {
-    super.preload();
-    this.load_images();
-    this.load_audio();
   }
 
   create() {
@@ -116,12 +106,4 @@ export default class Level2 extends Level {
     this.levelSong = this.sound.add("level2", Sound.level);
   }
 
-  load_images() {
-    super.load_images();
-  }
-
-  load_audio() {
-    super.load_audio();
-    this.load.audio("level2", "/sounds/level2_song.mp3");
-  }
 }

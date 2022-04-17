@@ -18,15 +18,7 @@ export default class Level5 extends Level {
     this.level = 5;
     this.virus_maxlevel = 5;
     this.human_maxlevel = 5;
-    this.level_virus = [enemy_virus[3], enemy_virus[4], enemy_virus[5]];
-    this.level_humans = [enemy_humans[3], enemy_humans[4], enemy_humans[5]];
     console.log("Nivel = 5");
-  }
-
-  preload() {
-    super.preload();
-    this.load_images();
-    this.load_audio();
   }
 
   create() {

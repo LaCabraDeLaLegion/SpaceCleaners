@@ -18,15 +18,7 @@ export default class Level3 extends Level {
     this.level = 3;
     this.virus_maxlevel = 3;
     this.human_maxlevel = 3;
-    this.level_virus = [enemy_virus[1], enemy_virus[2], enemy_virus[3]];
-    this.level_humans = [enemy_humans[1], enemy_humans[2], enemy_humans[3]];
     console.log("Nivel = 3");
-  }
-
-  preload() {
-    super.preload();
-    this.load_images();
-    this.load_audio();
   }
 
   create() {
@@ -135,15 +127,7 @@ export default class Level3 extends Level {
 
   addSounds() {
     super.addSounds();
-    this.levelSong = this.sound.add("level3", Sound.level);
+    this.levelSong = this.sound.add("level1", Sound.level);
   }
 
-  load_images() {
-    super.load_images();
-  }
-
-  load_audio() {
-    super.load_audio();
-    this.load.audio("level3", "/sounds/level3_song.wav");
-  }
 }

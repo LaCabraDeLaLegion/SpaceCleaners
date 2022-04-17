@@ -9,7 +9,7 @@ export default class AttackVirus1 {
     new Projectile(
       scene,
       enemy.x,
-      enemy.y + 80,
+      enemy.y + 20,
       ProjectileData["plasma"],
       target
     );

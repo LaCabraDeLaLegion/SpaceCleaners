@@ -181,7 +181,7 @@ export default class Map extends Phaser.Scene {
     });
     shopButton.on("pointerup", () => {
       this.playSound.play();
-      this.time.delayedCall(1000, () => {
+      this.time.delayedCall(0, () => {
         // this.introSong.pause();
         this.scene.start("shop", this.inventory);
       });

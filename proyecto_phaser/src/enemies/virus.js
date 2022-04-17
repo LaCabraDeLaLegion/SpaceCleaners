@@ -41,7 +41,8 @@ export default class Virus extends Enemy {
             });  
         }
 
-        this.attackCounter--;
+        if (!this.dying && this.y > 0)
+            this.attackCounter--;
         if (!this.dying && this.attackCounter === 0) {
             console.log("attack");
             this.attackCounter = this.attackTime;
