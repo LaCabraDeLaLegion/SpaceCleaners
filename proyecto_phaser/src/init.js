@@ -11,19 +11,36 @@ import Map from "./map.js";
 import Win from "./win.js";
 import GameOver from "./game_over.js";
 import Shop from "./shop.js";
+import Inventory from "./inventory.js";
 import Introduction from "./introduction.js";
 
 const game_width = 0;
 const game_height = 0;
 
-const DPR = window.devicePixelRatio
+const DPR = window.devicePixelRatio;
 
 var config = {
   type: Phaser.AUTO,
   width: 600,
   height: 1000,
   parent: "container",
-  scene: [Loader, Introduction, Menu, Map, Shop, Level1, Level2, Level3, Level4, Level5, Level6, Level7, Win, GameOver],
+  scene: [
+    Loader,
+    Introduction,
+    Menu,
+    Map,
+    Shop,
+    Inventory,
+    Level1,
+    Level2,
+    Level3,
+    Level4,
+    Level5,
+    Level6,
+    Level7,
+    Win,
+    GameOver,
+  ],
   render: { pixelArt: true },
   fps: {
     target: 60,
@@ -39,4 +56,3 @@ var config = {
 
 const game = new Phaser.Game(config);
 console.log(game.loop.actualFps);
-

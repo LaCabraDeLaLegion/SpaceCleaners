@@ -29,7 +29,7 @@ export default class Shop extends Phaser.Scene {
       .image(0, 0, "background_shop")
       .setOrigin(0, 0)
       .setDepth(0)
-      .setScale(this.globalWidth / 44);
+      .setScale(10);
 
     this.createUI();
     this.createTopBar();
@@ -48,6 +48,9 @@ export default class Shop extends Phaser.Scene {
     this.load.image("down", "/sprites/shop_down.png");
     this.load.image("up_disabled", "/sprites/shop_up_disabled.png");
     this.load.image("down_disabled", "/sprites/shop_down_disabled.png");
+    this.load.image("basic_potion", "/sprites/Potions/basic_potion.png");
+    this.load.image("advanced_potion", "/sprites/Potions/advanced_potion.png");
+    this.load.image("holy_potion", "/sprites/Potions/holy_potion.png");
     this.load.image("cash", "/sprites/cash.png");
     this.load.image("item", "/sprites/shop_item.png");
     this.load.image("item1", "/sprites/mascarilla.png");
@@ -65,7 +68,7 @@ export default class Shop extends Phaser.Scene {
 
   createTopBar() {
     let category1 = this.add
-      .image(this.globalWidth / 9.35, this.globalHeight / 7, "category")
+      .image(this.globalWidth / 9.35, this.globalHeight / 10, "category")
       .setOrigin(0, 0)
       .setDepth(1)
       .setScale(this.globalWidth / 1200);
@@ -88,7 +91,11 @@ export default class Shop extends Phaser.Scene {
     });
 
     let category2 = this.add
-      .image((this.globalWidth / 9.35) * 3.5, this.globalHeight / 7, "category")
+      .image(
+        (this.globalWidth / 9.35) * 3.5,
+        this.globalHeight / 10,
+        "category"
+      )
       .setOrigin(0, 0)
       .setDepth(1)
       .setScale(this.globalWidth / 1200);
@@ -111,7 +118,7 @@ export default class Shop extends Phaser.Scene {
     });
 
     let category3 = this.add
-      .image((this.globalWidth / 9.35) * 6, this.globalHeight / 7, "category")
+      .image((this.globalWidth / 9.35) * 6, this.globalHeight / 10, "category")
       .setOrigin(0, 0)
       .setDepth(1)
       .setScale(this.globalWidth / 1200);
@@ -136,7 +143,7 @@ export default class Shop extends Phaser.Scene {
     this.add
       .text(
         (this.globalWidth / 9.35) * 1.5,
-        (this.globalHeight / 7) * 1.15,
+        (this.globalHeight / 10) * 1.15,
         "potions",
         { fontFamily: "MinimalPixel" }
       )
@@ -145,7 +152,7 @@ export default class Shop extends Phaser.Scene {
     this.add
       .text(
         (this.globalWidth / 9.35) * 4,
-        (this.globalHeight / 7) * 1.15,
+        (this.globalHeight / 10) * 1.15,
         "Weapons",
         { fontFamily: "MinimalPixel" }
       )
@@ -154,7 +161,7 @@ export default class Shop extends Phaser.Scene {
     this.add
       .text(
         (this.globalWidth / 9.35) * 6.5,
-        (this.globalHeight / 7) * 1.15,
+        (this.globalHeight / 10) * 1.15,
         "Shields",
         { fontFamily: "MinimalPixel" }
       )
@@ -166,7 +173,7 @@ export default class Shop extends Phaser.Scene {
 
   createUI() {
     let close = this.add
-      .image(this.globalWidth * 0.95, this.globalHeight * 0.06, "close")
+      .image(this.globalWidth * 0.95, this.globalHeight * 0.04, "close")
       .setDepth(1)
       .setScale(this.globalWidth / 400);
     close.setInteractive();
@@ -183,7 +190,8 @@ export default class Shop extends Phaser.Scene {
         this.scene.start("map", [null, null, this.inventory]);
       });
     });
-    let cash = this.add
+
+    this.add
       .image(5, 10, "cash")
       .setOrigin(0, 0)
       .setDepth(1)
@@ -193,7 +201,7 @@ export default class Shop extends Phaser.Scene {
       .text(
         this.globalWidth *
           (0.25 - this.inventory.money.toString().length * 0.01),
-        this.globalHeight * 0.05,
+        this.globalHeight * 0.035,
         this.inventory.money,
         { fontFamily: "MinimalPixel" }
       )
@@ -205,7 +213,7 @@ export default class Shop extends Phaser.Scene {
     let item_bar = this.add
       .image(
         this.globalWidth / 8,
-        (this.globalHeight / 4) * (1 + position),
+        (this.globalHeight / 5) * (1 + position),
         "item"
       )
       .setOrigin(0, 0)
@@ -214,7 +222,7 @@ export default class Shop extends Phaser.Scene {
     let item_img = this.add
       .image(
         (this.globalWidth / 8) * 1.3,
-        (this.globalHeight / 4) * (1.15 + position),
+        (this.globalHeight / 5.1) * (1.15 + (position*1.02)),
         item.img
       )
       .setOrigin(0, 0)
@@ -223,7 +231,7 @@ export default class Shop extends Phaser.Scene {
     let item_name = this.add
       .text(
         (this.globalWidth / 8) * 2.7,
-        (this.globalHeight / 4) * (1.2 + position),
+        (this.globalHeight / 5.5) * (1.2 + position * 1.1),
         item.info.name +
           " (" +
           item.info.quantity +
@@ -237,7 +245,7 @@ export default class Shop extends Phaser.Scene {
     let item_desc = this.add
       .text(
         (this.globalWidth / 8) * 2.7,
-        (this.globalHeight / 4) * (1.5 + position),
+        (this.globalHeight / 5.5) * (1.5 + position * 1.1),
         item.desc,
         { fontFamily: "MinimalPixel" }
       )
@@ -246,7 +254,7 @@ export default class Shop extends Phaser.Scene {
     let buy_btn = this.add
       .image(
         (this.globalWidth / 8) * 5.5,
-        (this.globalHeight / 4) * (1.3 + position),
+        (this.globalHeight / 5) * (1.3 + position),
         "buy"
       )
       .setOrigin(0, 0)
@@ -266,7 +274,7 @@ export default class Shop extends Phaser.Scene {
     let item_buyText = this.add
       .text(
         (this.globalWidth / 8) * 5.75,
-        (this.globalHeight / 4) * (1.345 + position),
+        (this.globalHeight / 5) * (1.345 + position),
         "Buy",
         { fontFamily: "MinimalPixel" }
       )
@@ -275,7 +283,7 @@ export default class Shop extends Phaser.Scene {
     let item_coin = this.add
       .image(
         (this.globalWidth / 8) * 5.5,
-        (this.globalHeight / 4) * (1.15 + position),
+        (this.globalHeight / 5) * (1.15 + position),
         "coin"
       )
       .setOrigin(0, 0)
@@ -284,7 +292,7 @@ export default class Shop extends Phaser.Scene {
     let item_price = this.add
       .text(
         (this.globalWidth / 8) * 5.75,
-        (this.globalHeight / 4) * (1.17 + position),
+        (this.globalHeight / 5) * (1.17 + position),
         item.price,
         { fontFamily: "MinimalPixel" }
       )

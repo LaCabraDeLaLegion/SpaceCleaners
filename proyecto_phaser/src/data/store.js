@@ -2,39 +2,31 @@ const store = {
   potions: {
     items: [
       {
-        info: { name: "Basic Medicine", quantity: 0, health: 1 },
+        info: { name: "Basic Potion", quantity: 0, health: 1 },
         desc: "Recovers 1 point of health",
         price: 10,
         page: 1,
-        img: "item1",
+        img: "basic_potion",
         maxQuantity: 3,
       },
       {
-        info: { name: "Advanced Medicine", quantity: 0, health: 5 },
+        info: { name: "Advanced Potion", quantity: 0, health: 3 },
         desc: "Recovers 5 point of health",
-        price: 100,
+        price: 40,
         page: 1,
-        img: "item1",
+        img: "advanced_potion",
         maxQuantity: 3,
       },
       {
-        info: { name: "Holy Medicine", quantity: 0, health: 10 },
+        info: { name: "Holy Potion", quantity: 0, health: 10 },
         desc: "Recovers 10 point of health",
-        price: 1000,
+        price: 150,
         page: 1,
-        img: "item1",
-        maxQuantity: 3,
-      },
-      {
-        info: { name: "Immunity Medicine", quantity: 0, health: 10 },
-        desc: "Gives 5 seconds of immunity",
-        price: 1000,
-        page: 2,
-        img: "item1",
+        img: "holy_potion",
         maxQuantity: 3,
       },
     ],
-    num_pages: 2,
+    num_pages: 1,
   },
   weapons: {
     items: [
