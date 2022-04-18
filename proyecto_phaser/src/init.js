@@ -14,15 +14,15 @@ import Shop from "./shop.js";
 import Inventory from "./inventory.js";
 import Introduction from "./introduction.js";
 
-const game_width = 0;
-const game_height = 0;
+const game_width = 600;
+const game_height = 940;
 
 const DPR = window.devicePixelRatio;
 
 var config = {
   type: Phaser.AUTO,
-  width: 600,
-  height: 1000,
+  width: game_width,
+  height: game_height,
   parent: "container",
   scene: [
     Loader,

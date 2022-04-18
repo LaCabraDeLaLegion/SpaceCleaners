@@ -69,82 +69,113 @@ export default class Inventory extends Phaser.Scene {
 
   createTopBar() {
     let category1 = this.add
-      .image(this.globalWidth / 9.35, this.globalHeight / 10, "category")
+      .image(this.globalWidth / 11, this.globalHeight / 10, "category")
       .setOrigin(0, 0)
       .setDepth(1)
-      .setScale(this.globalWidth / 1200);
+      .setScale(this.globalWidth / 1500);
     category1.setInteractive();
     category1.on("pointerover", () => {
       category1
         .setTexture("category_selected")
-        .setScale(this.globalWidth / 1200);
+        .setScale(this.globalWidth / 1500);
       this.buttonSound.play();
     });
     category1.on("pointerout", () => {
-      category1.setTexture("category").setScale(this.globalWidth / 1200);
+      category1.setTexture("category").setScale(this.globalWidth / 1500);
     });
     category1.on("pointerup", () => {
       this.playSound.play();
       category1
         .setTexture("category_selected")
-        .setScale(this.globalWidth / 1200);
+        .setScale(this.globalWidth / 1500);
       this.createCategory("potions", 1);
     });
 
     let category2 = this.add
       .image(
-        (this.globalWidth / 9.35) * 3.5,
+        this.globalWidth / 11 + (this.globalWidth / 11) * 2.27,
         this.globalHeight / 10,
         "category"
       )
       .setOrigin(0, 0)
       .setDepth(1)
-      .setScale(this.globalWidth / 1200);
+      .setScale(this.globalWidth / 1500);
     category2.setInteractive();
     category2.on("pointerover", () => {
       category2
         .setTexture("category_selected")
-        .setScale(this.globalWidth / 1200);
+        .setScale(this.globalWidth / 1500);
       this.buttonSound.play();
     });
     category2.on("pointerout", () => {
-      category2.setTexture("category").setScale(this.globalWidth / 1200);
+      category2.setTexture("category").setScale(this.globalWidth / 1500);
     });
     category2.on("pointerup", () => {
       this.playSound.play();
       category2
         .setTexture("category_selected")
-        .setScale(this.globalWidth / 1200);
+        .setScale(this.globalWidth / 1500);
       this.createCategory("weapons", 1);
     });
 
     let category3 = this.add
-      .image((this.globalWidth / 9.35) * 6, this.globalHeight / 10, "category")
+      .image(
+        this.globalWidth / 11 + (this.globalWidth / 11) * 4.54,
+        this.globalHeight / 10,
+        "category"
+      )
       .setOrigin(0, 0)
       .setDepth(1)
-      .setScale(this.globalWidth / 1200);
+      .setScale(this.globalWidth / 1500);
     category3.setInteractive();
     category3.on("pointerover", () => {
       category3
         .setTexture("category_selected")
-        .setScale(this.globalWidth / 1200);
+        .setScale(this.globalWidth / 1500);
       this.buttonSound.play();
     });
     category3.on("pointerout", () => {
-      category3.setTexture("category").setScale(this.globalWidth / 1200);
+      category3.setTexture("category").setScale(this.globalWidth / 1500);
     });
     category3.on("pointerup", () => {
       this.playSound.play();
       category3
         .setTexture("category_selected")
-        .setScale(this.globalWidth / 1200);
+        .setScale(this.globalWidth / 1500);
       this.createCategory("shields", 1);
+    });
+
+    let category4 = this.add
+      .image(
+        this.globalWidth / 11 + (this.globalWidth / 11) * 6.81,
+        this.globalHeight / 10,
+        "category"
+      )
+      .setOrigin(0, 0)
+      .setDepth(1)
+      .setScale(this.globalWidth / 1500);
+    category4.setInteractive();
+    category4.on("pointerover", () => {
+      category4
+        .setTexture("category_selected")
+        .setScale(this.globalWidth / 1500);
+      this.buttonSound.play();
+    });
+    category4.on("pointerout", () => {
+      category4.setTexture("category").setScale(this.globalWidth / 1500);
+    });
+    category4.on("pointerup", () => {
+      this.playSound.play();
+      category4
+        .setTexture("category_selected")
+        .setScale(this.globalWidth / 1500);
+      this.createCategory("Skins", 1);
     });
 
     this.add
       .text(
-        (this.globalWidth / 9.35) * 1.5,
-        (this.globalHeight / 10) * 1.15,
+        (this.globalWidth / 10) * 1.5,
+        (this.globalHeight / 10.5) * 1.15,
         "potions",
         { fontFamily: "MinimalPixel" }
       )
@@ -152,8 +183,8 @@ export default class Inventory extends Phaser.Scene {
       .setScale(this.globalWidth / 600);
     this.add
       .text(
-        (this.globalWidth / 9.35) * 4,
-        (this.globalHeight / 10) * 1.15,
+        (this.globalWidth / 10) * 3.4,
+        (this.globalHeight / 10.5) * 1.15,
         "Weapons",
         { fontFamily: "MinimalPixel" }
       )
@@ -161,9 +192,18 @@ export default class Inventory extends Phaser.Scene {
       .setScale(this.globalWidth / 600);
     this.add
       .text(
-        (this.globalWidth / 9.35) * 6.5,
-        (this.globalHeight / 10) * 1.15,
+        (this.globalWidth / 10) * 5.5,
+        (this.globalHeight / 10.5) * 1.15,
         "Shields",
+        { fontFamily: "MinimalPixel" }
+      )
+      .setDepth(2)
+      .setScale(this.globalWidth / 600);
+    this.add
+      .text(
+        (this.globalWidth / 10) * 7.75,
+        (this.globalHeight / 10.5) * 1.15,
+        "Skins",
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(2)
@@ -391,7 +431,7 @@ export default class Inventory extends Phaser.Scene {
         .text(
           this.globalWidth *
             (0.25 - this.inventory.money.toString().length * 0.01),
-          this.globalHeight * 0.05,
+          this.globalHeight * 0.035,
           this.inventory.money,
           { fontFamily: "MinimalPixel" }
         )

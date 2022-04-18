@@ -53,6 +53,15 @@ const sounds = {
     loop: true,
     delay: 0,
   },
+  level2: {
+    mute: false,
+    volume: 2,
+    rate: 0.7,
+    detune: 1,
+    seek: 0,
+    loop: true,
+    delay: 0,
+  },
   buySound: {
     mute: false,
     volume: 2,
@@ -63,6 +72,15 @@ const sounds = {
     delay: 0,
   },
   gameOver: {
+    mute: false,
+    volume: 2,
+    rate: 1,
+    detune: 0,
+    seek: 0,
+    loop: false,
+    delay: 0,
+  },
+  drinkPotion: {
     mute: false,
     volume: 2,
     rate: 1,

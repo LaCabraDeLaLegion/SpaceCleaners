@@ -110,6 +110,7 @@ export default class Level extends Phaser.Scene {
   addSounds() {
     this.impactSound = this.sound.add("explosion", Sound.explosion);
     this.damageSound = this.sound.add("damage", Sound.damage);
+    this.drinkPotionSound = this.sound.add("drink_potion", Sound.drinkPotion);
     this.gameOverSound = this.sound.add("game_over", Sound.gameOver);
   }
 
@@ -162,6 +163,7 @@ export default class Level extends Phaser.Scene {
 
   usePotion() {
     if (this.inventory.potion.quantity > 0) {
+      this.drinkPotionSound.play();
       this.player.lives += this.inventory.potion.health;
       this.inventory.potion.quantity--;
     }
