@@ -53,7 +53,7 @@ export default class Shop extends Phaser.Scene {
     this.load.image("holy_potion", "/sprites/Potions/holy_potion.png");
     this.load.image("cash", "/sprites/cash.png");
     this.load.image("item", "/sprites/shop_item.png");
-    this.load.image("item1", "/sprites/mascarilla.png");
+    this.load.image("double_laser", "/sprites/Weapons/double_laser.png");
     this.load.image("item2", "/sprites/weapon.png");
     this.load.image("buy", "/sprites/shop_buy.png");
     this.load.image("buy_btn_hover", "/sprites/buy_btn_hover.png");
@@ -263,7 +263,7 @@ export default class Shop extends Phaser.Scene {
       .image(
         (this.globalWidth / 8) * 1.3,
         (this.globalHeight / 5.1) * (1.15 + position * 1.02),
-        item.img
+        item.info.img
       )
       .setOrigin(0, 0)
       .setDepth(2)
@@ -286,7 +286,7 @@ export default class Shop extends Phaser.Scene {
       .text(
         (this.globalWidth / 8) * 2.7,
         (this.globalHeight / 5.5) * (1.5 + position * 1.1),
-        item.desc,
+        item.info.desc,
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(2)
@@ -417,10 +417,14 @@ export default class Shop extends Phaser.Scene {
 
       switch (item.category) {
         case "potions":
-          this.inventory.potions.push(item.info);
+          let idx = this.inventory.potions.findIndex(
+            (p) => p.name === item.info.name
+          );
+          if (idx !== -1) this.inventory.potions[idx].quantity++;
+          else this.inventory.potions.push({ ...item.info, quantity: 1 });
           break;
         case "weapons":
-          this.inventory.weapons.push(item.info);
+          this.inventory.weapons.push({ ...item.info, quantity: 1 });
           break;
       }
 

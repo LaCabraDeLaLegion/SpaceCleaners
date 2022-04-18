@@ -68,10 +68,11 @@ export default class Map extends Phaser.Scene {
     if (!data[2])
       this.inventory = {
         skin: "player_1",
-        shield: [],
+        shields: [],
         weapons: [],
         potions: [],
-        money: 30,
+        skins: [],
+        money: 9999,
       };
     else this.inventory = data[2];
   }
@@ -192,7 +193,11 @@ export default class Map extends Phaser.Scene {
 
     //Inventory
     let inventoryButton = this.add
-      .image((this.globalWidth / 10) * 8, this.globalHeight / 5, "inventory_btn")
+      .image(
+        (this.globalWidth / 10) * 8,
+        this.globalHeight / 5,
+        "inventory_btn"
+      )
       .setDepth(2)
       .setScale(0.3);
     inventoryButton.setInteractive();

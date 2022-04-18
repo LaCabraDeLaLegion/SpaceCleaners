@@ -5,10 +5,7 @@ export default class Inventory extends Phaser.Scene {
   constructor() {
     super({ key: "inventory" });
 
-    this.categories = {
-      potions: store.potions,
-      weapons: store.weapons,
-    };
+    this.categories = ["potions", "weapons", "shields", "skins"];
 
     this.currentInterface = [];
   }
@@ -57,7 +54,7 @@ export default class Inventory extends Phaser.Scene {
     this.load.image("item1", "/sprites/mascarilla.png");
     this.load.image("item2", "/sprites/weapon.png");
     this.load.image("buy", "/sprites/shop_buy.png");
-    this.load.image("buy_btn_hover", "/sprites/buy_btn_hover.png");
+    this.load.image("select_btn_hover", "/sprites/buy_btn_hover.png");
     this.load.image("coin", "/sprites/coin.png");
   }
 
@@ -238,7 +235,7 @@ export default class Inventory extends Phaser.Scene {
       .setDepth(1)
       .setScale(this.globalWidth / 125);
 
-      this.currentMoney = this.add
+    this.currentMoney = this.add
       .text(
         this.globalWidth *
           (0.25 - this.inventory.money.toString().length * 0.01),
@@ -263,7 +260,7 @@ export default class Inventory extends Phaser.Scene {
     let item_img = this.add
       .image(
         (this.globalWidth / 8) * 1.3,
-        (this.globalHeight / 5.1) * (1.15 + (position*1.02)),
+        (this.globalHeight / 5.1) * (1.15 + position * 1.02),
         item.img
       )
       .setOrigin(0, 0)
@@ -273,12 +270,7 @@ export default class Inventory extends Phaser.Scene {
       .text(
         (this.globalWidth / 8) * 2.7,
         (this.globalHeight / 5.5) * (1.2 + position * 1.1),
-        item.info.name +
-          " (" +
-          item.info.quantity +
-          "/" +
-          item.maxQuantity +
-          ")",
+        item.name + " X " + item.quantity,
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(2)
@@ -292,62 +284,43 @@ export default class Inventory extends Phaser.Scene {
       )
       .setDepth(2)
       .setScale(this.globalWidth / 750);
-    let buy_btn = this.add
+    let select_btn = this.add
       .image(
-        (this.globalWidth / 8) * 5.5,
-        (this.globalHeight / 5) * (1.3 + position),
+        (this.globalWidth / 8) * 5.65,
+        (this.globalHeight / 5) * (1.2 + position),
         "buy"
       )
       .setOrigin(0, 0)
       .setDepth(2)
-      .setScale(this.globalWidth / 300);
-    buy_btn.setInteractive();
-    buy_btn.on("pointerover", () => {
-      buy_btn.setTexture("buy_btn_hover");
+      .setScale(this.globalWidth / 280);
+    select_btn.setInteractive();
+    select_btn.on("pointerover", () => {
+      select_btn.setTexture("select_btn_hover");
       this.buttonSound.play();
     });
-    buy_btn.on("pointerout", () => {
-      buy_btn.setTexture("buy");
+    select_btn.on("pointerout", () => {
+      select_btn.setTexture("buy");
     });
-    buy_btn.on("pointerup", () => {
+    select_btn.on("pointerup", () => {
       this.buyItem({ ...item, category });
     });
-    let item_buyText = this.add
+    let item_selection = this.add
       .text(
-        (this.globalWidth / 8) * 5.75,
-        (this.globalHeight / 5) * (1.345 + position),
-        "Buy",
+        (this.globalWidth / 8) * 5.7,
+        (this.globalHeight / 5) * (1.24 + position),
+        "SELECT",
         { fontFamily: "MinimalPixel" }
       )
       .setDepth(3)
       .setScale(this.globalWidth / 750);
-    let item_coin = this.add
-      .image(
-        (this.globalWidth / 8) * 5.5,
-        (this.globalHeight / 5) * (1.15 + position),
-        "coin"
-      )
-      .setOrigin(0, 0)
-      .setDepth(2)
-      .setScale(this.globalWidth / 200);
-    let item_price = this.add
-      .text(
-        (this.globalWidth / 8) * 5.75,
-        (this.globalHeight / 5) * (1.17 + position),
-        item.price,
-        { fontFamily: "MinimalPixel" }
-      )
-      .setDepth(2)
-      .setScale(this.globalWidth / 750);
+
     this.currentInterface.push(
       item_bar,
       item_img,
       item_name,
       item_desc,
-      buy_btn,
-      item_buyText,
-      item_coin,
-      item_price
+      select_btn,
+      item_selection
     );
   }
 
@@ -378,7 +351,7 @@ export default class Inventory extends Phaser.Scene {
       .image(this.globalWidth * 0.945, this.globalHeight * 0.6, "down")
       .setDepth(1)
       .setScale(this.globalWidth / 400);
-    if (page === this.categories[category].num_pages)
+    if (page === this.inventory[category].length % 4)
       down.setTexture("down_disabled");
     else {
       down.setInteractive();
@@ -398,45 +371,18 @@ export default class Inventory extends Phaser.Scene {
     this.currentInterface.push(up, down);
 
     let position = 0;
-    this.categories[category].items
-      .filter((item) => item.page === page)
-      .forEach((item) => {
+    for (let category of this.categories) {
+      console.log(this.inventory, this.inventory[category]);
+      for (let item of this.inventory[category]) {
+        console.log(item);
         this.createItem(item, position, category);
         position += 0.85;
-      });
+      }
+    }
   }
 
   destroyCurrentInterface() {
     this.currentInterface.forEach((item) => item.destroy());
     this.currentInterface = [];
-  }
-
-  buyItem(item) {
-    if (item.price <= this.inventory.money) {
-      this.buySound.play();
-      this.inventory.money -= item.price;
-
-      switch (item.category) {
-        case "potions":
-          this.inventory.potions.push(item.info);
-          break;
-        case "weapons":
-          this.inventory.weapons.push(item.info);
-          break;
-      }
-
-      this.currentMoney.destroy();
-
-      this.currentMoney = this.add
-        .text(
-          this.globalWidth *
-            (0.25 - this.inventory.money.toString().length * 0.01),
-          this.globalHeight * 0.035,
-          this.inventory.money,
-          { fontFamily: "MinimalPixel" }
-        )
-        .setDepth(2)
-        .setScale(this.globalWidth / 600);
-    }
   }
 }
