@@ -13,6 +13,7 @@ import GameOver from "./game_over.js";
 import Shop from "./shop.js";
 import Inventory from "./inventory.js";
 import Introduction from "./introduction.js";
+import Details from "./details.js";
 
 const game_width = 600;
 const game_height = 940;
@@ -41,6 +42,7 @@ var config = {
     Level7,
     Win,
     GameOver,
+    Details,
   ],
   render: { pixelArt: true },
   fps: {

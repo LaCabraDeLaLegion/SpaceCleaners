@@ -48,7 +48,7 @@ export default class Level extends Phaser.Scene {
         .setDepth(1);
       victory.setInteractive();
       victory.on("pointerup", () => {
-        this.scene.start("map", ["win", this.level]);
+        this.scene.start("details", ["win", this.level]);
         this.levelSong.stop();
       });
     }
