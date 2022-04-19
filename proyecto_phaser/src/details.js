@@ -10,6 +10,8 @@ export default class Details extends Phaser.Scene {
             fontFamily: 'GameFont',
             fontSize: '30px',
         }
+        this.result = data[0];
+        this.level = data[1];
     }
 
     create() {
@@ -54,6 +56,18 @@ export default class Details extends Phaser.Scene {
         .setOrigin(0, 0)
         .setDepth(2)
         .setScale(this.globalWidth / 125);
+
+        let victory = this.add
+        .image(
+            this.globalWidth / 2,
+            (this.globalHeight / 10.5) * 6.225,
+            "continue"
+        )
+        .setDepth(1);
+        victory.setInteractive();
+        victory.on("pointerup", () => {
+            this.scene.start("map", [this.result, this.level]);
+        });
     }
     
 }
