@@ -61,11 +61,13 @@ export default class Human extends Enemy {
     }
 
     medicine_hit(){
-        this.lives--;
-        this.play(this.heal_anim);
-        this.healing = true;
-        this.on("animationcomplete", () => {
-            this.healing = false;
-        });
+        if(!this.mutating){
+            this.lives--;
+            this.play(this.heal_anim);
+            this.healing = true;
+            this.on("animationcomplete", () => {
+                this.healing = false;
+            });
+        }
     }
 }
