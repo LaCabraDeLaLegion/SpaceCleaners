@@ -1,3 +1,4 @@
+import Attack from "./attacks/factory/attacks_enum.js";
 import Sound from "./data/sounds.js";
 
 let planet_owners = [
@@ -69,7 +70,12 @@ export default class Map extends Phaser.Scene {
       this.inventory = {
         skin: "player_1",
         shields: [],
-        weapons: [],
+        weapons: [{name: "Laser",
+                  attack: Attack.Weapon1,
+                  desc: "Dispara 1 laser ( 1 de daño )",
+                  img: "basic_laser",
+                  scale: 500,
+                  equiped: true}],
         potions: [],
         skins: [],
         money: 9999,

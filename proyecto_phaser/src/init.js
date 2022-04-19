@@ -21,6 +21,7 @@ const DPR = window.devicePixelRatio;
 
 var config = {
   type: Phaser.AUTO,
+  autoCenter: true,
   width: game_width,
   height: game_height,
   parent: "container",

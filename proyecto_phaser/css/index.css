@@ -16,6 +16,6 @@ body{
 }
 
 @font-face {
-    font-family: MinimalPixel;
-    src: url("../assets/fonts/minimalpixel.ttf");
+    font-family: GameFont;
+    src: url("../assets/fonts/VPPixel-Simplified.otf");
 }

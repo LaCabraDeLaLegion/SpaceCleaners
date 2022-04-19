@@ -74,21 +74,45 @@ export default class Loader extends Phaser.Scene {
     this.load.image("level_victory", "/sprites/level_victory.png");
     this.load.image("level_lose", "you_lose.png");
 
+    //Tienda
+    this.load.image("background_shop", "/sprites/Shop/background_shop.png");
+    this.load.image("close", "/sprites/Shop/shop_close.png");
+    this.load.image("category", "/sprites/Shop/category.png");
+    this.load.image("category_selected", "/sprites/Shop/category_selected.png");
+    this.load.image("up", "/sprites/Shop/shop_up.png");
+    this.load.image("down", "/sprites/Shop/shop_down.png");
+    this.load.image("up_disabled", "/sprites/Shop/shop_up_disabled.png");
+    this.load.image("down_disabled", "/sprites//Shop/shop_down_disabled.png");
+    this.load.image("item", "/sprites/Shop/shop_item.png");
+    this.load.image("item_equiped", "/sprites/Shop/shop_item_equiped.png");
+    this.load.image("buy", "/sprites/Shop/shop_buy.png");
+    this.load.image("sold", "/sprites/Shop/shop_sold.png");
+    this.load.image("cash", "/sprites/Shop/cash.png");
+    this.load.image("buy_btn_hover", "/sprites/Shop/buy_btn_hover.png");
+    this.load.image("select_btn_hover", "/sprites/Shop/buy_btn_hover.png");
+
+    this.load.image("coin", "/sprites/coin.png");
+
     //Medicinas
     this.load.image("mask", "/sprites/Medicinas/mascarilla.png");
     this.load.image("tablet", "/sprites/Medicinas/tablet.png");
     this.load.image("gel", "/sprites/Medicinas/water_drop.png");
 
     //Armas
-    this.load.image("laser", "/sprites/Armas/laser.png");
+    this.load.image("laser", "/sprites/Weapons/laser.png");
     this.load.image("super_laser", "/sprites/Armas/super_laser.png");
     this.load.image("fire", "/sprites/Armas/fire.png");
     this.load.image("bullet", "/sprites/Armas/bullet.png");
+    this.load.image("basic_laser", "/sprites/Weapons/basic_laser.png");
+    this.load.image("double_laser", "/sprites/Weapons/double_laser.png");
 
     //Consumibles
     this.load.image("basic_bomb", "/sprites/consumibles/basic_bomb.png");
     this.load.image("basic_shield", "/sprites/consumibles/shield.png");
     this.load.image("basic_kit", "/sprites/consumibles/first_aid.png");
+    this.load.image("basic_potion", "/sprites/Potions/basic_potion.png");
+    this.load.image("advanced_potion", "/sprites/Potions/advanced_potion.png");
+    this.load.image("holy_potion", "/sprites/Potions/holy_potion.png");
 
     //Bosses
     this.load.image("B1", "/sprites/Boss/B1.png");

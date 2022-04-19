@@ -14,11 +14,14 @@ export default class Inventory extends Phaser.Scene {
     this.inventory = data;
     this.globalWidth = this.cameras.main.width;
     this.globalHeight = this.cameras.main.height;
+    this.fontStyle = {
+      fontFamily: 'GameFont',
+      fontSize: '20px',
+    }
   }
 
   preload() {
     this.load.setPath("assets/");
-    this.load_images();
     this.load_audio();
   }
 
@@ -35,27 +38,6 @@ export default class Inventory extends Phaser.Scene {
     this.buttonSound = this.sound.add("button");
     this.playSound = this.sound.add("playSound", Sound.playSound);
     this.buySound = this.sound.add("buySound", Sound.buySound);
-  }
-
-  load_images() {
-    this.load.image("background_shop", "/sprites/background_shop.png");
-    this.load.image("close", "/sprites/shop_close.png");
-    this.load.image("category", "/sprites/category.png");
-    this.load.image("category_selected", "/sprites/category_selected.png");
-    this.load.image("up", "/sprites/shop_up.png");
-    this.load.image("down", "/sprites/shop_down.png");
-    this.load.image("up_disabled", "/sprites/shop_up_disabled.png");
-    this.load.image("down_disabled", "/sprites/shop_down_disabled.png");
-    this.load.image("basic_potion", "/sprites/Potions/basic_potion.png");
-    this.load.image("advanced_potion", "/sprites/Potions/advanced_potion.png");
-    this.load.image("holy_potion", "/sprites/Potions/holy_potion.png");
-    this.load.image("cash", "/sprites/cash.png");
-    this.load.image("item", "/sprites/shop_item.png");
-    this.load.image("item1", "/sprites/mascarilla.png");
-    this.load.image("item2", "/sprites/weapon.png");
-    this.load.image("buy", "/sprites/shop_buy.png");
-    this.load.image("select_btn_hover", "/sprites/buy_btn_hover.png");
-    this.load.image("coin", "/sprites/coin.png");
   }
 
   load_audio() {
@@ -172,36 +154,36 @@ export default class Inventory extends Phaser.Scene {
     this.add
       .text(
         (this.globalWidth / 10) * 1.5,
-        (this.globalHeight / 10.5) * 1.15,
-        "potions",
-        { fontFamily: "MinimalPixel" }
+        (this.globalHeight / 10.5) * 1.125,
+        "Pociones",
+        this.fontStyle
       )
       .setDepth(2)
       .setScale(this.globalWidth / 600);
     this.add
       .text(
         (this.globalWidth / 10) * 3.4,
-        (this.globalHeight / 10.5) * 1.15,
-        "Weapons",
-        { fontFamily: "MinimalPixel" }
+        (this.globalHeight / 10.5) * 1.125,
+        "Armas",
+        this.fontStyle
       )
       .setDepth(2)
       .setScale(this.globalWidth / 600);
     this.add
       .text(
         (this.globalWidth / 10) * 5.5,
-        (this.globalHeight / 10.5) * 1.15,
-        "Shields",
-        { fontFamily: "MinimalPixel" }
+        (this.globalHeight / 10.5) * 1.125,
+        "Escudos",
+        this.fontStyle
       )
       .setDepth(2)
       .setScale(this.globalWidth / 600);
     this.add
       .text(
         (this.globalWidth / 10) * 7.75,
-        (this.globalHeight / 10.5) * 1.15,
+        (this.globalHeight / 10.5) * 1.125,
         "Skins",
-        { fontFamily: "MinimalPixel" }
+        this.fontStyle
       )
       .setDepth(2)
       .setScale(this.globalWidth / 600);
@@ -241,14 +223,26 @@ export default class Inventory extends Phaser.Scene {
           (0.25 - this.inventory.money.toString().length * 0.01),
         this.globalHeight * 0.035,
         this.inventory.money,
-        { fontFamily: "MinimalPixel" }
+        this.fontStyle
       )
       .setDepth(2)
       .setScale(this.globalWidth / 600);
   }
 
   createItem(item, position, category) {
-    let item_bar = this.add
+    let item_bar = null;
+    if(item.equiped) {
+      item_bar = this.add
+      .image(
+        this.globalWidth / 8,
+        (this.globalHeight / 5) * (1 + position),
+        "item_equiped"
+      )
+      .setOrigin(0, 0)
+      .setDepth(1)
+      .setScale(this.globalWidth / 130);
+    } else {
+      item_bar = this.add
       .image(
         this.globalWidth / 8,
         (this.globalHeight / 5) * (1 + position),
@@ -257,6 +251,7 @@ export default class Inventory extends Phaser.Scene {
       .setOrigin(0, 0)
       .setDepth(1)
       .setScale(this.globalWidth / 130);
+    }
     let item_img = this.add
       .image(
         (this.globalWidth / 8) * 1.3,
@@ -265,62 +260,70 @@ export default class Inventory extends Phaser.Scene {
       )
       .setOrigin(0, 0)
       .setDepth(2)
-      .setScale(this.globalWidth / 200);
+      .setScale(this.globalWidth / item.scale);
+    let quantity = "";
+    if (item.quantity) 
+        quantity = " x " + item.quantity;
     let item_name = this.add
       .text(
         (this.globalWidth / 8) * 2.7,
-        (this.globalHeight / 5.5) * (1.2 + position * 1.1),
-        item.name + " X " + item.quantity,
-        { fontFamily: "MinimalPixel" }
+        (this.globalHeight / 5.5) * (1.3 + position * 1.1),
+        item.name + quantity,
+        this.fontStyle
       )
       .setDepth(2)
       .setScale(this.globalWidth / 600);
     let item_desc = this.add
       .text(
         (this.globalWidth / 8) * 2.7,
-        (this.globalHeight / 5.5) * (1.5 + position * 1.1),
+        (this.globalHeight / 5.5) * (1.55 + position * 1.1),
         item.desc,
-        { fontFamily: "MinimalPixel" }
+        this.fontStyle
       )
       .setDepth(2)
       .setScale(this.globalWidth / 750);
-    let select_btn = this.add
+    if (!item.equiped) {
+      let select_btn = this.add
       .image(
-        (this.globalWidth / 8) * 5.65,
-        (this.globalHeight / 5) * (1.2 + position),
+        (this.globalWidth / 8) * 5.5,
+        (this.globalHeight / 5) * (1.23 + position),
         "buy"
       )
       .setOrigin(0, 0)
       .setDepth(2)
       .setScale(this.globalWidth / 280);
-    select_btn.setInteractive();
-    select_btn.on("pointerover", () => {
-      select_btn.setTexture("select_btn_hover");
-      this.buttonSound.play();
-    });
-    select_btn.on("pointerout", () => {
-      select_btn.setTexture("buy");
-    });
-    select_btn.on("pointerup", () => {
-      this.buyItem({ ...item, category });
-    });
-    let item_selection = this.add
+      select_btn.setInteractive();
+      select_btn.on("pointerover", () => {
+        select_btn.setTexture("select_btn_hover");
+        this.buttonSound.play();
+      });
+      select_btn.on("pointerout", () => {
+        select_btn.setTexture("buy");
+      });
+      select_btn.on("pointerup", () => {
+        this.equipItem({ ...item, category });
+      });
+      let item_selection = this.add
       .text(
-        (this.globalWidth / 8) * 5.7,
-        (this.globalHeight / 5) * (1.24 + position),
-        "SELECT",
-        { fontFamily: "MinimalPixel" }
+        (this.globalWidth / 8) * 5.75,
+        (this.globalHeight / 5) * (1.25 + position),
+        "Equipar",
+        this.fontStyle
       )
       .setDepth(3)
       .setScale(this.globalWidth / 750);
 
+      this.currentInterface.push( 
+        select_btn,
+        item_selection
+      );
+    }
+    
     this.currentInterface.push(
       item_bar,
       item_img,
       item_name,
       item_desc,
-      select_btn,
-      item_selection
     );
   }
 
@@ -371,18 +374,25 @@ export default class Inventory extends Phaser.Scene {
     this.currentInterface.push(up, down);
 
     let position = 0;
-    for (let category of this.categories) {
-      console.log(this.inventory, this.inventory[category]);
-      for (let item of this.inventory[category]) {
-        console.log(item);
-        this.createItem(item, position, category);
-        position += 0.85;
-      }
+    for (let item of this.inventory[category]) {
+      console.log(item);
+      this.createItem(item, position, category);
+      position += 0.85;
     }
+    
   }
 
   destroyCurrentInterface() {
     this.currentInterface.forEach((item) => item.destroy());
     this.currentInterface = [];
+  }
+
+  equipItem(item) {
+    for (let items of this.inventory[item.category]) {
+      items.equiped = false;
+    }
+    let inventory_item = this.inventory[item.category].find((i) => i.name === item.name);
+    inventory_item.equiped = true;
+    this.createCategory(item.category, item.page);
   }
 }

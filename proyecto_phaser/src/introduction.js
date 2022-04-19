@@ -61,12 +61,12 @@ export default class Introduction extends Phaser.Scene {
 
     this.text_counter = 0;
     this.text = this.add.text(
-      this.cameras.main.width / 8,
+      this.cameras.main.width / 18,
       this.cameras.main.height / 5,
       texto[0],
       {
         fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
-        fontSize: "25px",
+        fontSize: "22px",
       }
     );
 
