@@ -5,12 +5,12 @@ import Sound from "./data/sounds.js";
 
 export default class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, inventory) {
-    super(scene, x, y, inventory.skin.sprite);
+    super(scene, x, y, inventory.skin);
 
-    this.normal_animation = inventory.skin.sprite + "_walk";
-    this.damage_animation = inventory.skin.sprite + "_walk_damage";
-    this.heal_animation = inventory.skin.sprite + "_walk_heal";
-    this.shield_animation = inventory.skin.sprite + "_walk_shield";
+    this.normal_animation = inventory.skin + "_walk";
+    this.damage_animation = inventory.skin + "_walk_damage";
+    this.heal_animation = inventory.skin + "_walk_heal";
+    this.shield_animation = inventory.skin + "_walk_shield";
 
     this.cursors = this.scene.input.keyboard.createCursorKeys();
 
