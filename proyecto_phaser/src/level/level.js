@@ -45,6 +45,7 @@ export default class Level extends Phaser.Scene {
     if (this.alive_monsters <= 0 && !this.bossInScene) {
       this.startBossBattle();
     } else if (this.bossInScene && this.boss.life <= 0) {
+      this.inventory.money += this.reward;
       let victory = this.add
         .image(this.globalWidth / 2, this.globalHeight / 2, "level_victory")
         .setDepth(1);
