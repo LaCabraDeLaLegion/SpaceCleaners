@@ -1,5 +1,6 @@
 import Attack from "./attacks/factory/attacks_enum.js";
 import Sound from "./data/sounds.js";
+import InitialInventory from "./data/init_inventory.js";
 
 let planet_owners = [
   "humanos",
@@ -66,20 +67,22 @@ export default class Map extends Phaser.Scene {
       planet_counter--;
     }
 
+    // this.inventory = {
+    //   skin: "player_1",
+    //   shields: [],
+    //   weapons: [{name: "Laser",
+    //             attack: Attack.Weapon1,
+    //             desc: "Dispara 1 laser ( 1 de daño )",
+    //             img: "basic_laser",
+    //             scale: 500,
+    //             equiped: true}],
+    //   potions: [],
+    //   skins: [],
+    //   money: 9999,
+    // };
+
     if (!data[2])
-      this.inventory = {
-        skin: "player_1",
-        shields: [],
-        weapons: [{name: "Laser",
-                  attack: Attack.Weapon1,
-                  desc: "Dispara 1 laser ( 1 de daño )",
-                  img: "basic_laser",
-                  scale: 500,
-                  equiped: true}],
-        potions: [],
-        skins: [],
-        money: 9999,
-      };
+      this.inventory = InitialInventory;
     else this.inventory = data[2];
   }
 

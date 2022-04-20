@@ -19,6 +19,7 @@ export default class Level extends Phaser.Scene {
       shield: { name: "basic shield", quantity: 0, quantity: 3, time: 200 },
       potion: { name: "basic potion", quantity: 3, health: 2 },
       bombs: { name: "basic bomb", quantity: 2, damage: 2 },
+      money: 9999
     };
     //this.inventory = data[1];
     this.virus_killed = 0;
@@ -45,13 +46,13 @@ export default class Level extends Phaser.Scene {
     if (this.alive_monsters <= 0 && !this.bossInScene) {
       this.startBossBattle();
     } else if (this.bossInScene && this.boss.life <= 0) {
-      this.inventory.money += this.reward;
       let victory = this.add
         .image(this.globalWidth / 2, this.globalHeight / 2, "level_victory")
         .setDepth(1);
       victory.setInteractive();
       victory.on("pointerup", () => {
-        this.scene.start("details", ["win", this.level, this.virus_killed, this.humans_healed, this.reward]);
+        this.inventory.money += this.reward;
+        this.scene.start("details", ["win", this.level, this.inventory, this.virus_killed, this.humans_healed, this.reward]);
         this.levelSong.stop();
       });
     }

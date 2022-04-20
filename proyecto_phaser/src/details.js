@@ -12,9 +12,10 @@ export default class Details extends Phaser.Scene {
         }
         this.result = data[0];
         this.level = data[1];
-        this.virus_killed = data[2];
-        this.humans_healed = data[3];
-        this.reward = data[4];
+        this.inventory = data[2];
+        this.virus_killed = data[3];
+        this.humans_healed = data[4];
+        this.reward = data[5];
     }
 
     create() {
@@ -69,7 +70,7 @@ export default class Details extends Phaser.Scene {
         .setDepth(1);
         victory.setInteractive();
         victory.on("pointerup", () => {
-            this.scene.start("map", [this.result, this.level]);
+            this.scene.start("map", [this.result, this.level, this.inventory]);
         });
     }
     
