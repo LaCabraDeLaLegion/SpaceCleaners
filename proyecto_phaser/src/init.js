@@ -16,7 +16,7 @@ import Introduction from "./introduction.js";
 import Details from "./details.js";
 import Tutorial from "./tutorial.js";
 
-const game_width = 600;
+const game_width = 800;
 const game_height = 940;
 
 const DPR = window.devicePixelRatio;

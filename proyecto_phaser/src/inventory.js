@@ -88,43 +88,45 @@ export default class Inventory extends Phaser.Scene {
     let position = 0;
     for (let key of categoryKeys) {
       let category = this.inventory[key];
-      let cat_btn = this.add
-      .image(
-        this.globalWidth / 7.5 * (position + 1.275), 
-        this.globalHeight / 10, 
-        "category")
-      .setOrigin(0, 0)
-      .setDepth(1)
-      .setScale(this.globalWidth / 1500);
-      cat_btn.setInteractive();
-      cat_btn.on("pointerover", () => {
-        cat_btn
-          .setTexture("category_selected")
-          .setScale(this.globalWidth / 1500);
-        this.buttonSound.play();
-      });
-      cat_btn.on("pointerout", () => {
-        cat_btn.setTexture("category").setScale(this.globalWidth / 1500);
-      });
-      cat_btn.on("pointerup", () => {
-        this.playSound.play();
-        cat_btn
-          .setTexture("category_selected")
-          .setScale(this.globalWidth / 1500);
-        this.createCategory(category, key, null);
-      });
-
-      this.add
-      .text(
-        (this.globalWidth / 7.5) * (position + 1.4),
-        (this.globalHeight / 10.5) * 1.125,
-        category.name,
-        this.fontStyle
-      )
-      .setDepth(2)
-      .setScale(this.globalWidth / 600);
-
-      position += 1.85;
+      if (category.subcategories) {
+        let cat_btn = this.add
+        .image(
+          this.globalWidth / 7.5 * (position + 1.275), 
+          this.globalHeight / 10, 
+          "category")
+        .setOrigin(0, 0)
+        .setDepth(1)
+        .setScale(this.globalWidth / 1500);
+        cat_btn.setInteractive();
+        cat_btn.on("pointerover", () => {
+          cat_btn
+            .setTexture("category_selected")
+            .setScale(this.globalWidth / 1500);
+          this.buttonSound.play();
+        });
+        cat_btn.on("pointerout", () => {
+          cat_btn.setTexture("category").setScale(this.globalWidth / 1500);
+        });
+        cat_btn.on("pointerup", () => {
+          this.playSound.play();
+          cat_btn
+            .setTexture("category_selected")
+            .setScale(this.globalWidth / 1500);
+          this.createCategory(category, key, null);
+        });
+  
+        this.add
+        .text(
+          (this.globalWidth / 7.5) * (position + 1.4),
+          (this.globalHeight / 10.5) * 1.125,
+          category.name,
+          this.fontStyle
+        )
+        .setDepth(2)
+        .setScale(this.globalWidth / 600);
+  
+        position += 1.85;
+      }
     }
 
     if (categoryKeys.length > 0)
@@ -236,7 +238,7 @@ export default class Inventory extends Phaser.Scene {
     subcategory.items
       .forEach((item) => {
         this.createItem(item, position, categoryKey, subcategoryKey);
-        position += 0.85;
+        position += 1;
       });
   }
 
@@ -305,7 +307,7 @@ export default class Inventory extends Phaser.Scene {
     let item_img = this.add
       .image(
         (this.globalWidth / 3.2) * 1.075,
-        (this.globalHeight / 7) * (position + 1.275),
+        (this.globalHeight / 7) * (position + 1.3),
         item.img
       )
       .setOrigin(0, 0)
@@ -327,7 +329,7 @@ export default class Inventory extends Phaser.Scene {
     let item_desc = this.add
       .text(
         (this.globalWidth / 3.2) * 1.55,
-        (this.globalHeight / 7) * (position + 1.675),
+        (this.globalHeight / 7) * (position + 1.8),
         item.desc,
         this.fontStyle
       )
