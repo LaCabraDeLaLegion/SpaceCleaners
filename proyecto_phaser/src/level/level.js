@@ -21,6 +21,8 @@ export default class Level extends Phaser.Scene {
       bombs: { name: "basic bomb", quantity: 2, damage: 2 },
     };
     //this.inventory = data[1];
+    this.virus_killed = 0;
+    this.humans_healed = 0;
   }
 
   create() {
@@ -48,7 +50,7 @@ export default class Level extends Phaser.Scene {
         .setDepth(1);
       victory.setInteractive();
       victory.on("pointerup", () => {
-        this.scene.start("details", ["win", this.level]);
+        this.scene.start("details", ["win", this.level, this.virus_killed, this.humans_healed, this.reward]);
         this.levelSong.stop();
       });
     }

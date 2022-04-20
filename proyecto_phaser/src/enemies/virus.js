@@ -27,6 +27,7 @@ export default class Virus extends Enemy {
         if (!this.dying && this.lives <= 0) {
             this.dying = true;
             this.body.destroy();
+            this.scene.virus_killed++;
             if (this.walking) this.anims.stop();
             this.on("animationcomplete", () => {
                 this.play(this.death_anim);

@@ -19,6 +19,7 @@ export default class Level6 extends Level {
     this.virus_maxlevel = 6;
     this.human_maxlevel = 6;
     console.log("Nivel = 6");
+    this.reward = 400;
   }
 
   create() {

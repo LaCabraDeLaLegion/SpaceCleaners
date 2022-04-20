@@ -12,6 +12,9 @@ export default class Details extends Phaser.Scene {
         }
         this.result = data[0];
         this.level = data[1];
+        this.virus_killed = data[2];
+        this.humans_healed = data[3];
+        this.reward = data[4];
     }
 
     create() {
@@ -23,7 +26,7 @@ export default class Details extends Phaser.Scene {
         .text(
           (this.globalWidth / 10) * 1.5,
           (this.globalHeight / 10.5) * 3.125,
-          "Virus eliminados: 30",
+          "Virus eliminados: " + this.virus_killed,
           this.fontStyle
         )
         .setDepth(2)
@@ -32,7 +35,7 @@ export default class Details extends Phaser.Scene {
         .text(
             (this.globalWidth / 10) * 1.5,
             (this.globalHeight / 10.5) * 3.725,
-            "Humanos desinfectados: 0",
+            "Humanos desinfectados: " + this.humans_healed,
             this.fontStyle
         )
         .setDepth(2)
@@ -41,7 +44,7 @@ export default class Details extends Phaser.Scene {
         .text(
             (this.globalWidth / 10) * 1.5,
             (this.globalHeight / 10.5) * 4.925,
-            "Total dinero recolectado: 100",
+            "Total dinero recolectado: " + this.reward,
             this.fontStyle
         )
         .setDepth(2)

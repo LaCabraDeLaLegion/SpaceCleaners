@@ -19,17 +19,10 @@ export default class Human extends Enemy {
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
 
-        if (!this.healing && !this.mutating) {
-            this.walking = true;
-            if (!this.healed) this.play(this.walk_anim, this.walk_anim);
-        }
-        else 
-            this.walking = false;
-        
-
         if (!this.healed && !this.mutating && this.lives <= 0) {
             this.healed = true;
             this.body.destroy();
+            this.scene.humans_healed++;
             if (this.walking) this.anims.stop();
             this.on("animationcomplete", () => {
                 this.play(this.healed_anim);
@@ -43,6 +36,11 @@ export default class Human extends Enemy {
     weapon_hit(){
         if (!this.mutating) {
             this.mutating = true;
+            if (this.scene.reward >= 20) 
+                this.scene.reward -= 20;
+            else
+                this.scene.reward = 0;
+            
             this.play("mutation_anim");
             this.on("animationcomplete", () => {
                 this.setVisible(false);
