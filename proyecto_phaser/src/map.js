@@ -35,6 +35,7 @@ export default class Map extends Phaser.Scene {
   }
 
   init(data) {
+
     // console.log("init data = " + data);
 
     this.globalWidth = this.cameras.main.width;
@@ -66,7 +67,6 @@ export default class Map extends Phaser.Scene {
       }
       planet_counter--;
     }
-
     // this.inventory = {
     //   skin: "player_1",
     //   shields: [],
@@ -175,6 +175,7 @@ export default class Map extends Phaser.Scene {
   }
 
   create() {
+    
     //Sounds
     this.buttonSound = this.sound.add("button");
     this.playSound = this.sound.add("playSound", Sound.playSound);

@@ -14,6 +14,7 @@ import Shop from "./shop.js";
 import Inventory from "./inventory.js";
 import Introduction from "./introduction.js";
 import Details from "./details.js";
+import Tutorial from "./tutorial.js";
 
 const game_width = 600;
 const game_height = 940;
@@ -29,6 +30,7 @@ var config = {
   scene: [
     Loader,
     Introduction,
+    Tutorial,
     Menu,
     Map,
     Shop,
