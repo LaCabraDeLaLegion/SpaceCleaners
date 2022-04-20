@@ -175,7 +175,7 @@ export default class Map extends Phaser.Scene {
   }
 
   create() {
-    
+
     //Sounds
     this.buttonSound = this.sound.add("button");
     this.playSound = this.sound.add("playSound", Sound.playSound);
