@@ -1,5 +1,3 @@
-import { Tilemaps } from "phaser";
-
 let map_init_texts = [
   [
     ["Para ayudarle a dirigir las tropas, el gobierno le ha proporcionado este mapa de las colonias."],
