@@ -1,3 +1,14 @@
+import InitialInventory from "./data/init_inventory.js";
+import Player from "./player.js";
+import Boss from "./boss.js";
+import Sound from "./data/sounds.js";
+import Bomb from "./weapons/consumibles/bomb.js";
+import Attack from "./attacks/factory/attacks_enum.js";
+import Virus from "./enemies/virus.js";
+import Human from "./enemies/human.js";
+
+let aux;
+
 let map_init_texts = [
   [
     ["Para ayudarle a dirigir las tropas, el gobierno le ha proporcionado"],
@@ -115,6 +126,10 @@ export default class Tutorial extends Phaser.Scene {
     }
   
     preload() {
+
+      this.impactSound = this.sound.add("explosion", Sound.explosion);
+      this.damageSound = this.sound.add("damage", Sound.damage);
+
       this.load.setPath("assets/");
       this.load.image("continue", "sprites/Introduction/continue.png");
       this.load.image("skip", "sprites/Introduction/skip.png");
@@ -123,7 +138,7 @@ export default class Tutorial extends Phaser.Scene {
       this.load.image("close", "container_close.png");
       this.load.image("ok", "container_ok.png");
 
-      this.background = this.load.image("background_map", "sprites/Map/background_map.png");
+      this.load.image("background_map", "sprites/Map/background_map.png");
 
       //Shop
       this.load.image("shop_btn", "sprites/Shop/logo_shop.png");
@@ -206,6 +221,12 @@ export default class Tutorial extends Phaser.Scene {
   
     create() {
 
+      aux = this;
+      
+      this.events.once("player_moved", this.playerMoved);
+
+      this.cursors =  this.input.keyboard.createCursorKeys();
+
       this.counter = 0;
       this.texts = map_init_texts;
 
@@ -237,39 +258,164 @@ export default class Tutorial extends Phaser.Scene {
 
       this.createBackgroundMap();
 
-      let container = this.add
+      //Create player
+      this.inventory = {
+        skin: "player_1",
+        weapon: { name: "Basic Weapon", attack: Attack.Weapon1 },
+        shield: { name: "basic shield", quantity: 0, quantity: 3, time: 200 },
+        potion: { name: "basic potion", quantity: 3, health: 2 },
+        bombs: { name: "basic bomb", quantity: 2, damage: 2 },
+        money: 9999
+      };
+      this.player = new Player(this, this.globalWidth/2, this.globalHeight/2, this.inventory);
+
+
+      //Virus
+      this.enemies = this.physics.add.group();
+      this.monster = new Virus(this, this.globalWidth/2, 50, 1, this.enemies, 2, 0);
+      this.monster.setVisible(false);
+      this.monster.can_move = false;
+      this.monster.setDepth(4);
+
+      //Human
+      this.human = new Human(this, this.globalWidth/2, 50, 1, this.enemies, 2, 0);
+      this.human.setVisible(false);
+      this.human.can_move = false;
+      this.human.setDepth(4);
+
+      this.physics.add.collider(
+        this.enemies,
+        this.lasers,
+        this.onHit,
+        null,
+        this
+      );
+  
+      this.physics.add.collider(
+        this.enemies,
+        this.medicines,
+        this.onMedicineHit,
+        null,
+        this
+      );
+
+      //Armas y medicinas
+      this.lasers = this.physics.add.group();
+      this.medicines = this.physics.add.group();
+
+      this.player.setVisible(false);
+      this.player.can_move = false;
+
+      this.container = this.add
       .image(0, this.cameras.main.height - 200, "container")
       .setDepth(10)
       .setOrigin(0, 0);
 
-      let ok = this.add.image(730, this.cameras.main.height - 70, "ok").setDepth(10).setOrigin(0, 0);
-      ok.setInteractive();
-      ok.on("pointerup", () => {
+      this.ok = this.add.image(730, this.cameras.main.height - 70, "ok").setDepth(10).setOrigin(0, 0);
+      this.ok.setInteractive();
+      this.ok.on("pointerup", () => {
         this.counter++;
         if (this.counter >= this.texts.length){
-          this.counter == 0;
-          ok.input.enabled = false;
-          ok.setVisible(false);
-          container.setVisible(false);
-          this.text.setVisible(false);
+          this.ok.input.enabled = false;
+          this.setTutorialContainerVisibility(false);
           if (this.texts == map_init_texts){
+            this.counter = 0;
             this.texts = battle_texts;
+            this.text.setText(this.texts[this.counter]);
             this.planet_1.setInteractive();
           }
           else if (this.texts == battle_texts){
+            this.counter = 0;
             this.texts = map_store_texts;
+            this.text.setText(this.texts[this.counter]);
           }
           else if (this.texts == map_store_texts){
+            this.counter = 0;
             this.scene.start("map", [null, null, null]);
+            this.text.setText(this.texts[this.counter]);
           }
         }
         else {
+          if (this.texts == battle_texts){
+            if (this.texts == battle_texts && this.counter == 2){
+              if (this.counter == 2){
+                this.player.can_move = true;
+                this.setTutorialContainerVisibility(false);
+                this.ok.enabled = false;
+              }
+            }
+          }
           this.text.setText(this.texts[this.counter]);
         }
       });
         
     }
 
+    update(){
+
+      if (this.player.x != this.globalWidth/2 || this.player.y != this.globalHeight/2){
+        this.events.emit("player_moved");
+      }
+      
+    }
+
+    playerMoved(){
+      aux.counter++;
+      aux.setTutorialContainerVisibility(true);
+      aux.ok.setInteractive();
+      aux.monster.setVisible(true);
+      console.log(aux.monster);
+    }
+  
+    startBattleTutorial(){
+
+      let map_visibility = false;
+
+      this.background.setVisible(map_visibility);
+    
+      this.setLocksVisibility(map_visibility);
+      this.setPlanetsVisibility(map_visibility);
+
+      this.planet_2.setTexture("planet_2_humans");
+
+      this.shopButton.setVisible(map_visibility);
+      this.inventoryButton.setVisible(map_visibility);
+
+      
+      this.setTutorialContainerVisibility(true);
+      this.ok.setInteractive();
+    
+      this.player.setVisible(true);
+
+    }  
+
+    setLocksVisibility(visibility){
+      this.lock2.setVisible(visibility);
+      this.lock3.setVisible(visibility);
+      this.lock4.setVisible(visibility);
+      this.lock5.setVisible(visibility);
+      this.lock6.setVisible(visibility);
+      this.lock7.setVisible(visibility);
+    }
+
+    setPlanetsVisibility(visibility){
+      this.planet_1.setVisible(visibility);
+      this.planet_2.setVisible(visibility);
+      this.planet_3.setVisible(visibility);
+      this.planet_4.setVisible(visibility);
+      this.planet_5.setVisible(visibility);
+      this.planet_6.setVisible(visibility);
+      this.planet_7.setVisible(visibility);
+      this.earth.setVisible(visibility);
+    }
+
+    setTutorialContainerVisibility(visibility){
+      this.container.setVisible(visibility);
+      this.ok.setVisible(visibility);
+      this.text.setVisible(visibility);
+    }
+
+    
     createBackgroundMap(){
 
       console.log("createBackgroundMap");
@@ -293,7 +439,7 @@ export default class Tutorial extends Phaser.Scene {
         .setScale(0.3);
         
 
-      this.add
+        this.background = this.add
         .image(this.globalWidth / 2, this.globalHeight / 2, "background_map")
         .setDepth(1)
         .setScale(2.5);
@@ -397,31 +543,24 @@ export default class Tutorial extends Phaser.Scene {
     
     }
 
-    startBattleTutorial(){
+    onMedicineHit(enemy, medicine) {
+      this.impactSound.play();
+      medicine.destroy();
+      enemy.medicine_hit();
+      // console.log("monstruos vivos: " + this.alive_monsters);
+      if (enemy.lives == 0) this.alive_monsters--;
+    }
+  
+    onHit(enemy, laser) {
+      this.impactSound.play();
+      laser.destroy();
+      enemy.weapon_hit();
+      // console.log("monstruos vivos: " + this.alive_monsters);
+      if (enemy.lives == 0) this.alive_monsters--;
+    }
 
-      let map_visibility = false;
-
-      this.background.setVisible(map_visibility);
-      
-      this.lock2.setVisible(map_visibility);
-      this.lock3.setVisible(map_visibility);
-      this.lock4.setVisible(map_visibility);
-      this.lock5.setVisible(map_visibility);
-      this.lock6.setVisible(map_visibility);
-      this.lock7.setVisible(map_visibility);
-
-      this.planet_2.setTexture("planet_2_humans");
-      this.planet_1.setVisible(map_visibility);
-      this.planet_2.setVisible(map_visibility);
-      this.planet_3.setVisible(map_visibility);
-      this.planet_4.setVisible(map_visibility);
-      this.planet_5.setVisible(map_visibility);
-      this.planet_6.setVisible(map_visibility);
-      this.planet_7.setVisible(map_visibility);
-      this.earth.setVisible(map_visibility);
-
-      this.shopButton.setVisible(map_visibility);
-      this.inventoryButton.setVisible(map_visibility);
-    }  
-
+    addMedicine(medicine) {
+      this.medicine = medicine;
+      this.medicine.addGroup(this.medicines);
+    }
   }

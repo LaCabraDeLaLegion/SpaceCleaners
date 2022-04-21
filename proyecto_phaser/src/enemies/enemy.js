@@ -8,6 +8,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
 
+        this.can_move = true;
+
         this.level = level;
         this.lives = data.lives; 
 
@@ -43,22 +45,24 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             this.walking = false;
             
         //movement
-        this.y += 0.25;
+        if (this.can_move){
+            this.y += 0.25;
 
-        if (this.x_right){
-            this.x += 0.5;
-            this.counter++;
-        }
-        else {
-            this.x -= 0.5;
-            this.counter++;
-        }
+            if (this.x_right){
+                this.x += 0.5;
+                this.counter++;
+            }
+            else {
+                this.x -= 0.5;
+                this.counter++;
+            }
 
-        if (this.counter == 50){
-            this.counter = 0;
-            this.x_right = !this.x_right;
+            if (this.counter == 50){
+                this.counter = 0;
+                this.x_right = !this.x_right;
+            }
         }
-
+        
     }
 
     syncMovement(counter, x_rigth) {

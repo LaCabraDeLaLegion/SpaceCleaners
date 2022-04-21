@@ -14,6 +14,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     this.cursors = this.scene.input.keyboard.createCursorKeys();
 
+    this.can_move = true;
+
     //Movement
     this.keyW = this.scene.input.keyboard.addKey("W");
     this.keyA = this.scene.input.keyboard.addKey("A");
@@ -75,11 +77,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.current_animation = this.normal_animation;
     }
 
-    if (this.cursors.left.isDown || this.keyA.isDown) {
+    if ((this.cursors.left.isDown || this.keyA.isDown) && this.can_move) {
       if (!this.movingy) this.body.setVelocityX(-this.speed);
       else this.body.setVelocityX(-this.speed / 1.5);
       this.movingx = true;
-    } else if (this.cursors.right.isDown || this.keyD.isDown) {
+    } else if ((this.cursors.right.isDown || this.keyD.isDown) && this.can_move) {
       if (!this.movingy) this.body.setVelocityX(this.speed);
       else this.body.setVelocityX(this.speed / 1.5);
       this.movingx = true;
@@ -88,11 +90,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.movingx = false;
     }
 
-    if (this.cursors.up.isDown || this.keyW.isDown) {
+    if ((this.cursors.up.isDown || this.keyW.isDown) && this.can_move) {
       if (!this.movingx) this.body.setVelocityY(-this.speed);
       else this.body.setVelocityY(-this.speed / 1.5);
       this.movingy = true;
-    } else if (this.cursors.down.isDown || this.keyS.isDown) {
+    } else if ((this.cursors.down.isDown || this.keyS.isDown) && this.can_move) {
       if (!this.movingx) this.body.setVelocityY(this.speed);
       else this.body.setVelocityY(this.speed / 1.5);
       this.movingy = true;
