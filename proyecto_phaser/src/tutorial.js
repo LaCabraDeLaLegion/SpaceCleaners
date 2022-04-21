@@ -268,7 +268,10 @@ export default class Tutorial extends Phaser.Scene {
         money: 9999
       };
       this.player = new Player(this, this.globalWidth/2, this.globalHeight/2, this.inventory);
-
+      
+      //Armas y medicinas
+      this.lasers = this.physics.add.group();
+      this.medicines = this.physics.add.group();
 
       //Virus
       this.enemies = this.physics.add.group();
@@ -298,10 +301,6 @@ export default class Tutorial extends Phaser.Scene {
         null,
         this
       );
-
-      //Armas y medicinas
-      this.lasers = this.physics.add.group();
-      this.medicines = this.physics.add.group();
 
       this.player.setVisible(false);
       this.player.can_move = false;

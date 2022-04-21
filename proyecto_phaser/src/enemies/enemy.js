@@ -26,7 +26,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.max_level = max_level;
 
         this.walk_anim = data.name + "_walk";
-       
+        console.log(this.walk_anim);
         this.play(this.walk_anim);
     }
 
