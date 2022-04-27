@@ -12,6 +12,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.heal_animation = inventory.skin + "_walk_heal";
     this.shield_animation = inventory.skin + "_walk_shield";
 
+    this.can_shoot = true;
+    this.can_cure = true;
+    
     this.cursors = this.scene.input.keyboard.createCursorKeys();
 
     this.can_move = true;
@@ -103,13 +106,13 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.movingy = false;
     }
 
-    if (this.cursors.space.isDown && this.shootTime <= 0) {
+    if (this.cursors.space.isDown && this.shootTime <= 0 && this.can_shoot) {
       Attack_Factory.createPlayerAttack(this.scene, this.attack, this);
       this.attackSound.play();
       this.shootTime = 15;
     }
 
-    if (this.keyC.isDown && this.medicineTime <= 0) {
+    if (this.keyC.isDown && this.medicineTime <= 0 && this.can_cure ) {
       const medicine = new Medicine(this.scene, this.x, this.y - 50); //Crear medicina segun inventario
       this.scene.addMedicine(medicine);
       this.medicineTime = 15;
