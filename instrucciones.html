@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/instrucciones.css">
+    <link rel="stylesheet" href="css/keyboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Space Cleaners</title>
+</head>
+<body>
+    
+    <div class="header">
+        <h1>Space Cleaners</h1>
+    </div>
+
+    <div class="navigator">
+        <a href="index.html"><i class="fa fa-home"></i></a>
+        <a href="proyecto_phaser/index.html">El juego</a>
+        <a href="gdd.html">GDD</a>
+        <a href="instrucciones.html">Instrucciones</a>
+        <a href="nosotros.html">Sobre Nosotros</a>
+    </div>
+
+    <h1 id="gdd"> Controles </h1>
+       
+    <h2 id="datos-generales">Movimiento del personaje</h2>
+
+    <div id="text_container">
+        Para desplazarte por la pantalla puedes utilizar las flechas o las teclas A, W, S, D. Es posible desplazarse en cualquier dirección, incluidas las diagonales.
+    </div>
+
+    <div class="container_keyboard">
+        <div class="keyboard">
+            <!-- Row 1 -->
+            <button class="keyboard__key keyboard__key--special col-span-2" id="Escape">Esc</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Backquote">`</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit1">1</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit2">2</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit3">3</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit4">4</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit5">5</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit6">6</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit7">7</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit8">8</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit9">9</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit0">0</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Minus">-</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Equal">=</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Backslash">\</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="Delete">Del</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="Home">Home</button>
+            
+            <!-- Row 2 -->
+            <button class="keyboard__key keyboard__key--special col-span-3" id="Tab">↹</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyQ">Q</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-2" id="KeyW">W</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyE">E</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyR">R</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyT">T</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyY">Y</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyU">U</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyI">I</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyO">O</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyP">P</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="BracketLeft">[</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="BracketRight">]</button>
+            <button class="keyboard__key keyboard__key--special col-span-5" id="Backspace">Backspace</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="PageUp">Up</button>
+            
+            <!-- Row 3 -->
+            <button class="keyboard__key keyboard__key--special col-span-4" id="CapsLock">Caps</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-2" id="KeyA">A</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-2" id="KeyS">S</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-2" id="KeyD">D</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyF">F</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyG">G</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyH">H</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyJ">J</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyK">K</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyL">L</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Semicolon">;</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Quote">'</button>
+            <button class="keyboard__key keyboard__key--special col-span-6" id="Enter">Enter</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="PageDown">Down</button>
+            
+            <!-- Row 4 -->
+            <button class="keyboard__key keyboard__key--special col-span-5" id="ShiftLeft">Shift</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyZ">Z</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyX">X</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyC">C</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyV">V</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyB">B</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyN">N</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyM">M</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Comma">,</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Period">.</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Slash">/</button>
+            <button class="keyboard__key keyboard__key--special col-span-5" id="ShiftRight">Shift</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-2" id="ArrowUp">↑</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="End">End</button>
+            
+            <!-- Row 5 -->
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ControlLeft">Ctrl</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="MetaLeft">Sup</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="AltLeft">Alt</button>
+            <button class="keyboard__key keyboard__key--general col-span-18" id="Space"></button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="AltRight">Alt</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ContextMenu">...</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-2" id="ArrowLeft">←</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-2" id="ArrowDown">↓</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-2" id="ArrowRight">→</button>
+        </div>
+    </div>
+
+    <h2 id="datos-generales">Disparar</h2>
+
+    <div id="text_container">
+        Para disparar un arma utilizar la barra espaciadora.</br>
+        Para disparar una medicina utilizar la tecla C. </br>
+        </br>
+        ATENCIÓN: si disparas a un humano con un arma mutará y se convertirá en un virus </br>
+        ATENCIÓN: si disparas a un virus con una medicina mutará, posiblemente subiendo de nivel, restaurando su vida </br>
+    </div>
+
+    <div class="container_keyboard">
+        <div class="keyboard">
+            <!-- Row 1 -->
+            <button class="keyboard__key keyboard__key--special col-span-2" id="Escape">Esc</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Backquote">`</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit1">1</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit2">2</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit3">3</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit4">4</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit5">5</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit6">6</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit7">7</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit8">8</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit9">9</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit0">0</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Minus">-</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Equal">=</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Backslash">\</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="Delete">Del</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="Home">Home</button>
+            
+            <!-- Row 2 -->
+            <button class="keyboard__key keyboard__key--special col-span-3" id="Tab">↹</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyQ">Q</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyW">W</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyE">E</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyR">R</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyT">T</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyY">Y</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyU">U</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyI">I</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyO">O</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyP">P</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="BracketLeft">[</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="BracketRight">]</button>
+            <button class="keyboard__key keyboard__key--special col-span-5" id="Backspace">Backspace</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="PageUp">Up</button>
+            
+            <!-- Row 3 -->
+            <button class="keyboard__key keyboard__key--special col-span-4" id="CapsLock">Caps</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyA">A</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyS">S</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyD">D</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyF">F</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyG">G</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyH">H</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyJ">J</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyK">K</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyL">L</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Semicolon">;</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Quote">'</button>
+            <button class="keyboard__key keyboard__key--special col-span-6" id="Enter">Enter</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="PageDown">Down</button>
+            
+            <!-- Row 4 -->
+            <button class="keyboard__key keyboard__key--special col-span-5" id="ShiftLeft">Shift</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyZ">Z</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyX">X</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-2" id="KeyC">C</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyV">V</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyB">B</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyN">N</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyM">M</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Comma">,</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Period">.</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Slash">/</button>
+            <button class="keyboard__key keyboard__key--special col-span-5" id="ShiftRight">Shift</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ArrowUp">↑</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="End">End</button>
+            
+            <!-- Row 5 -->
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ControlLeft">Ctrl</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="MetaLeft">Sup</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="AltLeft">Alt</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-18" id="Space"></button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="AltRight">Alt</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ContextMenu">...</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ArrowLeft">←</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ArrowDown">↓</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ArrowRight">→</button>
+        </div>
+    </div>
+
+    <h2 id="datos-generales">Consumibles</h2>
+
+    <div id="text_container">
+        Para usar un escudo utiliza la tecla 1 </br>
+        Para utilizar una poción utiliza la tecla 2</br>
+        Para lanzar una bomba utiliza la tecla 3 </br>
+    </div>
+    
+    <div class="container_keyboard">
+        <div class="keyboard">
+            <!-- Row 1 -->
+            <button class="keyboard__key keyboard__key--special col-span-2" id="Escape">Esc</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Backquote">`</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-2" id="Digit1">1</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-2" id="Digit2">2</button>
+            <button class="keyboard__key keyboard__key--highlight col-span-2" id="Digit3">3</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit4">4</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit5">5</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit6">6</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit7">7</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit8">8</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit9">9</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Digit0">0</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Minus">-</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Equal">=</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Backslash">\</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="Delete">Del</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="Home">Home</button>
+            
+            <!-- Row 2 -->
+            <button class="keyboard__key keyboard__key--special col-span-3" id="Tab">↹</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyQ">Q</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyW">W</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyE">E</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyR">R</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyT">T</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyY">Y</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyU">U</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyI">I</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyO">O</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyP">P</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="BracketLeft">[</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="BracketRight">]</button>
+            <button class="keyboard__key keyboard__key--special col-span-5" id="Backspace">Backspace</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="PageUp">Up</button>
+            
+            <!-- Row 3 -->
+            <button class="keyboard__key keyboard__key--special col-span-4" id="CapsLock">Caps</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyA">A</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyS">S</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyD">D</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyF">F</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyG">G</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyH">H</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyJ">J</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyK">K</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyL">L</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Semicolon">;</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Quote">'</button>
+            <button class="keyboard__key keyboard__key--special col-span-6" id="Enter">Enter</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="PageDown">Down</button>
+            
+            <!-- Row 4 -->
+            <button class="keyboard__key keyboard__key--special col-span-5" id="ShiftLeft">Shift</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyZ">Z</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyX">X</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyC">C</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyV">V</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyB">B</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyN">N</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="KeyM">M</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Comma">,</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Period">.</button>
+            <button class="keyboard__key keyboard__key--general col-span-2" id="Slash">/</button>
+            <button class="keyboard__key keyboard__key--special col-span-5" id="ShiftRight">Shift</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ArrowUp">↑</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="End">End</button>
+            
+            <!-- Row 5 -->
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ControlLeft">Ctrl</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="MetaLeft">Sup</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="AltLeft">Alt</button>
+            <button class="keyboard__key keyboard__key--general col-span-18" id="Space"></button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="AltRight">Alt</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ContextMenu">...</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ArrowLeft">←</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ArrowDown">↓</button>
+            <button class="keyboard__key keyboard__key--special col-span-2" id="ArrowRight">→</button>
+        </div>
+    </div>
+
+    <h1 id="gdd"> Mapa </h1>
+
+
+    <h1 id="gdd"> Tienda </h1>
+        
+    <h2 id="datos-generales">Cómo ganar dinero</h2>
+
+    <h2 id="datos-generales">Comprar en la tienda</h2>
+
+    <h2 id="datos-generales">Inventario y equipación</h2>
+    
+</body>
+</html>

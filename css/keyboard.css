@@ -1,0 +1,303 @@
+/**
+* Table Of Contents
+* 1. Variables
+* 2. General
+* 3. Keyboard
+* 4. Grid columns
+* 5. GIF
+*   5.1. Animations
+*/
+/* 1. Variables */
+/* 2. General */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.container_keyboard{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* 3. Keyboard */
+.keyboard {
+  background-color: #ebebeb;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.5);
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(34, 1rem);
+  grid-template-rows: repeat(5, 3rem);
+  padding: 12px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.keyboard__key {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  font-family: "Source Code Pro", monospace;
+  outline: none;
+  padding: 12px;
+}
+.keyboard__key--highlight{
+    background-color: #690db9;
+    box-shadow: 2px 2px 0 0 #47077f;
+}
+.keyboard__key:hover, .keyboard__key:focus {
+  font-weight: 700;
+  background-color: #fb2aab;
+  box-shadow: 2px 2px 0 0 #d1238e;
+}
+.keyboard__key:active, .keyboard__key.active {
+  box-shadow: none;
+  font-weight: 400;
+  transform: translate(2px, 2px);
+  background-color: #ff60c2;
+  box-shadow: 2px 2px 0 0 #d44fa1;
+}
+.keyboard__key--general {
+  background-color: #f9f5f6;
+  box-shadow: 2px 2px 0 0 #787878;
+}
+.keyboard__key--special {
+  background-color: #f9f5f6;
+  box-shadow: 2px 2px 0 0 #787878;
+}
+
+/* 4. Grid columns */
+.col-span-1 {
+  align-items: center;
+  grid-column: span 1;
+  justify-content: center;
+}
+
+.col-span-2 {
+  align-items: center;
+  grid-column: span 2;
+  justify-content: center;
+}
+
+.col-span-3 {
+  align-items: center;
+  grid-column: span 3;
+  justify-content: center;
+}
+
+.col-span-4 {
+  align-items: center;
+  grid-column: span 4;
+  justify-content: center;
+}
+
+.col-span-5 {
+  align-items: center;
+  grid-column: span 5;
+  justify-content: center;
+}
+
+.col-span-6 {
+  align-items: center;
+  grid-column: span 6;
+  justify-content: center;
+}
+
+.col-span-7 {
+  align-items: center;
+  grid-column: span 7;
+  justify-content: center;
+}
+
+.col-span-8 {
+  align-items: center;
+  grid-column: span 8;
+  justify-content: center;
+}
+
+.col-span-9 {
+  align-items: center;
+  grid-column: span 9;
+  justify-content: center;
+}
+
+.col-span-10 {
+  align-items: center;
+  grid-column: span 10;
+  justify-content: center;
+}
+
+.col-span-11 {
+  align-items: center;
+  grid-column: span 11;
+  justify-content: center;
+}
+
+.col-span-12 {
+  align-items: center;
+  grid-column: span 12;
+  justify-content: center;
+}
+
+.col-span-13 {
+  align-items: center;
+  grid-column: span 13;
+  justify-content: center;
+}
+
+.col-span-14 {
+  align-items: center;
+  grid-column: span 14;
+  justify-content: center;
+}
+
+.col-span-15 {
+  align-items: center;
+  grid-column: span 15;
+  justify-content: center;
+}
+
+.col-span-16 {
+  align-items: center;
+  grid-column: span 16;
+  justify-content: center;
+}
+
+.col-span-17 {
+  align-items: center;
+  grid-column: span 17;
+  justify-content: center;
+}
+
+.col-span-18 {
+  align-items: center;
+  grid-column: span 18;
+  justify-content: center;
+}
+
+.col-span-19 {
+  align-items: center;
+  grid-column: span 19;
+  justify-content: center;
+}
+
+.col-span-20 {
+  align-items: center;
+  grid-column: span 20;
+  justify-content: center;
+}
+
+.col-span-21 {
+  align-items: center;
+  grid-column: span 21;
+  justify-content: center;
+}
+
+.col-span-22 {
+  align-items: center;
+  grid-column: span 22;
+  justify-content: center;
+}
+
+.col-span-23 {
+  align-items: center;
+  grid-column: span 23;
+  justify-content: center;
+}
+
+.col-span-24 {
+  align-items: center;
+  grid-column: span 24;
+  justify-content: center;
+}
+
+.col-span-25 {
+  align-items: center;
+  grid-column: span 25;
+  justify-content: center;
+}
+
+.col-span-26 {
+  align-items: center;
+  grid-column: span 26;
+  justify-content: center;
+}
+
+.col-span-27 {
+  align-items: center;
+  grid-column: span 27;
+  justify-content: center;
+}
+
+.col-span-28 {
+  align-items: center;
+  grid-column: span 28;
+  justify-content: center;
+}
+
+.col-span-29 {
+  align-items: center;
+  grid-column: span 29;
+  justify-content: center;
+}
+
+.col-span-30 {
+  align-items: center;
+  grid-column: span 30;
+  justify-content: center;
+}
+
+.col-span-31 {
+  align-items: center;
+  grid-column: span 31;
+  justify-content: center;
+}
+
+.col-span-32 {
+  align-items: center;
+  grid-column: span 32;
+  justify-content: center;
+}
+
+.col-span-33 {
+  align-items: center;
+  grid-column: span 33;
+  justify-content: center;
+}
+
+.col-span-34 {
+  align-items: center;
+  grid-column: span 34;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
