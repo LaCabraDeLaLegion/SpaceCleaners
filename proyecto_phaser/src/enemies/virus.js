@@ -38,7 +38,6 @@ export default class Virus extends Enemy {
         if (!this.dying && this.y > 0)
             this.attackCounter--;
         if (!this.dying && this.attackCounter === 0) {
-            console.log("attack");
             this.attackCounter = this.attackTime;
             const chance = Math.random() * 100;
             if (chance <= 5 && this.scene.projectilesOnScreen < this.scene.maxProjectiles) {
@@ -78,6 +77,7 @@ export default class Virus extends Enemy {
                     this.setVisible(false);
                     let mutated_virus = new Virus(this.scene, this.x + 50, this.y, this.level + 1, this.group, this.max_level, 0);
                     mutated_virus.syncMovement(this.counter, this.x_right);
+                    mutated_virus.can_move = this.can_move;
                     this.destroy();
                 });
             }

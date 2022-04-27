@@ -47,11 +47,13 @@ export default class Human extends Enemy {
                 if (this.level >= this.max_level){
                     let virus = new Virus(this.scene, this.x + 50, this.y, this.level, this.group, this.max_level, 0);
                     virus.syncMovement(this.counter, this.x_right);
+                    virus.can_move = this.can_move;
                     this.destroy();
                 }
                 else {
                     let virus = new Virus(this.scene, this.x + 50, this.y, this.level + 1, this.group, this.max_level, 0);
                     virus.syncMovement(this.counter, this.x_right);
+                    virus.can_move = this.can_move;
                     this.destroy();
                 } 
             });  

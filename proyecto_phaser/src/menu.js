@@ -8,6 +8,7 @@ export default class Menu extends Phaser.Scene {
     this.load.setPath("assets/sprites/Menu/");
     this.load.image("background", "background.png");
     this.load.image("play", "play.png");
+    this.load.image("tutorial", "tutorial_button.png");
 
     this.load.audio("playSound", "../../sounds/play.wav");
     this.load.audio("intro", "../../sounds/intro_song.wav");
@@ -42,6 +43,26 @@ export default class Menu extends Phaser.Scene {
       play.setScale(1);
     });
     play.on("pointerup", () => {
+      this.playSound.play();
+      this.time.delayedCall(1000, () => {
+        this.introSong.pause();
+        this.scene.start("map");
+      });
+    });
+
+    let tutorial = this.add
+      .image(this.cameras.main.width / 2, this.cameras.main.height / 3 * 2, "tutorial")
+      .setDepth(1)
+      .setScale(0.5);
+    tutorial.setInteractive();
+    tutorial.on("pointerover", () => {
+      tutorial.setScale(1);
+      this.buttonSound.play();
+    });
+    tutorial.on("pointerout", () => {
+      tutorial.setScale(0.5);
+    });
+    tutorial.on("pointerup", () => {
       this.playSound.play();
       this.time.delayedCall(1000, () => {
         this.introSong.pause();
