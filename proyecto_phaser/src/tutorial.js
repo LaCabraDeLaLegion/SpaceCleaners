@@ -29,10 +29,10 @@ let map_init_texts = [
   [
     ["Los planetas infectados aparecerán en rojo."],
     ["Los planetas que no sean accesibles tendrán un candado."],
-    ["Recuerde que la Tierra es su base y no está infectada."],
-    ["Cuando consiga desinfactarlos retornarán a su color original."],
-    ["Para intentar desinfectar un planeta basta con pulsar sobre él."],
-    ["Hagamos una prueba, trate de desinfectar el primer planeta enemigo."]
+    ["Recuerde que la Tierra es su base y no está infectada. Cuando"],
+    ["consiga desinfactarlos retornarán a su color original. Para"],
+    ["intentar desinfectar un planeta basta con pulsar sobre él."],
+    ["Trate de desinfectar el primer planeta enemigo."]
   ]
 ];
 
@@ -50,18 +50,19 @@ let map_store_texts = [
   [
     ["En cada planeta las batallas serán más duras y los enemigos"],
     ["más resistentes. Para ayudarle en su misión nuestros científicos"],
-    ["irán creando nuevas armas y medicinas. Además, tendrá disponibles pociones,"],
+    ["irán creando nuevas armas y medicinas. Además, tendrá pociones,"],
     ["escudos y bombas para utilizarlas en batalla."]
   ],
   [
     ["Al ganar una batalla, los fondos de su ejército aumentarán."],
     ["Utilice el dinero con cautela para aprovisionarse de consumibles"],
-    ["y mejor equipación. En la tienda podrá comprar activos y en el inventario"],
+    ["y armas. En la tienda podrá comprar activos y en el inventario"],
     ["decidir qué llevará a su próxima batalla."]
   ],
   [
     ["Dicho esto, larga y própsera vida. Ahora está preparado para"],
-    ["enfrentarse al enemigo (porque 5 minutos te preparán para el apocalipsis)."]
+    ["enfrentarse al enemigo (porque 5 minutos te preparán para el"],
+    [" apocalipsis)."]
   ]
 ];
 
@@ -323,6 +324,8 @@ export default class Tutorial extends Phaser.Scene {
       this.ok.setInteractive();
       this.ok.on("pointerup", () => {
         this.counter++;
+        console.log("counter = " + this.counter);
+        console.log("ok enabled " + this.ok.enabled);
         if (this.counter >= this.texts.length){
           this.ok.input.enabled = false;
           this.setTutorialContainerVisibility(false);
@@ -336,43 +339,47 @@ export default class Tutorial extends Phaser.Scene {
             this.counter = 0;
             this.texts = map_store_texts;
             this.text.setText(this.texts[this.counter]);
+            this.setPlanetsVisibility(true);
+            this.setLocksVisibility(true);
+            this.setTutorialContainerVisibility(true);
+            this.ok.enabled = true;
+            this.lock2.setVisible(false);
+            this.planet_1.setTexture("planet_1_player");
+            this.ok.input.enabled = true;
           }
           else if (this.texts == map_store_texts){
             this.counter = 0;
-            this.scene.start("map", [null, null, null]);
-            this.text.setText(this.texts[this.counter]);
+            this.scene.start("menu");
           }
         }
         else {
           if (this.texts == battle_texts){
-            if (this.texts == battle_texts){
-              if (this.counter == 2){
-                this.player.can_move = true;
-                this.setTutorialContainerVisibility(false);
-                this.ok.enabled = false;
-              }
-              else if (this.counter == 4){
-                this.player.can_shoot = true;
-                this.setTutorialContainerVisibility(false);
-                this.ok.enabled = false;
-              }
-              else if (this.counter == 5){
-                this.player.can_cure = true;
-                this.player.can_shoot = false;
-                this.setTutorialContainerVisibility(false);
-                this.ok.enabled = false;
-              }
-              else if (this.counter == 6){
-                this.player.can_cure = true;
-                this.player.can_shoot = true;
-                this.setTutorialContainerVisibility(false);
-                this.ok.enabled = false;
-              }
-              else if (this.counter == 8){
-                this.setTutorialContainerVisibility(false);
-                this.ok.enabled = false;
-                this.events.emit("boss_fight");
-              }
+            if (this.counter == 2){
+              this.player.can_move = true;
+              this.setTutorialContainerVisibility(false);
+              this.ok.enabled = false;
+            }
+            else if (this.counter == 4){
+              this.player.can_shoot = true;
+              this.setTutorialContainerVisibility(false);
+              this.ok.enabled = false;
+            }
+            else if (this.counter == 5){
+              this.player.can_cure = true;
+              this.player.can_shoot = false;
+              this.setTutorialContainerVisibility(false);
+              this.ok.enabled = false;
+            }
+            else if (this.counter == 6){
+              this.player.can_cure = true;
+              this.player.can_shoot = true;
+              this.setTutorialContainerVisibility(false);
+              this.ok.enabled = false;
+            }
+            else if (this.counter == 8){
+              this.setTutorialContainerVisibility(false);
+              this.ok.enabled = false;
+              this.events.emit("boss_fight");
             }
           }
           this.text.setText(this.texts[this.counter]);
@@ -392,6 +399,8 @@ export default class Tutorial extends Phaser.Scene {
     }
 
     startBossFight(){
+      aux.enemies.getChildren().map(child => child.destroy());
+      aux.enemies.getChildren().map(child => child.destroy());
       aux.boss = new Boss(aux, 420, -50, 1);
       aux.boss.setScale(0.25);
       aux.physics.add.collider(
@@ -401,9 +410,7 @@ export default class Tutorial extends Phaser.Scene {
         null,
         aux
       );
-      aux.boss.life = 5;
-      aux.monster.destroy();
-      aux.human.destroy();
+      aux.boss.life = 10;
     }
 
     
@@ -478,8 +485,6 @@ export default class Tutorial extends Phaser.Scene {
     
       this.setLocksVisibility(map_visibility);
       this.setPlanetsVisibility(map_visibility);
-
-      this.planet_2.setTexture("planet_2_humans");
 
       this.shopButton.setVisible(map_visibility);
       this.inventoryButton.setVisible(map_visibility);
