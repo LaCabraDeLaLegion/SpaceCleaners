@@ -231,7 +231,7 @@ export default class Tutorial extends Phaser.Scene {
       this.events.once("cured_human", this.human_cured);
       this.events.once("mutation_virus", this.virus_mutated);
       this.events.once("mutation_human", this.human_mutated);
-
+      this.events.once("boss_fight", this.startBossFight);
       this.cursors =  this.input.keyboard.createCursorKeys();
 
       this.counter = 0;
@@ -345,7 +345,6 @@ export default class Tutorial extends Phaser.Scene {
         }
         else {
           if (this.texts == battle_texts){
-            console.log("counter: ", this.counter);
             if (this.texts == battle_texts){
               if (this.counter == 2){
                 this.player.can_move = true;
@@ -353,11 +352,9 @@ export default class Tutorial extends Phaser.Scene {
                 this.ok.enabled = false;
               }
               else if (this.counter == 4){
-                console.log("ok visibility: " + this.ok.visible);
                 this.player.can_shoot = true;
                 this.setTutorialContainerVisibility(false);
                 this.ok.enabled = false;
-                console.log("ok visibility: " + this.ok.visible);
               }
               else if (this.counter == 5){
                 this.player.can_cure = true;
@@ -370,6 +367,11 @@ export default class Tutorial extends Phaser.Scene {
                 this.player.can_shoot = true;
                 this.setTutorialContainerVisibility(false);
                 this.ok.enabled = false;
+              }
+              else if (this.counter == 8){
+                this.setTutorialContainerVisibility(false);
+                this.ok.enabled = false;
+                this.events.emit("boss_fight");
               }
             }
           }
@@ -384,14 +386,50 @@ export default class Tutorial extends Phaser.Scene {
       if (this.player.x != this.globalWidth/2 || this.player.y != this.globalHeight/2){
         this.events.emit("player_moved");
       }
+
+      this.player.lives = 100;
       
+    }
+
+    startBossFight(){
+      aux.boss = new Boss(aux, 420, -50, 1);
+      aux.boss.setScale(0.25);
+      aux.physics.add.collider(
+        aux.boss,
+        aux.lasers,
+        aux.onHitBoss,
+        null,
+        aux
+      );
+      aux.boss.life = 5;
+      aux.monster.destroy();
+      aux.human.destroy();
+    }
+
+    
+    onHitBoss(boss, laser) {
+      laser.destroy();
+      this.impactSound.play();
+      this.boss.recieveDamage(1);
+      if (this.boss.life > 0) {
+        this.boss.setTexture(this.boss.damage_image);
+        this.time.delayedCall(100, () => {
+          this.boss.setTexture(this.boss.image);
+        });
+      } else {
+        this.boss.setTexture(this.boss.death_image);
+        this.time.delayedCall(100, () => {
+          this.boss.destroy();
+          this.setTutorialContainerVisibility(true);
+          this.ok.enabled = true;
+        });
+      }
     }
 
     playerMoved(){
       aux.setTutorialContainerVisibility(true);
       aux.ok.setInteractive();
       aux.monster.setVisible(true);
-      console.log(aux.monster);
       aux.state = "kill_virus";
     }
     virus_died(){
@@ -401,9 +439,12 @@ export default class Tutorial extends Phaser.Scene {
       });
       aux.setTutorialContainerVisibility(true);
       aux.ok.enabled = true;
+      aux.player.can_shoot = false;
     }
     human_cured(){
       aux.state = "mutations";
+
+      aux.player.can_shoot = true;
 
       aux.monster = new Virus(aux, aux.globalWidth/2 - 50, aux.globalHeight/3, 1, aux.enemies, 2, 0);
       aux.monster.can_move = false;
@@ -411,14 +452,10 @@ export default class Tutorial extends Phaser.Scene {
       aux.human = new Human(aux, aux.globalWidth/2 + 50, aux.globalHeight/3, 1, aux.enemies, 2, 0);
       aux.human.can_move = false;
       aux.human.setDepth(4);
-
-      aux.setTutorialContainerVisibility(true);
-      aux.ok.enabled = true;
     }
     virus_mutated(){
       aux.mutations++;
       if(aux.mutations == 2){
-        aux.events.emit("boss_fight");
         aux.setTutorialContainerVisibility(true);
         aux.ok.enabled = true;
       }
@@ -426,7 +463,6 @@ export default class Tutorial extends Phaser.Scene {
     human_mutated(){
       aux.mutations++;
       if(aux.mutations == 2){
-        aux.events.emit("boss_fight");
         aux.setTutorialContainerVisibility(true);
         aux.ok.enabled = true;
       }
@@ -485,10 +521,8 @@ export default class Tutorial extends Phaser.Scene {
     
     createBackgroundMap(){
 
-      console.log("createBackgroundMap");
       //Shop
 
-      console.log(this);
       this.shopButton = this.add
         .image((this.globalWidth / 10) * 8, this.globalHeight / 9, "shop_btn")
         .setDepth(3)
@@ -623,6 +657,8 @@ export default class Tutorial extends Phaser.Scene {
           this.impactSound.play();
           medicine.destroy();
           enemy.medicine_hit();
+          this.setTutorialContainerVisibility(true);
+          this.ok.enabled = true;
           this.events.emit("cured_human");
         }
       }
@@ -641,8 +677,6 @@ export default class Tutorial extends Phaser.Scene {
   
     onHit(enemy, laser) {
       laser.destroy();
-      console.log("onHit tutorial");
-      console.log("state = "+this.state);
       if (this.state == "kill_virus"){
         if (enemy.type == "virus"){
           this.impactSound.play();
