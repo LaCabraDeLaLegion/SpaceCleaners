@@ -24,7 +24,7 @@ export default class Menu extends Phaser.Scene {
       )
       .setDepth(1)
       .setRotation(1.571)
-      .setScale(1.4);
+      .setScale(1.5);
 
     this.playSound = this.sound.add("playSound", Sound.playSound);
     this.introSong = this.sound.add("intro", Sound.intro);
@@ -32,7 +32,7 @@ export default class Menu extends Phaser.Scene {
     this.buttonSound = this.sound.add("button");
 
     let play = this.add
-      .image(this.cameras.main.width / 2, this.cameras.main.height / 2, "play")
+      .image(this.cameras.main.width / 2, this.cameras.main.height / 2 - 50, "play")
       .setDepth(1);
     play.setInteractive();
     play.on("pointerover", () => {
@@ -51,7 +51,7 @@ export default class Menu extends Phaser.Scene {
     });
 
     let tutorial = this.add
-      .image(this.cameras.main.width / 2, this.cameras.main.height / 3 * 2, "tutorial")
+      .image(this.cameras.main.width / 2, this.cameras.main.height / 2 + 50, "tutorial")
       .setDepth(1)
       .setScale(0.5);
     tutorial.setInteractive();
