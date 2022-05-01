@@ -11,24 +11,23 @@ export default class Level extends Phaser.Scene {
 
   // PHASER METHODS
   init(data) {
-    console.log("DATA", data[1]);
+    console.log("DATA", data[0]);
 
-    this.inventory = {
-      skin: "player_1",
-      weapon: { name: "Basic Weapon", attack: Attack.Weapon1 },
-      shield: { name: "basic shield", quantity: 0, quantity: 3, time: 200 },
-      potion: { name: "basic potion", quantity: 3, health: 2 },
-      bombs: { name: "basic bomb", quantity: 2, damage: 2 },
-      money: 9999
+    this.inventory = data[0];
+    this.equipedInventory = {
+      skin: this.inventory["others"].subcategories["skins"].items.find((i) => i.equiped === true),
+      weapon: this.inventory["weapons"].subcategories["lasers"].items.find((i) => i.equiped === true),
+      shield: this.inventory["consumibles"].subcategories["shields"].items.find((i) => i.equiped === true),
+      potion: this.inventory["consumibles"].subcategories["potions"].items.find((i) => i.equiped === true),
+      bomb: this.inventory["consumibles"].subcategories["bombs"].items.find((i) => i.equiped === true),
     };
-    //this.inventory = data[1];
+    
     this.virus_killed = 0;
     this.humans_healed = 0;
   }
 
   create() {
-    this.input.setDefaultCursor("url(assets/sprites/cursor.cur), pointer");
-
+    
     this.gameOver = false;
     this.alive_monsters = 0;
     this.bossInScene = false;
@@ -77,7 +76,7 @@ export default class Level extends Phaser.Scene {
 
   // INIT
   initPlayer() {
-    this.player = new Player(this, 500, 500, this.inventory);
+    this.player = new Player(this, 500, 500, this.equipedInventory);
     this.lasers = this.physics.add.group();
     this.bombs = this.physics.add.group();
     this.medicines = this.physics.add.group();
@@ -225,6 +224,15 @@ export default class Level extends Phaser.Scene {
   }
 
   //OTHERS
+  updateInventory() {
+    if (this.equipedInventory.shield)
+      this.inventory["consumibles"].subcategories["shields"].items.find((i) => i.equiped === true).quantity = this.equipedInventory.shield.quantity;
+    if (this.equipedInventory.potion)
+      this.inventory["consumibles"].subcategories["potions"].items.find((i) => i.equiped === true).quantity = this.equipedInventory.potion.quantity;
+    if (this.equipedInventory.bomb)
+      this.inventory["consumibles"].subcategories["bombs"].items.find((i) => i.equiped === true).quantity = this.equipedInventory.bomb.quantity;
+  }
+
   game_over() {
     this.gameOver = true;
     this.levelSong.stop();

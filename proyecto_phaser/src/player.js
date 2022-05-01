@@ -1,16 +1,15 @@
 import Medicine from "./weapons/medicine.js";
-import Anim_Factory from "./level/anim_factory.js";
 import Attack_Factory from "./attacks/factory/attack_factory.js";
 import Sound from "./data/sounds.js";
 
 export default class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, inventory) {
-    super(scene, x, y, inventory.skin);
+    super(scene, x, y, inventory.skin.sprite);
 
-    this.normal_animation = inventory.skin + "_walk";
-    this.damage_animation = inventory.skin + "_walk_damage";
-    this.heal_animation = inventory.skin + "_walk_heal";
-    this.shield_animation = inventory.skin + "_walk_shield";
+    this.normal_animation = inventory.skin.sprite + "_walk";
+    this.damage_animation = inventory.skin.sprite + "_walk_damage";
+    this.heal_animation = inventory.skin.sprite + "_walk_heal";
+    this.shield_animation = inventory.skin.sprite + "_walk_shield";
 
     this.can_shoot = true;
     this.can_cure = true;
@@ -120,6 +119,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     if (
       this.key_one.isDown &&
+      this.inventory.shield &&
       this.inventory.shield.quantity > 0 &&
       this.consumibleTime <= 0
     ) {
@@ -129,6 +129,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.current_animation = this.shield_animation;
     } else if (
       this.key_two.isDown &&
+      this.inventory.potion &&
       this.inventory.potion.quantity > 0 &&
       this.consumibleTime <= 0
     ) {
@@ -138,7 +139,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.current_animation = this.heal_animation;
     } else if (
       this.key_three.isDown &&
-      this.inventory.bombs.quantity > 0 &&
+      this.inventory.bomb &&
+      this.inventory.bomb.quantity > 0 &&
       this.consumibleTime <= 0
     ) {
       this.scene.useBomb();
@@ -157,7 +159,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
     ) {
       this.play(this.current_animation, this.current_animation);
     } else {
-      this.play(this.current_animation, this.current_animation);
       this.anims.stop();
     }
   }

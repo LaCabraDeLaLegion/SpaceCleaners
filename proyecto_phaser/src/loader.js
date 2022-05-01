@@ -41,6 +41,7 @@ export default class Loader extends Phaser.Scene {
   }
 
   create() {
+    this.input.setDefaultCursor("url(assets/cursors/pointer.cur), pointer");
     this.createAnimations();
     this.scene.start("introduction");
   }
@@ -51,14 +52,17 @@ export default class Loader extends Phaser.Scene {
       frameWidth: 50,
       frameHeight: 50,
     });
-    this.load.spritesheet("plasmaa", "/sprites/plasma.png", {
-      frameWidth: 20,
-      frameHeight: 45,
-    });
     this.load.spritesheet("mutation", "/sprites/mutation.png", {
       frameWidth: 100,
       frameHeight: 100,
     });
+
+    //Proyectiles
+    this.load.spritesheet("plasmaa", "/sprites/plasma.png", {
+      frameWidth: 20,
+      frameHeight: 45,
+    });
+
     Anim_Factory.player_spritesheets(this);
     Anim_Factory.virus_spritesheets(this);
     Anim_Factory.humans_spritesheets(this);

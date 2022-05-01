@@ -1,11 +1,9 @@
-import InitialInventory from "./data/init_inventory.js";
 import Player from "./player.js";
 import Boss from "./boss.js";
 import Sound from "./data/sounds.js";
-import Bomb from "./weapons/consumibles/bomb.js";
-import Attack from "./attacks/factory/attacks_enum.js";
 import Virus from "./enemies/virus.js";
 import Human from "./enemies/human.js";
+import InitialInventory from "./data/init_inventory.js";
 
 let aux;
 
@@ -267,15 +265,15 @@ export default class Tutorial extends Phaser.Scene {
       this.createBackgroundMap();
 
       //Create player
-      this.inventory = {
-        skin: "player_1",
-        weapon: { name: "Basic Weapon", attack: Attack.Weapon1 },
-        shield: { name: "basic shield", quantity: 0, quantity: 3, time: 200 },
-        potion: { name: "basic potion", quantity: 3, health: 2 },
-        bombs: { name: "basic bomb", quantity: 2, damage: 2 },
-        money: 9999
+      this.inventory = InitialInventory;
+      this.equipedInventory = {
+        skin: this.inventory["others"].subcategories["skins"].items.find((i) => i.equiped === true),
+        weapon: this.inventory["weapons"].subcategories["lasers"].items.find((i) => i.equiped === true),
+        shield: this.inventory["consumibles"].subcategories["shields"].items.find((i) => i.equiped === true),
+        potion: this.inventory["consumibles"].subcategories["potions"].items.find((i) => i.equiped === true),
+        bomb: this.inventory["consumibles"].subcategories["bombs"].items.find((i) => i.equiped === true),
       };
-      this.player = new Player(this, this.globalWidth/2, this.globalHeight/2, this.inventory);
+      this.player = new Player(this, this.globalWidth/2, this.globalHeight/2, this.equipedInventory);
       
       //Armas y medicinas
       this.lasers = this.physics.add.group();

@@ -67,19 +67,6 @@ export default class Map extends Phaser.Scene {
       }
       planet_counter--;
     }
-    // this.inventory = {
-    //   skin: "player_1",
-    //   shields: [],
-    //   weapons: [{name: "Laser",
-    //             attack: Attack.Weapon1,
-    //             desc: "Dispara 1 laser ( 1 de daño )",
-    //             img: "basic_laser",
-    //             scale: 500,
-    //             equiped: true}],
-    //   potions: [],
-    //   skins: [],
-    //   money: 9999,
-    // };
 
     if (!data[2])
       this.inventory = InitialInventory;
@@ -367,7 +354,7 @@ export default class Map extends Phaser.Scene {
       this.planet_1.setScale(1);
     });
     this.planet_1.on("pointerup", () => {
-      this.scene.start("level1", ["1", this.inventory]);
+      this.scene.start("level1", [this.inventory]);
     });
 
     if (planets_state[2] == "unlocked") {
@@ -380,7 +367,7 @@ export default class Map extends Phaser.Scene {
         this.planet_2.setScale(1);
       });
       this.planet_2.on("pointerup", () => {
-        this.scene.start("level2", ["2", this.inventory]);
+        this.scene.start("level2", [this.inventory]);
       });
     } else {
       this.physics.add
@@ -399,7 +386,7 @@ export default class Map extends Phaser.Scene {
         this.planet_3.setScale(1);
       });
       this.planet_3.on("pointerup", () => {
-        this.scene.start("level3", "3");
+        this.scene.start("level3", [this.inventory]);
       });
     } else {
       this.physics.add
@@ -418,7 +405,7 @@ export default class Map extends Phaser.Scene {
         this.planet_4.setScale(1);
       });
       this.planet_4.on("pointerup", () => {
-        this.scene.start("level4", "4");
+        this.scene.start("level4", [this.inventory]);
       });
     } else {
       this.physics.add
@@ -437,7 +424,7 @@ export default class Map extends Phaser.Scene {
         this.planet_5.setScale(1);
       });
       this.planet_5.on("pointerup", () => {
-        this.scene.start("level5", "5");
+        this.scene.start("level5", [this.inventory]);
       });
     } else {
       this.physics.add
@@ -456,7 +443,7 @@ export default class Map extends Phaser.Scene {
         this.planet_6.setScale(1);
       });
       this.planet_6.on("pointerup", () => {
-        this.scene.start("level6", "6");
+        this.scene.start("level6", [this.inventory]);
       });
     } else {
       this.physics.add
@@ -475,7 +462,7 @@ export default class Map extends Phaser.Scene {
         this.planet_7.setScale(1);
       });
       this.planet_7.on("pointerup", () => {
-        this.scene.start("level7", "7");
+        this.scene.start("level7", [this.inventory]);
       });
     } else {
       this.physics.add
