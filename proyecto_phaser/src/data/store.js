@@ -1,4 +1,5 @@
 import Attack from "../attacks/factory/attacks_enum.js";
+import Items from "./items.js";
 
 const store = {
   consumibles: {
@@ -8,40 +9,19 @@ const store = {
         name: "Pociones",
         items: [
           {
-            info: {
-              name: "Pocion basica",
-              quantity: 0,
-              health: 1,
-              desc: "Cura 1 punto de vida",
-              img: "basic_potion",
-              scale: 225,
-            },
+            info: Items.potions["basic_potion"],
             rebuy: true,
             price: 10,
             page: 1,
           },
           {
-            info: {
-              name: "Pocion avanzada",
-              quantity: 0,
-              health: 3,
-              desc: "Cura 5 puntos de vida",
-              img: "advanced_potion",
-              scale: 225,
-            },
+            info: Items.potions["advanced_potion"],
             rebuy: true,
             price: 40,
             page: 1,
           },
           {
-            info: {
-              name: "Pocion superior",
-              quantity: 0,
-              health: 10,
-              desc: "Cura 10 puntos de vida",
-              img: "holy_potion",
-              scale: 225,
-            },
+            info: Items.potions["holy_potion"],
             rebuy: true,
             price: 150,
             page: 1,
@@ -68,13 +48,7 @@ const store = {
         name: "Lasers",
         items: [
           {
-            info: {
-              name: "Laser doble",
-              attack: Attack.Weapon2,
-              desc: "Dispara dos lasers ( 1 daño cada uno )",
-              img: "double_laser",
-              scale: 500,
-            },
+            info: Items.lasers["double_laser"],
             rebuy: false,
             price: 10,
             page: 1,

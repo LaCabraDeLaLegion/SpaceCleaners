@@ -1,4 +1,5 @@
 import Attack from "../attacks/factory/attacks_enum.js";
+import Items from "./items.js";
 
 const inventory = {
     consumibles: {
@@ -24,14 +25,7 @@ const inventory = {
         lasers: {
             name: "Lasers",
             items: [
-                {
-                    name: "Laser",
-                    attack: Attack.Weapon1,
-                    desc: "Dispara 1 laser ( 1 de daño )",
-                    img: "basic_laser",
-                    scale: 500,
-                    equiped: true
-                }
+                {...Items.lasers["basic_laser"], equiped: true }
             ]
         },
         medicines: {
@@ -46,11 +40,7 @@ const inventory = {
         skins: {
             name: "Skins",
             items: [
-                {
-                    name: "Soldado",
-                    sprite: "player_1",
-                    equiped: true 
-                }
+              {...Items.skins["player_1"], equiped: true }
             ]
         },   
       }
