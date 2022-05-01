@@ -50,7 +50,7 @@ export default class Inventory extends Phaser.Scene {
       .image(this.globalWidth * 0.95, this.globalHeight * 0.04, "close")
       .setDepth(1)
       .setScale(this.globalWidth / 400);
-    close.setInteractive();
+    close.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
     close.on("pointerover", () => {
       close.setScale(this.globalWidth / 300);
       this.buttonSound.play();
@@ -97,7 +97,7 @@ export default class Inventory extends Phaser.Scene {
         .setOrigin(0, 0)
         .setDepth(1)
         .setScale(this.globalWidth / 1500);
-        cat_btn.setInteractive();
+        cat_btn.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
         cat_btn.on("pointerover", () => {
           cat_btn
             .setTexture("category_selected")
@@ -197,7 +197,7 @@ export default class Inventory extends Phaser.Scene {
       .setScale(this.globalWidth / 400);
     if (page === 1) up.setTexture("up_disabled");
     else {
-      up.setInteractive();
+      up.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       up.on("pointerover", () => {
         up.setScale(this.globalWidth / 300);
         this.buttonSound.play();
@@ -218,7 +218,7 @@ export default class Inventory extends Phaser.Scene {
     if (page === subcategory.num_pages)
       down.setTexture("down_disabled");
     else {
-      down.setInteractive();
+      down.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       down.on("pointerover", () => {
         down.setScale(this.globalWidth / 300);
         this.buttonSound.play();
@@ -275,7 +275,7 @@ export default class Inventory extends Phaser.Scene {
       .setOrigin(0, 0)
       .setDepth(2)
       .setScale(this.globalWidth / 300);
-      select_btn.setInteractive();
+      select_btn.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       select_btn.on("pointerover", () => {
         select_btn.setTexture("select_btn_hover");
         this.buttonSound.play();

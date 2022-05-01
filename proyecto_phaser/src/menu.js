@@ -34,7 +34,7 @@ export default class Menu extends Phaser.Scene {
     let play = this.add
       .image(this.cameras.main.width / 2, this.cameras.main.height / 2 - 50, "play")
       .setDepth(1);
-    play.setInteractive();
+    play.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
     play.on("pointerover", () => {
       play.setScale(2);
       this.buttonSound.play();
@@ -54,7 +54,7 @@ export default class Menu extends Phaser.Scene {
       .image(this.cameras.main.width / 2, this.cameras.main.height / 2 + 50, "tutorial")
       .setDepth(1)
       .setScale(0.5);
-    tutorial.setInteractive();
+    tutorial.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
     tutorial.on("pointerover", () => {
       tutorial.setScale(1);
       this.buttonSound.play();

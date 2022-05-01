@@ -249,7 +249,7 @@ export default class Tutorial extends Phaser.Scene {
       let skip = this.add
       .image(this.cameras.main.width - 120, 50, "skip")
       .setDepth(10);
-      skip.setInteractive();
+      skip.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       skip.on("pointerover", () => {
         skip.setScale(1.1);
       });
@@ -319,7 +319,7 @@ export default class Tutorial extends Phaser.Scene {
       .setOrigin(0, 0);
 
       this.ok = this.add.image(730, this.cameras.main.height - 70, "ok").setDepth(10).setOrigin(0, 0);
-      this.ok.setInteractive();
+      this.ok.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       this.ok.on("pointerup", () => {
         this.counter++;
         console.log("counter = " + this.counter);
@@ -331,7 +331,7 @@ export default class Tutorial extends Phaser.Scene {
             this.counter = 0;
             this.texts = battle_texts;
             this.text.setText(this.texts[this.counter]);
-            this.planet_1.setInteractive();
+            this.planet_1.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
           }
           else if (this.texts == battle_texts){
             this.counter = 0;
@@ -433,7 +433,7 @@ export default class Tutorial extends Phaser.Scene {
 
     playerMoved(){
       aux.setTutorialContainerVisibility(true);
-      aux.ok.setInteractive();
+      aux.ok.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       aux.monster.setVisible(true);
       aux.state = "kill_virus";
     }
@@ -489,7 +489,7 @@ export default class Tutorial extends Phaser.Scene {
 
       
       this.setTutorialContainerVisibility(true);
-      this.ok.setInteractive();
+      this.ok.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
     
       this.player.setVisible(true);
 

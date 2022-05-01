@@ -73,7 +73,7 @@ export default class Introduction extends Phaser.Scene {
     let skip = this.add
       .image(this.cameras.main.width - 120, 50, "skip")
       .setDepth(1);
-    skip.setInteractive();
+    skip.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
     skip.on("pointerover", () => {
       skip.setScale(1.1);
       this.buttonSound.play();
@@ -96,7 +96,7 @@ export default class Introduction extends Phaser.Scene {
         "continue"
       )
       .setDepth(1);
-    continue_button.setInteractive();
+    continue_button.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
     continue_button.on("pointerover", () => {
       continue_button.setScale(1.1);
       this.buttonSound.play();

@@ -21,7 +21,7 @@ export default class Level extends Phaser.Scene {
       potion: this.inventory["consumibles"].subcategories["potions"].items.find((i) => i.equiped === true),
       bomb: this.inventory["consumibles"].subcategories["bombs"].items.find((i) => i.equiped === true),
     };
-    
+
     this.virus_killed = 0;
     this.humans_healed = 0;
   }
@@ -48,7 +48,7 @@ export default class Level extends Phaser.Scene {
       let victory = this.add
         .image(this.globalWidth / 2, this.globalHeight / 2, "level_victory")
         .setDepth(1);
-      victory.setInteractive();
+      victory.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       victory.on("pointerup", () => {
         this.inventory.money += this.reward;
         this.scene.start("details", ["win", this.level, this.inventory, this.virus_killed, this.humans_healed, this.reward]);
@@ -62,7 +62,7 @@ export default class Level extends Phaser.Scene {
         let lose = this.add
           .image(this.globalWidth / 2, this.globalHeight / 2, "level_lose")
           .setDepth(1);
-        lose.setInteractive();
+        lose.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
         lose.on("pointerup", () => {
           this.scene.start("map", ["lose", this.level, this.inventory]);
           this.levelSong.stop();
@@ -243,7 +243,7 @@ export default class Level extends Phaser.Scene {
     let lose = this.add
       .image(this.globalWidth / 2, this.globalHeight / 2, "level_lose")
       .setDepth(1);
-    lose.setInteractive();
+    lose.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
     lose.on("pointerup", () => {
       this.scene.start("map", ["lose", this.level, this.inventory]);
       this.levelSong.stop();

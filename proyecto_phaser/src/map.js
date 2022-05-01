@@ -172,7 +172,7 @@ export default class Map extends Phaser.Scene {
       .image((this.globalWidth / 10) * 8, this.globalHeight / 9, "shop_btn")
       .setDepth(2)
       .setScale(0.3);
-    shopButton.setInteractive();
+    shopButton.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
     shopButton.on("pointerover", () => {
       shopButton.setScale(0.4);
       this.buttonSound.play();
@@ -197,7 +197,7 @@ export default class Map extends Phaser.Scene {
       )
       .setDepth(2)
       .setScale(0.3);
-    inventoryButton.setInteractive();
+    inventoryButton.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
     inventoryButton.on("pointerover", () => {
       inventoryButton.setScale(0.4);
       this.buttonSound.play();
@@ -345,7 +345,7 @@ export default class Map extends Phaser.Scene {
     );
     this.earth.setDepth(2);
 
-    this.planet_1.setInteractive();
+    this.planet_1.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
     this.planet_1.on("pointerover", () => {
       this.planet_1.setScale(1.25);
       this.planetSound.play();
@@ -358,7 +358,7 @@ export default class Map extends Phaser.Scene {
     });
 
     if (planets_state[2] == "unlocked") {
-      this.planet_2.setInteractive();
+      this.planet_2.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       this.planet_2.on("pointerover", () => {
         this.planet_2.setScale(1.25);
         this.planetSound.play();
@@ -377,7 +377,7 @@ export default class Map extends Phaser.Scene {
     }
 
     if (planets_state[3] == "unlocked") {
-      this.planet_3.setInteractive();
+      this.planet_3.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       this.planet_3.on("pointerover", () => {
         this.planet_3.setScale(1.25);
         this.planetSound.play();
@@ -396,7 +396,7 @@ export default class Map extends Phaser.Scene {
     }
 
     if (planets_state[4] == "unlocked") {
-      this.planet_4.setInteractive();
+      this.planet_4.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       this.planet_4.on("pointerover", () => {
         this.planet_4.setScale(1.25);
         this.planetSound.play();
@@ -415,7 +415,7 @@ export default class Map extends Phaser.Scene {
     }
 
     if (planets_state[5] == "unlocked") {
-      this.planet_5.setInteractive();
+      this.planet_5.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       this.planet_5.on("pointerover", () => {
         this.planet_5.setScale(1.25);
         this.planetSound.play();
@@ -434,7 +434,7 @@ export default class Map extends Phaser.Scene {
     }
 
     if (planets_state[6] == "unlocked") {
-      this.planet_6.setInteractive();
+      this.planet_6.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       this.planet_6.on("pointerover", () => {
         this.planet_6.setScale(1.25);
         this.planetSound.play();
@@ -453,7 +453,7 @@ export default class Map extends Phaser.Scene {
     }
 
     if (planets_state[7] == "unlocked") {
-      this.planet_7.setInteractive();
+      this.planet_7.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
       this.planet_7.on("pointerover", () => {
         this.planet_7.setScale(1.25);
         this.planetSound.play();

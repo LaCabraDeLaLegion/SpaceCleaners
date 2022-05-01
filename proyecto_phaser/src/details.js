@@ -68,7 +68,7 @@ export default class Details extends Phaser.Scene {
             "continue"
         )
         .setDepth(1);
-        victory.setInteractive();
+        victory.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
         victory.on("pointerup", () => {
             this.scene.start("map", [this.result, this.level, this.inventory]);
         });
