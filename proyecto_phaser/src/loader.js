@@ -58,7 +58,7 @@ export default class Loader extends Phaser.Scene {
     });
 
     //Proyectiles
-    this.load.spritesheet("plasmaa", "/sprites/plasma.png", {
+    this.load.spritesheet("plasma", "/sprites/plasma.png", {
       frameWidth: 20,
       frameHeight: 45,
     });
@@ -161,7 +161,7 @@ export default class Loader extends Phaser.Scene {
     });
     this.anims.create({
       key: "plasma_anim",
-      frames: this.anims.generateFrameNumbers("plasmaa"),
+      frames: this.anims.generateFrameNumbers("plasma"),
       frameRate: 5,
       repeat: -1,
     });

@@ -19,6 +19,7 @@ const projectiles = {
     name: "plasma",
     damage: 1,
     sprite: "",
+    anim: true,
     velocityX: 0,
     velocityY: 4,
     angle: 0,

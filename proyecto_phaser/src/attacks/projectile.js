@@ -21,12 +21,13 @@ export default class Projectile extends Phaser.GameObjects.Sprite {
       this.destroy();
     });
     
+    if (data.anim)
+      this.play(data.name + "_anim", data.name + "_anim");
+
   }
 
-  preUpdate() {
-    super.preUpdate();
-
-    this.play("plasma_anim", "plasma_anim");
+  preUpdate(t, dt) {
+    super.preUpdate(t, dt);
 
     if (this.scene.gameOver || this.y > this.scene.cameras.main.height) {
       this.scene.projectilesOnScreen--;
