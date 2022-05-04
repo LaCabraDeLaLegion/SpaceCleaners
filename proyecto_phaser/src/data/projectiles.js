@@ -88,6 +88,46 @@ const projectiles = {
     velocityY: 0,
     angle: 1,
   },
+  fireball: {
+    name: "fireball",
+    damage: 1,
+    sprite: "",
+    velocityX: 0,
+    velocityY: 4,
+    angle: 0,
+  },
+  rock: {
+    name: "rock",
+    damage: 2,
+    sprite: "",
+    velocityX: 0,
+    velocityY: 4,
+    angle: 1.5,
+  },
+  poison_beam: {
+    name: "poison_beam",
+    damage: 2,
+    sprite: "",
+    velocityX: 0,
+    velocityY: 4,
+    angle: 1,
+  },
+  spiderweb: {
+    name: "spiderweb",
+    damage: 3,
+    sprite: "",
+    velocityX: 0,
+    velocityY: 4,
+    angle: 1,
+  },
+  thunder: {
+    name: "thunder",
+    damage: 3,
+    sprite: "",
+    velocityX: 0,
+    velocityY: 4,
+    angle: 0,
+  },
 };
 
 export default projectiles;

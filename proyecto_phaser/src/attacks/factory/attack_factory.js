@@ -1,5 +1,10 @@
 import Attack from "./attacks_enum.js";
 import AttackVirus1 from "../virus/attackVirus1.js";
+import AttackVirus2 from "../virus/attackVirus2.js";
+import AttackVirus3 from "../virus/attackVirus3.js";
+import AttackVirus4 from "../virus/attackVirus4.js";
+import AttackVirus5 from "../virus/attackVirus5.js";
+import AttackVirus6 from "../virus/attackVirus6.js";
 import AttackBoss1 from "../boss/attackBoss1.js";
 import AttackBoss2 from "../boss/attackBoss2.js";
 import AttackBoss3 from "../boss/attackBoss3.js";
@@ -24,7 +29,17 @@ export default class Attack_Factory {
       case Attack.AttackBoss3:
         return new AttackBoss3(scene, enemy, target);
       case Attack.BasicAttack:
-        return new AttackVirus1(scene, enemy, target);
+        return new AttackVirus1(scene, enemy, target); 
+      case Attack.BasicAttack2:
+        return new AttackVirus2(scene, enemy, target);
+      case Attack.BasicAttack3:
+        return new AttackVirus3(scene, enemy, target);
+      case Attack.BasicAttack4:
+        return new AttackVirus4(scene, enemy, target);
+      case Attack.BasicAttack5:
+        return new AttackVirus5(scene, enemy, target);
+      case Attack.BasicAttack6:
+        return new AttackVirus6(scene, enemy, target);
       case Attack.EyeVirusAttack:
         return new EyeVirusAttack(scene, enemy, target);
       case Attack.EyeVirusAttack2:

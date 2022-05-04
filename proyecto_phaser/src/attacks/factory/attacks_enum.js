@@ -7,6 +7,11 @@ const AttackBoss3 = Symbol("attack_boss3");
 
 //Virus attacks
 const BasicAttack = Symbol("basic_attack");
+const BasicAttack2 = Symbol("basic_attack2");
+const BasicAttack3 = Symbol("basic_attack3");
+const BasicAttack4 = Symbol("basic_attack4");
+const BasicAttack5 = Symbol("basic_attack5");
+const BasicAttack6 = Symbol("basic_attack6");
 const SuperBasicAttack = Symbol("super_basic_attack");
 const EyeVirusAttack = Symbol("virus_eye_attack");
 const EyeVirusAttack2 = Symbol("virus_eye_attack2");
@@ -23,6 +28,11 @@ export default {
   SuperAttackBoss2,
   AttackBoss3,
   BasicAttack,
+  BasicAttack2,
+  BasicAttack3,
+  BasicAttack4,
+  BasicAttack5,
+  BasicAttack6,
   SuperBasicAttack,
   EyeVirusAttack,
   EyeVirusAttack2,
