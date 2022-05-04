@@ -143,16 +143,24 @@ export default class Level3 extends Level {
 
     if (this.alive_monsters <= 0 && !this.bossInScene) {
       this.startBossBattle();
+
+      //this.littleEyes = this.physics.add.group();
+
       this.littleEyeLeft = new LitteEye(this, 30, 450, "eye_virus_1");
       this.littleEyeRight = new LitteEye(this, 730, 450, "eye_virus_2");
-
+      this.littleEyeLeftDown = new LitteEye(this, 30, 650, "eye_virus_1");
+      this.littleEyeRightDown = new LitteEye(this, 730, 650, "eye_virus_2");
+      this.littleEyeLeftUp = new LitteEye(this, 30, 250, "eye_virus_1");
+      this.littleEyeRightUp = new LitteEye(this, 730, 250, "eye_virus_2");
+      
       this.physics.add.collider(
-        this.littleEyeLeft,
+        this.littleEyeLeftDown,
         this.lasers,
-        this.littleEyeLeft.recieveDamage(1),
+        this.onHitLittleLeftDown,
         null,
         this
       );
+
     } else if (this.bossInScene && this.boss.life <= 0) {
       let victory = this.add
         .image(this.globalWidth / 2, this.globalHeight / 2, "level_victory")
@@ -192,5 +200,22 @@ export default class Level3 extends Level {
     });
 
     if (destroy) this.destroy_enemies();
+  }
+
+  onHitLittleEyeLeftDown(littleEyeLeftDown, laser) {
+    laser.destroy();
+    this.impactSound.play();
+    littleEyeLeftDown.recieveDamage(1); //CAMBIAR POR EL DAÑO DEL LASER
+    if (littleEyeLeftDown.life > 0) {
+      //this.littleEyeLeftDown.setTexture(this.littleEyeLeftDown.damage_image);
+      //this.time.delayedCall(100, () => {
+        //this.littleEyeLeftDown.setTexture(this.littleEyeLeftDown.image);
+      //});
+    } else {
+      //this.littleEyeLeftDown.setTexture(this.littleEyeLeftDown.death_image);
+      this.time.delayedCall(100, () => {
+        this.littleEyeLeftDown.destroy();
+      });
+    }
   }
 }
