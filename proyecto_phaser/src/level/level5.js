@@ -27,7 +27,7 @@ export default class Level5 extends Level {
     this.add
       .image(this.globalWidth / 2, this.globalHeight / 2, "level5_background")
       .setDepth(-1)
-      .setScale(1.7);
+      .setScale(2.7);
     this.addSounds();
     this.initEnemies();
     this.levelSong.play();

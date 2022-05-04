@@ -101,6 +101,7 @@ export default class Loader extends Phaser.Scene {
     this.load.image("level4_background", "/sprites/UI/level4_background.png");
     this.load.image("level5_background", "/sprites/UI/level5_background.png");
     this.load.image("level6_background", "/sprites/UI/level6_background.png");
+    this.load.image("level7_background", "/sprites/UI/level7_background.png");
 
     //Tienda
     this.load.image("background_shop", "/sprites/Shop/background_shop.png");
