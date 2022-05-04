@@ -69,8 +69,8 @@ export default class Loader extends Phaser.Scene {
   }
 
   load_images() {
-    this.load.image("player", "/sprites/ship.png");
-    this.load.image("player_damage", "/sprites/ship_damage.png");
+    //this.load.image("player", "/sprites/ship.png");
+    //this.load.image("player_damage", "/sprites/ship_damage.png");
     this.load.image("boss", "/sprites/Boss/B1.png");
     this.load.image("boss_damage", "/sprites/Boss/B1_damage.png");
     this.load.image("slash", "/sprites/slash.png");
@@ -88,7 +88,7 @@ export default class Loader extends Phaser.Scene {
     this.load.image("eye_virus_attack", "/sprites/eye_virus_attack.png");
     this.load.image("level_victory", "/sprites/level_victory.png");
     this.load.image("level_lose", "you_lose.png");
-    this.load.image("continue", "/sprites/continue.png");
+    //this.load.image("continue", "/sprites/continue.png");
 
     // Level UI
     this.load.image("livesUI", "/sprites/UI/lives.png");
@@ -96,6 +96,11 @@ export default class Loader extends Phaser.Scene {
     this.load.image("bombsUI", "/sprites/UI/bombs.png");
     this.load.image("shieldsUI", "/sprites/UI/shields.png");
     this.load.image("level1_background", "/sprites/UI/level1_background.png");
+    this.load.image("level2_background", "/sprites/UI/level2_background.png");
+    this.load.image("level3_background", "/sprites/UI/level3_background.png");
+    this.load.image("level4_background", "/sprites/UI/level4_background.png");
+    this.load.image("level5_background", "/sprites/UI/level5_background.png");
+    this.load.image("level6_background", "/sprites/UI/level6_background.png");
 
     //Tienda
     this.load.image("background_shop", "/sprites/Shop/background_shop.png");
@@ -123,9 +128,9 @@ export default class Loader extends Phaser.Scene {
 
     //Armas
     this.load.image("laser", "/sprites/Weapons/laser.png");
-    this.load.image("super_laser", "/sprites/Armas/super_laser.png");
+    //this.load.image("super_laser", "/sprites/Armas/super_laser.png");
     this.load.image("fire", "/sprites/Armas/fire.png");
-    this.load.image("bullet", "/sprites/Armas/bullet.png");
+    //this.load.image("bullet", "/sprites/Armas/bullet.png");
     this.load.image("basic_laser", "/sprites/Weapons/basic_laser.png");
     this.load.image("double_laser", "/sprites/Weapons/double_laser.png");
 
@@ -148,14 +153,14 @@ export default class Loader extends Phaser.Scene {
     this.load.image("B7", "/sprites/Boss/B7.png");
     this.load.image("B1_damage", "/sprites/Boss/B1_damage.png");
     this.load.image("B2_damage", "/sprites/Boss/B2_damage.png");
-    this.load.image("B3_damage", "/sprites/Boss/B3_damage.png");
+    //this.load.image("B3_damage", "/sprites/Boss/B3_damage.png");
     this.load.image("B4_damage", "/sprites/Boss/B4_damage.png");
     this.load.image("B5_damage", "/sprites/Boss/B5_damage.png");
     this.load.image("B6_damage", "/sprites/Boss/B6_damage.png");
     this.load.image("B7_damage", "/sprites/Boss/B7_damage.png");
     this.load.image("B1_death", "/sprites/Boss/B1_death.png");
     this.load.image("B2_death", "/sprites/Boss/B2_death.png");
-    this.load.image("B3_death", "/sprites/Boss/B3_death.png");
+    //this.load.image("B3_death", "/sprites/Boss/B3_death.png");
     this.load.image("B4_death", "/sprites/Boss/B4_death.png");
     this.load.image("B5_death", "/sprites/Boss/B5_death.png");
     this.load.image("B6_death", "/sprites/Boss/B6_death.png");

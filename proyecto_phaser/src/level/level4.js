@@ -24,6 +24,10 @@ export default class Level4 extends Level {
 
   create() {
     super.create();
+    this.add
+      .image(this.globalWidth / 2, this.globalHeight / 2, "level4_background")
+      .setDepth(-1)
+      .setScale(1.7);
     this.addSounds();
     this.initEnemies();
     this.levelSong.play();

@@ -21,6 +21,10 @@ export default class Level2 extends Level {
 
   create() {
     super.create();
+    this.add
+      .image(this.globalWidth / 2, this.globalHeight / 2, "level2_background")
+      .setDepth(-1)
+      .setScale(1.7);
     this.addSounds();
     this.initEnemies();
     this.levelSong.play();
