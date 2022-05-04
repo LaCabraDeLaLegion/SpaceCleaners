@@ -32,6 +32,38 @@ const projectiles = {
     velocityY: 1,
     angle: 0,
   },
+  fire: {
+    name: "fire",
+    damage: 2,
+    sprite: "",
+    velocityX: 0,
+    velocityY: 3,
+    angle: 0,
+  },
+  fire_left: {
+    name: "fire",
+    damage: 2,
+    sprite: "",
+    velocityX: -1.4,
+    velocityY: 3,
+    angle: 0,
+  },
+  fire_right: {
+    name: "fire",
+    damage: 2,
+    sprite: "",
+    velocityX: 1.4,
+    velocityY: 3,
+    angle: 0,
+  },
+  blue_fire: {
+    name: "blue_fire",
+    damage: 3,
+    sprite: "",
+    velocityX: 0,
+    velocityY: 6.5,
+    angle: 0,
+  },
 };
 
 export default projectiles;

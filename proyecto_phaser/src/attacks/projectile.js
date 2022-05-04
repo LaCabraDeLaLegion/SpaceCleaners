@@ -11,7 +11,7 @@ export default class Projectile extends Phaser.GameObjects.Sprite {
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
 
-    if (!target || target.x == this.x) this.directionX = 0;
+    if (!target || target.x == this.x) this.directionX = 1;
     else this.directionX = target.x > this.x ? 1 : -1;
 
     this.scene.physics.add.overlap(this.scene.player, this, () => {

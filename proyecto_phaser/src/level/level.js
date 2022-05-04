@@ -1,5 +1,6 @@
 import Player from "../player.js";
 import Boss from "../boss.js";
+import Boss2 from "../bosses/boss2.js";
 import Sound from "../data/sounds.js";
 import Bomb from "../weapons/consumibles/bomb.js";
 import Attack from "../attacks/factory/attacks_enum.js";
@@ -15,12 +16,24 @@ export default class Level extends Phaser.Scene {
 
     this.inventory = data[0];
     this.equipedInventory = {
-      skin: this.inventory["others"].subcategories["skins"].items.find((i) => i.equiped === true),
-      weapon: this.inventory["weapons"].subcategories["lasers"].items.find((i) => i.equiped === true),
-      medicine: this.inventory["weapons"].subcategories["medicines"].items.find((i) => i.equiped === true),
-      shield: this.inventory["consumibles"].subcategories["shields"].items.find((i) => i.equiped === true),
-      potion: this.inventory["consumibles"].subcategories["potions"].items.find((i) => i.equiped === true),
-      bomb: this.inventory["consumibles"].subcategories["bombs"].items.find((i) => i.equiped === true),
+      skin: this.inventory["others"].subcategories["skins"].items.find(
+        (i) => i.equiped === true
+      ),
+      weapon: this.inventory["weapons"].subcategories["lasers"].items.find(
+        (i) => i.equiped === true
+      ),
+      medicine: this.inventory["weapons"].subcategories["medicines"].items.find(
+        (i) => i.equiped === true
+      ),
+      shield: this.inventory["consumibles"].subcategories["shields"].items.find(
+        (i) => i.equiped === true
+      ),
+      potion: this.inventory["consumibles"].subcategories["potions"].items.find(
+        (i) => i.equiped === true
+      ),
+      bomb: this.inventory["consumibles"].subcategories["bombs"].items.find(
+        (i) => i.equiped === true
+      ),
     };
 
     this.virus_killed = 0;
@@ -28,7 +41,6 @@ export default class Level extends Phaser.Scene {
   }
 
   create() {
-    
     this.gameOver = false;
     this.alive_monsters = 0;
     this.bossInScene = false;
@@ -49,10 +61,19 @@ export default class Level extends Phaser.Scene {
       let victory = this.add
         .image(this.globalWidth / 2, this.globalHeight / 2, "level_victory")
         .setDepth(1);
-      victory.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
+      victory.setInteractive({
+        cursor: "url(assets/cursors/selector.cur), pointer",
+      });
       victory.on("pointerup", () => {
         this.inventory.money += this.reward;
-        this.scene.start("details", ["win", this.level, this.inventory, this.virus_killed, this.humans_healed, this.reward]);
+        this.scene.start("details", [
+          "win",
+          this.level,
+          this.inventory,
+          this.virus_killed,
+          this.humans_healed,
+          this.reward,
+        ]);
         this.levelSong.stop();
       });
     }
@@ -63,7 +84,9 @@ export default class Level extends Phaser.Scene {
         let lose = this.add
           .image(this.globalWidth / 2, this.globalHeight / 2, "level_lose")
           .setDepth(1);
-        lose.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
+        lose.setInteractive({
+          cursor: "url(assets/cursors/selector.cur), pointer",
+        });
         lose.on("pointerup", () => {
           this.scene.start("map", ["lose", this.level, this.inventory]);
           this.levelSong.stop();
@@ -126,7 +149,18 @@ export default class Level extends Phaser.Scene {
   }
 
   startBossBattle() {
-    this.boss = new Boss(this, 420, -50, this.level);
+    switch (this.level) {
+      case 1:
+        this.boss = new Boss(this, 420, -50, this.level);
+        break;
+      case 2:
+        this.boss = new Boss2(this, 420, -50, this.level);
+        break;
+      default:
+        this.boss = new Boss(this, 420, -50, this.level);
+        break;
+    }
+
     this.physics.add.collider(
       this.boss,
       this.lasers,
@@ -227,11 +261,17 @@ export default class Level extends Phaser.Scene {
   //OTHERS
   updateInventory() {
     if (this.equipedInventory.shield)
-      this.inventory["consumibles"].subcategories["shields"].items.find((i) => i.equiped === true).quantity = this.equipedInventory.shield.quantity;
+      this.inventory["consumibles"].subcategories["shields"].items.find(
+        (i) => i.equiped === true
+      ).quantity = this.equipedInventory.shield.quantity;
     if (this.equipedInventory.potion)
-      this.inventory["consumibles"].subcategories["potions"].items.find((i) => i.equiped === true).quantity = this.equipedInventory.potion.quantity;
+      this.inventory["consumibles"].subcategories["potions"].items.find(
+        (i) => i.equiped === true
+      ).quantity = this.equipedInventory.potion.quantity;
     if (this.equipedInventory.bomb)
-      this.inventory["consumibles"].subcategories["bombs"].items.find((i) => i.equiped === true).quantity = this.equipedInventory.bomb.quantity;
+      this.inventory["consumibles"].subcategories["bombs"].items.find(
+        (i) => i.equiped === true
+      ).quantity = this.equipedInventory.bomb.quantity;
   }
 
   game_over() {
@@ -244,7 +284,9 @@ export default class Level extends Phaser.Scene {
     let lose = this.add
       .image(this.globalWidth / 2, this.globalHeight / 2, "level_lose")
       .setDepth(1);
-    lose.setInteractive({ cursor: "url(assets/cursors/selector.cur), pointer" });
+    lose.setInteractive({
+      cursor: "url(assets/cursors/selector.cur), pointer",
+    });
     lose.on("pointerup", () => {
       this.scene.start("map", ["lose", this.level, this.inventory]);
       this.levelSong.stop();
