@@ -1,7 +1,7 @@
 import Projectile from "../projectile.js";
 import ProjectileData from "../../data/projectiles.js";
 
-export default class AttackBoss2 {
+export default class SuperAttackBoss2 {
   constructor(scene, enemy, target) {
     new Projectile(
       scene,

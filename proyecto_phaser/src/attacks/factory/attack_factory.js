@@ -2,6 +2,7 @@ import Attack from "./attacks_enum.js";
 import AttackVirus1 from "../virus/attackVirus1.js";
 import AttackBoss1 from "../boss/attackBoss1.js";
 import AttackBoss2 from "../boss/attackBoss2.js";
+import AttackBoss3 from "../boss/attackBoss3.js";
 import SuperAttackBoss1 from "../boss/superAttackBoss1.js";
 import SuperAttackBoss2 from "../boss/superAttackBoss2.js";
 import AttackWeapon1 from "../player/attackWeapon1.js";
@@ -12,12 +13,14 @@ export default class Attack_Factory {
     switch (attack) {
       case Attack.AttackBoss1:
         return new AttackBoss1(scene, enemy, target);
-      case Attack.SuperAttackBoos1:
+      case Attack.SuperAttackBoss1:
         return new SuperAttackBoss1(scene, enemy, target);
       case Attack.AttackBoss2:
         return new AttackBoss2(scene, enemy, target);
-      case Attack.SuperAttackBoos2:
+      case Attack.SuperAttackBoss2:
         return new SuperAttackBoss2(scene, enemy, target);
+      case Attack.AttackBoss3:
+        return new AttackBoss3(scene, enemy, target);
       case Attack.BasicAttack:
         return new AttackVirus1(scene, enemy, target);
       case Attack.SuperBasicAttack:
