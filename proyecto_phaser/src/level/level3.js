@@ -46,7 +46,7 @@ export default class Level3 extends Level {
 
   createMonsters() {
     // this.alive_monsters = 50;
-    this.alive_monsters = 8;
+    this.alive_monsters = 12;
 
     //Grupo 1
     let monster = new Virus(this, 50, -100, 1, this.enemies, this.level, 1);

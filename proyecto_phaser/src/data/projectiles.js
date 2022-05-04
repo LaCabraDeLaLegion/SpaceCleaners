@@ -94,7 +94,7 @@ const projectiles = {
     sprite: "",
     velocityX: 0,
     velocityY: 4,
-    angle: 0,
+    angle: 0.5,
   },
   rock: {
     name: "rock",
