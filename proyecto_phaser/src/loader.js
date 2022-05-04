@@ -95,6 +95,7 @@ export default class Loader extends Phaser.Scene {
     this.load.image("potionsUI", "/sprites/UI/potions.png");
     this.load.image("bombsUI", "/sprites/UI/bombs.png");
     this.load.image("shieldsUI", "/sprites/UI/shields.png");
+    this.load.image("level1_background", "/sprites/UI/level1_background.png");
 
     //Tienda
     this.load.image("background_shop", "/sprites/Shop/background_shop.png");

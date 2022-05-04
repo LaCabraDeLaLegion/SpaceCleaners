@@ -15,7 +15,6 @@ export default class Level1 extends Level {
     this.level = 1;
     this.virus_maxlevel = 1;
     this.human_maxlevel = 1;
-    console.log("Nivel = 1");
     this.reward = 300;
   }
 
@@ -24,6 +23,10 @@ export default class Level1 extends Level {
     this.addSounds();
     this.initEnemies();
     this.levelSong.play();
+    this.add
+      .image(this.globalWidth / 2, this.globalHeight / 2, "level1_background")
+      .setDepth(1)
+      .setScale(1);
   }
 
   initEnemies() {
