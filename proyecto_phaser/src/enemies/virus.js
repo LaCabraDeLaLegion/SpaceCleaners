@@ -73,6 +73,7 @@ export default class Virus extends Enemy {
             else {
                 this.mutating = true;
                 this.play("mutation_anim");
+                this.body.destroy();
                 this.on("animationcomplete", () => {
                     this.setVisible(false);
                     let mutated_virus = new Virus(this.scene, this.x + 50, this.y, this.level + 1, this.group, this.max_level, 0);

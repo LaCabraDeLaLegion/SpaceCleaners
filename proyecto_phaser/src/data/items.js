@@ -18,7 +18,27 @@ const items = {
         }
     },
     medicines: {
-        
+        mask: {
+            name: "Mascarilla",
+            desc: "Cura 1 punto de vida a humanos",
+            img: "mask",
+            damage: 1,
+            scale: 225,
+        },
+        pill: {
+            name: "Pastilla",
+            desc: "Cura 3 puntos de vida a humanos",
+            img: "tablet",
+            damage: 3,
+            scale: 225,
+        },
+        gel: {
+            name: "Gel desinfectante",
+            desc: "Cura 5 puntos de vida a humanos",
+            img: "gel",
+            damage: 5,
+            scale: 225,
+        },
     }, 
     potions: {
         basic_potion: {

@@ -60,15 +60,15 @@ const store = {
         name: "Medicinas",
         items: [
           {
-            info: {
-              name: "Vacuna",
-              attack: Attack.Weapon2,
-              desc: "Dispara dos lasers ( 1 daño cada uno )",
-              img: "double_laser",
-              scale: 500,
-            },
+            info: Items.medicines["pill"],
             rebuy: false,
-            price: 10,
+            price: 500,
+            page: 1,
+          },
+          {
+            info: Items.medicines["gel"],
+            rebuy: false,
+            price: 1000,
             page: 1,
           }
         ],

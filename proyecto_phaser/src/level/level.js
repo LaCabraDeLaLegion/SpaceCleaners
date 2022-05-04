@@ -17,6 +17,7 @@ export default class Level extends Phaser.Scene {
     this.equipedInventory = {
       skin: this.inventory["others"].subcategories["skins"].items.find((i) => i.equiped === true),
       weapon: this.inventory["weapons"].subcategories["lasers"].items.find((i) => i.equiped === true),
+      medicine: this.inventory["weapons"].subcategories["medicines"].items.find((i) => i.equiped === true),
       shield: this.inventory["consumibles"].subcategories["shields"].items.find((i) => i.equiped === true),
       potion: this.inventory["consumibles"].subcategories["potions"].items.find((i) => i.equiped === true),
       bomb: this.inventory["consumibles"].subcategories["bombs"].items.find((i) => i.equiped === true),
@@ -188,7 +189,7 @@ export default class Level extends Phaser.Scene {
   onMedicineHit(enemy, medicine) {
     this.impactSound.play();
     medicine.destroy();
-    enemy.medicine_hit();
+    enemy.medicine_hit(medicine);
     // console.log("monstruos vivos: " + this.alive_monsters);
     if (enemy.lives == 0) this.alive_monsters--;
   }

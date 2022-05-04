@@ -2,8 +2,9 @@ import Weapon from "./weapon.js";
 
 export default class Medicine extends Weapon {
 
-    constructor(scene, x, y) {
-      super(scene, x, y, "mask");
+    constructor(scene, x, y, data) {
+      super(scene, x, y, data.img);
+      this.damage = data.damage;
     }
   
     preUpdate(t, dt) {

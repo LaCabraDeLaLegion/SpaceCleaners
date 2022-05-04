@@ -25,12 +25,14 @@ const inventory = {
         lasers: {
             name: "Lasers",
             items: [
-                {...Items.lasers["basic_laser"], equiped: true }
+              {...Items.lasers["basic_laser"], equiped: true }
             ]
         },
         medicines: {
             name: "Medicinas",
-            items: []
+            items: [
+              {...Items.medicines["mask"], equiped: true }
+            ]
         }
       },
     },

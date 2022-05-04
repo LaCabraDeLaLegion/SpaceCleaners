@@ -42,6 +42,7 @@ export default class Human extends Enemy {
                 this.scene.reward = 0;
             
             this.play("mutation_anim");
+            this.body.destroy();
             this.on("animationcomplete", () => {
                 this.setVisible(false);
                 if (this.level >= this.max_level){
@@ -60,9 +61,9 @@ export default class Human extends Enemy {
         }
     }
 
-    medicine_hit(){
+    medicine_hit(medicine){
         if(!this.mutating){
-            this.lives--;
+            this.lives -= medicine.damage;
             this.play(this.heal_anim);
             this.healing = true;
             this.on("animationcomplete", () => {
