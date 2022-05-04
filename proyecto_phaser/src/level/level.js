@@ -226,7 +226,7 @@ export default class Level extends Phaser.Scene {
   onHitBoss(boss, laser) {
     laser.destroy();
     this.impactSound.play();
-    this.boss.recieveDamage(1);
+    this.boss.recieveDamage(1); //CAMBIAR POR EL DAÑO DEL LASER
     if (this.boss.life > 0) {
       this.boss.setTexture(this.boss.damage_image);
       this.time.delayedCall(100, () => {

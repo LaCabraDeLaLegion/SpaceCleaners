@@ -72,6 +72,22 @@ const projectiles = {
     velocityY: 5,
     angle: 0,
   },
+  eye_virus_attack: {
+    name: "eye_virus_attack",
+    damage: 2,
+    sprite: "",
+    velocityX: 3,
+    velocityY: 0,
+    angle: 1,
+  },
+  eye_virus_attack2: {
+    name: "eye_virus_attack",
+    damage: 2,
+    sprite: "",
+    velocityX: -3,
+    velocityY: 0,
+    angle: 1,
+  },
 };
 
 export default projectiles;

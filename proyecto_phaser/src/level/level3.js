@@ -4,6 +4,9 @@ import Human from "../enemies/human.js";
 import virus_data from "../data/virus_data.js";
 import humans_data from "../data/humans_data.js";
 import Sound from "../data/sounds.js";
+import AttackFactory from "../attacks/factory/attack_factory.js";
+import Attack from "../attacks/factory/attacks_enum.js";
+import LitteEye from "../bosses/litteEye.js";
 
 const enemy_virus = virus_data.data;
 const enemy_humans = humans_data.data;
@@ -20,7 +23,8 @@ export default class Level3 extends Level {
     this.human_maxlevel = 3;
     this.reward = 500;
     this.eyeFrecuencie = 500;
-    this.eyeInScene = null;
+    this.littleEyeLeft = null;
+    this.littleEyeRight = null;
   }
 
   create() {
@@ -138,6 +142,16 @@ export default class Level3 extends Level {
 
     if (this.alive_monsters <= 0 && !this.bossInScene) {
       this.startBossBattle();
+      this.littleEyeLeft = new LitteEye(this, 30, 450, "eye_virus_1");
+      this.littleEyeRight = new LitteEye(this, 730, 450, "eye_virus_2");
+
+      this.physics.add.collider(
+        this.littleEyeLeft,
+        this.lasers,
+        this.littleEyeLeft.recieveDamage(1),
+        null,
+        this
+      );
     } else if (this.bossInScene && this.boss.life <= 0) {
       let victory = this.add
         .image(this.globalWidth / 2, this.globalHeight / 2, "level_victory")
@@ -157,14 +171,6 @@ export default class Level3 extends Level {
         ]);
         this.levelSong.stop();
       });
-    } else if (this.bossInScene) {
-      if (this.eyeFrecuencie <= 0) {
-        this.eyeInScene = true;
-        this.add.image(20, 500, "eye_virus");
-        this.eyeFrecuencie = 500;
-      }
-
-      this.eyeFrecuencie--;
     }
 
     this.enemies.getChildren().forEach((enemy) => {
