@@ -112,6 +112,6 @@ export default class Level4 extends Level {
   addSounds() {
     super.addSounds();
     this.levelSong = this.sound.add("level1", Sound.level);
+    this.bossSong = this.sound.add("boss4_song", Sound.bossSound4);
   }
-
 }
