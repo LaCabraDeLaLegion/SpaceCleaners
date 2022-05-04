@@ -35,7 +35,7 @@ export default class Boss extends Phaser.GameObjects.Sprite {
     this.direction = 1;
     this.attackTime = 360;
     this.moveTime = 60;
-    this.life = 50;
+    this.life = 175;
     this.activeAttack = null;
     this.text = this.scene.add.text(350, 200, "I will destroy you!", {
       fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
@@ -52,7 +52,7 @@ export default class Boss extends Phaser.GameObjects.Sprite {
       this.text.destroy();
     } else {
       if (this.attackTime <= 0) {
-        if (this.life >= 25) {
+        if (this.life >= 65) {
           AttackFactory.createAttack(
             this.scene,
             Attack.AttackBoss3,

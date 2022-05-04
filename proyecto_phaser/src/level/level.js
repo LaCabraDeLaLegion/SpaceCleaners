@@ -49,9 +49,9 @@ export default class Level extends Phaser.Scene {
     this.globalWidth = this.cameras.main.width;
     this.globalHeight = this.cameras.main.height;
     this.fontStyle = {
-      fontFamily: 'GameFont',
-      fontSize: '32px',
-    }
+      fontFamily: "GameFont",
+      fontSize: "32px",
+    };
 
     this.initPlayer();
     this.initUI();
@@ -79,7 +79,7 @@ export default class Level extends Phaser.Scene {
           this.humans_healed,
           this.reward,
         ]);
-        this.levelSong.stop();
+        this.bossSong.stop();
       });
     }
 
@@ -112,7 +112,6 @@ export default class Level extends Phaser.Scene {
   }
 
   initUI() {
-
     this.add.image(20, 885, "livesUI").setDepth(1);
     this.add.image(20, 850, "potionsUI").setDepth(1);
     this.add.image(20, 815, "bombsUI").setDepth(1);
@@ -120,39 +119,32 @@ export default class Level extends Phaser.Scene {
 
     this.textUI = [];
 
-    this.livesText = this.add
-    .text(
-      35,
-      875,
-      this.player.lives,
-      this.fontStyle
-    );
+    this.livesText = this.add.text(35, 875, this.player.lives, this.fontStyle);
 
-    this.potionsText = this.add
-    .text(
+    this.potionsText = this.add.text(
       35,
       835,
-      (this.player.inventory.potion) ? this.player.inventory.potion.quantity : 0,
+      this.player.inventory.potion ? this.player.inventory.potion.quantity : 0,
       this.fontStyle
     );
 
-    this.bombsText = this.add
-    .text(
+    this.bombsText = this.add.text(
       35,
       795,
-      (this.player.inventory.bomb) ? this.player.inventory.bomb.quantity : 0,
+      this.player.inventory.bomb ? this.player.inventory.bomb.quantity : 0,
       this.fontStyle
     );
 
-    this.shieldsText = this.add
-    .text(
+    this.shieldsText = this.add.text(
       35,
       755,
-      (this.player.inventory.shield) ? this.player.inventory.shield.quantity : 0,
+      this.player.inventory.shield ? this.player.inventory.shield.quantity : 0,
       this.fontStyle
     );
 
-    this.textUI.push[this.livesText, this.potionsText, this.bombsText, this.shieldsText];
+    this.textUI.push[
+      (this.livesText, this.potionsText, this.bombsText, this.shieldsText)
+    ];
   }
 
   initEnemies() {
@@ -198,6 +190,12 @@ export default class Level extends Phaser.Scene {
   }
 
   startBossBattle() {
+    this.levelSong.stop();
+
+    this.time.delayedCall(1200, () => {
+      this.bossSong.play();
+    });
+
     switch (this.level) {
       case 1:
         this.boss = new Boss(this, 420, -50, this.level);
@@ -328,7 +326,7 @@ export default class Level extends Phaser.Scene {
 
   game_over() {
     this.gameOver = true;
-    this.levelSong.stop();
+    this.bossSong.stop();
     this.gameOverSound.play();
     if (this.bossInScene) this.boss.destroy();
     this.player.setVisible(false);
@@ -341,7 +339,7 @@ export default class Level extends Phaser.Scene {
     });
     lose.on("pointerup", () => {
       this.scene.start("map", ["lose", this.level, this.inventory]);
-      this.levelSong.stop();
+      this.bossSong.stop();
     });
   }
 }

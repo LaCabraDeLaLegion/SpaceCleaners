@@ -5,7 +5,6 @@ import virus_data from "../data/virus_data.js";
 import humans_data from "../data/humans_data.js";
 import Sound from "../data/sounds.js";
 
-
 export default class Level2 extends Level {
   constructor() {
     super("level2");
@@ -105,6 +104,6 @@ export default class Level2 extends Level {
   addSounds() {
     super.addSounds();
     this.levelSong = this.sound.add("level2", Sound.level2);
+    this.bossSong = this.sound.add("boss2_song", Sound.bossSound2);
   }
-
 }
