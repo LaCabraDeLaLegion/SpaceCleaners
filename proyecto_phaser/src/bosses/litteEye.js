@@ -2,14 +2,16 @@ import AttackFactory from "../attacks/factory/attack_factory.js";
 import Attack from "../attacks/factory/attacks_enum.js";
 
 export default class LitteEye extends Phaser.GameObjects.Sprite {
-  constructor(scene, x, y, img) {
+  constructor(scene, x, y, img, group) {
     super(scene, x, y, img);
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
+    this.addToGroup(group);
+    this.group = group;
 
     this.imgName = img;
     this.attackTime = 260;
-    this.life = 50;
+    this.life = 15;
   }
 
   preUpdate(t, dt) {
@@ -38,5 +40,9 @@ export default class LitteEye extends Phaser.GameObjects.Sprite {
 
   recieveDamage(damage) {
     this.life -= damage;
+  }
+
+  addToGroup(group) {
+    group.add(this);
   }
 }

@@ -144,23 +144,58 @@ export default class Level3 extends Level {
     if (this.alive_monsters <= 0 && !this.bossInScene) {
       this.startBossBattle();
 
-      //this.littleEyes = this.physics.add.group();
+      this.littleEyes = this.physics.add.group();
 
-      this.littleEyeLeft = new LitteEye(this, 30, 450, "eye_virus_1");
-      this.littleEyeRight = new LitteEye(this, 730, 450, "eye_virus_2");
-      this.littleEyeLeftDown = new LitteEye(this, 30, 650, "eye_virus_1");
-      this.littleEyeRightDown = new LitteEye(this, 730, 650, "eye_virus_2");
-      this.littleEyeLeftUp = new LitteEye(this, 30, 250, "eye_virus_1");
-      this.littleEyeRightUp = new LitteEye(this, 730, 250, "eye_virus_2");
-      
+      this.littleEyeLeft = new LitteEye(
+        this,
+        30,
+        450,
+        "eye_virus_1",
+        this.littleEyes
+      );
+      this.littleEyeRight = new LitteEye(
+        this,
+        730,
+        450,
+        "eye_virus_2",
+        this.littleEyes
+      );
+      this.littleEyeLeftDown = new LitteEye(
+        this,
+        30,
+        650,
+        "eye_virus_1",
+        this.littleEyes
+      );
+      this.littleEyeRightDown = new LitteEye(
+        this,
+        730,
+        650,
+        "eye_virus_2",
+        this.littleEyes
+      );
+      this.littleEyeLeftUp = new LitteEye(
+        this,
+        30,
+        250,
+        "eye_virus_1",
+        this.littleEyes
+      );
+      this.littleEyeRightUp = new LitteEye(
+        this,
+        730,
+        250,
+        "eye_virus_2",
+        this.littleEyes
+      );
+
       this.physics.add.collider(
-        this.littleEyeLeftDown,
+        this.littleEyes,
         this.lasers,
-        this.onHitLittleLeftDown,
+        this.onHitLittleEye,
         null,
         this
       );
-
     } else if (this.bossInScene && this.boss.life <= 0) {
       let victory = this.add
         .image(this.globalWidth / 2, this.globalHeight / 2, "level_victory")
@@ -202,19 +237,19 @@ export default class Level3 extends Level {
     if (destroy) this.destroy_enemies();
   }
 
-  onHitLittleEyeLeftDown(littleEyeLeftDown, laser) {
+  onHitLittleEye(litteEye, laser) {
     laser.destroy();
     this.impactSound.play();
-    littleEyeLeftDown.recieveDamage(1); //CAMBIAR POR EL DAÑO DEL LASER
-    if (littleEyeLeftDown.life > 0) {
+    litteEye.recieveDamage(1); //CAMBIAR POR EL DAÑO DEL LASER
+    if (litteEye.life > 0) {
       //this.littleEyeLeftDown.setTexture(this.littleEyeLeftDown.damage_image);
       //this.time.delayedCall(100, () => {
-        //this.littleEyeLeftDown.setTexture(this.littleEyeLeftDown.image);
+      //this.littleEyeLeftDown.setTexture(this.littleEyeLeftDown.image);
       //});
     } else {
       //this.littleEyeLeftDown.setTexture(this.littleEyeLeftDown.death_image);
       this.time.delayedCall(100, () => {
-        this.littleEyeLeftDown.destroy();
+        litteEye.destroy();
       });
     }
   }
