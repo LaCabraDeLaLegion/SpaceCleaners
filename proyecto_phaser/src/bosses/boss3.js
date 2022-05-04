@@ -33,9 +33,10 @@ export default class Boss extends Phaser.GameObjects.Sprite {
     this.scene.physics.add.existing(this);
     this.dialog = false;
     this.direction = 1;
-    this.attackTime = 120;
+    this.attackTime = 360;
     this.moveTime = 60;
     this.life = 50;
+    this.activeAttack = null;
     this.text = this.scene.add.text(350, 200, "I will destroy you!", {
       fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
     });
@@ -52,19 +53,19 @@ export default class Boss extends Phaser.GameObjects.Sprite {
     } else {
       if (this.attackTime <= 0) {
         if (this.life >= 25) {
-          //   AttackFactory.createAttack(
-          //     this.scene,
-          //     Attack.AttackBoss3,
-          //     this,
-          //     null
-          //   );
+          AttackFactory.createAttack(
+            this.scene,
+            Attack.AttackBoss3,
+            this,
+            null
+          );
         } else {
-          //   AttackFactory.createAttack(
-          //     this.scene,
-          //     Attack.SuperAttackBoss2,
-          //     this,
-          //     null
-          //   );
+          AttackFactory.createAttack(
+            this.scene,
+            Attack.SuperAttackBoss2,
+            this,
+            null
+          );
         }
 
         this.attackTime = 120;
@@ -76,22 +77,10 @@ export default class Boss extends Phaser.GameObjects.Sprite {
           this.y = 180;
           this.x = Math.random() * (340 - 250) + 250;
           this.y = Math.random() * (180 - 120) + 120;
-          AttackFactory.createAttack(
-            this.scene,
-            Attack.AttackBoss3,
-            this,
-            null
-          );
           this.direction = 0;
         } else if (this.direction == 2) {
           this.x = Math.random() * (650 - 430) + 430;
           this.y = Math.random() * (200 - 170) + 170;
-          AttackFactory.createAttack(
-            this.scene,
-            Attack.AttackBoss3,
-            this,
-            null
-          );
           this.direction = 0;
         } else {
           this.x = Math.random() * (650 - 120) + 120;
@@ -99,7 +88,7 @@ export default class Boss extends Phaser.GameObjects.Sprite {
           this.direction = Math.round(Math.random() * (2 - 1) + 1);
         }
 
-        this.moveTime = 120;
+        this.moveTime = 360;
       }
     }
   }

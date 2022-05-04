@@ -8,23 +8,9 @@ export default class AttackBoss3 {
   constructor(scene, enemy, target) {
     new Projectile(
       scene,
-      enemy.x - 100,
-      enemy.y + 80,
-      ProjectileData["eye_laser_left"],
-      target
-    );
-    new Projectile(
-      scene,
-      enemy.x - 100,
-      enemy.y + 80,
-      ProjectileData["eye_laser_left"],
-      target
-    );
-    new Projectile(
-      scene,
-      enemy.x - 100,
-      enemy.y + 80,
-      ProjectileData["eye_laser_left"],
+      enemy.x,
+      enemy.y + 200,
+      ProjectileData["eye_laser"],
       target
     );
   }

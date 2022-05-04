@@ -4,6 +4,7 @@ export default class Projectile extends Phaser.GameObjects.Sprite {
     super(scene, x, y, data.name);
     this.velocityX = data.velocityX;
     this.velocityY = data.velocityY;
+    this.duration = data.duration || 60000;
     this.angle = 0;
     this.angleIncrement = data.angle;
     this.damage = data.damage;
@@ -20,16 +21,19 @@ export default class Projectile extends Phaser.GameObjects.Sprite {
       this.scene.projectilesOnScreen--;
       this.destroy();
     });
-    
-    if (data.anim)
-      this.play(data.name + "_anim", data.name + "_anim");
 
+    if (data.anim) this.play(data.name + "_anim", data.name + "_anim");
   }
 
   preUpdate(t, dt) {
     super.preUpdate(t, dt);
+    this.duration--;
 
-    if (this.scene.gameOver || this.y > this.scene.cameras.main.height) {
+    if (
+      this.scene.gameOver ||
+      this.y > this.scene.cameras.main.height ||
+      this.duration === 0
+    ) {
       this.scene.projectilesOnScreen--;
       this.destroy();
     } else {
