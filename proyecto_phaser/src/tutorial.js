@@ -397,6 +397,25 @@ export default class Tutorial extends Phaser.Scene {
       
     }
 
+    updateUI() {
+     
+    }
+  
+    updateInventory() {
+      if (this.equipedInventory.shield)
+        this.inventory["consumibles"].subcategories["shields"].items.find(
+          (i) => i.equiped === true
+        ).quantity = this.equipedInventory.shield.quantity;
+      if (this.equipedInventory.potion)
+        this.inventory["consumibles"].subcategories["potions"].items.find(
+          (i) => i.equiped === true
+        ).quantity = this.equipedInventory.potion.quantity;
+      if (this.equipedInventory.bomb)
+        this.inventory["consumibles"].subcategories["bombs"].items.find(
+          (i) => i.equiped === true
+        ).quantity = this.equipedInventory.bomb.quantity;
+    }
+
     startBossFight(){
       aux.enemies.getChildren().map(child => child.destroy());
       aux.enemies.getChildren().map(child => child.destroy());
@@ -685,7 +704,7 @@ export default class Tutorial extends Phaser.Scene {
         if (enemy.type == "virus"){
           this.impactSound.play();
           laser.destroy();
-          enemy.weapon_hit();
+          enemy.weapon_hit(laser);
           this.events.emit("killed_virus");
         }
         else {
@@ -702,7 +721,7 @@ export default class Tutorial extends Phaser.Scene {
         else {
           this.impactSound.play();
           laser.destroy();
-          enemy.weapon_hit();
+          enemy.weapon_hit(laser);
           this.events.emit("mutation_human");
         }
       }

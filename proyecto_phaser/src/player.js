@@ -50,8 +50,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.speed = 400;
     this.movingx = false;
     this.movingy = false;
-    this.lives = 50;
-    this.maxLives = 50;
+    this.lives = 30;
+    this.maxLives = 30;
 
     this.inventory = inventory;
 
@@ -172,7 +172,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.damageTime = 50;
       this.anims.stop();
       this.play(this.damage_animation);
-      this.lives -= damage;
+      this.lives = Math.max(0,this.lives-damage);
       this.scene.updateUI();
 
       console.log("Vidas: " + this.lives);

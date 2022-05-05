@@ -50,7 +50,7 @@ export default class Level3 extends Level {
 
   createMonsters() {
     // this.alive_monsters = 50;
-    this.alive_monsters = 12;
+    this.alive_monsters = 52;
 
     //Grupo 1
     let monster = new Virus(this, 50, -100, 1, this.enemies, this.level, 1);
@@ -64,31 +64,31 @@ export default class Level3 extends Level {
     monster = new Virus(this, 300, -50, 2, this.enemies, this.level, 1);
 
     //Grupo 2
-    // monster = new Virus(this, 50, -250, 2, this.enemies, this.level, 2);
-    // monster = new Virus(this, 100, -250, 2, this.enemies, this.level, 2);
-    // monster = new Virus(this, 300, -250, 2, this.enemies, this.level, 2);
-    // monster = new Virus(this, 350, -250, 2, this.enemies, this.level, 2);
+    monster = new Virus(this, 50, -250, 2, this.enemies, this.level, 2);
+    monster = new Virus(this, 100, -250, 2, this.enemies, this.level, 2);
+    monster = new Virus(this, 300, -250, 2, this.enemies, this.level, 2);
+    monster = new Virus(this, 350, -250, 2, this.enemies, this.level, 2);
 
-    // monster = new Virus(this, 50, -200, 2, this.enemies, this.level, 2);
-    // monster = new Virus(this, 100, -200, 2, this.enemies, this.level, 2);
-    // monster = new Virus(this, 300, -200, 2, this.enemies, this.level, 2);
-    // monster = new Virus(this, 350, -200, 2, this.enemies, this.level, 2);
+    monster = new Virus(this, 50, -200, 2, this.enemies, this.level, 2);
+    monster = new Virus(this, 100, -200, 2, this.enemies, this.level, 2);
+    monster = new Virus(this, 300, -200, 2, this.enemies, this.level, 2);
+    monster = new Virus(this, 350, -200, 2, this.enemies, this.level, 2);
 
-    // //Grupo 3
+    //Grupo 3
 
-    // monster = new Virus(this, 100, -450, 2, this.enemies, this.level, 3);
-    // monster = new Virus(this, 150, -450, 2, this.enemies, this.level, 3);
-    // monster = new Virus(this, 300, -450, 2, this.enemies, this.level, 3);
-    // monster = new Virus(this, 350, -450, 2, this.enemies, this.level, 3);
+    monster = new Virus(this, 100, -450, 2, this.enemies, this.level, 3);
+    monster = new Virus(this, 150, -450, 2, this.enemies, this.level, 3);
+    monster = new Virus(this, 300, -450, 2, this.enemies, this.level, 3);
+    monster = new Virus(this, 350, -450, 2, this.enemies, this.level, 3);
 
-    // monster = new Virus(this, 150, -400, 3, this.enemies, this.level, 3);
-    // monster = new Virus(this, 300, -400, 3, this.enemies, this.level, 3);
+    monster = new Virus(this, 150, -400, 3, this.enemies, this.level, 3);
+    monster = new Virus(this, 300, -400, 3, this.enemies, this.level, 3);
 
-    // //Grupo 4
+    //Grupo 4
 
-    // monster = new Virus(this, 150, -550, 3, this.enemies, this.level, 4);
-    // monster = new Virus(this, 200, -550, 3, this.enemies, this.level, 4);
-    // monster = new Virus(this, 250, -550, 3, this.enemies, this.level, 4);
+    monster = new Virus(this, 150, -550, 3, this.enemies, this.level, 4);
+    monster = new Virus(this, 200, -550, 3, this.enemies, this.level, 4);
+    monster = new Virus(this, 250, -550, 3, this.enemies, this.level, 4);
   }
 
   createHumans() {
@@ -101,39 +101,39 @@ export default class Level3 extends Level {
 
     //Grupo 2
 
-    // human = new Human(this, 150, -250, 2, this.enemies, this.level, 2);
-    // human = new Human(this, 200, -250, 2, this.enemies, this.level, 2);
-    // human = new Human(this, 250, -250, 2, this.enemies, this.level, 2);
+    human = new Human(this, 150, -250, 2, this.enemies, this.level, 2);
+    human = new Human(this, 200, -250, 2, this.enemies, this.level, 2);
+    human = new Human(this, 250, -250, 2, this.enemies, this.level, 2);
 
-    // human = new Human(this, 150, -200, 2, this.enemies, this.level, 2);
-    // human = new Human(this, 200, -200, 2, this.enemies, this.level, 2);
-    // human = new Human(this, 250, -200, 2, this.enemies, this.level, 2);
+    human = new Human(this, 150, -200, 2, this.enemies, this.level, 2);
+    human = new Human(this, 200, -200, 2, this.enemies, this.level, 2);
+    human = new Human(this, 250, -200, 2, this.enemies, this.level, 2);
 
-    // //Grupo 3
+    //Grupo 3
 
-    // human = new Human(this, 50, -450, 3, this.enemies, this.level, 3);
-    // human = new Human(this, 200, -450, 2, this.enemies, this.level, 3);
-    // human = new Human(this, 250, -450, 2, this.enemies, this.level, 3);
-    // human = new Human(this, 400, -450, 3, this.enemies, this.level, 3);
+    human = new Human(this, 50, -450, 3, this.enemies, this.level, 3);
+    human = new Human(this, 200, -450, 2, this.enemies, this.level, 3);
+    human = new Human(this, 250, -450, 2, this.enemies, this.level, 3);
+    human = new Human(this, 400, -450, 3, this.enemies, this.level, 3);
 
-    // human = new Human(this, 200, -400, 3, this.enemies, this.level, 3);
-    // human = new Human(this, 250, -400, 3, this.enemies, this.level, 3);
+    human = new Human(this, 200, -400, 3, this.enemies, this.level, 3);
+    human = new Human(this, 250, -400, 3, this.enemies, this.level, 3);
 
-    // human = new Human(this, 200, -350, 3, this.enemies, this.level, 3);
-    // human = new Human(this, 250, -350, 3, this.enemies, this.level, 3);
+    human = new Human(this, 200, -350, 3, this.enemies, this.level, 3);
+    human = new Human(this, 250, -350, 3, this.enemies, this.level, 3);
 
-    // //Grupo 4
+    //Grupo 4
 
-    // human = new Human(this, 50, -600, 3, this.enemies, this.level, 4);
-    // human = new Human(this, 100, -600, 3, this.enemies, this.level, 4);
-    // human = new Human(this, 150, -600, 3, this.enemies, this.level, 4);
-    // human = new Human(this, 200, -600, 3, this.enemies, this.level, 4);
-    // human = new Human(this, 250, -600, 3, this.enemies, this.level, 4);
-    // human = new Human(this, 300, -600, 3, this.enemies, this.level, 4);
-    // human = new Human(this, 350, -600, 3, this.enemies, this.level, 4);
+    human = new Human(this, 50, -600, 3, this.enemies, this.level, 4);
+    human = new Human(this, 100, -600, 3, this.enemies, this.level, 4);
+    human = new Human(this, 150, -600, 3, this.enemies, this.level, 4);
+    human = new Human(this, 200, -600, 3, this.enemies, this.level, 4);
+    human = new Human(this, 250, -600, 3, this.enemies, this.level, 4);
+    human = new Human(this, 300, -600, 3, this.enemies, this.level, 4);
+    human = new Human(this, 350, -600, 3, this.enemies, this.level, 4);
 
-    // human = new Human(this, 100, -550, 3, this.enemies, this.level, 4);
-    // human = new Human(this, 300, -550, 3, this.enemies, this.level, 4);
+    human = new Human(this, 100, -550, 3, this.enemies, this.level, 4);
+    human = new Human(this, 300, -550, 3, this.enemies, this.level, 4);
   }
 
   addSounds() {

@@ -1,7 +1,7 @@
 const projectiles = {
   slash: {
     name: "slash",
-    damage: 15,
+    damage: 5,
     sprite: "",
     velocityX: 2,
     velocityY: 6,
@@ -9,7 +9,7 @@ const projectiles = {
   },
   super_slash: {
     name: "super_slash",
-    damage: 20,
+    damage: 10,
     sprite: "",
     velocityX: 2,
     velocityY: 6,
@@ -26,7 +26,7 @@ const projectiles = {
   },
   super_plasma: {
     name: "super_plasma",
-    damage: 22,
+    damage: 10,
     sprite: "",
     velocityX: 1,
     velocityY: 1,
@@ -34,7 +34,7 @@ const projectiles = {
   },
   fire: {
     name: "fire",
-    damage: 17,
+    damage: 4,
     sprite: "",
     velocityX: 0,
     velocityY: 3,
@@ -42,7 +42,7 @@ const projectiles = {
   },
   fire_left: {
     name: "fire",
-    damage: 17,
+    damage: 4,
     sprite: "",
     velocityX: -1.4,
     velocityY: 3,
@@ -50,7 +50,7 @@ const projectiles = {
   },
   fire_right: {
     name: "fire",
-    damage: 17,
+    damage: 4,
     sprite: "",
     velocityX: 1.4,
     velocityY: 3,
@@ -58,7 +58,7 @@ const projectiles = {
   },
   blue_fire: {
     name: "blue_fire",
-    damage: 20,
+    damage: 6,
     sprite: "",
     velocityX: 0,
     velocityY: 6.5,
@@ -66,7 +66,7 @@ const projectiles = {
   },
   eye_laser: {
     name: "eye_laser",
-    damage: 17,
+    damage: 5,
     sprite: "",
     velocityX: 0,
     velocityY: 5,
@@ -74,7 +74,7 @@ const projectiles = {
   },
   eye_virus_attack: {
     name: "eye_virus_attack",
-    damage: 15,
+    damage: 5,
     sprite: "",
     velocityX: 3,
     velocityY: 0,
@@ -82,7 +82,7 @@ const projectiles = {
   },
   eye_virus_attack2: {
     name: "eye_virus_attack",
-    damage: 15,
+    damage: 5,
     sprite: "",
     velocityX: -3,
     velocityY: 0,
