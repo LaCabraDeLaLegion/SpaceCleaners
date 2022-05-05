@@ -38,6 +38,7 @@ export default class Shop extends Phaser.Scene {
     this.buttonSound = this.sound.add("button");
     this.playSound = this.sound.add("playSound", Sound.playSound);
     this.buySound = this.sound.add("buySound", Sound.buySound);
+    this.errorSound = this.sound.add("error_sound");
   }
 
   load_audio() {
@@ -394,12 +395,16 @@ export default class Shop extends Phaser.Scene {
         (i) => i.name === item.info.name
       );
 
-      console.log(itemIndex);
-
       if (itemIndex !== -1)
         this.inventory[categoryKey].subcategories[subcategoryKey].items[itemIndex].quantity++;
       else {
-        if (item.rebuy) item.info.quantity = 1;
+        if (item.rebuy) {
+          item.info.quantity = 1;
+        }
+
+        if (this.inventory[categoryKey].subcategories[subcategoryKey].items.length == 0){
+          item.info.equiped=true;
+        }
         this.inventory[categoryKey].subcategories[subcategoryKey].items.push(item.info);
       }
 
@@ -415,8 +420,13 @@ export default class Shop extends Phaser.Scene {
         )
         .setDepth(2)
         .setScale(this.globalWidth / 600);
+
+      this.createCategory(store[categoryKey], categoryKey, subcategoryKey);
+
+    } else {
+      this.errorSound.play();
     }
 
-    this.createCategory(store[categoryKey], categoryKey, subcategoryKey);
+    
   }
 }

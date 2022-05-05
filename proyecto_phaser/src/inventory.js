@@ -269,7 +269,7 @@ export default class Inventory extends Phaser.Scene {
       let select_btn = this.add
       .image(
         (this.globalWidth / 8) * 5.8,
-        (this.globalHeight / 7) * (position + 1.45),
+        (this.globalHeight / 7) * (position + 1.53),
         "buy"
       )
       .setOrigin(0, 0)
@@ -289,8 +289,8 @@ export default class Inventory extends Phaser.Scene {
 
       let item_selection = this.add
       .text(
-        (this.globalWidth / 8) * 5.95,
-        (this.globalHeight / 7) * (position + 1.485),
+        (this.globalWidth / 8) * 6.02,
+        (this.globalHeight / 7) * (position + 1.565),
         "Equipar",
         this.fontStyle
       )

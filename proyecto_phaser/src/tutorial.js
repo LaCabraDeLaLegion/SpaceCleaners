@@ -36,7 +36,7 @@ let map_init_texts = [
 
 let map_store_texts = [
   [
-    ["Tras la batalla vovlerá a la base para planificar su próximo movimiento."],
+    ["Tras la batalla volverá a la base para planificar su próximo movimiento."],
     ["Como ve, al salir victorioso el planeta recobra su color original."]
   ],
   [
@@ -272,6 +272,7 @@ export default class Tutorial extends Phaser.Scene {
         shield: this.inventory["consumibles"].subcategories["shields"].items.find((i) => i.equiped === true),
         potion: this.inventory["consumibles"].subcategories["potions"].items.find((i) => i.equiped === true),
         bomb: this.inventory["consumibles"].subcategories["bombs"].items.find((i) => i.equiped === true),
+        medicine: this.inventory["weapons"].subcategories["medicines"].items.find((i) => i.equiped === true),
       };
       this.player = new Player(this, this.globalWidth/2, this.globalHeight/2, this.equipedInventory);
       
@@ -659,7 +660,7 @@ export default class Tutorial extends Phaser.Scene {
         else {
           this.impactSound.play();
           medicine.destroy();
-          enemy.medicine_hit();
+          enemy.medicine_hit(medicine);
           this.setTutorialContainerVisibility(true);
           this.ok.enabled = true;
           this.events.emit("cured_human");
@@ -669,7 +670,7 @@ export default class Tutorial extends Phaser.Scene {
         if (enemy.type == "virus"){
           this.impactSound.play();
           medicine.destroy();
-          enemy.medicine_hit();
+          enemy.medicine_hit(medicine);
           this.events.emit("mutation_virus");
         }
         else {

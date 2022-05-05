@@ -16,24 +16,12 @@ export default class Level extends Phaser.Scene {
 
     this.inventory = data[0];
     this.equipedInventory = {
-      skin: this.inventory["others"].subcategories["skins"].items.find(
-        (i) => i.equiped === true
-      ),
-      weapon: this.inventory["weapons"].subcategories["lasers"].items.find(
-        (i) => i.equiped === true
-      ),
-      medicine: this.inventory["weapons"].subcategories["medicines"].items.find(
-        (i) => i.equiped === true
-      ),
-      shield: this.inventory["consumibles"].subcategories["shields"].items.find(
-        (i) => i.equiped === true
-      ),
-      potion: this.inventory["consumibles"].subcategories["potions"].items.find(
-        (i) => i.equiped === true
-      ),
-      bomb: this.inventory["consumibles"].subcategories["bombs"].items.find(
-        (i) => i.equiped === true
-      ),
+      skin: this.inventory["others"].subcategories["skins"].items.find((i) => i.equiped === true),
+      weapon: this.inventory["weapons"].subcategories["lasers"].items.find((i) => i.equiped === true),
+      medicine: this.inventory["weapons"].subcategories["medicines"].items.find((i) => i.equiped === true),
+      shield: this.inventory["consumibles"].subcategories["shields"].items.find((i) => i.equiped === true),
+      potion: this.inventory["consumibles"].subcategories["potions"].items.find((i) => i.equiped === true),
+      bomb: this.inventory["consumibles"].subcategories["bombs"].items.find((i) => i.equiped === true),
     };
 
     this.virus_killed = 0;
