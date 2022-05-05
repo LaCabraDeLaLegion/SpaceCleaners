@@ -112,31 +112,31 @@ export default class Level extends Phaser.Scene {
   }
 
   initUI() {
-    this.add.image(20, 885, "livesUI").setDepth(1);
+    this.add.image(20, 890, "livesUI").setDepth(1);
     this.add.image(20, 850, "potionsUI").setDepth(1);
-    this.add.image(20, 815, "bombsUI").setDepth(1);
-    this.add.image(20, 785, "shieldsUI").setDepth(1);
+    this.add.image(17, 810, "bombsUI").setDepth(1);
+    this.add.image(20, 770, "shieldsUI").setDepth(1);
 
     this.textUI = [];
 
-    this.livesText = this.add.text(35, 875, this.player.lives, this.fontStyle);
+    this.livesText = this.add.text(40, 875, this.player.lives, this.fontStyle);
 
     this.potionsText = this.add.text(
-      35,
+      40,
       835,
       this.player.inventory.potion ? this.player.inventory.potion.quantity : 0,
       this.fontStyle
     );
 
     this.bombsText = this.add.text(
-      35,
+      40,
       795,
       this.player.inventory.bomb ? this.player.inventory.bomb.quantity : 0,
       this.fontStyle
     );
 
     this.shieldsText = this.add.text(
-      35,
+      40,
       755,
       this.player.inventory.shield ? this.player.inventory.shield.quantity : 0,
       this.fontStyle
