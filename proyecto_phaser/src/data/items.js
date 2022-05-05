@@ -67,10 +67,26 @@ const items = {
         }
     },
     bombs: {
-
+        basic_bomb: {
+            name: "Bomba basica",
+            quantity: 0,
+            damage: 5,
+            speed: 1,
+            range: 100,
+            desc: "1 punto de daño de area",
+            img: "basic_bomb",
+            scale: 225,
+        },
     }, 
     shields: {
-
+        basic_shield: {
+            name: "Escudo basico",
+            quantity: 0,
+            time: 200,
+            desc: "Inmunidad al daño durante 4 segundos",
+            img: "basic_shield",
+            scale: 225,
+        },
     },
     skins: {
         player_1: {

@@ -49,9 +49,9 @@ export default class Virus extends Enemy {
 
    
 
-    weapon_hit() {
+    weapon_hit(weapon) {
         if (!this.mutating) {
-            this.lives--;
+            this.lives -= weapon.damage;
             this.play(this.damage_anim);
             this.takingdamage = true;
             this.on("animationcomplete", () => {

@@ -4,6 +4,7 @@ export default class Laser extends Weapon {
   constructor(scene, x, y) {
     super(scene, x, y, "laser");
     this.addGroup(this.scene.lasers);
+    this.damage = 1;
   }
 
   preUpdate(t, dt) {

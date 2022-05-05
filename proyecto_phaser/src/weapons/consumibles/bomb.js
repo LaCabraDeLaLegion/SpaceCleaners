@@ -1,14 +1,13 @@
 import Weapon from "../weapon.js";
 
 export default class Bomb extends Weapon {
-  constructor(scene, x, y, name) {
+  constructor(scene, x, y, data) {
       
-    super(scene, x, y, name);
-    if (name == "basic_bomb"){
-        this.damage = 5;
-        this.speed = 1;
-        this.range = 100;
-    }
+    super(scene, x, y, data.img);
+    this.damage = data.damage;
+    this.speed = data.speed;
+    this.range = data.range;
+    
   }
 
   preUpdate(t, dt) {

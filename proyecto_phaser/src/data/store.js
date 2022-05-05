@@ -31,12 +31,26 @@ const store = {
       },
       bombs: {
         name: "Bombas",
-        items: [],
+        items: [
+          {
+            info: Items.bombs["basic_bomb"],
+            rebuy: true,
+            price: 150,
+            page: 1,
+          }
+        ],
         num_pages: 1,
       },
       shields: {
         name: "Escudos",
-        items: [],
+        items: [
+          {
+            info: Items.shields["basic_shield"],
+            rebuy: true,
+            price: 150,
+            page: 1,
+          }
+        ],
         num_pages: 1,
       }
     }

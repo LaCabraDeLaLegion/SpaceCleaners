@@ -6,8 +6,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, inventory) {
     super(scene, x, y, inventory.skin.sprite);
 
-    console.log(inventory);
-
     this.normal_animation = inventory.skin.sprite + "_walk";
     this.damage_animation = inventory.skin.sprite + "_walk_damage";
     this.heal_animation = inventory.skin.sprite + "_walk_heal";

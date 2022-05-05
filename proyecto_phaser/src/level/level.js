@@ -263,13 +263,13 @@ export default class Level extends Phaser.Scene {
   }
 
   useBomb() {
-    if (this.equipedInventory.bombs.quantity > 0) {
-      this.equipedInventory.bombs.quantity--;
+    if (this.equipedInventory.bomb.quantity > 0) {
+      this.equipedInventory.bomb.quantity--;
       let bomba = new Bomb(
         this,
         this.player.x,
         this.player.y + 20,
-        this.equipedInventory.bombs.name
+        this.equipedInventory.bomb
       );
       this.bombs.add(bomba);
     }
@@ -286,7 +286,7 @@ export default class Level extends Phaser.Scene {
   onHit(enemy, laser) {
     this.impactSound.play();
     laser.destroy();
-    enemy.weapon_hit();
+    enemy.weapon_hit(laser);
     // console.log("monstruos vivos: " + this.alive_monsters);
     if (enemy.lives == 0) this.alive_monsters--;
   }
@@ -298,10 +298,8 @@ export default class Level extends Phaser.Scene {
         Phaser.Math.Difference(child.x, bomb.x) < bomb.range &&
         Phaser.Math.Difference(child.y, bomb.y) < bomb.range
       ) {
-        child.lives -= bomb.damage;
-        if (child.lives <= 0) {
-          this.alive_monsters--;
-        }
+        child.weapon_hit(bomb);
+        if (child.lives <= 0) this.alive_monsters--;
       }
     }, this);
     let expl = this.add.sprite(enemy.x, enemy.y, "explosion");
