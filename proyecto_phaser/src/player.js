@@ -52,7 +52,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.speed = 400;
     this.movingx = false;
     this.movingy = false;
-    this.lives = 10;
+    this.lives = 50;
+    this.maxLives = 50;
 
     this.inventory = inventory;
 
@@ -126,6 +127,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.consumibleTime <= 0
     ) {
       this.scene.createShield();
+      this.scene.updateUI();
       this.consumibleTime = this.inventory.shield.time;
       this.shieldTime = this.inventory.shield.time;
       this.current_animation = this.shield_animation;
@@ -136,6 +138,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.consumibleTime <= 0
     ) {
       this.scene.usePotion();
+      this.scene.updateUI();
       this.consumibleTime = 15;
       this.healTime = 50;
       this.current_animation = this.heal_animation;
@@ -146,6 +149,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.consumibleTime <= 0
     ) {
       this.scene.useBomb();
+      this.scene.updateUI();
       this.consumibleTime = 15;
     }
 
@@ -171,6 +175,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.anims.stop();
       this.play(this.damage_animation);
       this.lives -= damage;
+      this.scene.updateUI();
 
       console.log("Vidas: " + this.lives);
 

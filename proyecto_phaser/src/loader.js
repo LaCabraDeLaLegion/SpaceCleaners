@@ -181,6 +181,7 @@ export default class Loader extends Phaser.Scene {
     this.load.audio("boss2_song", "/sounds/boss2_song.wav");
     this.load.audio("boss3_song", "/sounds/boss3_song.mp3");
     this.load.audio("boss4_song", "/sounds/boss4_song.wav");
+    this.load.audio("error_sound", "/sounds/error.mp3")
   }
 
   createAnimations() {

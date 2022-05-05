@@ -119,7 +119,12 @@ export default class Level extends Phaser.Scene {
 
     this.textUI = [];
 
-    this.livesText = this.add.text(40, 875, this.player.lives, this.fontStyle);
+    this.livesText = this.add.text(
+      40, 
+      875, 
+      this.player.lives, 
+      this.fontStyle
+    );
 
     this.potionsText = this.add.text(
       40,
@@ -142,9 +147,12 @@ export default class Level extends Phaser.Scene {
       this.fontStyle
     );
 
-    this.textUI.push[
-      (this.livesText, this.potionsText, this.bombsText, this.shieldsText)
-    ];
+    this.textUI.push(
+      this.livesText, 
+      this.potionsText, 
+      this.bombsText, 
+      this.shieldsText
+    );
   }
 
   initEnemies() {
@@ -179,6 +187,7 @@ export default class Level extends Phaser.Scene {
     this.impactSound = this.sound.add("explosion", Sound.explosion);
     this.damageSound = this.sound.add("damage", Sound.damage);
     this.drinkPotionSound = this.sound.add("drink_potion", Sound.drinkPotion);
+    this.errorSound = this.sound.add("error_sound");
     this.gameOverSound = this.sound.add("game_over", Sound.gameOver);
   }
 
@@ -244,27 +253,35 @@ export default class Level extends Phaser.Scene {
   }
 
   createShield() {
-    if (this.inventory.shield.quantity > 0) {
-      this.inventory.shield.quantity--;
+    if (this.equipedInventory.shield.quantity > 0) {
+      this.equipedInventory.shield.quantity--;
     }
   }
 
   usePotion() {
-    if (this.inventory.potion.quantity > 0) {
-      this.drinkPotionSound.play();
-      this.player.lives += this.inventory.potion.health;
-      this.inventory.potion.quantity--;
+    if (this.equipedInventory.potion.quantity > 0) {
+      if(this.player.lives == this.player.maxLives) {
+        this.errorSound.play();
+      } else {
+        this.drinkPotionSound.play();
+        this.equipedInventory.potion.quantity--;
+        this.player.lives += this.equipedInventory.potion.health;
+      }
+
+      if(this.player.lives >= this.player.maxLives) {
+        this.player.lives = this.player.maxLives;
+      }
     }
   }
 
   useBomb() {
-    if (this.inventory.bombs.quantity > 0) {
-      this.inventory.bombs.quantity--;
+    if (this.equipedInventory.bombs.quantity > 0) {
+      this.equipedInventory.bombs.quantity--;
       let bomba = new Bomb(
         this,
         this.player.x,
         this.player.y + 20,
-        this.inventory.bombs.name
+        this.equipedInventory.bombs.name
       );
       this.bombs.add(bomba);
     }
@@ -309,6 +326,46 @@ export default class Level extends Phaser.Scene {
   }
 
   //OTHERS
+  updateUI() {
+    this.textUI.forEach((text) => text.destroy());
+    this.textUI = [];
+  
+    this.livesText = this.add.text(
+      35, 
+      875, 
+      this.player.lives, 
+      this.fontStyle
+    );
+  
+    this.potionsText = this.add.text(
+      35,
+      835,
+      this.player.inventory.potion ? this.player.inventory.potion.quantity : 0,
+      this.fontStyle
+    );
+  
+    this.bombsText = this.add.text(
+      35,
+      795,
+      this.player.inventory.bomb ? this.player.inventory.bomb.quantity : 0,
+      this.fontStyle
+    );
+  
+    this.shieldsText = this.add.text(
+      35,
+      755,
+      this.player.inventory.shield ? this.player.inventory.shield.quantity : 0,
+      this.fontStyle
+    );
+  
+    this.textUI.push(
+      this.livesText, 
+      this.potionsText, 
+      this.bombsText, 
+      this.shieldsText
+    );
+  }
+
   updateInventory() {
     if (this.equipedInventory.shield)
       this.inventory["consumibles"].subcategories["shields"].items.find(
