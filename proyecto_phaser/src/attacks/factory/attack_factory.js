@@ -8,8 +8,10 @@ import AttackVirus6 from "../virus/attackVirus6.js";
 import AttackBoss1 from "../boss/attackBoss1.js";
 import AttackBoss2 from "../boss/attackBoss2.js";
 import AttackBoss3 from "../boss/attackBoss3.js";
+import AttackBoss4 from "../boss/attackBoss4.js";
 import SuperAttackBoss1 from "../boss/superAttackBoss1.js";
 import SuperAttackBoss2 from "../boss/superAttackBoss2.js";
+import SuperAttackBoss3 from "../boss/superAttackBoss3.js";
 import AttackWeapon1 from "../player/attackWeapon1.js";
 import AttackWeapon2 from "../player/attackWeapon2.js";
 import AttackWeapon3 from "../player/attackWeapon3.js";
@@ -28,6 +30,10 @@ export default class Attack_Factory {
         return new SuperAttackBoss2(scene, enemy, target);
       case Attack.AttackBoss3:
         return new AttackBoss3(scene, enemy, target);
+      case Attack.SuperAttackBoss3:
+        return new SuperAttackBoss3(scene, enemy, target);
+      case Attack.AttackBoss4:
+        return new AttackBoss4(scene, enemy, target);
       case Attack.BasicAttack:
         return new AttackVirus1(scene, enemy, target); 
       case Attack.BasicAttack2:

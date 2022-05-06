@@ -1,30 +1,23 @@
 import Projectile from "../projectile.js";
 import ProjectileData from "../../data/projectiles.js";
 
-export default class AttackBoss2 {
+export default class AttackBoss1 {
   /**
-   * Lanza varias llamas
+   * Crea dos proyectiles slashes normales uno al lado del otro
    */
   constructor(scene, enemy, target) {
     new Projectile(
       scene,
-      enemy.x - 100,
+      enemy.x,
       enemy.y + 80,
-      ProjectileData["fire_left"],
+      ProjectileData["slash"],
       target
     );
     new Projectile(
       scene,
       enemy.x + 50,
       enemy.y + 80,
-      ProjectileData["fire"],
-      target
-    );
-    new Projectile(
-      scene,
-      enemy.x + 200,
-      enemy.y + 80,
-      ProjectileData["fire_right"],
+      ProjectileData["slash"],
       target
     );
   }

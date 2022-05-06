@@ -52,14 +52,14 @@ export default class Boss extends Phaser.GameObjects.Sprite {
         if (this.life >= 35) {
           AttackFactory.createAttack(
             this.scene,
-            Attack.AttackBoss2,
+            Attack.AttackBoss3,
             this,
             null
           );
         } else {
           AttackFactory.createAttack(
             this.scene,
-            Attack.SuperAttackBoss2,
+            Attack.SuperAttackBoss3,
             this,
             null
           );

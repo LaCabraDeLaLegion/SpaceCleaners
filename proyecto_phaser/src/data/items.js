@@ -89,17 +89,19 @@ const items = {
         },
     },
     skins: {
-        player_1: {
+        skin1: {
             name: "Soldado",
-            sprite: "player_1",
+            desc: "Velocidad +0",
+            img: "skin1",
+            scale: 425,
         },
-        player_2: {
+        skin2: {
             name: "Cientifico",
-            sprite: "player_2",
+            sprite: "skin2",
         },
-        player_3: {
+        skin3: {
             name: "No se",
-            sprite: "player_3",
+            sprite: "skin3",
         }
     }
 }
