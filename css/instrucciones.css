@@ -1,12 +1,11 @@
-body{
-    font-family: "DM Sans";
-    font-size: 18px;
-}
+
+
 
 #text_container {
     padding: 2%;
+    font-family: "DM Sans";
     font-size: 20px;
-}
+  }
 
 .header {
     padding: 10px;
