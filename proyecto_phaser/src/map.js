@@ -21,7 +21,7 @@ let planets_state = [
   "locked",
   "locked",
   "locked",
-  "locked",
+  "unlocked",
 ];
 
 let planet_counter = 1;

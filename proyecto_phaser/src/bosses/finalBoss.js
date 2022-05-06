@@ -10,7 +10,7 @@ let damage_images = [
   "B4_damage",
   "B5_damage",
   "B6_damage",
-  "FB_damage",
+  "FB",
 ];
 let death_images = [
   "B1_death",
