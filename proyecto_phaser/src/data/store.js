@@ -82,13 +82,13 @@ const store = {
           {
             info: Items.medicines["pill"],
             rebuy: false,
-            price: 500,
+            price: 50,
             page: 1,
           },
           {
             info: Items.medicines["gel"],
             rebuy: false,
-            price: 1000,
+            price: 100,
             page: 1,
           }
         ],
