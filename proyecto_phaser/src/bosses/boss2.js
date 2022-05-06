@@ -34,7 +34,7 @@ export default class Boss extends Phaser.GameObjects.Sprite {
     this.dialog = false;
     this.direction = -1;
     this.attackTime = 60;
-    this.life = 100;
+    this.life = 70;
     this.text = this.scene.add.text(350, 200, "I will destroy you!", {
       fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
     });
@@ -70,33 +70,12 @@ export default class Boss extends Phaser.GameObjects.Sprite {
 
       switch (this.direction) {
         case -1:
-          if (this.x <= 320) {
-            this.direction = 1;
-          } else {
-            this.x -= 1;
-            this.y += 1;
-          }
+          if (this.x <= 80) this.direction = 1;
+          else this.x -= 2;
           break;
         case 1:
-          if (this.x >= 420) this.direction = 2;
-          else {
-            this.x += 1;
-            this.y -= 1;
-          }
-          break;
-        case 2:
-          if (this.x >= 520) this.direction = 3;
-          else {
-            this.x += 1;
-            this.y += 1;
-          }
-          break;
-        case 3:
-          if (this.x <= 420) this.direction = -1;
-          else {
-            this.x -= 1;
-            this.y -= 1;
-          }
+          if (this.x >= 550) this.direction = -1;
+          else this.x += 2;
           break;
         case 0:
           break;

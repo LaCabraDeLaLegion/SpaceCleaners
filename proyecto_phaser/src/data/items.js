@@ -89,19 +89,26 @@ const items = {
         },
     },
     skins: {
-        skin1: {
+        player_1: {
             name: "Soldado",
             desc: "Velocidad +0",
             img: "skin1",
             scale: 425,
+            sprite: "player_1",
         },
-        skin2: {
+        player_2: {
             name: "Cientifico",
-            sprite: "skin2",
+            desc: "Velocidad +1",
+            img: "skin2",
+            scale: 425,
+            sprite: "player_2",
         },
-        skin3: {
-            name: "No se",
-            sprite: "skin3",
+        player_3: {
+            name: "Equipo de cuarentena",
+            desc: "Velocidad +2",
+            img: "skin3",
+            scale: 425,
+            sprite: "player_3",
         }
     }
 }

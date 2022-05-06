@@ -42,7 +42,7 @@ const inventory = {
         skins: {
             name: "Skins",
             items: [
-              {...Items.skins["skin1"], equiped: true }
+              {...Items.skins["player_1"], equiped: true }
             ]
         },   
       }
