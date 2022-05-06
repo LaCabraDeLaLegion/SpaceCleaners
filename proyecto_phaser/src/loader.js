@@ -131,12 +131,14 @@ export default class Loader extends Phaser.Scene {
     this.load.image("gel", "/sprites/Medicinas/water_drop.png");
 
     //Armas
-    this.load.image("laser", "/sprites/Weapons/laser.png");
+    this.load.image("laser1", "/sprites/Weapons/laser1.png");
+    this.load.image("laser2", "/sprites/Weapons/laser2.png");
     //this.load.image("super_laser", "/sprites/Armas/super_laser.png");
     this.load.image("fire", "/sprites/Armas/fire.png");
     //this.load.image("bullet", "/sprites/Armas/bullet.png");
     this.load.image("basic_laser", "/sprites/Weapons/basic_laser.png");
     this.load.image("double_laser", "/sprites/Weapons/double_laser.png");
+    this.load.image("enhanced_laser", "/sprites/Weapons/enhanced_laser.png");
 
     //Consumibles
     this.load.image("basic_bomb", "/sprites/consumibles/basic_bomb.png");

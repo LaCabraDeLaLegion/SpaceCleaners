@@ -15,6 +15,7 @@ import SuperAttackBoss3 from "../boss/superAttackBoss3.js";
 import AttackWeapon1 from "../player/attackWeapon1.js";
 import AttackWeapon2 from "../player/attackWeapon2.js";
 import AttackWeapon3 from "../player/attackWeapon3.js";
+import AttackWeapon4 from "../player/attackWeapon4.js";
 import EyeVirusAttack from "../virus/eyeVirusAttack.js";
 import EyeVirusAttack2 from "../virus/eyeVirusAttack2.js";
 import AttackFinalBoss from "../boss/attackFinalBoss.js";
@@ -68,6 +69,8 @@ export default class Attack_Factory {
         return new AttackWeapon2(scene, player);
       case Attack.Weapon3:
         return new AttackWeapon3(scene, player);
+      case Attack.Weapon4:
+        return new AttackWeapon4(scene, player);
       default:
         break;
     }

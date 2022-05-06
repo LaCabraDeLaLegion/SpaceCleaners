@@ -7,15 +7,22 @@ const items = {
             attack: Attack.Weapon1,
             desc: "Dispara 1 laser ( 1 de daño )",
             img: "basic_laser",
-            scale: 500,
+            scale: 550,
         },
         double_laser: {
             name: "Laser doble",
             attack: Attack.Weapon2,
             desc: "Dispara dos lasers ( 1 daño cada uno )",
             img: "double_laser",
-            scale: 500,
-        }
+            scale: 550,
+        },
+        enhanced_laser: {
+            name: "Laser mejorado",
+            attack: Attack.Weapon4,
+            desc: "Dispara 1 lasers ( 2 de daño )",
+            img: "enhanced_laser",
+            scale: 550,
+        },
     },
     medicines: {
         mask: {

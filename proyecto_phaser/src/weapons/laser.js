@@ -1,10 +1,10 @@
 import Weapon from "./weapon.js";
 
 export default class Laser extends Weapon {
-  constructor(scene, x, y) {
-    super(scene, x, y, "laser");
+  constructor(scene, x, y, data) {
+    super(scene, x, y, data.name);
     this.addGroup(this.scene.lasers);
-    this.damage = 1;
+    this.damage = data.damage;
   }
 
   preUpdate(t, dt) {

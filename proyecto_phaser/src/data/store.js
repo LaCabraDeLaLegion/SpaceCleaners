@@ -66,7 +66,13 @@ const store = {
             rebuy: false,
             price: 10,
             page: 1,
-          }
+          },
+          {
+            info: Items.lasers["enhanced_laser"],
+            rebuy: false,
+            price: 10,
+            page: 1,
+          },
         ],
         num_pages: 1,
       },

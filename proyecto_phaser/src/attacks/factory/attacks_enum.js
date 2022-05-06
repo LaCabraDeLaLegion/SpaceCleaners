@@ -23,6 +23,7 @@ const EyeVirusAttack2 = Symbol("virus_eye_attack2");
 const Weapon1 = Symbol("weapon1_attack");
 const Weapon2 = Symbol("weapon2_attack");
 const Weapon3 = Symbol("weapon3_attack");
+const Weapon4 = Symbol("weapon4_attack");
 
 export default {
   AttackBoss1,
@@ -45,4 +46,5 @@ export default {
   Weapon1,
   Weapon2,
   Weapon3,
+  Weapon4,
 };
