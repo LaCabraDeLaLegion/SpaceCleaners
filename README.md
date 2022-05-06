@@ -3,9 +3,9 @@
 Space Cleaners es un juego desarrollado con Phaser para la asignatura optativa DVI impartida en la Facultad de Informática de la Universidad Complutense de Madrid. La idea original del juego está basada en juegos de tipo arcade como el Space Invaders.
 
 ![Pantalla principal](https://github.com/LaCabraDeLaLegion/SpaceCleaners/blob/main/images/inicio.png?raw=true "Pantalla principal")
-![Mapa](/SpaceCleaners/images/mapa.png?raw=true "Mapa")
-![Ejemplo de batalla](/SpaceCleaners/images/batalla.png?raw=true "Ejemplo de batalla")
-![Tienda](/SpaceCleaners/images/tienda.png?raw=true "Tienda")
+![Mapa](https://github.com/LaCabraDeLaLegion/SpaceCleaners/blob/main/images/mapa.png?raw=true "Mapa")
+![Ejemplo de batalla](https://github.com/LaCabraDeLaLegion/SpaceCleaners/blob/main/images/batalla.png?raw=true "Ejemplo de batalla")
+![Tienda](https://github.com/LaCabraDeLaLegion/SpaceCleaners/blob/main/images/tienda.png?raw=true "Tienda")
 
 Grupo 8 - No tenemos nombre
 
