@@ -303,7 +303,7 @@ export default class Level extends Phaser.Scene {
     laser.destroy();
     enemy.weapon_hit(laser);
     // console.log("monstruos vivos: " + this.alive_monsters);
-    if (enemy.lives == 0) this.alive_monsters--;
+    if (enemy.lives <= 0) this.alive_monsters--;
   }
 
   onBombHit(enemy, bomb) {
@@ -379,6 +379,7 @@ export default class Level extends Phaser.Scene {
 
   game_over() {
     this.gameOver = true;
+    this.levelSong.stop();
     this.bossSong.stop();
     this.gameOverSound.play();
     if (this.bossInScene) this.boss.destroy();
