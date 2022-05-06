@@ -80,6 +80,7 @@ export default class Loader extends Phaser.Scene {
     this.load.image("spiderweb", "/sprites/spiderweb.png");
     this.load.image("thunder", "/sprites/thunder.png");
     this.load.image("super_slash", "/sprites/super_slash.png");
+    this.load.image("poison_arrow", "/sprites/poison_arrow.png");
     this.load.image("fire", "/sprites/fire.png");
     this.load.image("blue_fire", "/sprites/blue_fire.png");
     this.load.image("eye_laser", "/sprites/eye_laser_2.png");

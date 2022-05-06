@@ -128,6 +128,14 @@ const projectiles = {
     velocityY: 4,
     angle: 0,
   },
+  poison_arrow: {
+    name: "poison_arrow",
+    damage: 4,
+    sprite: "",
+    velocityX: 0,
+    velocityY: 6,
+    angle: 0,
+  },
 };
 
 export default projectiles;

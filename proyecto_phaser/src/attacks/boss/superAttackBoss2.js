@@ -7,42 +7,35 @@ export default class SuperAttackBoss2 {
       scene,
       enemy.x - 100,
       enemy.y + 80,
-      ProjectileData["fire_left"],
-      target
-    );
-    new Projectile(
-      scene,
-      enemy.x + 50,
-      enemy.y + 80,
-      ProjectileData["fire"],
+      ProjectileData["poison_arrow"],
       target
     );
     new Projectile(
       scene,
       enemy.x + 200,
       enemy.y + 80,
-      ProjectileData["fire_right"],
+      ProjectileData["poison_arrow"],
       target
     );
     new Projectile(
       scene,
       enemy.x + 50,
       enemy.y + 80,
-      ProjectileData["blue_fire"],
+      ProjectileData["poison_arrow"],
       target
     );
     new Projectile(
       scene,
-      enemy.x - 100,
+      enemy.x + 350,
       enemy.y + 80,
-      ProjectileData["blue_fire"],
+      ProjectileData["poison_arrow"],
       target
     );
     new Projectile(
       scene,
-      enemy.x + 200,
+      enemy.x - 250,
       enemy.y + 80,
-      ProjectileData["blue_fire"],
+      ProjectileData["poison_arrow"],
       target
     );
   }

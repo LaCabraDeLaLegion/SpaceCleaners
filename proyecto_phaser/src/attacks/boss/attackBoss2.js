@@ -20,9 +20,16 @@ export default class AttackBoss1 {
     );
     new Projectile(
       scene,
-      enemy.x + 50,
+      enemy.x + 100,
       enemy.y + 80,
-      ProjectileData["fire"],
+      ProjectileData["poison_arrow"],
+      target
+    );
+    new Projectile(
+      scene,
+      enemy.x,
+      enemy.y + 80,
+      ProjectileData["poison_arrow"],
       target
     );
   }
