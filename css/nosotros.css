@@ -7,6 +7,12 @@
     text-shadow: 1px 1px 1px white;
 }
 
+#text_container {
+  padding: 2%;
+  font-family: "DM Sans";
+  font-size: 20px;
+}
+
 .navigator{
     overflow: hidden;
     font-family: "Bungee";

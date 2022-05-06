@@ -20,7 +20,7 @@
     <div class="navigator">
         <a href="index.html"><i class="fa fa-home"></i></a>
         <a href="proyecto_phaser/index.html">El juego</a>
-        <a href="gdd.html">GDD</a>
+        <!--<a href="gdd.html">GDD</a>-->
         <a href="instrucciones.html">Instrucciones</a>
         <a href="nosotros.html">Sobre Nosotros</a>
     </div>
@@ -302,14 +302,21 @@
 
     <h1 id="gdd"> Mapa </h1>
 
-
-    <h1 id="gdd"> Tienda </h1>
-        
-    <h2 id="datos-generales">Cómo ganar dinero</h2>
-
-    <h2 id="datos-generales">Comprar en la tienda</h2>
-
-    <h2 id="datos-generales">Inventario y equipación</h2>
+    <div id="text_container">
+        <p>En el mapa se encuentran 8 planetas. En la parte superior tenemos la Tierra, los planetas siguientes están ordenados por dificultad. Al inicio de la partida todos los niveles excepto el primero estarán bloqueados (un candado indica qué planetas están bloqueados).<br>
+        </p>
+        <p>Los planetas infectados se muestran teñidos de rojo. Cuando un planeta se ha desinfectado los planetas recuperan su color natural.
+        Al inicio de la partida, todos los planetas salvo la Tierra estarán infectados.
+        </p>
+        <p>Para desinfectar un planeta desbloqueado hay que hacer click sobre el planeta.
+        </p> 
+        <p>Una vez se ha desinfectado un planeta, se desbloqueará el siguiente nivel si es que no estaba desbloqueado.
+        </p>
+        <p>IMPORTANTE: el enemigo tiene una probabilidad baja de infectar planetas desinfectados. Cuando se intenta desinfectar un planeta 
+        se considera que ha pasado un turno y el enemigo intentará infectar un planeta. Si lo consigue se mostrará el planeta de nuevo en rojo.
+        Cuando todos los niveles estén infectados el enemigo tratará de infectar la Tierra, si lo consigue GAME OVER.
+        </p>
+    </div>
     
 </body>
 </html>

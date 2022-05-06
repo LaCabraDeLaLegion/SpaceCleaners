@@ -19,7 +19,7 @@
     <div class="navigator">
         <a href="index.html"><i class="fa fa-home"></i></a>
         <a href="proyecto_phaser/index.html">El juego</a>
-        <a href="gdd.html">GDD</a>
+        <!--<a href="gdd.html">GDD</a>-->
         <a href="instrucciones.html">Instrucciones</a>
         <a href="nosotros.html">Sobre Nosotros</a>
     </div>
@@ -52,8 +52,7 @@
         <h2 id="mapa">Mapa</h2>
         <p>El jugador deberá decidir qué planeta va a intentar desinfectar. Para ello dispone de un mapa en el que se muestran todos los planetas así como su estado (infectado o desinfectado) y si está desbloqueado o no. Se utiliza un código de colores para mostrar al jugador qué planetas están infectados y candados para simbolizar si está bloqueado.</p>
         <p>Al comienzo de la partida, el mapa mostrará todos los planetas menos la Tierra como infectados. Además, el único planeta desbloqueado (posible desinfectar) es el planeta más cercano a la Tierra correspondiente al nivel 1. Cada planeta tiene un nivel de dificultad distinto y están ordenados en el mapa por nivel de dificultad utiliznado la Tierra como referencia.</p>
-        <p>Aspecto inicial del mapa:
-        (CAPTURA DE PANTALLA DEL MAPA)</p>
+
         <p>Según el jugador va desinfectando niveles el siguiente nivel se desbloquea. Adicionalmente, tras cada batalla el virus tiene la posibilidad de reinfectar un planeta (la probabilidad de que esto sucede depende del nivel de dificultad del juego seleccionado por el jugador). Para que el jugador tenga la posibilidad de adaptarse al juego se dan unas rondas de tregua en las que los virus no reinfectan planetas (cuántas dependerá del nivel de dificutlad).</p>
         <p>Características de los niveles de dificultad (provisional):</p>
         <ul>
@@ -62,9 +61,8 @@
         <li>HARD: probabilidad de reinfección 40% y 2 turnos de tregua.</li>
         </ul>
         <p>Por ejemplo, el jugador puede haber desinfectado los niveles 1, 2 y 3 pero los virus han reinfectado el planeta número 2 en el mismo turno quedando el mapa de la siguiente manera:</p>
-        <p>(CAPTURA DE PANTALLA DEL MAPA)</p>
+        
         <p>A continuación tenemos las características de cada nivel.</p>
-        <p>(METER IMÁGENES DE LOS PATRONES PORQUE EL MARKDOWN ME TOCA LAS NARICES :) )</p>
         
         <h4 id="nivel-1">Nivel 1</h4>
         <p>Número de virus mutados: 20</p>
@@ -75,10 +73,10 @@
         <p>(Primer grupo que aparece)</p>
         <p>V1 V1 H1 V1 V1</p>
         <p>V1 V1 H1 V1 V1</p>
-        <p>(Segundo grupo que aparece) -&gt; Tiempo de espera: 10 segundos</p>
+        <p>(Segundo grupo que aparece)</p>
         <p>V1 V1 H1 V1 V1</p>
         <p>V1 V1 H1 V1 V1</p>
-        <p>(Tercer grupo que aparece)  -&gt; Tiempo de espera: 20 segundos</p>
+        <p>(Tercer grupo que aparece)</p>
         <p>V1 V1 H1 V1 V1</p>
         <p>H1 H1 H1 H1 H1</p>
         <p>Boss: nivel 1</p>
@@ -94,10 +92,10 @@
         <p>(Primer grupo que aparece)</p>
         <p>H1 V1 V1 H1 V1 V1 H1</p>
         <p>H1 V1 V1 H1 V1 V1 H1</p>
-        <p>(Segundo grupo que aparece) -&gt; Tiempo de espera: 10 segundos</p>
+        <p>(Segundo grupo que aparece)</p>
         <p>H1 V1 V1 H1 V1 V1 H1</p>
         <p>   V1 V1 H1 V1 V1</p>
-        <p>(Tercer grupo que aparece)  -&gt; Tiempo de espera: 25 segundos</p>
+        <p>(Tercer grupo que aparece)</p>
         <p>H2 V2 V2 H2 V2 V2 H2</p>
         <p>H2 H2 H2 H2 H2 H2 H2</p>
         <p>Boss: nivel 2</p>
@@ -113,10 +111,10 @@
         <p>(Primer grupo que aparece)</p>
         <p>V1 V1 H1 H1 V1 V1</p>
         <p>V2 V2 H2 H2 V2 V2</p>
-        <p>(Segundo grupo que aparece) -&gt; Tiempo de espera: 10 segundos</p>
+        <p>(Segundo grupo que aparece)</p>
         <p>V2 V2 H2 H2 H2 V2 V2</p>
         <p>V2 V2 H2 H2 H2 V2 V2</p>
-        <p>(Tercer grupo que aparece)  -&gt; Tiempo de espera: 25 segundos</p>
+        <p>(Tercer grupo que aparece)</p>
         <p>H3 V2 V2 H2 H2 V2 V2 H3</p>
         <pre><code>  <span class="hljs-built_in">V3</span> H3 H3 <span class="hljs-built_in">V3</span>
 
