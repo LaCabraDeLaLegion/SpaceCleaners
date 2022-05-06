@@ -1,7 +1,7 @@
 import AttackFactory from "../attacks/factory/attack_factory.js";
 import Attack from "../attacks/factory/attacks_enum.js";
 
-let images = ["B1", "B2", "B3", "B4", "B5", "B6", "B7"];
+let images = ["B1", "B2", "B3", "B4_1", "B5", "B6", "B7"];
 let damage_images = [
   "B1_damage",
   "B2_damage",
@@ -32,9 +32,11 @@ export default class Boss extends Phaser.GameObjects.Sprite {
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.dialog = false;
-    this.direction = -1;
-    this.attackTime = 60;
-    this.life = 100;
+    this.direction = 1;
+    this.attackTime = 360;
+    this.moveTime = 60;
+    this.life = 175;
+    this.activeAttack = null;
     this.text = this.scene.add.text(350, 200, "I will destroy you!", {
       fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
     });
@@ -42,6 +44,7 @@ export default class Boss extends Phaser.GameObjects.Sprite {
 
   preUpdate(t, dt) {
     this.attackTime--;
+    this.moveTime--;
 
     if (this.y < 100) this.y++;
     else if (!this.dialog) {
@@ -49,10 +52,10 @@ export default class Boss extends Phaser.GameObjects.Sprite {
       this.text.destroy();
     } else {
       if (this.attackTime <= 0) {
-        if (this.life >= 35) {
+        if (this.life >= 65) {
           AttackFactory.createAttack(
             this.scene,
-            Attack.AttackBoss2,
+            Attack.AttackBoss3,
             this,
             null
           );
@@ -65,41 +68,27 @@ export default class Boss extends Phaser.GameObjects.Sprite {
           );
         }
 
-        this.attackTime = 60;
+        this.attackTime = 120;
       }
 
-      switch (this.direction) {
-        case -1:
-          if (this.x <= 320) {
-            this.direction = 1;
-          } else {
-            this.x -= 1;
-            this.y += 1;
-          }
-          break;
-        case 1:
-          if (this.x >= 420) this.direction = 2;
-          else {
-            this.x += 1;
-            this.y -= 1;
-          }
-          break;
-        case 2:
-          if (this.x >= 520) this.direction = 3;
-          else {
-            this.x += 1;
-            this.y += 1;
-          }
-          break;
-        case 3:
-          if (this.x <= 420) this.direction = -1;
-          else {
-            this.x -= 1;
-            this.y -= 1;
-          }
-          break;
-        case 0:
-          break;
+      if (this.moveTime <= 0) {
+        if (this.direction == 1) {
+          this.x = 340;
+          this.y = 180;
+          this.x = Math.random() * (340 - 250) + 250;
+          this.y = Math.random() * (180 - 120) + 120;
+          this.direction = 0;
+        } else if (this.direction == 2) {
+          this.x = Math.random() * (650 - 430) + 430;
+          this.y = Math.random() * (200 - 170) + 170;
+          this.direction = 0;
+        } else {
+          this.x = Math.random() * (650 - 120) + 120;
+          this.y = 100;
+          this.direction = Math.round(Math.random() * (2 - 1) + 1);
+        }
+
+        this.moveTime = 360;
       }
     }
   }

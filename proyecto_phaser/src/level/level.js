@@ -2,6 +2,7 @@ import Player from "../player.js";
 import Boss from "../boss.js";
 import Boss2 from "../bosses/boss2.js";
 import Boss3 from "../bosses/boss3.js";
+import Boss4 from "../bosses/boss4.js"
 import Sound from "../data/sounds.js";
 import Bomb from "../weapons/consumibles/bomb.js";
 
@@ -202,6 +203,9 @@ export default class Level extends Phaser.Scene {
         break;
       case 3:
         this.boss = new Boss3(this, 420, -50, this.level);
+        break;
+      case 4:
+        this.boss = new Boss4(this, 420, -50, this.level);
         break;
       default:
         this.boss = new Boss(this, 420, -50, this.level);
