@@ -17,7 +17,7 @@ Para que no se extienda demasiado el readme proporcionamos el siguiente enlace p
 
 ## Informe de pruebas ##
 
-Inlcuimos únicamente las dos últimas pruebas realizadas ya que las mejoras planteadas en pruebas previas ya se han implementado.
+Inlcuimos únicamente las últimas pruebas realizadas ya que las mejoras planteadas en pruebas previas ya se han implementado.
 
 Prueba 1)
 
@@ -39,3 +39,10 @@ Lo que mas me ha gustado del juego es el entretenimiento que provoca y la tienda
 
 A mejorar:
 Lo que he echado en falta ha sido una mayor penalización a la hora de matar personas para que provoque mayor dificultad a la hora de pasarse la parte del nivel antes del boss
+
+Prueba 3)
+
+Solo se que es un juego que engancha, estaba deseando de matar todos los virus para ver al boss final y ver con que ataques me sorprendía
+
+A mejorar:
+Quizás saber la vida que le queda al boss final para hacernos una idea de cuanto sufrimiento nos queda por delante
