@@ -20,7 +20,7 @@ Para que no se extienda demasiado el readme proporcionamos el siguiente enlace p
 Inlcuimos únicamente las dos últimas pruebas realizadas ya que las mejoras planteadas en pruebas previas ya se han implementado.
 
 Prueba 1)
-Review:
+
 Juego de mata marcianos shoot'em up vertical entretenido. Aunque entiendo que es una fase beta porque al juego le faltan cosas por pulir.
 
 A mejorar (según mi opinión):
@@ -34,6 +34,7 @@ niveles más complejos.
 Si se arreglasen esos fallos y se pule un poco más, es un juego en el que se te pueden pasar las horas sin que te des mucha cuenta.
 
 Prueba 2)
+
 Lo que mas me ha gustado del juego es el entretenimiento que provoca y la tienda para poder comprar y mejorar armas, salud y eso hace que quieras conseguir monedas para poder ir teniendo mejores objetos. Con mas tiempo de trabajo puede ser un gran proyecto.
 
 A mejorar:
