@@ -1,4 +1,3 @@
-import Attack from "../attacks/factory/attacks_enum.js";
 import Items from "./items.js";
 
 const inventory = {
@@ -47,7 +46,7 @@ const inventory = {
         },   
       }
     },
-    money: 9999
+    money: 10
   };
 
   export default inventory;

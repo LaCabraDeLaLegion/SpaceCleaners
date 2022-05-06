@@ -15,13 +15,13 @@ let planet_owners = [
 
 let planets_state = [
   "unlocked",
-  "unlocked",
-  "unlocked",
-  "unlocked",
-  "unlocked",
-  "unlocked",
-  "unlocked",
-  "unlocked",
+  "locked",
+  "locked",
+  "locked",
+  "locked",
+  "locked",
+  "locked",
+  "locked",
 ];
 
 let planet_counter = 1;

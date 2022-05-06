@@ -36,7 +36,7 @@ export default class FinalBoss extends Phaser.GameObjects.Sprite {
     this.direction = 1;
     this.attackTime = 300;
     this.moveTime = 60;
-    this.life = 1;
+    this.life = 120;
     this.portal = null;
     this.activeAttack = null;
   }
@@ -78,15 +78,15 @@ export default class FinalBoss extends Phaser.GameObjects.Sprite {
           this.x = 340;
           this.y = 180;
           this.x = Math.random() * (340 - 250) + 250;
-          this.y = Math.random() * (180 - 120) + 120;
+          this.y = Math.random() * (250- 120) + 120;
           this.direction = 0;
         } else if (this.direction == 2) {
           this.x = Math.random() * (650 - 430) + 430;
-          this.y = Math.random() * (200 - 170) + 170;
+          this.y = Math.random() * (250 - 170) + 170;
           this.direction = 0;
         } else {
           this.x = Math.random() * (650 - 120) + 120;
-          this.y = 100;
+          this.y = 200;
           this.direction = Math.round(Math.random() * (2 - 1) + 1);
         }
 

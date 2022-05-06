@@ -165,6 +165,7 @@ export default class Loader extends Phaser.Scene {
     this.load.image("B1_damage", "/sprites/Boss/B1_damage.png");
     this.load.image("B2_damage", "/sprites/Boss/B2_damage.png");
     this.load.image("B3_damage", "/sprites/Boss/B3_damage.png");
+    this.load.image("B4_damage", "/sprites/Boss/B4_damage.png");
     //this.load.image("B4_damage", "/sprites/Boss/B4_damage.png");
     this.load.image("B5_damage", "/sprites/Boss/B5_damage.png");
     this.load.image("B6_damage", "/sprites/Boss/B6_damage.png");

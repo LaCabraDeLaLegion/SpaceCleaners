@@ -138,7 +138,7 @@ const projectiles = {
   },
   holy_fire: {
     name: "holy_fire",
-    damage: 8,
+    damage: 4,
     sprite: "",
     velocityX: 0,
     velocityY: 5,
