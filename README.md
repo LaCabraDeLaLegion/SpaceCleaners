@@ -81,28 +81,20 @@ Nivel máximo de humanos infectados: 1
 Patrón: 
 
 (Primer grupo que aparece)
-
+V1 V1 H1 V1 V1
 V1 V1 H1 V1 V1
 
+(Segundo grupo que aparece)
+V1 V1 H1 V1 V1
 V1 V1 H1 V1 V1
 
-(Segundo grupo que aparece) -> Tiempo de espera: 10 segundos
-
+(Tercer grupo que aparece)
 V1 V1 H1 V1 V1
-
-V1 V1 H1 V1 V1
-
-(Tercer grupo que aparece)  -> Tiempo de espera: 20 segundos
-
-V1 V1 H1 V1 V1
-
 H1 H1 H1 H1 H1
 
 Boss: nivel 1
 
 Agujeros negros: No
-
-Monedas: 100
 
 ##### Nivel 2 #####
 
@@ -117,34 +109,26 @@ Nivel máximo de humanos infectados: 2
 Patrón: 
 
 (Primer grupo que aparece)
-
+H1 V1 V1 H1 V1 V1 H1
 H1 V1 V1 H1 V1 V1 H1
 
+(Segundo grupo que aparece)
 H1 V1 V1 H1 V1 V1 H1
-
-(Segundo grupo que aparece) -> Tiempo de espera: 10 segundos
-
-H1 V1 V1 H1 V1 V1 H1
-
    V1 V1 H1 V1 V1
 
-(Tercer grupo que aparece)  -> Tiempo de espera: 25 segundos
-
+(Tercer grupo que aparece)
 H2 V2 V2 H2 V2 V2 H2
-
 H2 H2 H2 H2 H2 H2 H2
 
 Boss: nivel 2
 
 Agujeros negros: No
 
-Monedas: 200
-
 ##### Nivel 3 #####
 
 Número de virus mutados: 25
 
-Número de humanos infectados: 25
+Número de humanos infectados: 27
 
 Nivel máximo de virus: 3
 
@@ -153,44 +137,118 @@ Nivel máximo de humanos infectados: 3
 Patrón: 
 
 (Primer grupo que aparece)
-
 V1 V1 H1 H1 V1 V1
-
 V2 V2 H2 H2 V2 V2
 
-(Segundo grupo que aparece) -> Tiempo de espera: 10 segundos
-
+(Segundo grupo que aparece)
+V2 V2 H2 H2 H2 V2 V2
 V2 V2 H2 H2 H2 V2 V2
 
-V2 V2 H2 H2 H2 V2 V2
-
-(Tercer grupo que aparece)  -> Tiempo de espera: 25 segundos
-
+(Tercer grupo que aparece)
 H3 V2 V2 H2 H2 V2 V2 H3
-
       V3 H3 H3 V3
-      
          H3 H3
 
-(Cuarto grupo que aparece) -> Tiempo de espera: 50 segundos
-
+(Cuarto grupo que aparece)
 H3 H3 H3 H3 H3 H3 H3 
-
    H3 V3 V3 V3 H3
 
 Boss: nivel 3
 
-Agujeros negros: Sí
-
-Monedas: 300
+Agujeros negros: No
 
 ##### Nivel 4 #####
 
+Número de virus mutados: 20
+
+Número de humanos infectados: 20
+
+Nivel máximo de virus: 4
+
+Nivel máximo de humanos infectados: 4
+
+Patrón: 
+
+(Primer grupo que aparece)
+H2 V2 V2 H2 V2 V2 H2
+H2 V2 V2 H2 V2 V2 H2
+
+(Segundo grupo que aparece)
+H3 V3 V3 H3 V3 V3 H3
+   V3 V3 H3 V3 V3
+
+(Tercer grupo que aparece)
+H3 V4 V4 H3 V4 V4 H3
+H4 H4 H4 H4 H4 H4 H4
+
+Boss: nivel 4
+
+Agujeros negros: No
+
 ##### Nivel 5 #####
+
+Número de virus mutados: 25
+
+Número de humanos infectados: 25
+
+Nivel máximo de virus: 5
+
+Nivel máximo de humanos infectados: 5
+
+Patrón: 
+
+(Primer grupo que aparece)
+V3 V3 H3 H3 V3 V3
+V4 V4 H3 H3 V4 V4
+
+(Segundo grupo que aparece)
+V4 V4 H3 H3 H3 V4 V4
+V4 V4 H4 H4 H4 V4 V4
+
+(Tercer grupo que aparece)
+H4 V4 V4 H4 H4 V4 V4 H4
+      V5 H5 H5 V5
+         H5 H5
+
+(Cuarto grupo que aparece)
+H5 H5 H5 H5 H5 H5 H5
+   H5 V5 V5 V5 H5
+
+Boss: nivel 5
+
+Agujeros negros: No
 
 ##### Nivel 6 #####
 
+Número de virus mutados: 20
+
+Número de humanos infectados: 20
+
+Nivel máximo de virus: 6
+
+Nivel máximo de humanos infectados: 6
+
+Patrón: 
+
+(Primer grupo que aparece)
+H4 V5 V5 H4 V5 V5 H4
+H4 V5 V5 H4 V5 V5 H4
+
+(Segundo grupo que aparece)
+H5 V6 V6 H5 V6 V6 H5
+   V5 V5 H5 V5 V5
+
+(Tercer grupo que aparece)
+H5 V6 V6    V6 V6
+H6 H6 H6 H6 H6 H6 H6
+
+Boss: nivel 6
+
+Agujeros negros: No
+
 ##### Nivel 7 #####
+
+
 
 ### Enemigos ###
 
