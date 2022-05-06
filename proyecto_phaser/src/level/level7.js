@@ -33,6 +33,7 @@ export default class Level7 extends Level {
     this.virus_maxlevel = 6;
     this.human_maxlevel = 6;
     this.reward = 500;
+    this.bossTranformation = true;
   }
 
   create() {
@@ -241,15 +242,13 @@ export default class Level7 extends Level {
     if (this.alive_monsters <= 0 && !this.bossInScene) {
       this.startBossBattle();
     } else if (this.bossInScene && this.boss.life <= 0 && !this.enderInScene) {
-      this.boss = new Ender(this, 420, -50, this.level);
+      this.boss.life = 200;
+      this.bossTranformation = false;
+      this.boss.setTexture("ender");
+      this.boss.image = "ender";
+      this.boss.damage_image = "ender";
+      this.boss.death_image = "ender_death";
       this.enderInScene = true;
-      this.physics.add.collider(
-        this.boss,
-        this.lasers,
-        this.onHitBoss,
-        null,
-        this
-      );
       this.bossSong.stop();
       this.bossSong = this.enderSong;
       this.bossSong.play();

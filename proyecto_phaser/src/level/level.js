@@ -64,7 +64,7 @@ export default class Level extends Phaser.Scene {
 
     if (this.alive_monsters <= 0 && !this.bossInScene) {
       this.startBossBattle();
-    } else if (this.bossInScene && this.boss.life <= 0) {
+    } else if (this.bossInScene && !this.bossTranformation && this.boss.life <= 0) {
       let victory = this.add
         .image(this.globalWidth / 2, this.globalHeight / 2, "level_victory")
         .setDepth(1);
@@ -242,12 +242,13 @@ export default class Level extends Phaser.Scene {
       this.time.delayedCall(100, () => {
         this.boss.setTexture(this.boss.image);
       });
-    } else {
-      this.boss.setTexture(this.boss.death_image);
-      this.time.delayedCall(100, () => {
-        this.boss.destroy();
-      });
-    }
+    } 
+    else if (!this.bossTranformation) {
+        this.boss.setTexture(this.boss.death_image);
+        this.time.delayedCall(100, () => {
+          this.boss.destroy();
+        });
+      }
   }
 
   addMedicine(medicine) {
