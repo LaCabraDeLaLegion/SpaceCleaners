@@ -83,11 +83,13 @@ export default class Loader extends Phaser.Scene {
     this.load.image("poison_arrow", "/sprites/poison_arrow.png");
     this.load.image("fire", "/sprites/fire.png");
     this.load.image("blue_fire", "/sprites/blue_fire.png");
+    this.load.image("holy_fire", "/sprites/holy_fire.png");
     this.load.image("eye_laser", "/sprites/eye_laser_2.png");
     this.load.image("eye_virus_1", "/sprites/Virus/eye_virus_1.png");
     this.load.image("eye_virus_2", "/sprites/Virus/eye_virus_2.png");
     this.load.image("eye_virus_attack", "/sprites/eye_virus_attack.png");
-    this.load.image("level_victory", "/sprites/level_victory.png");
+    this.load.image("level_victory", "/sprites/level_victory.png")
+    this.load.image("portal", "/sprites/portal.png")
     this.load.image("level_lose", "you_lose.png");
     //this.load.image("continue", "/sprites/continue.png");
 
@@ -157,7 +159,7 @@ export default class Loader extends Phaser.Scene {
     this.load.image("B4_2", "/sprites/Boss/B4_2.png");
     this.load.image("B5", "/sprites/Boss/B5.png");
     this.load.image("B6", "/sprites/Boss/B6.png");
-    this.load.image("B7", "/sprites/Boss/B7.png");
+    this.load.image("FB", "/sprites/Boss/FB.png");
     this.load.image("B1_damage", "/sprites/Boss/B1_damage.png");
     this.load.image("B2_damage", "/sprites/Boss/B2_damage.png");
     this.load.image("B3_damage", "/sprites/Boss/B3_damage.png");
@@ -171,7 +173,7 @@ export default class Loader extends Phaser.Scene {
     //this.load.image("B4_death", "/sprites/Boss/B4_death.png");
     this.load.image("B5_death", "/sprites/Boss/B5_death.png");
     this.load.image("B6_death", "/sprites/Boss/B6_death.png");
-    this.load.image("B7_death", "/sprites/Boss/B7_death.png");
+    this.load.image("FB_death", "/sprites/Boss/FB_death.png");
   }
 
   load_audio() {
@@ -187,7 +189,8 @@ export default class Loader extends Phaser.Scene {
     this.load.audio("boss2_song", "/sounds/boss2_song.wav");
     this.load.audio("boss3_song", "/sounds/boss3_song.mp3");
     this.load.audio("boss4_song", "/sounds/boss4_song.wav");
-    this.load.audio("error_sound", "/sounds/error.mp3")
+    this.load.audio("final_boss_song", "/sounds/final_boss.wav");
+    this.load.audio("error_sound", "/sounds/error.mp3");
   }
 
   createAnimations() {

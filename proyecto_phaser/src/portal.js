@@ -33,6 +33,7 @@ export default class Portal extends Phaser.GameObjects.Sprite {
       const coords = this.calculatePlayerPosition();
       this.player.body.setVelocityX(60 * coords.x);
       this.player.body.setVelocityY(60 * coords.y);
+      this.angle += 0.3;
     }
   }
 }

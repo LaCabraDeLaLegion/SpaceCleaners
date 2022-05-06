@@ -6,6 +6,7 @@ const SuperAttackBoss2 = Symbol("super_attack_boss2");
 const AttackBoss3 = Symbol("attack_boss3");
 const SuperAttackBoss3 = Symbol("super_attack_boss3");
 const AttackBoss4 = Symbol("attack_boss4");
+const AttackFinalBoss = Symbol("attack_final_boss");
 
 //Virus attacks
 const BasicAttack = Symbol("basic_attack");
@@ -31,6 +32,7 @@ export default {
   AttackBoss3,
   SuperAttackBoss3,
   AttackBoss4,
+  AttackFinalBoss,
   BasicAttack,
   BasicAttack2,
   BasicAttack3,

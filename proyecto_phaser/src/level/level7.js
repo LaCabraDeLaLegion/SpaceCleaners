@@ -18,7 +18,6 @@ export default class Level7 extends Level {
     this.level = 7;
     this.virus_maxlevel = 6;
     this.human_maxlevel = 6;
-    console.log("Nivel = 7");
     this.reward = 500;
   }
 
@@ -44,38 +43,38 @@ export default class Level7 extends Level {
   }
 
   createMonsters() {
-    this.alive_monsters = 50;
+    this.alive_monsters = 2; //50
 
     //Grupo 1
     let monster = new Virus(this, 50, -100, 5, this.enemies, 6, 1);
-    monster = new Virus(this, 100, -100, 5, this.enemies, 6, 1);
-    monster = new Virus(this, 250, -100, 5, this.enemies, 6, 1);
-    monster = new Virus(this, 300, -100, 5, this.enemies, 6, 1);
+    // monster = new Virus(this, 100, -100, 5, this.enemies, 6, 1);
+    // monster = new Virus(this, 250, -100, 5, this.enemies, 6, 1);
+    // monster = new Virus(this, 300, -100, 5, this.enemies, 6, 1);
 
-    monster = new Virus(this, 50, -50, 6, this.enemies, 6, 1);
-    monster = new Virus(this, 100, -50, 6, this.enemies, 6, 1);
-    monster = new Virus(this, 250, -50, 6, this.enemies, 6, 1);
-    monster = new Virus(this, 300, -50, 6, this.enemies, 6, 1);
+    // monster = new Virus(this, 50, -50, 6, this.enemies, 6, 1);
+    // monster = new Virus(this, 100, -50, 6, this.enemies, 6, 1);
+    // monster = new Virus(this, 250, -50, 6, this.enemies, 6, 1);
+    // monster = new Virus(this, 300, -50, 6, this.enemies, 6, 1);
 
-    //Grupo 2
-    monster = new Virus(this, 50, -250, 5, this.enemies, 6, 2);
-    monster = new Virus(this, 100, -250, 5, this.enemies, 6, 2);
-    monster = new Virus(this, 300, -250, 5, this.enemies, 6, 2);
-    monster = new Virus(this, 350, -250, 5, this.enemies, 6, 2);
+    // //Grupo 2
+    // monster = new Virus(this, 50, -250, 5, this.enemies, 6, 2);
+    // monster = new Virus(this, 100, -250, 5, this.enemies, 6, 2);
+    // monster = new Virus(this, 300, -250, 5, this.enemies, 6, 2);
+    // monster = new Virus(this, 350, -250, 5, this.enemies, 6, 2);
 
-    monster = new Virus(this, 50, -200, 6, this.enemies, 6, 2);
-    monster = new Virus(this, 100, -200, 6, this.enemies, 6, 2);
-    monster = new Virus(this, 300, -200, 6, this.enemies, 6, 2);
-    monster = new Virus(this, 350, -200, 6, this.enemies, 6, 2);
+    // monster = new Virus(this, 50, -200, 6, this.enemies, 6, 2);
+    // monster = new Virus(this, 100, -200, 6, this.enemies, 6, 2);
+    // monster = new Virus(this, 300, -200, 6, this.enemies, 6, 2);
+    // monster = new Virus(this, 350, -200, 6, this.enemies, 6, 2);
 
-    //Grupo 3
+    // //Grupo 3
 
-    monster = new Virus(this, 100, -450, 5, this.enemies, 6, 3);
-    monster = new Virus(this, 150, -450, 5, this.enemies, 6, 3);
-    monster = new Virus(this, 300, -450, 5, this.enemies, 6, 3);
-    monster = new Virus(this, 350, -450, 5, this.enemies, 6, 3);
+    // monster = new Virus(this, 100, -450, 5, this.enemies, 6, 3);
+    // monster = new Virus(this, 150, -450, 5, this.enemies, 6, 3);
+    // monster = new Virus(this, 300, -450, 5, this.enemies, 6, 3);
+    // monster = new Virus(this, 350, -450, 5, this.enemies, 6, 3);
 
-    monster = new Virus(this, 150, -400, 6, this.enemies, 6, 3);
+    // monster = new Virus(this, 150, -400, 6, this.enemies, 6, 3);
 
     //Grupo 4
 
@@ -88,51 +87,51 @@ export default class Level7 extends Level {
     //Grupo 1
 
     let human = new Human(this, 150, -100, 5, this.enemies, 6, 1);
-    human = new Human(this, 200, -100, 5, this.enemies, 6, 1);
-    human = new Human(this, 150, -50, 5, this.enemies, 6, 1);
-    human = new Human(this, 200, -50, 5, this.enemies, 6, 1);
+    // human = new Human(this, 200, -100, 5, this.enemies, 6, 1);
+    // human = new Human(this, 150, -50, 5, this.enemies, 6, 1);
+    // human = new Human(this, 200, -50, 5, this.enemies, 6, 1);
 
-    //Grupo 2
+    // //Grupo 2
 
-    human = new Human(this, 150, -250, 6, this.enemies, 6, 2);
-    human = new Human(this, 200, -250, 6, this.enemies, 6, 2);
-    human = new Human(this, 250, -250, 6, this.enemies, 6, 2);
+    // human = new Human(this, 150, -250, 6, this.enemies, 6, 2);
+    // human = new Human(this, 200, -250, 6, this.enemies, 6, 2);
+    // human = new Human(this, 250, -250, 6, this.enemies, 6, 2);
 
-    human = new Human(this, 150, -200, 6, this.enemies, 6, 2);
-    human = new Human(this, 200, -200, 6, this.enemies, 6, 2);
-    human = new Human(this, 250, -200, 6, this.enemies, 6, 2);
+    // human = new Human(this, 150, -200, 6, this.enemies, 6, 2);
+    // human = new Human(this, 200, -200, 6, this.enemies, 6, 2);
+    // human = new Human(this, 250, -200, 6, this.enemies, 6, 2);
 
-    //Grupo 3
+    // //Grupo 3
 
-    human = new Human(this, 50, -450, 5, this.enemies, 6, 3);
-    human = new Human(this, 200, -450, 5, this.enemies, 6, 3);
-    human = new Human(this, 250, -450, 5, this.enemies, 6, 3);
-    human = new Human(this, 400, -450, 5, this.enemies, 6, 3);
+    // human = new Human(this, 50, -450, 5, this.enemies, 6, 3);
+    // human = new Human(this, 200, -450, 5, this.enemies, 6, 3);
+    // human = new Human(this, 250, -450, 5, this.enemies, 6, 3);
+    // human = new Human(this, 400, -450, 5, this.enemies, 6, 3);
 
-    human = new Human(this, 150, -400, 6, this.enemies, 6, 3);
-    human = new Human(this, 200, -400, 6, this.enemies, 6, 3);
+    // human = new Human(this, 150, -400, 6, this.enemies, 6, 3);
+    // human = new Human(this, 200, -400, 6, this.enemies, 6, 3);
 
-    human = new Human(this, 150, -350, 5, this.enemies, 6, 3);
-    human = new Human(this, 200, -350, 5, this.enemies, 6, 3);
+    // human = new Human(this, 150, -350, 5, this.enemies, 6, 3);
+    // human = new Human(this, 200, -350, 5, this.enemies, 6, 3);
 
-    //Grupo 4
+    // //Grupo 4
 
-    human = new Human(this, 50, -600, 6, this.enemies, 6, 4);
-    human = new Human(this, 100, -600, 6, this.enemies, 6, 4);
-    human = new Human(this, 150, -600, 6, this.enemies, 6, 4);
-    human = new Human(this, 200, -600, 6, this.enemies, 6, 4);
-    human = new Human(this, 250, -600, 6, this.enemies, 6, 4);
-    human = new Human(this, 300, -600, 6, this.enemies, 6, 4);
-    human = new Human(this, 350, -600, 6, this.enemies, 6, 4);
+    // human = new Human(this, 50, -600, 6, this.enemies, 6, 4);
+    // human = new Human(this, 100, -600, 6, this.enemies, 6, 4);
+    // human = new Human(this, 150, -600, 6, this.enemies, 6, 4);
+    // human = new Human(this, 200, -600, 6, this.enemies, 6, 4);
+    // human = new Human(this, 250, -600, 6, this.enemies, 6, 4);
+    // human = new Human(this, 300, -600, 6, this.enemies, 6, 4);
+    // human = new Human(this, 350, -600, 6, this.enemies, 6, 4);
 
-    human = new Human(this, 100, -550, 6, this.enemies, 6, 4);
-    human = new Human(this, 300, -550, 6, this.enemies, 6, 4);
+    // human = new Human(this, 100, -550, 6, this.enemies, 6, 4);
+    // human = new Human(this, 300, -550, 6, this.enemies, 6, 4);
   }
 
   addSounds() {
     super.addSounds();
     this.levelSong = this.sound.add("level1", Sound.level);
-    this.bossSong = this.sound.add("boss1_song", Sound.bossSound1);
+    this.bossSong = this.sound.add("final_boss_song", Sound.finalBossSound);
   }
   
 }

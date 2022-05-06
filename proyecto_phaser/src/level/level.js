@@ -2,7 +2,8 @@ import Player from "../player.js";
 import Boss from "../boss.js";
 import Boss2 from "../bosses/boss2.js";
 import Boss3 from "../bosses/boss3.js";
-import Boss4 from "../bosses/boss4.js"
+import Boss4 from "../bosses/boss4.js";
+import FinalBoss from "../bosses/finalBoss.js";
 import Sound from "../data/sounds.js";
 import Bomb from "../weapons/consumibles/bomb.js";
 
@@ -17,12 +18,24 @@ export default class Level extends Phaser.Scene {
 
     this.inventory = data[0];
     this.equipedInventory = {
-      skin: this.inventory["others"].subcategories["skins"].items.find((i) => i.equiped === true),
-      weapon: this.inventory["weapons"].subcategories["lasers"].items.find((i) => i.equiped === true),
-      medicine: this.inventory["weapons"].subcategories["medicines"].items.find((i) => i.equiped === true),
-      shield: this.inventory["consumibles"].subcategories["shields"].items.find((i) => i.equiped === true),
-      potion: this.inventory["consumibles"].subcategories["potions"].items.find((i) => i.equiped === true),
-      bomb: this.inventory["consumibles"].subcategories["bombs"].items.find((i) => i.equiped === true),
+      skin: this.inventory["others"].subcategories["skins"].items.find(
+        (i) => i.equiped === true
+      ),
+      weapon: this.inventory["weapons"].subcategories["lasers"].items.find(
+        (i) => i.equiped === true
+      ),
+      medicine: this.inventory["weapons"].subcategories["medicines"].items.find(
+        (i) => i.equiped === true
+      ),
+      shield: this.inventory["consumibles"].subcategories["shields"].items.find(
+        (i) => i.equiped === true
+      ),
+      potion: this.inventory["consumibles"].subcategories["potions"].items.find(
+        (i) => i.equiped === true
+      ),
+      bomb: this.inventory["consumibles"].subcategories["bombs"].items.find(
+        (i) => i.equiped === true
+      ),
     };
 
     this.virus_killed = 0;
@@ -108,12 +121,7 @@ export default class Level extends Phaser.Scene {
 
     this.textUI = [];
 
-    this.livesText = this.add.text(
-      40, 
-      875, 
-      this.player.lives, 
-      this.fontStyle
-    );
+    this.livesText = this.add.text(40, 875, this.player.lives, this.fontStyle);
 
     this.potionsText = this.add.text(
       40,
@@ -137,9 +145,9 @@ export default class Level extends Phaser.Scene {
     );
 
     this.textUI.push(
-      this.livesText, 
-      this.potionsText, 
-      this.bombsText, 
+      this.livesText,
+      this.potionsText,
+      this.bombsText,
       this.shieldsText
     );
   }
@@ -207,6 +215,9 @@ export default class Level extends Phaser.Scene {
       case 4:
         this.boss = new Boss4(this, 420, -50, this.level);
         break;
+      case 7:
+        this.boss = new FinalBoss(this, 420, -50, this.level);
+        break;
       default:
         this.boss = new Boss(this, 420, -50, this.level);
         break;
@@ -252,7 +263,7 @@ export default class Level extends Phaser.Scene {
 
   usePotion() {
     if (this.equipedInventory.potion.quantity > 0) {
-      if(this.player.lives == this.player.maxLives) {
+      if (this.player.lives == this.player.maxLives) {
         this.errorSound.play();
       } else {
         this.drinkPotionSound.play();
@@ -260,7 +271,7 @@ export default class Level extends Phaser.Scene {
         this.player.lives += this.equipedInventory.potion.health;
       }
 
-      if(this.player.lives >= this.player.maxLives) {
+      if (this.player.lives >= this.player.maxLives) {
         this.player.lives = this.player.maxLives;
       }
     }
@@ -319,39 +330,34 @@ export default class Level extends Phaser.Scene {
   updateUI() {
     this.textUI.forEach((text) => text.destroy());
     this.textUI = [];
-  
-    this.livesText = this.add.text(
-      35, 
-      875, 
-      this.player.lives, 
-      this.fontStyle
-    );
-  
+
+    this.livesText = this.add.text(35, 875, this.player.lives, this.fontStyle);
+
     this.potionsText = this.add.text(
       35,
       835,
       this.player.inventory.potion ? this.player.inventory.potion.quantity : 0,
       this.fontStyle
     );
-  
+
     this.bombsText = this.add.text(
       35,
       795,
       this.player.inventory.bomb ? this.player.inventory.bomb.quantity : 0,
       this.fontStyle
     );
-  
+
     this.shieldsText = this.add.text(
       35,
       755,
       this.player.inventory.shield ? this.player.inventory.shield.quantity : 0,
       this.fontStyle
     );
-  
+
     this.textUI.push(
-      this.livesText, 
-      this.potionsText, 
-      this.bombsText, 
+      this.livesText,
+      this.potionsText,
+      this.bombsText,
       this.shieldsText
     );
   }

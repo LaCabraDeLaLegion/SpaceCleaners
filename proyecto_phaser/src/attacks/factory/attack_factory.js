@@ -17,6 +17,7 @@ import AttackWeapon2 from "../player/attackWeapon2.js";
 import AttackWeapon3 from "../player/attackWeapon3.js";
 import EyeVirusAttack from "../virus/eyeVirusAttack.js";
 import EyeVirusAttack2 from "../virus/eyeVirusAttack2.js";
+import AttackFinalBoss from "../boss/attackFinalBoss.js";
 export default class Attack_Factory {
   static createAttack(scene, attack, enemy, target) {
     switch (attack) {
@@ -52,6 +53,8 @@ export default class Attack_Factory {
         return new EyeVirusAttack2(scene, enemy, target);
       case Attack.SuperBasicAttack:
         break;
+      case Attack.AttackFinalBoss:
+        return new AttackFinalBoss(scene, enemy, target);
       default:
         break;
     }

@@ -136,6 +136,14 @@ const projectiles = {
     velocityY: 6,
     angle: 0,
   },
+  holy_fire: {
+    name: "holy_fire",
+    damage: 8,
+    sprite: "",
+    velocityX: 0,
+    velocityY: 5,
+    angle: 0,
+  }
 };
 
 export default projectiles;

@@ -134,6 +134,15 @@ const sounds = {
     loop: true,
     delay: 0,
   },
+  finalBossSound:{
+    mute: false,
+    volume: 1.2,
+    rate: 0.85,
+    detune: 0,
+    seek: 0,
+    loop: true,
+    delay: 0,
+  }
 };
 
 export default sounds;
