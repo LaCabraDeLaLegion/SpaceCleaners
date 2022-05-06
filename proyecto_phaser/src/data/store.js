@@ -64,13 +64,13 @@ const store = {
           {
             info: Items.lasers["double_laser"],
             rebuy: false,
-            price: 10,
+            price: 200,
             page: 1,
           },
           {
             info: Items.lasers["enhanced_laser"],
             rebuy: false,
-            price: 10,
+            price: 250,
             page: 1,
           },
         ],
