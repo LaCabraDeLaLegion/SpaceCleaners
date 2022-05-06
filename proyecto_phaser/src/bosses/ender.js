@@ -2,7 +2,7 @@ import AttackFactory from "../attacks/factory/attack_factory.js";
 import Attack from "../attacks/factory/attacks_enum.js";
 import Portal from "../portal.js";
 
-let images = ["B1", "B2", "B3", "B4_1", "B5", "B6", "FB"];
+let images = ["B1", "B2", "B3", "B4_1", "B5", "B6", "ender"];
 let damage_images = [
   "B1_damage",
   "B2_damage",
@@ -10,7 +10,7 @@ let damage_images = [
   "B4_damage",
   "B5_damage",
   "B6_damage",
-  "FB_damage",
+  "ender",
 ];
 let death_images = [
   "B1_death",
@@ -19,10 +19,10 @@ let death_images = [
   "B4_death",
   "B5_death",
   "B6_death",
-  "FB_death",
+  "ender_death",
 ];
 
-export default class FinalBoss extends Phaser.GameObjects.Sprite {
+export default class Ender extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, boss_level) {
     let name = images[boss_level - 1];
     super(scene, x, y, name);
@@ -36,7 +36,7 @@ export default class FinalBoss extends Phaser.GameObjects.Sprite {
     this.direction = 1;
     this.attackTime = 300;
     this.moveTime = 60;
-    this.life = 1;
+    this.life = 200;
     this.portal = null;
     this.activeAttack = null;
   }
@@ -66,9 +66,14 @@ export default class FinalBoss extends Phaser.GameObjects.Sprite {
           );
         }
 
-        if((Math.random() * (100+1) + 1) < 35 ){
-            if(this.portal) this.portal.destroy();
-            this.portal = new Portal(this.scene,Math.random() * (600-200) + 200, Math.random() *(600-400) + 400,this.scene.player);
+        if (Math.random() * (100 + 1) + 1 < 35) {
+          if (this.portal) this.portal.destroy();
+          this.portal = new Portal(
+            this.scene,
+            Math.random() * (600 - 200) + 200,
+            Math.random() * (600 - 400) + 400,
+            this.scene.player
+          );
         }
         this.attackTime = 220;
       }

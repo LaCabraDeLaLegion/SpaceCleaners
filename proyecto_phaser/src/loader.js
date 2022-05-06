@@ -88,8 +88,8 @@ export default class Loader extends Phaser.Scene {
     this.load.image("eye_virus_1", "/sprites/Virus/eye_virus_1.png");
     this.load.image("eye_virus_2", "/sprites/Virus/eye_virus_2.png");
     this.load.image("eye_virus_attack", "/sprites/eye_virus_attack.png");
-    this.load.image("level_victory", "/sprites/level_victory.png")
-    this.load.image("portal", "/sprites/portal.png")
+    this.load.image("level_victory", "/sprites/level_victory.png");
+    this.load.image("portal", "/sprites/portal.png");
     this.load.image("level_lose", "you_lose.png");
     //this.load.image("continue", "/sprites/continue.png");
 
@@ -176,6 +176,7 @@ export default class Loader extends Phaser.Scene {
     this.load.image("B5_death", "/sprites/Boss/B5_death.png");
     this.load.image("B6_death", "/sprites/Boss/B6_death.png");
     this.load.image("FB_death", "/sprites/Boss/FB_death.png");
+    this.load.image("ender", "/sprites/Boss/ender.png");
   }
 
   load_audio() {
@@ -191,7 +192,8 @@ export default class Loader extends Phaser.Scene {
     this.load.audio("boss2_song", "/sounds/boss2_song.wav");
     this.load.audio("boss3_song", "/sounds/boss3_song.mp3");
     this.load.audio("boss4_song", "/sounds/boss4_song.wav");
-    this.load.audio("final_boss_song", "/sounds/final_boss.wav");
+    this.load.audio("final_boss_song", "/sounds/final_boss.mp3");
+    this.load.audio("ender_song", "/sounds/ender_song.wav");
     this.load.audio("error_sound", "/sounds/error.mp3");
   }
 

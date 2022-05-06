@@ -4,10 +4,24 @@ import Human from "../enemies/human.js";
 import virus_data from "../data/virus_data.js";
 import humans_data from "../data/humans_data.js";
 import Sound from "../data/sounds.js";
+import Ender from "../bosses/ender.js";
 
 const enemy_virus = virus_data.data;
 const enemy_humans = humans_data.data;
 
+let battle_texts = [
+  [
+    ["Habeis llegado lejos terricola."],
+    [
+      "Me imagino que no penseries que esta pandemia a nivel galactico ha sido cosa del azar.",
+    ],
+  ],
+  [
+    ["Exacto, yo soy el creador de tanto virus!"],
+    ["Un cuerpo tan débil como el tuyo no podra acercarse a mi."],
+  ],
+  [["Despidete de todo lo que conoces..."]],
+];
 export default class Level7 extends Level {
   constructor() {
     super("level7");
@@ -23,13 +37,93 @@ export default class Level7 extends Level {
 
   create() {
     super.create();
+    this.counter = 0;
+    this.battle_texts = battle_texts;
     this.add
-      .image(this.globalWidth / 2, this.globalHeight / 2, "level7_background")
+      .image(this.globalWidth / 2, this.globalHeight / 2, "level2_background")
       .setDepth(-1)
       .setScale(1.7);
     this.addSounds();
     this.initEnemies();
     this.levelSong.play();
+    this.enderInScene = false;
+
+    this.text = this.add
+      .text(
+        30,
+        this.cameras.main.height - 170,
+        this.battle_texts[this.counter],
+        {
+          fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+          fontSize: "24px",
+        }
+      )
+      .setDepth(11);
+
+    this.ok = this.add
+      .image(730, this.cameras.main.height - 70, "ok")
+      .setDepth(10)
+      .setOrigin(0, 0);
+    this.ok.setInteractive({
+      cursor: "url(assets/cursors/selector.cur), pointer",
+    });
+    this.ok.on("pointerup", () => {
+      this.counter++;
+
+      if (this.counter >= this.battle_texts.length) {
+        this.ok.input.enabled = false;
+        this.setTutorialContainerVisibility(false);
+        if (this.battle_texts == battle_texts) {
+          this.counter = 0;
+          this.texts = battle_texts;
+          this.text.setText(this.texts[this.counter]);
+          this.planet_1.setInteractive({
+            cursor: "url(assets/cursors/selector.cur), pointer",
+          });
+        } else if (this.texts == battle_texts) {
+          this.counter = 0;
+          this.texts = map_store_texts;
+          this.text.setText(this.texts[this.counter]);
+          this.setPlanetsVisibility(true);
+          this.setLocksVisibility(true);
+          this.setTutorialContainerVisibility(true);
+          this.ok.enabled = true;
+          this.lock2.setVisible(false);
+          this.planet_1.setTexture("planet_1_player");
+          this.ok.input.enabled = true;
+        } else if (this.texts == map_store_texts) {
+          this.counter = 0;
+          this.scene.start("menu");
+        }
+      } else {
+        if (this.texts == battle_texts) {
+          if (this.counter == 2) {
+            this.player.can_move = true;
+            this.setTutorialContainerVisibility(false);
+            this.ok.enabled = false;
+          } else if (this.counter == 4) {
+            this.player.can_shoot = true;
+            this.setTutorialContainerVisibility(false);
+            this.ok.enabled = false;
+          } else if (this.counter == 5) {
+            this.player.can_cure = true;
+            this.player.can_shoot = false;
+            this.setTutorialContainerVisibility(false);
+            this.ok.enabled = false;
+          } else if (this.counter == 6) {
+            this.player.can_cure = true;
+            this.player.can_shoot = true;
+            this.setTutorialContainerVisibility(false);
+            this.ok.enabled = false;
+          } else if (this.counter == 8) {
+            this.setTutorialContainerVisibility(false);
+            this.ok.enabled = false;
+            this.events.emit("boss_fight");
+          }
+        }
+        this.text.setText(this.battle_texts[this.counter]);
+      }
+    });
   }
 
   initEnemies() {
@@ -78,9 +172,9 @@ export default class Level7 extends Level {
 
     //Grupo 4
 
-    monster = new Virus(this, 150, -550, 6, this.enemies, 6, 4);
-    monster = new Virus(this, 200, -550, 6, this.enemies, 6, 4);
-    monster = new Virus(this, 250, -550, 6, this.enemies, 6, 4);
+    // monster = new Virus(this, 150, -550, 6, this.enemies, 6, 4);
+    // monster = new Virus(this, 200, -550, 6, this.enemies, 6, 4);
+    // monster = new Virus(this, 250, -550, 6, this.enemies, 6, 4);
   }
 
   createHumans() {
@@ -132,6 +226,71 @@ export default class Level7 extends Level {
     super.addSounds();
     this.levelSong = this.sound.add("level1", Sound.level);
     this.bossSong = this.sound.add("final_boss_song", Sound.finalBossSound);
+    this.enderSong = this.sound.add("ender_song", Sound.enderSound);
   }
-  
+
+  setTutorialContainerVisibility(visibility) {
+    this.container.setVisible(visibility);
+    this.ok.setVisible(visibility);
+    this.text.setVisible(visibility);
+  }
+
+  update() {
+    let destroy = false;
+
+    if (this.alive_monsters <= 0 && !this.bossInScene) {
+      this.startBossBattle();
+    } else if (this.bossInScene && this.boss.life <= 0 && !this.enderInScene) {
+      this.boss = new Ender(this, 420, -50, this.level);
+      this.enderInScene = true;
+      this.physics.add.collider(
+        this.boss,
+        this.lasers,
+        this.onHitBoss,
+        null,
+        this
+      );
+      this.bossSong.stop();
+      this.bossSong = this.enderSong;
+      this.bossSong.play();
+    } else if (this.bossInScene && this.boss.life <= 0 && this.enderInScene) {
+      let victory = this.add
+        .image(this.globalWidth / 2, this.globalHeight / 2, "level_victory")
+        .setDepth(1);
+      victory.setInteractive({
+        cursor: "url(assets/cursors/selector.cur), pointer",
+      });
+      victory.on("pointerup", () => {
+        this.inventory.money += this.reward;
+        this.scene.start("details", [
+          "win",
+          this.level,
+          this.inventory,
+          this.virus_killed,
+          this.humans_healed,
+          this.reward,
+        ]);
+        this.bossSong.stop();
+      });
+    }
+
+    this.enemies.getChildren().forEach((enemy) => {
+      if (enemy.y >= this.globalHeight) {
+        this.player.setVisible(false);
+        let lose = this.add
+          .image(this.globalWidth / 2, this.globalHeight / 2, "level_lose")
+          .setDepth(1);
+        lose.setInteractive({
+          cursor: "url(assets/cursors/selector.cur), pointer",
+        });
+        lose.on("pointerup", () => {
+          this.scene.start("map", ["lose", this.level, this.inventory]);
+          this.levelSong.stop();
+        });
+        destroy = true;
+      }
+    });
+
+    if (destroy) this.destroy_enemies();
+  }
 }
